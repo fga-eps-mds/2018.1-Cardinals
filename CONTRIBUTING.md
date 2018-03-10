@@ -28,7 +28,8 @@ Fork
     
      2. Solve the conflits (if any).
      
-     3. Delete the feature branch
+     3. Delete the feature branch:
+     
         `$ git branch -d feature_name`
      
      4. Push changes
