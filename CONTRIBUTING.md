@@ -1,6 +1,6 @@
 # How to contribute
 
-Fork
+Fork the repository.
 
 ## New features
 
@@ -15,10 +15,8 @@ Fork
      `$ git commit -m "An english comment with a clear messaget about thtis commit`
      
 3. Open a pull request using the Github web page
-  
-     `$ git commit -m "An english comment with a clear messaget abou thtis commit`
  
- 3. Or if you are a repo member, you can merge `feature_` into `develop`.
+3. Or if you are a repo member, you can merge `feature_` into `develop`.
      
      1. Merge with develop
        
