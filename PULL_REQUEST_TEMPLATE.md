@@ -1,15 +1,15 @@
 <!--Antes de enviar este PR certifique-se de ter lido o documento CONTRIBUTING(CONTRIBUTING.md). Preencha o que é pedido a seguir e exclua ou acrescente trechos conforme necessário.)-->
 
-### Descrição
-Descreva quais mudanças você realizou.
+### Description
+Describe wich changes you realized.
 
-### Tipos de mudança (Marque "x")
-- [ ] Correção de bug
-- [ ] Nova funcionalidade
-- [ ] Documentação
+### Types of change (Check "x")
+- [ ] Bug fix
+- [ ] New Feature
+- [ ] Documentation
 
-### Issue correspondente
-Resolve #Número
+### Related Issue
+Fix #<issue number>
 
 ### Checklist
-- [ ] Todos os testes estão passando
+- [ ] All tests are passing
