@@ -3,6 +3,9 @@
 
 ## USX - Título da issue
 
+### Descrição
+Descrição sobre a issue.
+
 ### Critérios de Aceitação
 - [ ] Critério...
 - [ ] Outro critério...
