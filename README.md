@@ -4,5 +4,4 @@
 
 Caso tenha o Docker e o docker-compose instalados, basta executar o script `run.sh`.
 
-        `$ sh run.sh`
-        
+        `$ run.sh`.
