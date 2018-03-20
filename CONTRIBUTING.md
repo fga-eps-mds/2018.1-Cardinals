@@ -1,8 +1,26 @@
-# How to contribute
+# Contribuindo com Falko
 
-Fork the repository.
+Obrigado pelo interesse em colaborar com este projeto.
 
-## New features
+A seguir, algumas orientações:
+- [Código de conduta](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/CODE_OF_CONDUCT.md)
+- [Encontrou um bug?](#bug)
+- [Sente falta de uma funcionalidade?](#funcionalidade)
+- [Colaborar com novas funcionalidades](#colaborar)
+- [Enviar Pull Request](#pullrequest)
+
+## <a name="bug"></a> Encontrou um bug?
+Reporte um bug abrindo uma issue. Utilize nosso [template de Issue](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/ISSUE_TEMPLATE.md).
+Caso deseje corrigi-lo siga as [orientações para colaborar](#colaborar).
+
+## <a name="funcionalidade"></a> Sente falta de uma funcionalidade?
+Faça sugestões ou proponha soluções abrindo uma issue para esclarecer sua intenção. Utilize nosso [template de Issue](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/ISSUE_TEMPLATE.md).
+
+## <a name="pullrequest"></a> Enviar Pull Request
+1. Certifique-se de que a mudança proposta já não foi implementada.
+2. Utilize nosso [template de Pull Request](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/PULL_REQUEST_TEMPLATE.md).
+
+## <a name="#colaborar"></a> Colaborar com novas funcionalidades
 
 1. Create a new branch from `develop`. That new branch's name must start with `feature_`
    
