@@ -3,43 +3,29 @@
 ## Sobre o projeto
 O Falko é uma aplicação web para gestão de equipes ágeis. O objetivo do Falko é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em nívels de repositório (issues, branches, pull requests), a nível de boas práticas (testes, análise estática de código, Docker) e a um nível de pessoas (como cada pessoa está contribuindo com o projeto?).
 
-## Guia de Uso do Docker
+## Executando a aplicação
 
 ### Pré requisitos
 Ter instalado Docker e Docker Compose. Consulte [instalar Docker](https://docs.docker.com/install/) e [instalar Docker Compose](https://docs.docker.com/compose/install/) para mais informações.
 
-### Comandos básicos para utilização do ambiente
-Criar e inicializar containers em background:
+### Executando a aplicação utilizando Docker num servidor local
 
-```docker-compose up -d```
+1. Clone nosso repositório:
 
-Criar e inicializar containers com visualização de logs:
+    `` $ git clone https://github.com/fga-gpp-mds/2018.1-Grupo2.git ``
+    
+2. Entre no diretório do projeto:
 
-```docker-compose up```
+    `` $ cd  2018.1-Grupo2/ ``
 
-Parar containers:
+3. Inicialize os serviços necessários para aplicação:
 
-```docker-compose stop```
+    `` $ docker-compose up -d ``
 
-Religar containers parados:
+4. Acesse a página por meio do seu browser favorito:
 
-```docker-compose start```
+    `` htttp:/localhost:8000/ `` 
 
-Listar todos os containers:
-
-```docker ps -a```
-
-Listar apenas containers em execução:
-
-```docker ps```
-
-Executar comando dentro do container:
-
-```docker-compose exec nome_do_container  comando_desejado```
-
-Abrir bash do container:
-
-```docker-compose exec -it  nome_do_container  bash```
 
 ## Desenvolvedores
 Os desenvolvedores podem ser contatados a partir deste [link](https://github.com/fga-gpp-mds/2018.1-Grupo2/wiki).
