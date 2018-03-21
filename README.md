@@ -20,7 +20,7 @@ Ter instalado Docker e Docker Compose. Consulte [instalar Docker](https://docs.d
 
 3. Inicialize os serviços necessários para aplicação:
 
-    `` $ docker-compose up -d ``
+    `` $ sudo docker-compose up -d ``
 
 4. Acesse a página por meio do seu browser favorito:
 
