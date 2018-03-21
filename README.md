@@ -6,7 +6,7 @@ O Falko é uma aplicação web para gestão de equipes ágeis. O objetivo do Fal
 ## Executando a aplicação
 
 ### Pré requisitos
-Ter instalado Docker e Docker Compose. Consulte [instalar Docker](https://docs.docker.com/install/) e [instalar Docker Compose](https://docs.docker.com/compose/install/) para mais informações.
+Estar num ambiente Linux, com os seguintes programas já instalados: Git, Docker e Docker Compose. Consulte: [instalar Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03#file-linux-md), [instalar Docker](https://docs.docker.com/install/) e [instalar Docker Compose](https://docs.docker.com/compose/install/) para mais informações.
 
 ### Executando a aplicação utilizando Docker num servidor local
 
