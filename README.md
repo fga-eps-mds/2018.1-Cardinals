@@ -1,7 +1,7 @@
-# Falko
+# Cardinals
 
 ## Sobre o projeto
-O Falko é uma aplicação web para gestão de equipes ágeis. O objetivo do Falko é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em nívels de repositório (issues, branches, pull requests), a nível de boas práticas (testes, análise estática de código, Docker) e a um nível de pessoas (como cada pessoa está contribuindo com o projeto?).
+O Cardinals é uma aplicação web para gestão de equipes ágeis. O objetivo do Cardinals é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em nívels de repositório (issues, branches, pull requests), a nível de boas práticas (testes, análise estática de código, Docker) e a um nível de pessoas (como cada pessoa está contribuindo com o projeto?).
 
 ## Executando a aplicação
 
@@ -38,3 +38,6 @@ A documentação deste projeto pode ser acessada através da Wiki ([aqui](https:
 
 ## Licença
 Este projeto é distribuído sob a licença MIT. Para mais detalhes consulte [LICENSE.md](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/LICENSE).
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/maintainability)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/test_coverage)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/test_coverage)
