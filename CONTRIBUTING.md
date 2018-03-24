@@ -26,6 +26,8 @@ Faça sugestões ou proponha soluções abrindo uma issue para esclarecer sua in
 2. O nome desta branch deve começar com a palavra `feature_`, seguido do nome da feature, por exemplo: `feature_login_with_github`.
 3. Ao finalizar seu trabalho, mande um pull request para a `develop` da upstream.
 
+A partir daqui a equipe de desenvolvedores enviarão pull requests da branch `develop` para a branch `master` quando uma feature ou um conjunto de features estiverem completas e revisadas. 
+
 ## <a name="#colaborar"></a> Resolvendo bugs encontrados na master
 
 1. Crie uma branch a partir da branch `master`.
@@ -39,3 +41,11 @@ Quando a branch `develop` atingir um novo nível de maturidade de features, é h
 1. Crie uma branch a partir da branch `develop`.
 2. O nome desta branch deve começar com a palavra `release_`, seguido do nome/versão da release, por exemplo `release_v1.03`.
 3. Ao finalizar seu trabalho, mande as modificações para o remoto. 
+
+## <a name="#colaborar"></a> Documentação externa ao código
+
+1. Crie uma branch a partir da branch `docs`.
+2. O nome desta branch deve começar com a palavra `docs_`, seguido do nome do documento ou trecho do documento a ser produzido, por exemplo: `docs_vision_stakeholders`.
+3. Ao finalizar seu trabalho, mande um pull request para a `docs` da upstream.
+
+A partir daqui a equipe de desenvolvedores enviarão pull requests da branch `docs` para a branch `master` quando documentos ou trechos de documentos forem finalizados e revisados.
