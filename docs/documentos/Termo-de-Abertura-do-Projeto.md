@@ -90,7 +90,7 @@ Desenvolvedor: Desenvolve a solução proposta pelo projeto.
 <p align="justify">Visando manter uma boa comunicação entre os interessados no projeto foram escolhidas algumas ferramentas baseadas na usabilidade e eficiência. A tabela a seguir apresenta a lista das ferramentas, bem como sua utilização, descrição e envolvidos:</p>
 
 | Ferramenta | Utilização	| Envolvidos	| Descrição
-| :-------: | :---: |
+| :-------: | :---: | :---: | :---: | 
 | Telegram | Comunicação interna | Equipes de gerenciamento e desenvolvimento | Serviço para troca de mensagens entre os membros das equipes envolvidas
 | Google Drive | Documentação | Equipes de gerenciamento e desenvolvimento | Adição, criação e/ou evolução de documentos, templates e planilhas que servem de base para os artefatos que serão disponibilizados no Github |
 | Github | Documentação | Equipes de gerenciamento e desenvolvimento, Couch, Professora e demais interessados | Disponibilização de artefatos desenvolvidos ao longo do projeto |
