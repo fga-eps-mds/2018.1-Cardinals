@@ -34,7 +34,7 @@ Faça sugestões ou proponha soluções abrindo uma issue para esclarecer sua in
 
 ## <a name="#colaborar"></a> Realizando releases
 
-Quando a branch `develop` atingir um novo nível de maturidade de features, é hora de uma release. Nesta hora é necessário criar uma branch a partir da `develop`, onde esta branch mantém o projeto no estado de release, de forma `develop` continue no seu fluxo de trabalho independentemente das branches de release.
+Quando a branch `develop` atingir um novo nível de maturidade de features, é hora de uma release. Nesta hora é necessário criar uma branch a partir da `develop`, onde esta branch mantém o projeto no estado de release, de forma que `develop` continue no seu fluxo de trabalho independentemente das branches de release.
 
 1. Crie uma branch a partir da branch `develop`.
 2. O nome desta branch deve começar com a palavra `release_`, seguido do nome/versão da release, por exemplo `release_v1.03`.
