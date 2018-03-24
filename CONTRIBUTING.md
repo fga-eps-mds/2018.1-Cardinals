@@ -44,6 +44,8 @@ Quando a branch `develop` atingir um novo nível de maturidade de features, é h
 
 ## <a name="#colaborar"></a> Documentação externa ao código
 
+Branch exclusiva para arquivos dentro do diretório `docs/`.
+
 1. Crie uma branch a partir da branch `docs`.
 2. O nome desta branch deve começar com a palavra `docs_`, seguido do nome do documento ou trecho do documento a ser produzido, por exemplo: `docs_vision_stakeholders`.
 3. Ao finalizar seu trabalho, mande um pull request para a `docs` da upstream.
