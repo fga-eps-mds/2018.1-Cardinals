@@ -22,30 +22,32 @@ Faça sugestões ou proponha soluções abrindo uma issue para esclarecer sua in
 
 ## <a name="#colaborar"></a> Colaborar com novas funcionalidades
 
-1. Create a new branch from `develop`. That new branch's name must start with `feature_`
-   
-    `$ git checkout develop`
-    
-    `$ git checkout -b feature_name`
+1. Crie uma branch a partir da branch `develop`.
+2. O nome desta branch deve começar com a palavra `feature_`, seguido do nome da feature, por exemplo: `feature_login_with_github`.
+3. Ao finalizar seu trabalho, mande um pull request para a `develop` da upstream.
 
-2. Always write (in english) a clear log messages for your commits. One line comments are prefered.
-  
-     `$ git commit -m "An english comment with a clear messaget about thtis commit`
-     
-3. Open a pull request using the Github web page
- 
-3. Or if you are a repo member, you can merge `feature_` into `develop`.
-     
-     1. Merge with develop
-       
-        `$ git checkout develop`
-     
-        `$ git merge feature_name`
-    
-     2. Solve the conflits (if any).
-     
-     3. Delete the feature branch:
-     
-        `$ git branch -d feature_name`
-     
-     4. Push changes
+A partir daqui a equipe de desenvolvedores enviarão pull requests da branch `develop` para a branch `master` quando uma feature ou um conjunto de features estiverem completas e revisadas. 
+
+## <a name="#colaborar"></a> Resolvendo bugs encontrados na master
+
+1. Crie uma branch a partir da branch `master`.
+2. O nome desta branch deve começar com a palavra `hotfix_`, seguido do nome do bug encontrado, por exemplo: `hotfix_login_crash`.
+3. Ao finalizar seu trabalho, mande um pull request para a `master` da upstream.
+
+## <a name="#colaborar"></a> Realizando releases
+
+Quando a branch `develop` atingir um novo nível de maturidade de features, é hora de uma release. Nesta hora é necessário criar uma branch a partir da `develop`, onde esta branch mantém o projeto no estado de release, de forma que `develop` continue no seu fluxo de trabalho independentemente das branches de release.
+
+1. Crie uma branch a partir da branch `develop`.
+2. O nome desta branch deve começar com a palavra `release_`, seguido do nome/versão da release, por exemplo `release_v1.03`.
+3. Ao finalizar seu trabalho, mande as modificações para o remoto. 
+
+## <a name="#colaborar"></a> Documentação externa ao código
+
+Branch exclusiva para arquivos dentro do diretório `docs/`.
+
+1. Crie uma branch a partir da branch `docs`.
+2. O nome desta branch deve começar com a palavra `docs_`, seguido do nome do documento ou trecho do documento a ser produzido, por exemplo: `docs_vision_stakeholders`.
+3. Ao finalizar seu trabalho, mande um pull request para a `docs` da upstream.
+
+A partir daqui a equipe de desenvolvedores enviarão pull requests da branch `docs` para a branch `master` quando documentos ou trechos de documentos forem finalizados e revisados.
