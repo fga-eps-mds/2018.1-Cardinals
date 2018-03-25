@@ -45,7 +45,7 @@
 
 # 1. Introdução
 ## 1.1 Finalidade.  
-<p align ="justify"></p>
+<p align ="justify"></p>O objeto deste documento é fornecer uma visão geral da arquitetura que abrange o sistema Cardinals. Ele deve mostrar de forma clara e objetiva as decisões arquiteturais que foram tomadas em relação ao projeto. Para fornecer as informações necessárias desenvolvedores e demais envolvidos em termos de estrutura da aplicação e tecnologias utilizadas. 
 
 ## 1.2 Escopo     
 <p align="justify"></p>
