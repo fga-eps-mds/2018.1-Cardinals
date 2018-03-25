@@ -48,7 +48,7 @@
 <p align ="justify"></p>O objeto deste documento é fornecer uma visão geral da arquitetura que abrange o sistema Cardinals. Ele deve mostrar de forma clara e objetiva as decisões arquiteturais que foram tomadas em relação ao projeto. Para fornecer as informações necessárias desenvolvedores e demais envolvidos em termos de estrutura da aplicação e tecnologias utilizadas. 
 
 ## 1.2 Escopo     
-<p align="justify"></p>
+<p align="justify"></p>O Documento de Arquiteturaa de Software se aplica ao sitema Cardinals. A plataforma tem o objetivo de facilitar a atividade de acompanhamento gerencial de projetos desenvolvidos com metodoligia Ágil.
 
 
 ## 1.3 Visão Geral
