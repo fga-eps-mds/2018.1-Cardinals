@@ -31,6 +31,9 @@
 22/03/2018 | 0.7.2 | Requisitos do sistema | Lorrany Azevedo |
 22/03/2018 | 0.7.3 | Requisitos de desempenho | Lorrany Azevedo |
 22/03/2018 | 0.8.0 | Referências Bibliográficas | Lorrany Azevedo |
+23/03/2018 | 0.9.0 | Restrições | Matheus Gomes |
+26/03/2018 | 0.10.0 | Outras restrições de produto | Matheus Gomes |
+26/03/2018 | 1.0.0 | Finalização do documento | Matheus Gomes |
 
 
 ------------------------------------------------------------
@@ -107,7 +110,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 
 ## 2.1. Oportunidade de Negócio
 <p align="justify">A Metodologia Ágil aplicada na Engenharia de Software tem como objetivo tornar os processos de desenvolvimento mais rápidos e eficientes, estabelecer métricas, automatizar de tarefas e fazer uma boa da gestão da equipe.</p>
-<p align="justify">A plataforma ????? tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
+<p align="justify">A plataforma Cardinals tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
 
 
 ## 2.2. Descrição do problema
@@ -123,7 +126,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 ----------|-------------
 **Para** | os gestores de projetos que utilizam a metodologia ágil
 **Que** | desejam tornar a gerência de projetos mais eficaz
-**????**  | é uma aplicação web de código aberto e gratuita
+**Cardinals**  | é uma aplicação web de código aberto e gratuita
 **Que** | torna mais eficiente a o acompanhamento de projetos e organização das equipes
 **Diferente** | de outras aplicações web como GitHub e GitLab
 **Nosso produto** | oferecerá mais recursos para incadores e métricas de forma mais automatizada.
