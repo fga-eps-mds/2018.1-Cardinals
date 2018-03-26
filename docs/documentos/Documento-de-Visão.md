@@ -31,6 +31,9 @@
 22/03/2018 | 0.7.2 | Requisitos do sistema | Lorrany Azevedo |
 22/03/2018 | 0.7.3 | Requisitos de desempenho | Lorrany Azevedo |
 22/03/2018 | 0.8.0 | Referências Bibliográficas | Lorrany Azevedo |
+23/03/2018 | 0.9.0 | Restrições | Matheus Gomes |
+26/03/2018 | 0.10.0 | Outras restrições de produto | Matheus Gomes |
+26/03/2018 | 1.0.0 | Finalização do documento | Matheus Gomes |
 
 
 ------------------------------------------------------------
@@ -107,7 +110,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 
 ## 2.1. Oportunidade de Negócio
 <p align="justify">A Metodologia Ágil aplicada na Engenharia de Software tem como objetivo tornar os processos de desenvolvimento mais rápidos e eficientes, estabelecer métricas, automatizar de tarefas e fazer uma boa da gestão da equipe.</p>
-<p align="justify">A plataforma ????? tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
+<p align="justify">A plataforma Cardinals tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
 
 
 ## 2.2. Descrição do problema
@@ -123,7 +126,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 ----------|-------------
 **Para** | os gestores de projetos que utilizam a metodologia ágil
 **Que** | desejam tornar a gerência de projetos mais eficaz
-**????**  | é uma aplicação web de código aberto e gratuita
+**Cardinals**  | é uma aplicação web de código aberto e gratuita
 **Que** | torna mais eficiente a o acompanhamento de projetos e organização das equipes
 **Diferente** | de outras aplicações web como GitHub e GitLab
 **Nosso produto** | oferecerá mais recursos para incadores e métricas de forma mais automatizada.
@@ -152,14 +155,13 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 * Google Chrome;  
 * Mozilla Firefox;      
 
-## 3.3.1 Perfis das partes associadas        
+## 3.4 Perfis das partes associadas        
 
 
-### 3.3.2 Equipe de Desenvolvimento      
+### 3.4.1 Equipe de Desenvolvimento      
 
 ----------|-------------  
 ----------|-------------           
-
 **Representantes** | [Lorrany Azevedo](https://github.com/lorryaze), [Gustavo Duarte](https://github.com/gustavoduartemoreira), [Mateus Augusto](https://github.com/Mateusas3s), [Matheus Gomes](https://github.com/matheusgomesf), [João Pedro](https://github.com/jpmartins201)
 **Descrição** | Desenvolvedores
 **Tipo** | Grupo de Estudadntes da Faculdade do Gama (FGA), matriculados na disciplina de Métodos de Desenvolvimento de Software
@@ -167,7 +169,7 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 **Critérios de Sucesso** | Aplicar metodologias ágeis ao longo do processo e obter um produto que satisfaça a necessidade do cliente.
 **Envolvimento** | Alto
 
-### 3.3.3 Equipe de Gestão de Projetos  
+### 3.4.2 Equipe de Gestão de Projetos  
 ----------|-------------
 ----------|-------------       
 **Representantes** | [Amanda Bezerra](https://github.com/amandabezerra), [Lucas Costa](https://github.com/lucasca73), [Miguel Nery](https://github.com/MiguelNery), [Marlon Mendes](https://github.com/marlonbymendes), [Guilherme da Luz](https://github.com/daluzguilherme)
@@ -177,7 +179,7 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 **Critérios de Sucesso** | Aplicar metodologias ágeis ao longo do processo e obter um produto que satisfaça a necessidade do cliente.
 **Envolvimento** | Alto
 
-### 3.3. Coaches
+### 3.4.3 Coaches
 ----------|-------------
 ----------|-------------     
 **Representantes** | [João Guilherme](#), [Sabryna](#)
@@ -244,30 +246,36 @@ Mapear se exixtem ferramentas de automatização no projeto  |  Alta  | Mapear s
 
 ## 6.1 Restrições de Implementação
 
-   *O sistema deverá possuir uma API para consumir os dados referente à projetos do GitHub.
-   *O produto deve seguir a utilização de microserviços.
+   * O sistema deverá possuir uma API para consumir os dados referente à projetos do GitHub.
+   * O sistema deve seguir a utilização de microserviços.
 
 ## 6.2 Restrições de Tempo
 
-   *O produto deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
+   * O sistema deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
 
 ## 6.3 Restrição do Escopo
 
-   *O produto deve atender à principio apenas à projetos escritos em Django, Python.
+   * O sistema deve atender à principio apenas à projetos escritos em Django, Python.
 
 # 7. Outros requisitos do produto
 ## 7.1. Requisitos de usuabilidade
+ *O sistema poderá ser utilizado por qualquer pessoa que tenha intimidade com navegadores web, já que ele podera ser executado pro qualquer web browser, sua interface deve ser de fácil entendimento e auto explicativa, facilitando assim o seu uso por quem quiser utiliza-lá.
 
 ## 7.2. Requisitos do sistema
-
-
+ * A plataforma Cardinals poderá ser acessada através de qualquer dispositivo (Computador ou Smartphone), que possua um Browser (Google Chrome, Mozilla, Opera etc.) e que tenha acesso a internet.
 ## 7.3. Requisitos de desempenho
-
-
+ * O sistema deve responder rapidamente a requisição do usuário, e deve estar sempre disponível.
 ## 7.4. Requisitos de confiabilidade
-
-
+ * O sistema deve se comprometer em não alterar os dados oferecidos pelo GitHub.
 # 8. Referências Bibliográficas
-
 + FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/webtmpl/templates/req/rup_vision_sp.htm. Acesso em 22 de Março de 2018.
-+FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/examples/csports/ex_vision.htm#Constraints .Acesso em 23 de Março de 2018.
+    
++ FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/examples/csports/ex_vision.htm#Constraints .Acesso em 23 de Março de 2018.
+IBM Knowledge Center - Documento de Visão: A estrutura de tópicos do documento de visão. Disponível em: https://www.ibm.com/support/knowledgecenter/pt-br/SSWMEQ_3.0.1/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.htm. Acesso em: .20 mar. 2018;
+
+Wikipédia - Documento de Visão.
+Disponível em:
+https://pt.wikipedia.org/wiki/Documento_de_vis%C3%A3o. Acesso em: .20 mar. 2018;
+
+TechNet - Requisitos de desempenho : Estimar requisitos de desempenho e capacidade para ambientes de colaboração de portal.
+Disponível em: https://technet.microsoft.com/pt-br/library/cc263100(v=office.12).aspx. Acesso em: .22 mar. 2018;
