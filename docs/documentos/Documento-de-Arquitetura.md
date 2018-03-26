@@ -45,14 +45,14 @@
 
 # 1. Introdução
 ## 1.1 Finalidade.  
-<p align ="justify"></p>
+<p align ="justify"></p>O objeto deste documento é fornecer uma visão geral da arquitetura que abrange o sistema Cardinals. Ele deve mostrar de forma clara e objetiva as decisões arquiteturais que foram tomadas em relação ao projeto. Para fornecer as informações necessárias desenvolvedores e demais envolvidos em termos de estrutura da aplicação e tecnologias utilizadas. 
 
 ## 1.2 Escopo     
-<p align="justify"></p>
+<p align="justify"></p>O Documento de Arquiteturaa de Software se aplica ao sitema Cardinals. A plataforma tem o objetivo de facilitar a atividade de acompanhamento gerencial de projetos desenvolvidos com metodoligia Ágil.
 
 
 ## 1.3 Visão Geral
-<p align="justify"></p>
+<p align="justify"></p>O projeto Cardinals tem como objetovo mostrar informações gerenciais referentes ao desenvolvineto de softwares que utilizam a metodologia Ágil. Ele irá oferecer a visualização de indicadores de desempenho, gerar relatórios de qualidade entre outros, mostrar um checklist das principais práticas adotadas no desenvolvimento como: utilização de Docker, realização de testes e sua porcentagem, se possui integração continua, entre outros.
 
 # 2. Representação da Arquitetura
 <p align="justify">Nosso projeto utilizará a arquitetura MTV (model, template, view), que trata-se de um padrão de arquitetura de software baseada na MVC mas adaptada pela framework Django. Ela separa a aplicação em 3 camadas tal como a tradicional MVC. A camada Model que manipula dos dados, a Template, onde há a interação com o usuário e a View, onde ficam as ações e trata as requisições do usuário</p>
