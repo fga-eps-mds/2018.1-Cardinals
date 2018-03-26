@@ -31,6 +31,9 @@
 22/03/2018 | 0.7.2 | Requisitos do sistema | Lorrany Azevedo |
 22/03/2018 | 0.7.3 | Requisitos de desempenho | Lorrany Azevedo |
 22/03/2018 | 0.8.0 | Referências Bibliográficas | Lorrany Azevedo |
+23/03/2018 | 0.9.0 | Restrições | Matheus Gomes |
+26/03/2018 | 0.10.0 | Outras restrições de produto | Matheus Gomes |
+26/03/2018 | 1.0.0 | Finalização do documento | Matheus Gomes |
 
 
 ------------------------------------------------------------
@@ -107,7 +110,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 
 ## 2.1. Oportunidade de Negócio
 <p align="justify">A Metodologia Ágil aplicada na Engenharia de Software tem como objetivo tornar os processos de desenvolvimento mais rápidos e eficientes, estabelecer métricas, automatizar de tarefas e fazer uma boa da gestão da equipe.</p>
-<p align="justify">A plataforma ????? tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
+<p align="justify">A plataforma Cardinals tem o objetivo de dar um auxílio às equipes de desenvolvimento de software em relação a gestão de projetos e gestão da equipe. E também tem o objetivo de ser um ambiente para monitoramento e acompanhamento de todo o processo produtivo de software de um indivíduo e/ou equipe. </p>
 
 
 ## 2.2. Descrição do problema
@@ -123,7 +126,7 @@ Este documento irá facilitar que o leitor tenha um bom entendimento e uma boa a
 ----------|-------------
 **Para** | os gestores de projetos que utilizam a metodologia ágil
 **Que** | desejam tornar a gerência de projetos mais eficaz
-**????**  | é uma aplicação web de código aberto e gratuita
+**Cardinals**  | é uma aplicação web de código aberto e gratuita
 **Que** | torna mais eficiente a o acompanhamento de projetos e organização das equipes
 **Diferente** | de outras aplicações web como GitHub e GitLab
 **Nosso produto** | oferecerá mais recursos para incadores e métricas de forma mais automatizada.
@@ -152,14 +155,13 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 * Google Chrome;  
 * Mozilla Firefox;      
 
-## 3.3.1 Perfis das partes associadas        
+## 3.4 Perfis das partes associadas        
 
 
-### 3.3.2 Equipe de Desenvolvimento      
+### 3.4.1 Equipe de Desenvolvimento      
 
 ----------|-------------  
 ----------|-------------           
-
 **Representantes** | [Lorrany Azevedo](https://github.com/lorryaze), [Gustavo Duarte](https://github.com/gustavoduartemoreira), [Mateus Augusto](https://github.com/Mateusas3s), [Matheus Gomes](https://github.com/matheusgomesf), [João Pedro](https://github.com/jpmartins201)
 **Descrição** | Desenvolvedores
 **Tipo** | Grupo de Estudadntes da Faculdade do Gama (FGA), matriculados na disciplina de Métodos de Desenvolvimento de Software
@@ -167,7 +169,7 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 **Critérios de Sucesso** | Aplicar metodologias ágeis ao longo do processo e obter um produto que satisfaça a necessidade do cliente.
 **Envolvimento** | Alto
 
-### 3.3.3 Equipe de Gestão de Projetos  
+### 3.4.2 Equipe de Gestão de Projetos  
 ----------|-------------
 ----------|-------------       
 **Representantes** | [Amanda Bezerra](https://github.com/amandabezerra), [Lucas Costa](https://github.com/lucasca73), [Miguel Nery](https://github.com/MiguelNery), [Marlon Mendes](https://github.com/marlonbymendes), [Guilherme da Luz](https://github.com/daluzguilherme)
@@ -177,7 +179,7 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 **Critérios de Sucesso** | Aplicar metodologias ágeis ao longo do processo e obter um produto que satisfaça a necessidade do cliente.
 **Envolvimento** | Alto
 
-### 3.3. Coaches
+### 3.4.3 Coaches
 ----------|-------------
 ----------|-------------     
 **Representantes** | [João Guilherme](#), [Sabryna](#)
@@ -245,27 +247,32 @@ Mapear se exixtem ferramentas de automatização no projeto  |  Alta  | Mapear s
 ## 6.1 Restrições de Implementação
 
    *O sistema deverá possuir uma API para consumir os dados referente à projetos do GitHub.
-   *O produto deve seguir a utilização de microserviços.
+   *O sistema deve seguir a utilização de microserviços.
 
 ## 6.2 Restrições de Tempo
 
-   *O produto deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
+   *O sistema deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
 
 ## 6.3 Restrição do Escopo
 
-   *O produto deve atender à principio apenas à projetos escritos em Django, Python.
+   *O sistema deve atender à principio apenas à projetos escritos em Django, Python.
 
 # 7. Outros requisitos do produto
 ## 7.1. Requisitos de usuabilidade
 
-## 7.2. Requisitos do sistema
+    *O sistema será uma aplicação web, podendo ser executado tanto em computadores utilizando os navegadores Mozilla Firefox e Google Chrome, quanto em dispositivos móveis através do browser disponível.
 
+## 7.2. Requisitos do sistema
+    
+    *O sistema poderá ser acessado por qualquer computador que possua um browser e acesso à internet, compatível com os sistemas operacionais Linux, Windows ou Mac.
 
 ## 7.3. Requisitos de desempenho
-
+    
+    *O sistema deve responder rapidamente a requisição do usuário, e deve estar sempre disponível.
 
 ## 7.4. Requisitos de confiabilidade
 
+    *O sistema deve se comprometer em não alterar os dados oferecidos pelo GitHub.
 
 # 8. Referências Bibliográficas
 
