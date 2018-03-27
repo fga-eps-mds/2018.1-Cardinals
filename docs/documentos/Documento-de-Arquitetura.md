@@ -17,9 +17,7 @@
 2. [Representação da Arquitetura](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#2-representa%C3%A7%C3%A3o-da-arquitetura)
 
 3. [Metas e Restrições de Arquitetura](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#3-metas-e-restri%C3%A7%C3%B5es-da-arquitetura)        
-  3.1 [Ambiente e Ferramentas de Desenvolvimento](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#31-ambiente-e-ferramentas-de-desenvolvimento)   
-  3.2 [Segurança](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#32-seguran%C3%A7a)   
-  3.3 [Integração de Software Pronto](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#33-integra%C3%A7%C3%A3o-de-software-pronto)
+  3.1 [Ambiente e Ferramentas de Desenvolvimento](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#31-ambiente-e-ferramentas-de-desenvolvimento)
 
 4. [Visão Lógica](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#4-vis%C3%A3o-l%C3%B3gica)              
   4.1 [Visão Geral](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#41-vis%C3%A3o-geral)                 
@@ -73,14 +71,6 @@ As ferramentas de desenvolvimento serão:</p>
 + Linguagem Python em sua última versão oficial 3.6.2;
 + Framework Django em sua última versão oficial 1.11.4.
 
-## 3.2 Segurança
-<p align="justify"></p>
-
-
-## 3.3 Integração de Software Pronto
-<p align="justify"> </p>
-<p align="justify"></p>
-
 # 4. Visão Lógica
 ## 4.1 Visão Geral
 <p align="justify"> Design Responsivo é uma técnica de estruturação HTML e CSS, em que o site se adapta ao browser do usuário sem precisar definir diversas folhas de estilos para cada resolução.
@@ -94,6 +84,7 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 
 ## 4.2 Pacotes de Design Significativos do Ponto de Vista da Arquitetura
 
+  * Diagrama de Classes
 
 # 5. Visão de Processos
 <p align="justify">O software será implementado de forma que o mesmo possa ser utilizado simultaneamente, utilizando para isso o paralelismo (threads), em que a cada nova solicitação de conexão à base de dados, um novo processo (“processo filho”) é criado, fazendo com que o tempo de cpu do hardware sobre o qual roda o software seja compartilhado com todos os novos processos. Ao fim de cada processo “filho”, o mesmo é finalizado, devolvendo à cpu a porção de tempo (tempo de cpu) utilizada, que fica disponível para ser utilizado por um novo processo.</p>
