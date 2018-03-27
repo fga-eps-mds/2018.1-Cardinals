@@ -1,0 +1,11 @@
+## jekyll 
+_site/*
+Gemfile*
+
+## DJango
+__pycache__/
+*/__pycache__/
+dev/__pycache__/
+falko/__pycache__/
+dev/migrations/__pycache__/
+*.pyc
