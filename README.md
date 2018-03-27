@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cardinals
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/maintainability)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/maintainability)
@@ -41,3 +42,12 @@ A documentação deste projeto pode ser acessada através da Wiki ([aqui](https:
 
 ## Licença
 Este projeto é distribuído sob a licença MIT. Para mais detalhes consulte [LICENSE.md](https://github.com/fga-gpp-mds/2018.1-Grupo2/blob/master/LICENSE).
+=======
+# 2018.1-Falko
+
+# Executando a aplicação
+
+Caso tenha o Docker e o docker-compose instalados, basta executar o script `run.sh`.
+
+        `$ run.sh`.
+>>>>>>> 5bb374b7674a44e4fd8cb2742b71983a216f2971
