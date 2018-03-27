@@ -113,12 +113,12 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 <p align="justify">Template é a camada mais externa e visual do software, é basicamente a interface aparente ao usuário, é nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
 
 # 8. Tamanho e Desempenho
-<p align="justify"></p>
-<p align="justify"></p>
+
+<p align="justify">O sistema deve coletar um grande volume de dados do Github para serem analisados, então a aplicação deve ser capaz de suportá-los e processá-los simultaneamente, estando sujeito à adição de novos dados. O desempenho será afetado pela velocidade da internet do usuário e pela capacidade de processamento do aparelho que estará utilizando o sistema através do navegador.</p>
 
 # 9. Qualidade
 
-<p align="justify"></p>
+<p align="justify">O sistema deve ser compatível com os principais browser, e sua interface de usuário deve ser projetada de maneira que seja autoexplicativa, para facilitar sua usuabilidade.</p>
 
 # 10. Referências
 
