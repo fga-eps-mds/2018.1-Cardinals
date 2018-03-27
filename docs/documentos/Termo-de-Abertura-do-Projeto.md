@@ -26,6 +26,7 @@
 ------------------------------------
 
 ## 1. Introdução
+<p align="justify">Este documento tem por objetivo apresentar as principais características do projeto Cardinals. É destinado a mostrar uma perspectiva geral do projeto para que interessados compreendam nossos objetivos, estado atual, equipe de gerência e desenvolvimento, nossos riscos e orçamento. </p>
 
 ## 2. Descrição do Projeto
 <p align="justify">O Cardinals é uma aplicação web para gestão de equipes ágeis. O objetivo do Cardinals é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em níveis de repositório, pessoas e de boas práticas da engenharia de software.</p>
