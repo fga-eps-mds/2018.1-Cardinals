@@ -5,6 +5,7 @@
 | 22/03 | 0.1.2 | Metas e Restrições da Arquitetura | Mateus Augusto |
 | 22/03 | 0.1.3 | Visão de Processo | Mateus Augusto |
 | 22/03 | 0.1.4 | Visão de Implementação | Mateus Augusto |
+| 25/03 | 0.1.5 | Introdução: Finalidade, Ecopo e Visão Geral  | Gustavo Duarte Moreira |
 
 
 ## Sumário
