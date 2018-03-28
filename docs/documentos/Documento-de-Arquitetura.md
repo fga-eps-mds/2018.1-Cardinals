@@ -10,7 +10,7 @@
 | 22/03 | 3.0 | Metas e Restrições da Arquitetura | Mateus Augusto |
 | 22/03 | 3.1 | Ambiente e Ferramentas de Desenvolvimento | Mateus Augusto |
 | 22/03 | 5.0 | Visão de Processos | Mateus Augusto |
-| 24/03 | 6.0 | Visão de Implantação | Lorrany Azevedo 
+| 24/03 | 6.0 | Visão de Implantação | Lorrany Azevedo, João Martins |
 | 22/03 | 7.0 | Visão de Implementação | Mateus Augusto |
 | 22/03 | 7.1 | Visão Geral | Mateus Augusto |
 | 22/03 | 7.2 | Camadas | Mateus Augusto |
@@ -40,9 +40,9 @@
 7. [Visão de Implementação](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#7-vis%C3%A3o-da-implementa%C3%A7%C3%A3o)         
   7.1 [Visão Geral]()           
   7.2 [Camadas]()              
-    7.2.1 [Model]()           
-    7.2.2 [View]()             
-    7.2.3 [Template]()             
+    * [Model]()           
+    * [View]()             
+    * [Template]()             
 
 8. [Tamanho e Desempenho]()                            
 
@@ -104,20 +104,22 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 
 # 7. Visão da Implementação.         
 
+O sistema é construído na linguagem python utilizando o framework Django, com foco para web. A linguagem python ultiliza o seu interpretador para executar o sistema nas mais diversas plataformas, esse interpretador lê os arquivos de extesão ".py", executa o código e assim o converte para linguagem de máquina. O sistema funcionará da seguinte forma o usuário irá fazer uma requisição para o servidor, essa requisição irá se comunicar com um arquivo .py e esse arquivo irá através da API solicitar acesso os dados do GitHub.
+ 
 ## 7.1 Visão Geral.       
 <p align="justify">Será desenvolvido um sistema baseado em camadas MTV (model, template e view), modelo esse utilizado pelo framework Django. A separação em camadas permite tornar independente, uma das outras, a lógica utilizada em cada camada, permitindo assim a modificação dessas camadas sem alterar o funcionamento das outras. Além disso,como pode se observar na imagem abaixo (figura 2), o sistema baseado em camadas permite uma melhor visualização da forma como as informações são tratadas no sistema, sendo cada camada responsável por uma determinada tarefa dentro do software.</p>
 
 ## 7.2 Camadas
 
-### 7.2.1 Model
+###  Model
 
 <p align="justify">É nessa camada que se implementa as classes que serão responsáveis por definir as informações que estarão presentes na tabela de dados (banco de dados) e como esses dados serão acessados , validados , relacionados e etc. Isto é, a model é responsável por conter todas as informações referentes à manipulação de dados.</p>
 
-### 7.2.2 View
+###  View
 
 <p align="justify">A responsabilidade da camada de view é encapsular a lógica responsável para processar o pedido do usuário e retornar uma resposta. Esta resposta pode ser uma página web, uma imagem, uma página de erro, o que o desenvolvedor da view especificar</p>
 
-### 7.2.3 Template
+###  Template
 
 <p align="justify">Template é a camada mais externa e visual do software, é basicamente a interface aparente ao usuário, é nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
 
