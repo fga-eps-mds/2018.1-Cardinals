@@ -17,6 +17,7 @@
 | 27/03 | 8.0 | Tamanho e Desempenho | Matheus Gomes |
 | 27/03 | 9.0 | Qualidade | Matheus Gomes |
 | 27/03 | 10.0 | Refêrencias | ------- |
+| 27/03 | 10.1 | Revisões gerais | João Pedro |
 ## Sumário
 
 1. [Introdução](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#1-introdu%C3%A7%C3%A3o)       
@@ -53,17 +54,17 @@
 
 # 1. Introdução
 ## 1.1 Finalidade.  
-<p align ="justify"></p>O objeto deste documento é fornecer uma visão geral da arquitetura que abrange o sistema Cardinals. Ele deve mostrar de forma clara e objetiva as decisões arquiteturais que foram tomadas em relação ao projeto. Para fornecer as informações necessárias desenvolvedores e demais envolvidos em termos de estrutura da aplicação e tecnologias utilizadas. 
+<p align ="justify"></p>O objetivo deste artefato é fornecer uma visão arquitetural do sistema Cardinals. Ele deve mostrar de forma clara e objetiva as decisões arquiteturais que foram tomadas em relação ao projeto, de forma a  fornecer as informações necessárias para desenvolvedores e demais envolvidos em termos de estrutura da aplicação e tecnologias utilizadas. 
 
 ## 1.2 Escopo     
-<p align="justify"></p>O Documento de Arquiteturaa de Software se aplica ao sitema Cardinals. A plataforma tem o objetivo de facilitar a atividade de acompanhamento gerencial de projetos desenvolvidos com metodoligia Ágil.
+<p align="justify"></p>Este documento foi construído sobre a visão da arquitetura utilizada na implementação do sistema Cardinals, de forma a explicitar as decisões estabelecidas.
 
 
 ## 1.3 Visão Geral
-<p align="justify"></p>O projeto Cardinals tem como objetovo mostrar informações gerenciais referentes ao desenvolvineto de softwares que utilizam a metodologia Ágil. Ele irá oferecer a visualização de indicadores de desempenho, gerar relatórios de qualidade entre outros, mostrar um checklist das principais práticas adotadas no desenvolvimento como: utilização de Docker, realização de testes e sua porcentagem, se possui integração continua, entre outros.
+<p align="justify"></p>O projeto Cardinals tem como objetovo mostrar informações gerenciais referentes ao desenvolvineto de softwares que utilizam a metodologia Ágil. Ele irá oferecer a visualização de indicadores de desempenho, gerar relatórios de qualidade entre outros, mostrar um checklist das principais práticas adotadas no desenvolvimento como: utilização de Docker, realização de testes e sua porcentagem, integração continua, entre outros.
 
 # 2. Representação da Arquitetura
-<p align="justify">Nosso projeto utilizará a arquitetura MTV (model, template, view), que trata-se de um padrão de arquitetura de software baseada na MVC mas adaptada pela framework Django. Ela separa a aplicação em 3 camadas tal como a tradicional MVC. A camada Model que manipula dos dados, a Template, onde há a interação com o usuário e a View, onde ficam as ações e trata as requisições do usuário</p>
+<p align="justify">A arquitetura a ser utilizada será a MTV (Model, Template, View), a qual se trata de um padrão de arquitetura de software baseada na MVC adaptado pela framework Django. Ela separa a aplicação em 3 camadas, assim como a tradicional MVC. A camada Model manipula dos dados, a Template realiza a interação com o usuário e a View disponibiliza as ações e trata as requisições do usuário</p>
 <img src="https://raw.githubusercontent.com/wiki/fga-gpp-mds/2018.1-Cardinals/imagens/esquema-mtv.jpeg" alt="MTV">
 <p>Figura 1</p>
 <p>Fonte: https://pt.slideshare.net/CursosDevcode/fundamentos-dj-45913014</p>
@@ -84,7 +85,7 @@ As ferramentas de desenvolvimento serão:</p>
 # 4. Visão Lógica
 ## 4.1 Visão Geral
 <p align="justify"> Design Responsivo é uma técnica de estruturação HTML e CSS, em que o site se adapta ao browser do usuário sem precisar definir diversas folhas de estilos para cada resolução.
-Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model. Tudo que diz respeito aos dados serão tratados aqui. Por exemplo a validação dos dados de login do usuário será feita na Model. A camada Template, é a camada responsável por “comunicar-se com o usuário”. É onde as funcionalidades são mostradas na tela, usualmente é feita em XML ou HTML. E o por fim, a View que é responsável por receber todas as requisições do usuário. Seus métodos chamados actions são responsáveis por uma página, controlando qual model usar e qual template será mostrado ao usuário.</p>
+Na arquitetura MTV os dados serão lidos, escritos e validados na camada Model. Tudo que diz respeito aos dados serão tratados aqui. Por exemplo, a validação dos dados de login do usuário será feita na Model. A camada Template é a camada responsável por “comunicar-se com o usuário”, onde as funcionalidades são mostradas na tela, usualmente feita em XML ou HTML. E por fim, a View é responsável por receber todas as requisições do usuário. Seus métodos chamados actions são responsáveis por uma página, controlando qual model usar e qual template será mostrado ao usuário.</p>
 
 <img src="https://raw.githubusercontent.com/wiki/fga-gpp-mds/2018.1-Cardinals/imagens/esquema-django.jpeg" alt="Django framework">
 <p>Figura 2 </p>
@@ -97,7 +98,7 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
   * Diagrama de Classes
 
 # 5. Visão de Processos
-<p align="justify">O software será implementado de forma que o mesmo possa ser utilizado simultaneamente, utilizando para isso o paralelismo (threads), em que a cada nova solicitação de conexão à base de dados, um novo processo (“processo filho”) é criado, fazendo com que o tempo de cpu do hardware sobre o qual roda o software seja compartilhado com todos os novos processos. Ao fim de cada processo “filho”, o mesmo é finalizado, devolvendo à cpu a porção de tempo (tempo de cpu) utilizada, que fica disponível para ser utilizado por um novo processo.</p>
+<p align="justify">O software será implementado de forma que o mesmo possa ser utilizado simultaneamente, utilizando para isso o paralelismo (threads), em que a cada nova solicitação de conexão à base de dados, um novo processo (“processo filho”) é criado, fazendo com que o tempo de CPU do hardware sobre o qual roda o software seja compartilhado com todos os novos processos. Ao fim de cada processo “filho”, o mesmo é finalizado, devolvendo à CPU a porção de tempo (tempo de CPU) utilizada, que fica disponível para ser utilizado por um novo processo.</p>
 
 # 6. Visão de Implantação
 <p align="justify"></p>
@@ -105,13 +106,13 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 # 7. Visão da Implementação.         
 
 ## 7.1 Visão Geral.       
-<p align="justify">Será desenvolvido um sistema baseado em camadas MTV (model, template e view), modelo esse utilizado pelo framework Django. A separação em camadas permite tornar independente, uma das outras, a lógica utilizada em cada camada, permitindo assim a modificação dessas camadas sem alterar o funcionamento das outras. Além disso,como pode se observar na imagem abaixo (figura 2), o sistema baseado em camadas permite uma melhor visualização da forma como as informações são tratadas no sistema, sendo cada camada responsável por uma determinada tarefa dentro do software.</p>
+<p align="justify">Será desenvolvido um sistema baseado em camadas MTV (model, template e view), modelo utilizado pelo framework Django. A separação em camadas permite tornar independente, uma das outras, a lógica utilizada em cada camada, permitindo assim a modificação dessas camadas sem alterar o funcionamento das outras. Além disso, o sistema baseado em camadas permite uma melhor visualização da forma como as informações são tratadas no sistema, sendo cada camada responsável por uma determinada tarefa dentro do software (figura 2).</p>
 
 ## 7.2 Camadas
 
 ### 7.2.1 Model
 
-<p align="justify">É nessa camada que se implementa as classes que serão responsáveis por definir as informações que estarão presentes na tabela de dados (banco de dados) e como esses dados serão acessados , validados , relacionados e etc. Isto é, a model é responsável por conter todas as informações referentes à manipulação de dados.</p>
+<p align="justify">É nessa camada que se implementam as classes que serão responsáveis por definir as informações que estarão presentes na tabela de dados (banco de dados) e como esses serão acessados, validados, relacionados etc. Isto é, a model é responsável por conter todas as informações referentes à manipulação de dados.</p>
 
 ### 7.2.2 View
 
@@ -119,7 +120,7 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 
 ### 7.2.3 Template
 
-<p align="justify">Template é a camada mais externa e visual do software, é basicamente a interface aparente ao usuário, é nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
+<p align="justify">Template é a camada mais externa e visual do software, sendo basicamente a interface aparente ao usuário. É nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
 
 # 8. Tamanho e Desempenho
 <p align="justify"></p>
