@@ -151,9 +151,9 @@ Equipe de desenvolvimento| Pessoal que deseja um ambiente para organizar e gerir
 
 ## 3.3. Ambiente de usuário
 
-<p align="justify">O software poderá ser utilizado por meio de navegadores como:</p>  
-* Google Chrome;  
-* Mozilla Firefox;      
+<p align="justify">O software poderá ser utilizado por meio de navegadores como:</p>    
+* Google Chrome;      
+* Mozilla Firefox;          
 
 ## 3.4 Perfis das partes associadas        
 
@@ -259,7 +259,7 @@ Mapear se exixtem ferramentas de automatização no projeto  |  Alta  | Mapear s
 
 # 7. Outros requisitos do produto
 ## 7.1. Requisitos de usuabilidade
- *O sistema poderá ser utilizado por qualquer pessoa que tenha intimidade com navegadores web, já que ele podera ser executado pro qualquer web browser, sua interface deve ser de fácil entendimento e auto explicativa, facilitando assim o seu uso por quem quiser utiliza-lá.
+ * O sistema poderá ser utilizado por qualquer pessoa que tenha intimidade com navegadores web, já que ele podera ser executado pro qualquer web browser, sua interface deve ser de fácil entendimento e auto explicativa, facilitando assim o seu uso por quem quiser utiliza-lá.
 
 ## 7.2. Requisitos do sistema
  * A plataforma Cardinals poderá ser acessada através de qualquer dispositivo (Computador ou Smartphone), que possua um Browser (Google Chrome, Mozilla, Opera etc.) e que tenha acesso a internet.
@@ -273,9 +273,9 @@ Mapear se exixtem ferramentas de automatização no projeto  |  Alta  | Mapear s
 + FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/examples/csports/ex_vision.htm#Constraints .Acesso em 23 de Março de 2018.
 IBM Knowledge Center - Documento de Visão: A estrutura de tópicos do documento de visão. Disponível em: https://www.ibm.com/support/knowledgecenter/pt-br/SSWMEQ_3.0.1/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.htm. Acesso em: .20 mar. 2018;
 
-Wikipédia - Documento de Visão.
-Disponível em:
++ Wikipédia - Documento de Visão.
+Disponível em:  
 https://pt.wikipedia.org/wiki/Documento_de_vis%C3%A3o. Acesso em: .20 mar. 2018;
 
-TechNet - Requisitos de desempenho : Estimar requisitos de desempenho e capacidade para ambientes de colaboração de portal.
-Disponível em: https://technet.microsoft.com/pt-br/library/cc263100(v=office.12).aspx. Acesso em: .22 mar. 2018;
++ TechNet - Requisitos de desempenho : Estimar requisitos de desempenho e capacidade para ambientes de colaboração de portal.
+Disponível em:   https://technet.microsoft.com/pt-br/library/cc263100(v=office.12).aspx. Acesso em: .22 mar. 2018;

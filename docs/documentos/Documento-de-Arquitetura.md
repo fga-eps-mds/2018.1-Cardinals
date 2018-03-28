@@ -1,12 +1,22 @@
-| **Data** | **Versão** | **Descrição** | **Autor(es)** |
-| --- | --- | --- | --- |
-| 22/03 | 0.1.0 | Criação do Documento | Mateus Augusto |
-| 22/03 | 0.1.1 | Representação da Arquitetura | Mateus Augusto |
-| 22/03 | 0.1.2 | Metas e Restrições da Arquitetura | Mateus Augusto |
-| 22/03 | 0.1.3 | Visão de Processo | Mateus Augusto |
-| 22/03 | 0.1.4 | Visão de Implementação | Mateus Augusto |
+## Histórico de Revisões
 
-
+| Data | Versão | Descrição | Autor |
+--------- | ------ | ------- | -------
+| 22/03 | 1.0 | Introdução | Gustavo Duarte Moreira |
+| 22/03 | 1.1 | Finalidade | Gustavo Duarte Moreira |
+| 22/03 | 1.2 | Escopo | Gustavo Duarte Moreira |
+| 22/03 | 1.3 | Visão Geral | Gustavo Duarte Moreira |
+| 22/03 | 2.0 | Representação da Arquitetura | Mateus Augusto |
+| 22/03 | 3.0 | Metas e Restrições da Arquitetura | Mateus Augusto |
+| 22/03 | 3.1 | Ambiente e Ferramentas de Desenvolvimento | Mateus Augusto |
+| 22/03 | 5.0 | Visão de Processos | Mateus Augusto |
+| 24/03 | 6.0 | Visão de Implantação | Lorrany Azevedo 
+| 22/03 | 7.0 | Visão de Implementação | Mateus Augusto |
+| 22/03 | 7.1 | Visão Geral | Mateus Augusto |
+| 22/03 | 7.2 | Camadas | Mateus Augusto |
+| 27/03 | 8.0 | Tamanho e Desempenho | Matheus Gomes |
+| 27/03 | 9.0 | Qualidade | Matheus Gomes |
+| 27/03 | 10.0 | Refêrencias | ------- |
 ## Sumário
 
 1. [Introdução](https://github.com/fga-gpp-mds/2018.1-Cardinals/wiki/Documento-de-Arquitetura#1-introdu%C3%A7%C3%A3o)       
