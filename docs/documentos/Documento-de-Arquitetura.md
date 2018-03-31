@@ -103,6 +103,8 @@ Na arquitetura MTV os dados serão lidos, escritos e validados na camada Model. 
 # 6. Visão de Implantação
 <p align="justify"></p>
 
+O sistema é construído na linguagem python utilizando o framework Django, com foco para web. A linguagem python ultiliza o seu interpretador para executar o sistema nas mais diversas plataformas, esse interpretador lê os arquivos de extesão ".py", executa o código e assim o converte para linguagem de máquina. O sistema funcionará da seguinte forma o usuário irá fazer uma requisição para o servidor, essa requisição irá se comunicar com um arquivo .py e esse arquivo irá através da API solicitar acesso os dados do GitHub.
+
 # 7. Visão da Implementação.         
 
 ## 7.1 Visão Geral.       
@@ -110,25 +112,25 @@ Na arquitetura MTV os dados serão lidos, escritos e validados na camada Model. 
 
 ## 7.2 Camadas
 
-### 7.2.1 Model
+* Model
 
 <p align="justify">É nessa camada que se implementam as classes que serão responsáveis por definir as informações que estarão presentes na tabela de dados (banco de dados) e como esses serão acessados, validados, relacionados etc. Isto é, a model é responsável por conter todas as informações referentes à manipulação de dados.</p>
 
-### 7.2.2 View
+* View
 
 <p align="justify">A responsabilidade da camada de view é encapsular a lógica responsável para processar o pedido do usuário e retornar uma resposta. Esta resposta pode ser uma página web, uma imagem, uma página de erro, o que o desenvolvedor da view especificar</p>
 
-### 7.2.3 Template
+* Template
 
 <p align="justify">Template é a camada mais externa e visual do software, sendo basicamente a interface aparente ao usuário. É nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
 
 # 8. Tamanho e Desempenho
-<p align="justify"></p>
-<p align="justify"></p>
+
+<p align="justify">O sistema deve coletar um grande volume de dados do Github para serem analisados, então a aplicação deve ser capaz de suportá-los e processá-los simultaneamente, estando sujeito à adição de novos dados. O desempenho será afetado pela velocidade da internet do usuário e pela capacidade de processamento do aparelho que estará utilizando o sistema através do navegador.</p>
 
 # 9. Qualidade
 
-<p align="justify"></p>
+<p align="justify">O sistema deve ser compatível com os principais browser, e sua interface de usuário deve ser projetada de maneira que seja autoexplicativa, para facilitar sua usuabilidade.</p>
 
 # 10. Referências
 
