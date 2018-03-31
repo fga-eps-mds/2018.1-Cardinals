@@ -93,6 +93,8 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 # 6. Visão de Implantação
 <p align="justify"></p>
 
+O sistema é construído na linguagem python utilizando o framework Django, com foco para web. A linguagem python ultiliza o seu interpretador para executar o sistema nas mais diversas plataformas, esse interpretador lê os arquivos de extesão ".py", executa o código e assim o converte para linguagem de máquina. O sistema funcionará da seguinte forma o usuário irá fazer uma requisição para o servidor, essa requisição irá se comunicar com um arquivo .py e esse arquivo irá através da API solicitar acesso os dados do GitHub.
+
 # 7. Visão da Implementação.         
 
 ## 7.1 Visão Geral.       
@@ -100,15 +102,15 @@ Na arquitetura MTV, os dados serão lidos, escritos e validados na camada Model.
 
 ## 7.2 Camadas
 
-### 7.2.1 Model
+* Model
 
 <p align="justify">É nessa camada que se implementa as classes que serão responsáveis por definir as informações que estarão presentes na tabela de dados (banco de dados) e como esses dados serão acessados , validados , relacionados e etc. Isto é, a model é responsável por conter todas as informações referentes à manipulação de dados.</p>
 
-### 7.2.2 View
+* View
 
 <p align="justify">A responsabilidade da camada de view é encapsular a lógica responsável para processar o pedido do usuário e retornar uma resposta. Esta resposta pode ser uma página web, uma imagem, uma página de erro, o que o desenvolvedor da view especificar</p>
 
-### 7.2.3 Template
+* Template
 
 <p align="justify">Template é a camada mais externa e visual do software, é basicamente a interface aparente ao usuário, é nessa camada que se define como os dados das camadas inferiores serão apresentados.</p>
 
