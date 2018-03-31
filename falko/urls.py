@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^dev', include('dev.urls'))
-]
+    url(r'^dev', include('dev.urls')),
+    url(r'^pyGithub', include('pygithub_api_integration.urls'))
+    ]

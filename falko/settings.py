@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dev',
+    'pygithub_api_integration',
 ]
 
 MIDDLEWARE = [
