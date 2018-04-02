@@ -1,5 +1,7 @@
 # Cardinals
 
+<center><image src="docs/images/logo_cardinals.png" width="80%"></center>
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/maintainability)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/test_coverage)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/test_coverage)
 
