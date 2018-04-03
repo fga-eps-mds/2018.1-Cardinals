@@ -2,6 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/maintainability)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/test_coverage)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/test_coverage)
+[![Build Status](https://travis-ci.org/fga-gpp-mds/2018.1-Cardinals.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2018.1-Cardinals)
 
 ## Sobre o projeto
 O Cardinals é uma aplicação web para gestão de equipes ágeis. O objetivo do Cardinals é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em nívels de repositório (issues, branches, pull requests), a nível de boas práticas (testes, análise estática de código, Docker) e a um nível de pessoas (como cada pessoa está contribuindo com o projeto?).
@@ -16,7 +17,7 @@ Estar num ambiente Linux, com os seguintes programas já instalados: Git, Docker
 1. Clone nosso repositório:
 
     `` $ git clone https://github.com/fga-gpp-mds/2018.1-Grupo2.git ``
-    
+
 2. Entre no diretório do projeto:
 
     `` $ cd  2018.1-Grupo2/ ``
@@ -27,7 +28,7 @@ Estar num ambiente Linux, com os seguintes programas já instalados: Git, Docker
 
 4. Acesse a página por meio do seu browser favorito:
 
-    `` htttp:/localhost:8000/ `` 
+    `` htttp:/localhost:8000/ ``
 
 
 ## Desenvolvedores
