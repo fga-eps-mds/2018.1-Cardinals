@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sleep 3
+sleep 3
 
 python manage.py migrate
 

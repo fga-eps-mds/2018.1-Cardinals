@@ -15,8 +15,7 @@ before_install:
  
 
 before_script:
-  - docker-compose -f docker-compose.yml build
-  - docker-compose -f docker-compose.yml up -d
+  - sudo docker-compose -f docker-compose.test.yml build
 
 script:
-  - docker-compose -p tests run -p 8000 --rm web python manage.py test
+  - sudo docker-compose -f docker-compose.test.yml run --rm sut
