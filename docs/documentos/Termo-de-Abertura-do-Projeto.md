@@ -38,6 +38,7 @@
 <p align="justify">Uma boa gestão de projetos demanda tempo e conhecimento, mas é essencial para o sucesso de um projeto. Informações coletadas e organizadas fornecem aos gestores uma visão sobre o andamento do projeto e auxiliam na tomada de decisões a respeito do mesmo. Nesse sentido, a plataforma Cardinals visa ser uma ferramenta de auxílio à gestão de projetos de software livre ao fornecer de forma fácil, centralizada e compartilhada informações e métricas a respeito de um projeto.</p>
 
 ## 5. Escopo do Projeto
+<p align="justify">Este projeto contempla gerencimento utilizando práticas ágeis, desenvolvimento utilizando XP, testes, automação de ambiente e build, e deploy do projeto.</p>
 
 ## 6. Equipe e Papéis
 

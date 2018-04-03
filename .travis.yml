@@ -1,0 +1,16 @@
+language: python
+python:
+  - 3.6
+
+services: 
+  - postgresql
+
+env:
+  - DJANGO=1.11.11
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python manage.py migrate
+  - python manage.py test

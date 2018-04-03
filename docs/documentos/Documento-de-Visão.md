@@ -246,33 +246,37 @@ Mapear se exixtem ferramentas de automatização no projeto  |  Alta  | Mapear s
 
 ## 6.1 Restrições de Implementação
 
-   * O sistema deverá possuir uma API para consumir os dados referente à projetos do GitHub.
-   * O sistema deve seguir a utilização de microserviços.
+   *O sistema deverá possuir uma API para consumir os dados referente à projetos do GitHub.
+   *O sistema deve seguir a utilização de microserviços.
 
 ## 6.2 Restrições de Tempo
 
-   * O sistema deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
+   *O sistema deve estar com uma versão estavel ate a Release 1(19/04), e deve estar pronto até a Release 2
 
 ## 6.3 Restrição do Escopo
 
-   * O sistema deve atender à principio apenas à projetos escritos em Django, Python.
+   *O sistema deve atender à principio apenas à projetos escritos em Django, Python.
 
 # 7. Outros requisitos do produto
 ## 7.1. Requisitos de usuabilidade
  * O sistema poderá ser utilizado por qualquer pessoa que tenha intimidade com navegadores web, já que ele podera ser executado pro qualquer web browser, sua interface deve ser de fácil entendimento e auto explicativa, facilitando assim o seu uso por quem quiser utiliza-lá.
 
 ## 7.2. Requisitos do sistema
- * A plataforma Cardinals poderá ser acessada através de qualquer dispositivo (Computador ou Smartphone), que possua um Browser (Google Chrome, Mozilla, Opera etc.) e que tenha acesso a internet.
-## 7.3. Requisitos de desempenho
- * O sistema deve responder rapidamente a requisição do usuário, e deve estar sempre disponível.
-## 7.4. Requisitos de confiabilidade
- * O sistema deve se comprometer em não alterar os dados oferecidos pelo GitHub.
-# 8. Referências Bibliográficas
-+ FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/webtmpl/templates/req/rup_vision_sp.htm. Acesso em 22 de Março de 2018.
     
-+ FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/examples/csports/ex_vision.htm#Constraints .Acesso em 23 de Março de 2018.
-IBM Knowledge Center - Documento de Visão: A estrutura de tópicos do documento de visão. Disponível em: https://www.ibm.com/support/knowledgecenter/pt-br/SSWMEQ_3.0.1/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.htm. Acesso em: .20 mar. 2018;
+    *O sistema poderá ser acessado por qualquer computador que possua um browser e acesso à internet, compatível com os sistemas operacionais Linux, Windows ou Mac.
 
+## 7.3. Requisitos de desempenho
+    
+    *O sistema deve responder rapidamente a requisição do usuário, e deve estar sempre disponível.
+
+## 7.4. Requisitos de confiabilidade
+
+    *O sistema deve se comprometer em não alterar os dados oferecidos pelo GitHub.
+
+# 8. Referências Bibliográficas
+
++ FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/webtmpl/templates/req/rup_vision_sp.htm. Acesso em 22 de Março de 2018.
++FUNPAR.UFPR.com. Artefato: Documento de Visão. Disponível em: http://www.funpar.ufpr.br:8080/rup/examples/csports/ex_vision.htm#Constraints .Acesso em 23 de Março de 2018.
 + Wikipédia - Documento de Visão.
 Disponível em:  
 https://pt.wikipedia.org/wiki/Documento_de_vis%C3%A3o. Acesso em: .20 mar. 2018;
