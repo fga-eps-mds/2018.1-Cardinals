@@ -9,3 +9,6 @@ dev/__pycache__/
 falko/__pycache__/
 dev/migrations/__pycache__/
 *.pyc
+
+## Coverage
+htmlcov/

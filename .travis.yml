@@ -1,16 +1,21 @@
+sudo: required
+  
 language: python
-python:
-  - 3.6
 
-services: 
-  - postgresql
-
+services:
+  - docker
+  
 env:
-  - DJANGO=1.11.11
+  COMPOSE_VERSION: 1.19.0
 
-install:
-  - pip install -r requirements.txt
+before_install:
+ - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+ - chmod +x docker-compose
+ - sudo mv docker-compose /usr/local/bin
+ 
+
+before_script:
+  - sudo docker-compose -f docker-compose.test.yml build
 
 script:
-  - python manage.py migrate
-  - python manage.py test
+  - sudo docker-compose -f docker-compose.test.yml run --rm sut
