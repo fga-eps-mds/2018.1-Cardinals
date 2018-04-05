@@ -1,5 +1,7 @@
 # Cardinals
 
+<center><image src="docs/images/logo_cardinals.png" width="80%"></center>
+
 [![Build Status](https://travis-ci.org/fga-gpp-mds/2018.1-Cardinals.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2018.1-Cardinals)
 [![Maintainability](https://api.codeclimate.com/v1/badges/eed50c895d14a830236a/maintainability)](https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/fga-gpp-mds/2018.1-Cardinals/badge.svg?branch=master)](https://coveralls.io/github/fga-gpp-mds/2018.1-Cardinals?branch=master)
