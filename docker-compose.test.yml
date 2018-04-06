@@ -16,7 +16,6 @@ services:
 
   web:
     build: .
-    command: ./run.sh
     volumes:
       - .:/code
       - ./run.sh:/run.sh
@@ -24,4 +23,5 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    entrypoint: ./wait-for-postgres.sh postgres 5432
 
