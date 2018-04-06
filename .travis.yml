@@ -16,7 +16,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: $HEROKU_API_KEY
+    secure: LEwSyaExK9wSm44zv7Li4SRNWbOK2nSY1ohbVa5yUHi4sq1mSRwU1va9fwPI92sK3qvw8DAkaH6WuR00J5R2rtUDCJ4CboZS6YC7EmakrvtvC4qV3Kbus+x+VvZ6GtAcD8Q8P+Whl6mY2C/7zS5gXn6GRM/Z+lmyEatFJoThX5FxP8aM2ZPyJiM4XG+7lOsDKuwAY2ZOkauAIViMagFKqzH+wLzr3W91yKGW98oMulcrhLhpc3TMY7/rgAu+Bm6Kxoe2BkDetpYKc40y/h4uMmP6r0IHP4XUtn2LeAgJ4ZxI3WdbIs8uuh94LYdMHdk8azXD9H5CcF+HuRJtKvMc1HCURmavoFU28JmtpeeFp1nrLdDSGGluxod4L7ypuLMkOFZM0cGcfStHYID/9ctY5rY95lhfLGsM9A82540THDccEE1DMM1hImPLuQesRkdbAhym/n/e1lT3KUB8laphkBmE4Rj0VRUVsOVg0DD6nILvvBO7pJlHXNByCk82FqOQ0/3DFfkh5ZWLA0wJ+5jTyZ7xb7OsInCS4Z0e3hWaaW3uMxAodEWwGVbWdKZnLZ3qclVx4ez/qRTeJkxhLkgbjoFIS2Gczo2GWI+OaqEaHQg9MxrkktjBFXRgY4reRu9wN0tlj1cX/hu36yOBR4hISJY+Q7HrSZNgk5nDsSCLVFE=
   app: cardinals
   on:
     repo: fga-gpp-mds/2018.1-Cardinals
