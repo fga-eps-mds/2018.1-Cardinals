@@ -1,20 +1,23 @@
 sudo: required
-  
 language: python
-
 services:
-  - docker
-  
+- docker
 env:
   COMPOSE_VERSION: 1.19.0
-
 before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
-
+- curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
 before_script:
-  - sudo docker-compose -f docker-compose.test.yml build
-
+- sudo docker-compose -f docker-compose.test.yml build
 script:
-  - sudo docker-compose -f docker-compose.test.yml run --rm sut
+- sudo docker-compose -f docker-compose.test.yml run --rm sut
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app: cardinals
+  on:
+    repo: fga-gpp-mds/2018.1-Cardinals
+    branch: config_correct_build
