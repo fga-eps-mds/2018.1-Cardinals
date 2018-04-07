@@ -20,4 +20,4 @@ deploy:
   app: cardinals
   on:
     repo: fga-gpp-mds/2018.1-Cardinals
-    branch: config_correct_build
+    branch: config_deploy
