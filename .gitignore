@@ -15,3 +15,6 @@ pygithub_api_integration/migrations/__pycache__/
 ## Coverage
 htmlcov/
 *.coverage
+
+## Mkdocs
+site/
