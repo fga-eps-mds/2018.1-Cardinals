@@ -8,6 +8,11 @@ pages:
         - Termo de Abertura do Projeto: documentos/Termo-de-Abertura-do-Projeto.md
         - Práticas Ágeis: documentos/Práticas-Ágeis-Adotadas.md
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
+    - Roadmap:
+        - Roadmap Geral: documentos/roadmap-geral.md
+        - Roadmap DevOps: documentos/roadmap-devops.md
+        - Roadmap Arquitetura: documentos/roadmap-arquitetura.md
+
 
 theme:
   name: 'rtd-dropdown'
