@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from dev.views import home_page
 urlpatterns = [
+    url(r'^', home_page, name='home_page'),
     url(r'^admin/', admin.site.urls),
     url(r'^dev/', include('dev.urls')),
     url(r'^pyGithub/', include('pygithub_api_integration.urls'))

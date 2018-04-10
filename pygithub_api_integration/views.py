@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from github import Github
+#from github import Github
 # from github import GithubException
 
 username = "Mateusas3s"
