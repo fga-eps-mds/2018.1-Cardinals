@@ -2,4 +2,5 @@ Django
 psycopg2-binary
 coverage
 pygithub
+codecov
 mkdocs
