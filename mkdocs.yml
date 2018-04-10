@@ -1,18 +1,24 @@
 site_name: Cardinals
 pages:
-    - Home: index.md
-    - Documentação de Desenvolvimento:
+    - Início: 
+        - Sobre: index.md 
+        - Equipe: documentos/equipe.md
+        - Guia de contribuição: CONTRIBUTING.md
+        - Código de conduta: CODE_OF_CONDUCT.md
+    - Desenvolvimento:
         - Documento de Visão: documentos/Documento-de-Visão.md
         - Documento de Arquitetura: documentos/Documento-de-Arquitetura.md
-    - Documentação de Gestão:
+    - Gestão:
         - Termo de Abertura do Projeto: documentos/Termo-de-Abertura-do-Projeto.md
         - Práticas Ágeis: documentos/Práticas-Ágeis-Adotadas.md
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
-    - Roadmap:
-        - Roadmap Geral: documentos/roadmap-geral.md
-        - Roadmap DevOps: documentos/roadmap-devops.md
-        - Roadmap Arquitetura: documentos/roadmap-arquitetura.md
+    - Roadmaps:
+        - Geral: documentos/roadmap-geral.md
+        - DevOps: documentos/roadmap-devops.md
+        - Arquitetura: documentos/roadmap-arquitetura.md
 
 
 theme:
   name: 'rtd-dropdown'
+
+repo_url: https://github.com/fga-gpp-mds/2018.1-Cardinals
