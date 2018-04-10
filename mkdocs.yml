@@ -9,4 +9,5 @@ pages:
         - Práticas Ágeis: documentos/Práticas-Ágeis-Adotadas.md
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
 
-theme: readthedocs
+theme:
+  name: 'rtd-dropdown'
