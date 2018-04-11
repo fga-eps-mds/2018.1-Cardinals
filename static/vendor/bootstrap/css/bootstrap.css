@@ -4112,9 +4112,11 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 100px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 100px;
+  }
+  .dropdown-menu.dropdown-user{
+    margin-right: 100px
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -4122,9 +4124,11 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 200px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 200px;
+  }
+  .dropdown-menu.dropdown-user{
+    margin-right: 200px
   }
 }
 @media (min-width: 1200px) {
@@ -4132,9 +4136,11 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 350px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 350px;
+  }
+  .dropdown-menu.dropdown-user{
+    margin-right: 350px
   }
 }
 .btn-group,
