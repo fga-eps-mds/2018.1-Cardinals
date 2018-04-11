@@ -6,10 +6,6 @@ from oauth.credentials import get_credentials
 
 
 username, password = get_credentials()
-print('\n\n')
-print('username = [{}]'.format(username))
-print('password = [{}]'.format(password))
-print('\n\n')
 repo = '2018.1-Cardinals'
 
 '''
