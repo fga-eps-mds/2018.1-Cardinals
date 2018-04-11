@@ -2,8 +2,14 @@ from django.shortcuts import render
 #from github import Github
 # from github import GithubException
 
-username = "Mateusas3s"
-password = "123qaz.;/"
+from oauth.credentials import get_credentials
+
+
+username, password = get_credentials()
+print('\n\n')
+print('username = [{}]'.format(username))
+print('password = [{}]'.format(password))
+print('\n\n')
 repo = '2018.1-Cardinals'
 
 '''
