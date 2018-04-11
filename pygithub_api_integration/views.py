@@ -2,8 +2,8 @@ from django.shortcuts import render
 from github import Github
 # from github import GithubException
 
-username = "Mateusas3s"
-password = "123qaz.;/"
+username = "mdscardinals"
+password = "(cardinals1)"
 repo = '2018.1-Cardinals'
 
 '''
