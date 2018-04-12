@@ -4102,6 +4102,9 @@ tbody.collapse.in {
   }
 }
 /* created */
+form.search-repo{
+  display: table;
+}
 div.sidebar-search{
   padding-top: 20px;
   margin: 0 auto;
