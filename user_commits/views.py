@@ -9,6 +9,7 @@ def user_commits(request):
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')      
 
+    
     allCommits = repo.get_stats_contributors()
 
     
