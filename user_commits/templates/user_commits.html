@@ -1,0 +1,17 @@
+{% extends "base_index.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                {% for c in allCommits %}
+                <ul>
+                    <li>{{c.author}} : {{c.total}}</li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
