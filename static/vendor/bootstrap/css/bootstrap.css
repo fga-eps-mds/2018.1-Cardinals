@@ -18,7 +18,7 @@ body {
 #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
-  background-color: #3C3542;
+  background-color: rgb(236, 236, 236);
 }
 @media (min-width: 768px) {
   #page-wrapper {
@@ -31,7 +31,7 @@ body {
 #page-wrapper-index {
   padding: 0 15px;
   min-height: 568px;
-  background-color: #3C3542;
+  background-color: #F8F8FF;
 }
 @media (min-width: 768px) {
   #page-wrapper-index {
@@ -89,10 +89,10 @@ body {
   padding-right: 0;
 }
 .sidebar .sidebar-search {
+  border-bottom: 1px solid #e7e7e7;
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
 }
 .sidebar ul li a.active {
   background-color: #eeeeee;
@@ -563,6 +563,12 @@ textarea {
   font: inherit;
   color: inherit;
 }
+
+.text-describe {
+  font-family: 'Roboto', sans-serif;
+  color: #333333
+}
+
 button {
   overflow: visible;
 }
@@ -1567,7 +1573,7 @@ img {
 }
 .img-logo{
   display: block;
-  max-width: 360px;
+  max-width: 290px;
   height: auto;
   width: 70%;
   margin-top: 20px ;
@@ -4551,7 +4557,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: none;
 }
 .nav-tabs.nav-justified > li > a {
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
   text-align: center;
 }
 .nav-tabs.nav-justified > .dropdown .dropdown-menu {
