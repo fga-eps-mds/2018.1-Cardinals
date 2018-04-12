@@ -31,7 +31,7 @@ body {
 #page-wrapper-index {
   padding: 0 15px;
   min-height: 568px;
-  background-color: #F8F8FF;
+  background-color: #3C3542;
 }
 @media (min-width: 768px) {
   #page-wrapper-index {
@@ -563,12 +563,6 @@ textarea {
   font: inherit;
   color: inherit;
 }
-
-.text-describe {
-  font-family: 'Roboto', sans-serif;
-  color: #333333
-}
-
 button {
   overflow: visible;
 }
@@ -2578,6 +2572,10 @@ pre code {
   .col-lg-8 {
     width: 66.66666667%;
   }
+  div.col-lg-8 {
+    margin: 0 auto;
+    float: none;
+  }
   .col-lg-7 {
     width: 58.33333333%;
   }
@@ -4108,6 +4106,10 @@ tbody.collapse.in {
   }
 }
 /* created */
+.text-describe {
+  font-family: 'Roboto', sans-serif;
+  color: #D8D7CC;
+}
 form.search-repo{
   display: table;
 }
