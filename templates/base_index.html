@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>Cardinals</title>
+    
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    
+        <!-- MetisMenu CSS -->
+        <link href="{% static 'vendor/metisMenu/metisMenu.css' %}" rel="stylesheet" type="text/css">
+    
+        <!-- Custom Fonts -->
+        <link href="{% static 'vendor/font-awesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    
+    </head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'index' %}"><span class="logo">Cardinals</span></a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Sign in | Log in <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Sign in</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-in fa-fw"></i> Log in</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        {% block body %}
+        {% endblock %}
+
+        <footer class="panel-footer">
+            <p><span class="glyphicon glyphicon-registration-mark"></span> Copy Right | Unb Gama - 2018</p>
+        </footer>
+
+    </div>
+    
+        <!-- jQuery -->
+        <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+    
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}"></script>
+    
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{% static 'vendor/metisMenu/metisMenu.js' %}"></script>
+        
+</body>
+</html>
