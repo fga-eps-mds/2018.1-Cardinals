@@ -7,8 +7,8 @@ from oauth.credentials import get_credentials
 username, password = get_credentials()
 repo = '2018.1-Cardinals'
 
-
-def getRepo(request):
+'''
+def getRepos(request):
 
     git = Github(username, password)
     user = git.get_user()
@@ -16,6 +16,7 @@ def getRepo(request):
 
     return render(request, 'repos.html',
                   {"repos": repos})
+'''
 
 
 def getContributors(request):
