@@ -14,3 +14,7 @@ coverage.xml
 
 ## Mkdocs
 site/
+
+#Docker
+# WARNING: .env file contains sensitive information, keep it on .gitignore.
+.env

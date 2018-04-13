@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from github import Github
 from index.views import searchRepository
+from oauth.credentials import get_credentials
 
 
-username = "mdscardinals"
-password = "(cardinals1)"
-# repo = '2018.1-Cardinals'
+username, password = get_credentials()
+repo = '2018.1-Cardinals'
 
 
 def getRepo(request):
