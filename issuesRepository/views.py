@@ -1,18 +1,21 @@
 from django.shortcuts import render
 from github import Github,InputFileContent
+from index.views import searchRepository
 
 username = "mdscardinals"
 password = "(cardinals1)"
 
 
 def getIssues(request):
-    git = Github()
-    repos = git.get_repo('fga-gpp-mds/2018.1-Cardinals')
-    issuesRepository = []
+    return render(request, 'issues.html')
 
-    user = InputFileContent('Nome')
+def getResultIssues(request):
 
-    for i in repos.get_issues():
-        issuesRepository.append(i)
+    repo_name = searchRepository(request)
 
-    return render(request, 'issues.html', {"issues": issuesRepository, "campo" : user})
+    git = Github(username, password)
+    repo = git.get_repo(repo_name)
+    issues = repo.get_issues()
+
+    return render(request, 'resultsIssues.html',
+                  {"issues": issues})

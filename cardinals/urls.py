@@ -19,5 +19,5 @@ urlpatterns = [
     url(r'^$', include('index.urls'), name='index'),
     url(r'^dev/', include('dev.urls'), name='dev'),
     url(r'^pyGithub/', include('pygithub_api_integration.urls')),
-    url(r'^issueRepo/', include('issuesRepository.urls'))
+    url(r'^issueRepo/', include('issuesRepository.urls')),
     ]

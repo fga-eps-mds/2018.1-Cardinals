@@ -20,7 +20,7 @@ def getContributors(request):
 
     repo_name = searchRepository(request)
 
-    git = Github()
+    git = Github(username, password)
     repo = git.get_repo(repo_name)
     contributors = repo.get_contributors()
 
