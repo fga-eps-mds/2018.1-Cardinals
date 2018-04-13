@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Contribuidores</h1>
-    {% for c in contributors %}
-    <li>{{c.name}} </li>
+    <h1>Repositórios</h1>
+    {% for i in issues %}
+    <li>{{i}}</li>
     {% endfor %}
+
+    {{campo}}
 </body>
 </html>

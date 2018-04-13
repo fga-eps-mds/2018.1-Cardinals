@@ -6,7 +6,7 @@
     <div class="sidebar-search">
             <form class="search-repo" action="{% url 'getContributors' %}" method="POST">
 				{% csrf_token %}
-                <input name="repository" type="search" class="form-control" placeholder="Busque um Repositório...">
+                <input id="repository" name="repository" type="search" class="form-control" placeholder="Busque um Repositório...">
                 <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                     <i class="fa fa-search"></i>
