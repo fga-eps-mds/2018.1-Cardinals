@@ -29,3 +29,24 @@ def getContributors(request):
 
     return render(request, 'contributors.html',
                   {"contributors": contributors})
+
+
+def getRepoInfo(request):
+
+    repo_name = searchRepository(request)
+
+    git = Github()
+    repo = git.get_repo(repo_name)
+
+    '''
+        funções que retornarão:
+            os commits
+            as issues
+            os pull requests
+            .
+            .
+            .
+    '''
+
+    return render(request, 'repository_info.html',
+                  {"repo": repo})
