@@ -19,16 +19,11 @@ def getRepos(request):
 '''
 
 
-def getContributors(request):
+def getContributors(repo):
 
-    repo_name = searchRepository(request)
-
-    git = Github()
-    repo = git.get_repo(repo_name)
     contributors = repo.get_contributors()
 
-    return render(request, 'contributors.html',
-                  {"contributors": contributors})
+    return contributors
 
 
 def getRepoInfo(request):
@@ -38,6 +33,7 @@ def getRepoInfo(request):
     git = Github()
     repo = git.get_repo(repo_name)
 
+    contributors = getContributors(repo)
     '''
         funções que retornarão:
             os commits
@@ -49,4 +45,4 @@ def getRepoInfo(request):
     '''
 
     return render(request, 'repository_info.html',
-                  {"repo": repo})
+                  {"contributors": contributors})

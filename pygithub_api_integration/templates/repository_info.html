@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Repositório-Home</title>
-</head>
-<body>
+{% extends "base_index.html" %}
 
-    <h1>Repositório-Home</h1>
-    
-</body>
-</html>
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container-index">
+                    <h1>Repositório-Home</h1>
+                    <h2>Contribuidores</h2>
+                    {% for c in contributors %}
+                    <li>{{c.name}} : {{c.login}}</li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
