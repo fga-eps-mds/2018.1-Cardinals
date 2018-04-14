@@ -1,45 +1,57 @@
 from django.shortcuts import render
 from github import Github
-# from github import GithubException
+from index.views import searchRepository
+from oauth.credentials import get_credentials
 
-username = "mdscardinals"
-password = "(cardinals1)"
+
+username, password = get_credentials()
 repo = '2018.1-Cardinals'
 
 '''
-def request_oauth_token(username, password, repo):
-
-    try:
-        git = Github(username, password)
-        user = git.get_user()
-        auth = user.create_authorization(scopes="public_repo", note=repo)
-        return auth.token
-    except GithubException as e:
-        msg_error = "ERROR: " + str(e)
-        return msg_error
-'''
-
-
-def getRepo(request):
-
-    # token = request_oauth_token(username, password, repo)
+def getRepos(request):
 
     git = Github(username, password)
-    # git = Github(token)
     user = git.get_user()
     repos = user.get_repos()
 
     return render(request, 'repos.html',
                   {"repos": repos})
+'''
 
 
-def getContributors(request):
-
-    # token = request_oauth_token
-    git = Github(username, password)
-    org = git.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
+def getContributors(repo):
+    
     contributors = repo.get_contributors()
 
-    return render(request, 'contributors.html',
-                  {"contributors": contributors})
+    return contributors
+
+def getAllCommits(repo):
+   
+    allcommits = repo.get_stats_contributors()
+
+    return allcommits
+
+
+def getRepoInfo(request):
+
+    repo_name = searchRepository(request)
+
+    git = Github()
+    repo = git.get_repo(repo_name)
+
+    contributors = getContributors(repo)
+
+    allcommits = getAllCommits(repo)
+    '''
+        funções que retornarão:
+            os commits
+            as issues
+            os pull requests
+            .
+            .
+            .
+    '''
+
+    return render(request, 'repository_info.html',
+                  {"contributors": contributors},
+                  {"allcommits ": allcommits})

@@ -1,0 +1,35 @@
+{% extends "base_index.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container-index">
+                    <h1>Repositório-Home</h1>
+                    <h2>Contribuidores</h2>
+                    {% for c in contributors %}
+                    <li>{{c.name}} : {{c.login}}</li>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="page-wrapper-index">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container-index">
+                    <h2>Commits</h2>
+                      {% for c in allCommits %}
+                <ul>
+                    <li>{{c.author.name}} : {{c.total}}</li>
+                </ul>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

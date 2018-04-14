@@ -18,7 +18,7 @@ body {
 #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
-  background-color: #3C3542;
+  background-color: rgb(236, 236, 236);
 }
 @media (min-width: 768px) {
   #page-wrapper {
@@ -89,10 +89,10 @@ body {
   padding-right: 0;
 }
 .sidebar .sidebar-search {
+  border-bottom: 1px solid #e7e7e7;
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
 }
 .sidebar ul li a.active {
   background-color: #eeeeee;
@@ -1567,7 +1567,7 @@ img {
 }
 .img-logo{
   display: block;
-  max-width: 360px;
+  max-width: 290px;
   height: auto;
   width: 70%;
   margin-top: 20px ;
@@ -2571,6 +2571,10 @@ pre code {
   }
   .col-lg-8 {
     width: 66.66666667%;
+  }
+  div.col-lg-8 {
+    margin: 0 auto;
+    float: none;
   }
   .col-lg-7 {
     width: 58.33333333%;
@@ -4101,10 +4105,25 @@ tbody.collapse.in {
     left: auto;
   }
 }
+/* created */
+.text-describe {
+  font-family: 'Roboto', sans-serif;
+  color: #D8D7CC;
+}
+form.search-repo{
+  display: table;
+}
+div.sidebar-search{
+  padding-top: 20px;
+  margin: 0 auto;
+}
 @media (max-width: 767px) {
   .navbar-right .dropdown-menu-left {
     right: auto;
     left: 0;
+  }
+  div.sidebar-search{
+    width: 80%;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -4112,9 +4131,14 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 100px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 100px;
+  }
+  .dropdown-menu.dropdown-user{
+    margin-right: 100px
+  }
+  div.sidebar-search{
+    width: 70%;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -4122,9 +4146,14 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 200px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 200px;
+  }
+  .dropdown-menu.dropdown-user{
+    margin-right: 200px
+  }
+  div.sidebar-search{
+    width: 60%;
   }
 }
 @media (min-width: 1200px) {
@@ -4132,11 +4161,17 @@ tbody.collapse.in {
   .panel-footer > p{
     padding-left: 350px;
   }
-  .dropdown,
-  .navbar-top-links .dropdown-menu{
+  .dropdown{
     padding-right: 350px;
   }
+  .dropdown-menu.dropdown-user{
+    margin-right: 350px
+  }
+  div.sidebar-search{
+    width: 50%;
+  }
 }
+/* created-end */
 .btn-group,
 .btn-group-vertical {
   position: relative;
@@ -4551,7 +4586,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: none;
 }
 .nav-tabs.nav-justified > li > a {
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
   text-align: center;
 }
 .nav-tabs.nav-justified > .dropdown .dropdown-menu {
