@@ -1,22 +1,32 @@
 sudo: required
+
 language: python
+python:
+  - "3.6"
+
 services:
 - docker
+
 env:
   COMPOSE_VERSION: 1.19.0
-before_install:
+
+before_script:
 - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
   -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
-before_script:
-- sudo docker-compose -f docker-compose.test.yml build
+- sudo docker-compose -f docker-compose.yml build
+
 script:
-- sudo docker-compose -f docker-compose.test.yml run --rm sut
+- sudo docker-compose -f docker-compose.yml run --rm sut
+
+before_deploy:
+- ./install-dependencies.sh
+
 deploy:
   provider: heroku
   api_key:
-    secure: "JOnWMqTkXrnGJtPvN0K8VFekm4Qms8uapqTXl7UcK+PmZvP7Hd0dQ0JeKeYwPlB8NdZLw/jTunhqlqpALjZN3F/SscZa5wcWBCq9aeUzi2d5ZXllBJGzH5iauZb4RPjmCBFpFcYxApBNxwdX4bJ2MN11KahodHm1uga4KOMjx3oXD5RfMkKgKlPUwt4IxN6Xuiz6+Lf3HcC9USy64A/CTU8g5gAVNtBkie2xqv1BQOuP2E3DLnFd7ygCWtcDomf3srEqkQ2yoMC3FqcWR389taAFhDp8jx2aH7v9g3daroEnmRSDF7imEqZjWMqm48dK142w+Xf7hh11Jl0KEYnmL5INywTggiywbTyXwgZTEvKsnMnJB/CU+lj2DI4L4g2LqNxCOKLLMHkwEzlAchaRea5gwsK6e23HQsPf3nweLy6/tkZFI1B4BlYw8vHNGdyecTsdx3FmRLjKkCloNBiEGBIIzCO0PEDnrr4LtWWmPTolmG8lGn8THQ2NArnwvJJnugZrrXo9A+la+D4EG4HyB1oxuGmTJ06n7n24w1+nHl82+rPTxrr+BAPoK8rnUbWIdH4onlQrZx/QsOiZVeup0CnD0LB8Rrryi7UGbtnYDROWd+o3VJGmtTL/JdACLLA7K3Xis2efwqMjA34o3YRgr6iK9jjkSanpzJ4Tkow0R1U="
+    secure: "dgdrrkv/rDpvOJ8pzk3EHmGj6pWWVV5bAL6uwyoW+ts+6AeEqnT3fpQnWYwYgRceZN8YDpTChtAwmwcjoxcczOk5v2dnjeLTrEgwWFRuh1PkQjTZZ2ka9iaOyOxVuKQBlfrg+5CWSLyZd+5cRN+WlnY/B1Ts85nyeIPwydx74uYmXqC3vdjbe1RXSsr1/dGT68piTJlvCLm4hCYlB7uuiX+H9ALNZBNzugxA95fGiSXr4OUET3FQNeW7dzLOn5nSdhBEsdLIdB9tQ/YF75tp6ws84mgPIP8cLDBd7ivfauBnhz8MmAHxORzOhC3WFfjQ8ReLUJTLclXmqKfL9BlLavF73UPE0Wkzd9/5iB8vk+1rNlZrCGQCI2fJt/rcFAmSuX225C/E0z41ia4I1vjxFe1H3J5ZSJfzE/jxH2FlbErku3MUnhtTjB8DNtF0ktEyleI0LX5GY/aE8wHffN2B1RyHgwgzXDOw+3461AoRuAwL6rfeAy4naf6F/ycmPUK9K5dPk4Lp06VM3Ndz/nu4GgAfAcyvvzKKcJla1DeioSVMh8vGOHUZGNzaAMYuQagp/N68zWquKbgrPbjAts9plfqV/CuY5EuH0o6ssU9qI2/SP0QRtkzhV3Red98JAIAERDHfOoIXsDDf78L5h+wP2JAyU7vJUAaPtyEpiXXY2oA="
   app: cardinals
   on:
     repo: fga-gpp-mds/2018.1-Cardinals
