@@ -4,3 +4,5 @@ coverage
 pygithub
 pipenv
 gunicorn
+codecov
+mkdocs
