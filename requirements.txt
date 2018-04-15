@@ -3,3 +3,6 @@ psycopg2-binary
 coverage
 pygithub
 codecov
+whitenoise
+gunicorn
+
