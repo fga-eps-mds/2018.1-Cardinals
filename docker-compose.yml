@@ -1,24 +1,12 @@
 version: '3'
 
 services:
-
-  sut:
-    build: .
-    depends_on:
-      - db
-      - web
-    command: ./run_tests.sh
-
   db:
     image: postgres
-    ports:
-      - "5432"
-
   web:
     build: .
     volumes:
       - .:/code
-      - ./run.sh:/run.sh
     ports:
       - "8000:8000"
     depends_on:

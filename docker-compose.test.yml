@@ -18,10 +18,8 @@ services:
     build: .
     volumes:
       - .:/code
-      - ./run.sh:/run.sh
     ports:
       - "8000:8000"
     depends_on:
       - db
-    entrypoint: ./wait-for-postgres.sh postgres 5432
 
