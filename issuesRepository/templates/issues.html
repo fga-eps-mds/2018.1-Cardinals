@@ -3,15 +3,15 @@
 {% block body %}
 <div id="page-wrapper-index">
     <div class="sidebar-search">
-            <form class="search-repo" action="{% url 'getResultIssues' %}" method="POST">
-				{% csrf_token %}
-                <input id="repository" name="repository" type="search" class="form-control" placeholder="Busque um Repositório...">
-                <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-                </span>
-            </form>
+        <form class="search-repo" action="{% url 'getResultIssues' %}" method="POST">
+                {% csrf_token %}
+            <input id="repository" name="repository" type="search" class="form-control" placeholder="Busque um Repositório...">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            </span>
+        </form>
     </div>
     <div class="container-fluid">
         <div class="row">
