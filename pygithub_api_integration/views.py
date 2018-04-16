@@ -4,9 +4,6 @@ from index.views import searchRepository
 from oauth.credentials import get_credentials
 
 
-username, password = get_credentials()
-repo = '2018.1-Cardinals'
-
 '''
 def getRepos(request):
 
@@ -26,14 +23,25 @@ def getContributors(repo):
     return contributors
 
 
+def getCommitsUser(repo):
+
+    commits_user = repo.get_stats_contributors()
+
+    return commits_user
+
+
 def getRepoInfo(request):
+
+    username, password = get_credentials()
 
     repo_name = searchRepository(request)
 
-    git = Github()
+    git = Github(username, password)
     repo = git.get_repo(repo_name)
 
     contributors = getContributors(repo)
+
+    commits_user = getCommitsUser(repo)
     '''
         funções que retornarão:
             os commits
@@ -45,4 +53,5 @@ def getRepoInfo(request):
     '''
 
     return render(request, 'repository_info.html',
-                  {"contributors": contributors})
+                  {"contributors": contributors,
+                   "commits_user": commits_user})
