@@ -1,7 +1,7 @@
 site_name: Cardinals
 pages:
-    - Início: 
-        - Sobre: index.md 
+    - Início:
+        - Sobre: index.md
         - Equipe: documentos/equipe.md
         - Guia de contribuição: CONTRIBUTING.md
         - Código de conduta: CODE_OF_CONDUCT.md
@@ -16,6 +16,9 @@ pages:
         - Geral: documentos/roadmap-geral.md
         - DevOps: documentos/roadmap-devops.md
         - Arquitetura: documentos/roadmap-arquitetura.md
+    - Sprint 0:
+        - Planejamento: documentos/Sprints/00/Planejamento.md
+        - Resultados: documentos/Sprints/00/Resultados.md
 
 
 theme:
