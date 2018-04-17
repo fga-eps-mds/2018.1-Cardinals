@@ -2,6 +2,6 @@ from django.conf.urls import url
 from user_commits import views
 
 urlpatterns = [
-    url(r'^', views.user_commits, name='Commits'),
+    url(r'^', views.getCommits, name='Commits'),
     
 ]

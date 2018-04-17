@@ -5,23 +5,31 @@ from oauth.credentials import get_credentials
 from datetime import datetime
 
 
-username, password = get_credentials()
-repo = '2018.1-Cardinals'
+def getCommitsUser(repo):
+
+    commits_user = repo.get_stats_contributors()
+
+    return commits_user
+
+def getCommitStatuses(repo):
+
+    commit_statuses = repo.get_commits()
+
+    return commit_statuses
 
 
-def user_commits(request):
-    allCommits = repo.get_stats_contributors()
-    return allCommits
+def getCommits(request):
 
+    username, password = get_credentials()
+    repo_name = ('fga-gpp-mds/2018.1-Cardinals')
+    #repo_name = searchRepository(request)
 
-def getRepoInfo(request):
-
-    repo_name = searchRepository(request)
-
-    git = Github()
+    git = Github(username, password)
     repo = git.get_repo(repo_name)
 
-    allcommits = getAllCommits(repo)
+    commits_user = getCommitsUser(repo)
+    commit_statuses = getCommitStatuses(repo)
     
     return render(request, 'user_commits.html',
-                  {"allcommits ": allcommits})
+                  {"commits_user": commits_user,
+                   "commit_statuses": commit_statuses})
