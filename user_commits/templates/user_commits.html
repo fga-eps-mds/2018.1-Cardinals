@@ -2,37 +2,31 @@
 
 {% block body %}
 <div id="page-wrapper-index">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-              <h1>Commits</h1> 
-              <div class="table-responsive">
-                    <table class="table">
-                          <tbody>
-                                  <tr>
-                                          <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Nome</th>
-                                          <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Email</th>
-                                          <th class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Data</th>
-                                  </tr>
-                          </tbody>
-                    </table> 
-                </div> 
-                {% for q in commit_statuses %}
-                <div class="table-responsive">
-                  <table class="table">
-                        <tbody>
+    <div class="container">
+        <div class="page-header">
+            <h1>Commits</h1> 
+        </div>
+            <div class="row">
+                <div clgitass="col-lg-12">
+                    <table class="table table-dark">
+                            <thead>
                                 <tr>
-                                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{q.commit.author.name}}</td>
-                                        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{q.commit.author.email}}</td>
-                                        <td class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{q.commit.author.date}}</td>
-                                        <!--<td class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{q.commit.message}}</td>-->
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Data</th>
                                 </tr>
-                        </tbody>
-                  </table>
-                </div>
-                {% endfor %}
-            </div>
-            </div>
+                            </thead>
+                            <tbody>
+                                {% for q in commit_statuses %}
+                                <tr>
+                                    <td>{{q.commit.author.name}}</td>
+                                    <td>{{q.commit.author.email}}</td>
+                                    <td>{{q.commit.author.date}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+             </div>
         </div>
     </div>
 </div>
