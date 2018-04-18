@@ -4,9 +4,10 @@
 
 <div id="page-wrapper-index">
     <div class="sidebar-search">
+            <nav class="">Busque um repositório:</nav>
             <form class="search-repo" action="{% url 'getRepoInfo' %}" method="POST">
-				{% csrf_token %}
-                <input name="repository" type="search" class="form-control" placeholder="Busque um Repositório...">
+                {% csrf_token %}
+                <input name="repository" type="search" class="form-control" placeholder="https://github.com/...">
                 <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                     <i class="fa fa-search"></i>
