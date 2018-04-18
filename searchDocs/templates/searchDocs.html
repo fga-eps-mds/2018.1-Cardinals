@@ -4,12 +4,21 @@
 <div id="page-wrapper-index">
     <div class="container">
         <div class="row">
+            <h1>Arquivos</h1>
             <div class="col-lg-8">
-                <h1>Arquivos</h1>
+                <h2>Contributing file</h2>
                 {% if contributingFile.name == 'CONTRIBUTING.md' %}
-                <i class="fa fa-check fa-fw">{{contributingFile.name}}</i>
+                    <i class="fa fa-check fa-fw">{{contributingFile.name}}</i>
                 {% else %}
                     <i class="fa fa-times fa-fw"> CONTRIBUTING.md </i>
+                {% endif %}
+            </div>
+            <div class="col-lg-8">
+                <h1>Licensa utilizada</h1>
+                {% if licenseFile.key == 'mit' %}
+                    <i class="fa fa-check fa-fw">{{licenseFile.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw">Licensa não encontrada!</i>
                 {% endif %}
             </div>
         </div>

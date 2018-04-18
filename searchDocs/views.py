@@ -6,7 +6,15 @@ from oauth.credentials import get_credentials
 username, password = get_credentials()
 
 # Create your views here.
-def getContributingFile(request):
+def renderingDocs(request):
+    contributingFile = getContributingFile()
+    licenseFile = getLicenseFile()
+
+    return render(request, 'searchDocs.html', {'contributingFile': contributingFile,
+                                               'licenseFile': licenseFile
+                                              })
+
+def getContributingFile():
 
     g = Github(username, password)
     org = g.get_organization('fga-gpp-mds')
@@ -16,13 +24,12 @@ def getContributingFile(request):
     except GithubException:
         contributingFile =''
 
-    return render(request, 'searchDocs.html', {"contributingFile": contributingFile})
+    return contributingFile
 
-def getLicenseFile(request):
+def getLicenseFile():
 
     g = Github(username, password)
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')
     licenseFile = repo.get_license()
-
-    return render(request, 'searchDocs.html', {"licenseFile":licenseFile})
+    return licenseFile
