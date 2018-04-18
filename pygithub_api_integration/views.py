@@ -3,6 +3,7 @@ from github import Github
 from github import GithubException as GE
 from index.views import searchRepository
 from oauth.credentials import get_credentials
+from django.contrib import messages
 
 
 '''
@@ -59,5 +60,10 @@ def getRepoInfo(request):
                        "commits_user": commits_user})
 
     except GE:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Insira um repositório válido!'
+        )
         # message = 'Insira um repositório válido!'
         return redirect('index')
