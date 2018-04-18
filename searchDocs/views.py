@@ -1,5 +1,6 @@
 from github import Github
 from django.shortcuts import render
+from github import GithubException
 
 # Create your views here.
 def getContributingFile(request):
@@ -7,15 +8,18 @@ def getContributingFile(request):
     g = Github("mdscardinals", "(cardinals1)")
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')
-    contributingFile = repo.get_contents(".github/ISSUE_TEMPLATE.md")
+    try:
+        contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
+    except GithubException:
+        contributingFile =''
 
     return render(request, 'searchDocs.html', {"contributingFile": contributingFile})
 
-# def getLicenses(request):
-#
-#    g = Github("mdscardinals", "(cardinals1)")
-#    org = g.get_organization('fga-gpp-mds')
-#    repo = org.get_repo('2018.1-Cardinals')
-#    licenseFile = repo.get_licenses()
+def getLicenseFile(request):
 
-#    return render(request, 'searchDocs.html', {"licenseFile":licenseFile})
+    g = Github("mdscardinals", "(cardinals1)")
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
+    licenseFile = repo.get_license()
+
+    return render(request, 'searchDocs.html', {"licenseFile":licenseFile})
