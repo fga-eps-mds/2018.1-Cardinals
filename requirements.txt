@@ -3,6 +3,8 @@ Django
 psycopg2-binary
 pygithub
 whitenoise
+
+# Deploy
 gunicorn
 
 # Development
