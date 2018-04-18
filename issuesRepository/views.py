@@ -14,37 +14,41 @@ def getResultIssues(request):
     dataInicio = " "
     repository = " "
     if request.method == 'GET':
-        novaLista = []
+        novaLista = list(allIssues)
 
         if request.GET['states'] != "all":
             opcoes = request.GET['states']
             for issue in allIssues:
-                if issue.state == opcoes:
-                    novaLista.append(issue)
+                if issue.state != opcoes:
+                    novaLista.remove(issue)
 
                 if request.GET['dataInicio'] != "":
-                    dataInicio = request.GET['dataInicio']
-                    for issue in allIssues:
-                        if issue.created_at.date <= datetime(dataInicio):
+                    dataInicio = datetime.strptime(request.GET['dataInicio'], "%Y-%m-%d")
+                    data = datetime(dataInicio.year, dataInicio.month, dataInicio.day)
+                    for issue in novaLista:
+                        if issue.created_at >= data:
                             novaLista.remove(issue)
                 if request.GET['dataFechamento'] != "":
-                    dataFechamento = request.GET['dataFechamento']
-                    for issue in allIssues:
-                        if issue.closed_at.date >= datetime(dataFechamento):
+                    dataFechamento = datetime.strptime(request.GET['dataFechamento'], "%Y-%m-%d")
+                    data = datetime(dataFechamento.year, dataFechamento.month, dataFechamento.day)
+                    for issue in novaLista:
+                        if issue.closed_at <= data:
                             novaLista.remove(issue)
         else:
             for issue in allIssues:
                 novaLista.append(issue)
 
                 if request.GET['dataInicio'] != "":
-                    dataInicio = request.GET['dataInicio']
-                    for issue in allIssues:
-                        if issue.created_at.date <= datetime(dataInicio):
+                    dataInicio = datetime.strptime(request.GET['dataInicio'], "%Y-%m-%d")
+                    data = datetime(dataInicio.year, dataInicio.month, dataInicio.day)
+                    for issue in novaLista:
+                        if issue.created_at >= data:
                             novaLista.remove(issue)
                 if request.GET['dataFechamento'] != "":
-                    dataFechamento = request.GET['dataFechamento']
-                    for issue in allIssues:
-                        if issue.closed_at.date >= datetime(dataFechamento):
+                    dataFechamento = datetime.strptime(request.GET['dataFechamento'], "%Y-%m-%d")
+                    data = datetime(dataFechamento.year, dataFechamento.month, dataFechamento.day)
+                    for issue in novaLista:
+                        if issue.closed_at <= data:
                             novaLista.remove(issue)
         
         return render(request, 'resultsIssues.html',{"issues": novaLista})
