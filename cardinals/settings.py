@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dev',
     'pygithub_api_integration',
+    'searchDocs',
 ]
 
 MIDDLEWARE = [
