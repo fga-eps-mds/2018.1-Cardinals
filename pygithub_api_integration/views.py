@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from github import Github
+from github import GithubException as GE
 from index.views import searchRepository
 from oauth.credentials import get_credentials
 
@@ -36,22 +37,27 @@ def getRepoInfo(request):
 
     repo_name = searchRepository(request)
 
-    git = Github(username, password)
-    repo = git.get_repo(repo_name)
+    try:
+        git = Github(username, password)
+        repo = git.get_repo(repo_name)
 
-    contributors = getContributors(repo)
+        contributors = getContributors(repo)
 
-    commits_user = getCommitsUser(repo)
-    '''
-        funções que retornarão:
-            os commits
-            as issues
-            os pull requests
-            .
-            .
-            .
-    '''
+        commits_user = getCommitsUser(repo)
+        '''
+            funções que retornarão:
+                os commits
+                as issues
+                os pull requests
+                .
+                .
+                .
+        '''
 
-    return render(request, 'repository_info.html',
-                  {"contributors": contributors,
-                   "commits_user": commits_user})
+        return render(request, 'repository_info.html',
+                      {"contributors": contributors,
+                       "commits_user": commits_user})
+
+    except GE:
+        # message = 'Insira um repositório válido!'
+        return redirect('index')
