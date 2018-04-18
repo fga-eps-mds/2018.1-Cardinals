@@ -1,11 +1,14 @@
 from github import Github
 from django.shortcuts import render
 from github import GithubException
+from oauth.credentials import get_credentials
+
+username, password = get_credentials()
 
 # Create your views here.
 def getContributingFile(request):
 
-    g = Github("mdscardinals", "(cardinals1)")
+    g = Github(username, password)
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')
     try:
@@ -17,7 +20,7 @@ def getContributingFile(request):
 
 def getLicenseFile(request):
 
-    g = Github("mdscardinals", "(cardinals1)")
+    g = Github(username, password)
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')
     licenseFile = repo.get_license()
