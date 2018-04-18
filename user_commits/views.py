@@ -30,6 +30,4 @@ def getCommits(request):
     commits_user = getCommitsUser(repo)
     commit_statuses = getCommitStatuses(repo)
     
-    return render(request, 'user_commits.html',
-                  {"commits_user": commits_user,
-                   "commit_statuses": commit_statuses})
+    return render(request, 'user_commits.html',{"commits_user": commits_user, "commit_statuses": commit_statuses})
