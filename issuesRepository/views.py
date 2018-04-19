@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from github import Github,InputFileContent
 from index.views import searchRepository
+from oauth.credentials import get_credentials
 from datetime import datetime
-username = "mdscardinals"
-password = "(cardinals1)"
 myRepository = ""
 allIssues = []
 
@@ -44,7 +43,7 @@ def getResultIssues(request):
 
     elif request.method == 'POST':
         repository = request.POST['repository']
-
+        username, password = get_credentials()
         myRepository = repository
         git = Github(username, password)
         repo = git.get_repo(repository)

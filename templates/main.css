@@ -1,0 +1,23 @@
+.navbar{
+    background-color: #ff717a;
+}
+
+.navbar a, h1{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #4c3638;
+}
+p{
+    font-family: 'Roboto', sans-serif;
+}
+.navbar a{
+    font-size: 20px;
+}
+
+.navbar-toggler-icon{
+    border: 1px solid  #4c3638 ;
+}
+
+h1{
+    font-size: 50px;
+    font-weight:bolder;
+}

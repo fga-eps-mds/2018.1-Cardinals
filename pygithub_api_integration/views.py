@@ -1,6 +1,27 @@
 from django.shortcuts import render
 from github import Github
 from index.views import searchRepository
+#from github import Github
+# from github import GithubException
+
+from oauth.credentials import get_credentials
+
+
+username, password = get_credentials()
+repo = '2018.1-Cardinals'
+
+'''
+def request_oauth_token(username, password, repo):
+
+    try:
+        git = Github(username, password)
+        user = git.get_user()
+        auth = user.create_authorization(scopes="public_repo", note=repo)
+        return auth.token
+    except GithubException as e:
+        msg_error = "ERROR: " + str(e)
+        return msg_error
+'''
 
 username = "mdscardinals"
 password = "(cardinals1)"
