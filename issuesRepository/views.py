@@ -28,12 +28,7 @@ def getResultIssues(request):
                     for issue in novaLista:
                         if issue.created_at >= data:
                             novaLista.remove(issue)
-                if request.GET['dataFechamento'] != "":
-                    dataFechamento = datetime.strptime(request.GET['dataFechamento'], "%Y-%m-%d")
-                    data = datetime(dataFechamento.year, dataFechamento.month, dataFechamento.day)
-                    for issue in novaLista:
-                        if issue.closed_at <= data:
-                            novaLista.remove(issue)
+                
         else:
             for issue in allIssues:
                 novaLista.append(issue)
@@ -43,12 +38,6 @@ def getResultIssues(request):
                     data = datetime(dataInicio.year, dataInicio.month, dataInicio.day)
                     for issue in novaLista:
                         if issue.created_at >= data:
-                            novaLista.remove(issue)
-                if request.GET['dataFechamento'] != "":
-                    dataFechamento = datetime.strptime(request.GET['dataFechamento'], "%Y-%m-%d")
-                    data = datetime(dataFechamento.year, dataFechamento.month, dataFechamento.day)
-                    for issue in novaLista:
-                        if issue.closed_at <= data:
                             novaLista.remove(issue)
         
         return render(request, 'resultsIssues.html',{"issues": novaLista})
