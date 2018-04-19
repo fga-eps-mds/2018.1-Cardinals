@@ -15,10 +15,10 @@
             </div>
             <div class="col-lg-8">
                 <h1>Licensa utilizada</h1>
-                {% if licenseFile.key == 'mit' %}
-                    <i class="fa fa-check fa-fw">{{licenseFile.name}}</i>
+                {% if licenseFile.name == '' %}
+                    <i class="fa fa-times fa-fw">>Licensa não encontrada!</i>
                 {% else %}
-                    <i class="fa fa-times fa-fw">Licensa não encontrada!</i>
+                    <i class="fa fa-check fa-fw">{{licenseFile.name}}</i>
                 {% endif %}
             </div>
         </div>

@@ -31,5 +31,8 @@ def getLicenseFile():
     g = Github(username, password)
     org = g.get_organization('fga-gpp-mds')
     repo = org.get_repo('2018.1-Cardinals')
-    licenseFile = repo.get_license()
+    try:
+        licenseFile = repo.get_file_contents("LICENSE")
+    except GithubException:
+        licenseFile =''
     return licenseFile
