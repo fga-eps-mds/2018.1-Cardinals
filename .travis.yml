@@ -19,6 +19,7 @@ jobs:
       - chmod +x docker-compose
       - sudo mv docker-compose /usr/local/bin
       - sudo docker-compose -f docker-compose.test.yml build
+      - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
       - sudo docker-compose -f docker-compose.test.yml run web ./run_analysis.sh
 
@@ -34,6 +35,7 @@ jobs:
       - chmod +x docker-compose
       - sudo mv docker-compose /usr/local/bin
       - sudo docker-compose -f docker-compose.test.yml build
+      - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
       - sudo docker-compose -f docker-compose.test.yml run --rm sut
 
