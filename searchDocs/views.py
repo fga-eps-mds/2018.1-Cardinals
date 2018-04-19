@@ -5,7 +5,11 @@ from oauth.credentials import get_credentials
 
 username, password = get_credentials()
 
-# Create your views here.
+g = Github(username, password)
+org = g.get_organization('fga-gpp-mds')
+repo = org.get_repo('2018.1-Cardinals')
+
+
 def renderingDocs(request):
     contributingFile = getContributingFile()
     licenseFile = getLicenseFile()
@@ -14,79 +18,69 @@ def renderingDocs(request):
     conductFile = getCodeConduct()
     readme = getReadme()
 
-    return render(request, 'searchDocs.html', {'contributingFile': contributingFile,
-                                               'licenseFile': licenseFile,
-                                               'issueTemplate': issueTemplate,
-                                               'pullRequestTemplate': pullRequestTemplate,
-                                               'conductFile' : conductFile,
-                                               'readme' : readme
-                                              })
+    return render(request, 'searchDocs.html',
+                  {'contributingFile': contributingFile,
+                   'licenseFile': licenseFile,
+                   'issueTemplate': issueTemplate,
+                   'pullRequestTemplate': pullRequestTemplate,
+                   'conductFile': conductFile,
+                   'readme': readme
+                   })
+
 
 def getReadme():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
     try:
         readme = repo.get_file_contents("README.md")
     except GithubException:
-        readme =''
+        readme = ''
 
     return readme
 
 
 def getContributingFile():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
     try:
         contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
     except GithubException:
-        contributingFile =''
+        contributingFile = ''
 
     return contributingFile
 
+
 def getCodeConduct():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
     try:
         conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
     except GithubException:
-        conductFile =''
+        conductFile = ''
     return conductFile
+
 
 def getLicenseFile():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
     try:
         licenseFile = repo.get_file_contents("LICENSE")
     except GithubException:
-        licenseFile =''
+        licenseFile = ''
     return licenseFile
+
 
 def getIssueTemplate():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
     try:
         issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
     except GithubException:
-        issueTemplate =''
+        issueTemplate = ''
     return issueTemplate
+
 
 def getPullRequestTemplate():
 
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
+    way_doc = ".github/PULL_REQUEST_TEMPLATE.md"
+
     try:
-        pullRequestTemplate = repo.get_file_contents(".github/PULL_REQUEST_TEMPLATE.md")
+        pullRequestTemplate = repo.get_file_contents(way_doc)
     except GithubException:
-        pullRequestTemplate =''
+        pullRequestTemplate = ''
     return pullRequestTemplate

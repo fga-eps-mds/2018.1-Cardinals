@@ -4,4 +4,3 @@ from searchDocs import views
 urlpatterns = [
     url(r'getFiles/$', views.renderingDocs, name='renderingDocs'),
 ]
-
