@@ -4,7 +4,7 @@
 
 **Data de Término:** 08/04/2018
 
-**Total de Pontos Planejados:** __
+**Total de Pontos Planejados:** _43_
 
 
 
