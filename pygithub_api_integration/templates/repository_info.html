@@ -25,6 +25,13 @@
                     <div>
                         <a href="{% url 'Commits' %}" type="button" class="btn btn-primary btn-lg">Commits</a>
                     </div>
+                    <br>
+                    <div>
+                        <form action="{% url 'getResultIssues' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg">Issues</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
