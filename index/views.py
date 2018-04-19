@@ -11,5 +11,7 @@ def searchRepository(request):
 
         return repository
     else:
-        message = 'Repositório não encontrado!'
+        message = 'Repositorio nao encontrado!'
         return message
+
+
