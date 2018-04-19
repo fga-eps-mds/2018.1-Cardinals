@@ -12,13 +12,31 @@
                 {% else %}
                     <i class="fa fa-times fa-fw"> CONTRIBUTING.md </i>
                 {% endif %}
+                <h2>Issue template</h2>
+                {% if issueTemplate.name == 'ISSUE_TEMPLATE.md' %}
+                    <i class="fa fa-check fa-fw">{{issueTemplate.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw"> ISSUE_TEMPLATE.md </i>
+                {% endif %}
+                <h2>Pull request template</h2>
+                {% if pullRequestTemplate.name == 'PULL_REQUEST_TEMPLATE.md' %}
+                    <i class="fa fa-check fa-fw">{{pullRequestTemplate.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw"> PULL_REQUEST_TEMPLATE.md </i>
+                {% endif %}
+                <h2>Code of conduct</h2>
+                {% if conductFile.name == 'CODE_OF_CONDUCT.md' %}
+                    <i class="fa fa-check fa-fw">{{conductFile.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw"> CODE_OF_CONDUCT.md </i>
+                {% endif %}
             </div>
             <div class="col-lg-8">
-                <h1>Licensa utilizada</h1>
-                {% if licenseFile.name == '' %}
-                    <i class="fa fa-times fa-fw">>Licensa não encontrada!</i>
-                {% else %}
+                <h1>Licença utilizada</h1>
+                {% if licenseFile.name == "LICENSE" %}
                     <i class="fa fa-check fa-fw">{{licenseFile.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw"> Licença não encontrada!</i>
                 {% endif %}
             </div>
         </div>

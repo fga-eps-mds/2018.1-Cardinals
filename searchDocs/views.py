@@ -9,9 +9,15 @@ username, password = get_credentials()
 def renderingDocs(request):
     contributingFile = getContributingFile()
     licenseFile = getLicenseFile()
+    issueTemplate = getIssueTemplate()
+    pullRequestTemplate = getPullRequestTemplate()
+    conductFile = getCodeConduct()
 
     return render(request, 'searchDocs.html', {'contributingFile': contributingFile,
-                                               'licenseFile': licenseFile
+                                               'licenseFile': licenseFile,
+                                               'issueTemplate': issueTemplate,
+                                               'pullRequestTemplate': pullRequestTemplate,
+                                               'conductFile' : conductFile
                                               })
 
 def getContributingFile():
@@ -26,6 +32,17 @@ def getContributingFile():
 
     return contributingFile
 
+def getCodeConduct():
+
+    g = Github(username, password)
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
+    try:
+        conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
+    except GithubException:
+        conductFile =''
+    return conductFile
+
 def getLicenseFile():
 
     g = Github(username, password)
@@ -36,3 +53,25 @@ def getLicenseFile():
     except GithubException:
         licenseFile =''
     return licenseFile
+
+def getIssueTemplate():
+
+    g = Github(username, password)
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
+    try:
+        issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
+    except GithubException:
+        issueTemplate =''
+    return issueTemplate
+
+def getPullRequestTemplate():
+
+    g = Github(username, password)
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
+    try:
+        pullRequestTemplate = repo.get_file_contents(".github/PULL_REQUEST_TEMPLATE.md")
+    except GithubException:
+        pullRequestTemplate =''
+    return pullRequestTemplate
