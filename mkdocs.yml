@@ -5,6 +5,7 @@ pages:
         - Equipe: documentos/equipe.md
         - Guia de contribuição: CONTRIBUTING.md
         - Código de conduta: CODE_OF_CONDUCT.md
+        - Instalação: documentos/instalacao.md
     - Desenvolvimento:
         - Documento de Visão: documentos/Documento-de-Visão.md
         - Documento de Arquitetura: documentos/Documento-de-Arquitetura.md
@@ -19,6 +20,21 @@ pages:
     - Sprint 0:
         - Planejamento: documentos/Sprints/00/Planejamento.md
         - Resultados: documentos/Sprints/00/Resultados.md
+    - Sprint 1:
+        - Planejamento: documentos/Sprints/01/Planejamento.md
+        - Resultados: documentos/Sprints/01/Resultados.md
+    - Sprint 2:
+        - Planejamento: documentos/Sprints/02/Planejamento.md
+        - Resultados: documentos/Sprints/02/Resultados.md
+    - Sprint 3:
+        - Planejamento: documentos/Sprints/03/Planejamento.md
+        - Resultados: documentos/Sprints/03/Resultados.md
+    - Sprint 4:
+        - Planejamento: documentos/Sprints/04/Planejamento.md
+        - Resultados: documentos/Sprints/04/Resultados.md
+    - Sprint 5:
+        - Planejamento: documentos/Sprints/05/Planejamento.md
+        - Resultados: documentos/Sprints/05/Resultados.md
 
 
 theme:
