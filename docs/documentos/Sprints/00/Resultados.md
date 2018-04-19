@@ -47,7 +47,7 @@
 # 3. Burndown Chart
 ![Sprint 00 - Burndown](https://i.imgur.com/INWWGbK.png)
 
-<p align = "justify">Como essa _Sprint_ era conhecimento e alinhamento dos integrantes da equipe e avaliação de sesu componentes, não houve uma grande quantidade de pontos a serem realizados durante a sprint.</p>
+<p align = "justify">Como essa _Sprint_ era para conhecimento e alinhamento dos integrantes da equipe e avaliação de sesu componentes, não houve uma grande quantidade de pontos a serem realizados durante a sprint.</p>
 
 # 4. Velocity
 <p align = "justify">Devido à baixa quantidade de tarefas e baixa pontuação da tarefa executada nessa *Sprint* o velocity da equipe ficou em apenas 3 pontos.</p>
