@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'dev',
     'pygithub_api_integration',
     'user_commits',
-    'readme_doc'
+    'readme_doc',
 ]
 
 MIDDLEWARE = [
