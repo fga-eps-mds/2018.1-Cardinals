@@ -4,32 +4,37 @@ from index.views import searchRepository
 from oauth.credentials import get_credentials
 from datetime import datetime
 
-
-def getCommitsUser(repo):
-
-    commits_user = repo.get_stats_contributors()
-
-    return commits_user
-
-def getCommitStatuses(repo):
-
-    commit_statuses = repo.get_commits()
-
-    return commit_statuses
-
+allCommits = []
 
 def getCommits(request):
+    return render(request, 'commits.html')
 
-    username, password = get_credentials()
-    repo_name = ('fga-gpp-mds/2018.1-Cardinals')
-    #repo_name = searchRepository(request)
+def getResultCommits(request):
+    if request.method == 'GET':
+        novaLista = list(allCommits)
 
-    git = Github(username, password)
-    repo = git.get_repo(repo_name)
+        if request.GET['dataInicio'] != "":
+            dataInicio = datetime.strptime(request.GET['dataInicio'], "%Y-%m-%d")
+            data = datetime(dataInicio.year, dataInicio.month, dataInicio.day)
+            for commit in novaLista:
+                if commit.commit.author.date <= data:
+                    novaLista.remove(commit)
+        if request.GET['dataFinal'] != "":
+            dataFinal = datetime.strptime(request.GET['dataFinal'], "%Y-%m-%d")
+            data = datetime(dataFinal.year, dataFinal.month, dataFinal.day)
+            for commit in novaLista:
+                if commit.commit.author.date >= data:
+                    novaLista.remove(commit)
+        
+        return render(request, 'user_commits.html',{"commits_novalista": novaLista})
 
-    commits_user = getCommitsUser(repo)
-    commit_statuses = getCommitStatuses(repo)
-    
-    return render(request, 'user_commits.html',
-                  {"commits_user": commits_user,
-                   "commit_statuses": commit_statuses})
+    elif request.method == 'POST':
+        repository = "fga-gpp-mds/2018.1-Cardinals"
+        username, password = get_credentials()
+        git = Github(username, password)
+        repo = git.get_repo(repository)
+        for commit in repo.get_commits():
+            allCommits.append(commit)
+
+        return render(request, 'user_commits.html',{"commits": allCommits})
+        
