@@ -1,21 +1,64 @@
 sudo: required
-  
+
 language: python
+python:
+  - "3.6"
 
-services:
-  - docker
+jobs:
+  include:
   
-env:
-  COMPOSE_VERSION: 1.19.0
+    - stage: static analysis
+      services:
+      - docker
+      env:
+        COMPOSE_VERSION: 1.19.0
+      install: skip
+      before_script:
+      - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
+        -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - sudo docker-compose -f docker-compose.test.yml build
+      - sudo docker-compose -f docker-compose.test.yml run -d db
+      script:
+      - sudo docker-compose -f docker-compose.test.yml run web ./run_analysis.sh
 
-before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
- 
+    - stage: unit tests
+      services:
+      - docker
+      env:
+        COMPOSE_VERSION: 1.19.0
+      install: skip
+      before_script:
+      - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
+        -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - sudo docker-compose -f docker-compose.test.yml build
+      - sudo docker-compose -f docker-compose.test.yml run -d db
+      script:
+      - sudo docker-compose -f docker-compose.test.yml run --rm sut
 
-before_script:
-  - sudo docker-compose -f docker-compose.test.yml build
+    - stage: deploy to staging
+      install: skip
+      script: skip
+      deploy:
+        provider: heroku
+        api_key:
+          secure: "qj4t6LqUbh4XCybN+3+PKes5NK1/QYr6D56eYrtO+2sx05uLA5Y4yc8FuXgFThlxu+XqHa3ao8iEixju40O3vKZf5J91toONar8npvZ922jf49h0YMAMiM/zBphkY2rspInjVpcS1cvanVVuwj+MO/EIY7ajR1W8nRqnQoPL/etVyBSQo51VxIK2mvpg9qn/9KI8QgZmmBKL6Mhfuyn/PWSh5vsJj4rcrMMmDqart58P80B61J1zvwf2KGCk22IUT9WttFLGDJRorHTcBhvBc2NkNXBM53BMuYC+Z0Iaj+y8SzBhPT5QNxyYS0Qq5VjiNCvNrUCT0xbAeZiT1jTJ+m/PnWNrCeGOeXcTLNUbQc4Eb9Gm5RNJHCNJhCdr6j7bPMG4TErzgUw2ju0ZfO/OhyIJqoOHO0MhX21hg3wpbCg3JOF0twPbJ8AMg/0QiuiMHvDKzZvdaXkFGR9OlKcE5b/PlL14uKWi+07WOlHRfeQ1+AIKHlUSn2Ob0Rch1m7julvzwfanziBkZdVGfRNSFrFTNJxV3AGM+YBGTQbXwoBNSQVvp9zK/Au7QD8lQSwq6Af3yYwXIfyWUyCNewZCfYbQERLpmd5Lelb3+md9AMGc2frKsSFlEfZ6hdCct4AcNVPjLzZhVS1LF5D3W6tWcDtIpARjjdbs435aVoprRsg="
+        app: cardinalsbeta
+        on:
+          repo: fga-gpp-mds/2018.1-Cardinals
+          branch: release-1
 
-script:
-  - sudo docker-compose -f docker-compose.test.yml run --rm sut
+    - stage: deploy to production
+      install: skip
+      script: skip
+      deploy:
+        provider: heroku
+        api_key:
+          secure: "qj4t6LqUbh4XCybN+3+PKes5NK1/QYr6D56eYrtO+2sx05uLA5Y4yc8FuXgFThlxu+XqHa3ao8iEixju40O3vKZf5J91toONar8npvZ922jf49h0YMAMiM/zBphkY2rspInjVpcS1cvanVVuwj+MO/EIY7ajR1W8nRqnQoPL/etVyBSQo51VxIK2mvpg9qn/9KI8QgZmmBKL6Mhfuyn/PWSh5vsJj4rcrMMmDqart58P80B61J1zvwf2KGCk22IUT9WttFLGDJRorHTcBhvBc2NkNXBM53BMuYC+Z0Iaj+y8SzBhPT5QNxyYS0Qq5VjiNCvNrUCT0xbAeZiT1jTJ+m/PnWNrCeGOeXcTLNUbQc4Eb9Gm5RNJHCNJhCdr6j7bPMG4TErzgUw2ju0ZfO/OhyIJqoOHO0MhX21hg3wpbCg3JOF0twPbJ8AMg/0QiuiMHvDKzZvdaXkFGR9OlKcE5b/PlL14uKWi+07WOlHRfeQ1+AIKHlUSn2Ob0Rch1m7julvzwfanziBkZdVGfRNSFrFTNJxV3AGM+YBGTQbXwoBNSQVvp9zK/Au7QD8lQSwq6Af3yYwXIfyWUyCNewZCfYbQERLpmd5Lelb3+md9AMGc2frKsSFlEfZ6hdCct4AcNVPjLzZhVS1LF5D3W6tWcDtIpARjjdbs435aVoprRsg="
+        app: cardinals
+        on:
+          repo: fga-gpp-mds/2018.1-Cardinals
+          branch: master

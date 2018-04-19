@@ -5,16 +5,18 @@ Gemfile*
 ## DJango
 __pycache__/
 */__pycache__/
-dev/__pycache__/
-pygithub_api_integration/__pycache__/
-falko/__pycache__/
-dev/migrations/__pycache__/
-pygithub_api_integration/migrations/__pycache__/
 *.pyc
 
 ## Coverage
 htmlcov/
-*.coverage
+.coverage
+coverage.xml
 
 ## Mkdocs
 site/
+
+## VSCODE
+.vscode/
+#Docker
+# WARNING: .env file contains sensitive information, keep it on .gitignore.
+.env

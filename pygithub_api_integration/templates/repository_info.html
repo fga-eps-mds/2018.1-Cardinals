@@ -1,0 +1,43 @@
+{% extends "base_index.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="container-index">
+                    <h1>Repositório {{repo.name}}</h1>
+                    <div>
+                        <h2>Contribuidores</h2>
+                        {% for c in contributors %}
+                        <li>{{c.name}} : {{c.login}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="container-index">
+                    <br>
+                    <div>
+                        <a href="{% url 'renderingDocs' %}" type="button" class="btn btn-primary btn-lg">Documentos</a>
+                    </div>
+                    <br>
+                    <div>
+                        <form action="{% url 'getResultIssues' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg">Issues</button>
+                        </form>
+                    </div>
+                    <br>
+                    <div>
+                        <form action="{% url 'getResultCommits' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg">Commits</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
