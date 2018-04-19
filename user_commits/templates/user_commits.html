@@ -43,7 +43,7 @@
                                 {% for q in commits %}
                                 <tr>
                                     <td>{{q.commit.author.name}}</td>
-                                    <td>{{q.commit.author.email}}</td>
+                                    <td>{{q.commit.message}}</td>
                                     <td>{{q.commit.author.date.date}}</td>
                                 </tr>
                                 {% endfor %}
