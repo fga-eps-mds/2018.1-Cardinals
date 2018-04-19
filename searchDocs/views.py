@@ -12,13 +12,28 @@ def renderingDocs(request):
     issueTemplate = getIssueTemplate()
     pullRequestTemplate = getPullRequestTemplate()
     conductFile = getCodeConduct()
+    readme = getReadme()
 
     return render(request, 'searchDocs.html', {'contributingFile': contributingFile,
                                                'licenseFile': licenseFile,
                                                'issueTemplate': issueTemplate,
                                                'pullRequestTemplate': pullRequestTemplate,
-                                               'conductFile' : conductFile
+                                               'conductFile' : conductFile,
+                                               'readme' : readme
                                               })
+
+def getReadme():
+
+    g = Github(username, password)
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
+    try:
+        readme = repo.get_file_contents("README.md")
+    except GithubException:
+        readme =''
+
+    return readme
+
 
 def getContributingFile():
 

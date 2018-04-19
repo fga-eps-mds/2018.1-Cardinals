@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Contribuidores</h1>
-                {% for c in contributors %}
-                <ul>
+                <div class="container-index">
+                    <h1>Contribuidores</h1>
+                    {% for c in contributors %}
                     <li>{{c.name}} : {{c.login}}</li>
-                </ul>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^searchDocs/', include('searchDocs.urls')),
     url(r'^$', include('index.urls'), name='index'),
     url(r'^dev/', include('dev.urls'), name='dev'),
-    url(r'^pyGithub/', include('pygithub_api_integration.urls'))
+    url(r'^pyGithub/', include('pygithub_api_integration.urls')),
+    url(r'^user_commits/', include('user_commits.urls')),
     ]

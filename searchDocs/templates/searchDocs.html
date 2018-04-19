@@ -30,6 +30,12 @@
                 {% else %}
                     <i class="fa fa-times fa-fw"> CODE_OF_CONDUCT.md </i>
                 {% endif %}
+                <h2>Readme</h2>
+                {% if readme.name == 'README.md' %}
+                    <i class="fa fa-check fa-fw">{{readme.name}}</i>
+                {% else %}
+                    <i class="fa fa-times fa-fw"> README.md </i>
+                {% endif %}
             </div>
             <div class="col-lg-8">
                 <h1>Licença utilizada</h1>
