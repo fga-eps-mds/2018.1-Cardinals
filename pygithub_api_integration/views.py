@@ -1,30 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from github import Github
+from github import GithubException as GE
 from index.views import searchRepository
 from oauth.credentials import get_credentials
+from django.contrib import messages
 
 
-username, password = get_credentials()
-repo = '2018.1-Cardinals'
+def getContributors(repo):
+
+    contributors = repo.get_contributors()
+
+    return contributors
 
 
-def getRepo(request):
+def getRepoInfo(request):
 
-    git = Github(username, password)
-    user = git.get_user()
-    repos = user.get_repos()
-
-    return render(request, 'repos.html',
-                  {"repos": repos})
-
-
-def getContributors(request):
+    username, password = get_credentials()
 
     repo_name = searchRepository(request)
 
-    git = Github()
-    repo = git.get_repo(repo_name)
-    contributors = repo.get_contributors()
+    try:
+        git = Github(username, password)
+        repo = git.get_repo(repo_name)
 
-    return render(request, 'contributors.html',
-                  {"contributors": contributors})
+        contributors = getContributors(repo)
+
+        return render(request, 'repository_info.html',
+                      {"repo": repo,
+                       "contributors": contributors})
+
+    except GE:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Insira um repositório válido!'
+        )
+        # message = 'Insira um repositório válido!'
+        return redirect('index')

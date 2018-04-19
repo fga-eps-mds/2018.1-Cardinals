@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'index',
     'dev',
     'pygithub_api_integration',
+    'searchDocs',
+    'user_commits',
+    'issuesRepository',
 ]
 
 MIDDLEWARE = [

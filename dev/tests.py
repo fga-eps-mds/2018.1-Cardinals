@@ -1,7 +1,6 @@
 from django.test import TestCase
 
 
-class TestViews(TestCase):
-
-    def test_template_develops(self):
-        self.assertTemplateUsed('templates/develops.html')
+class TestTemplates(TestCase):
+    def test_template_contributors(self):
+            self.assertTemplateUsed('templates/contributors.html')
