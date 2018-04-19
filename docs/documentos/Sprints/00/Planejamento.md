@@ -1,4 +1,4 @@
-# Planejamento da Sprint 1
+# Planejamento da Sprint 0
 
 **Data de Início:** 05/03/2018
 
