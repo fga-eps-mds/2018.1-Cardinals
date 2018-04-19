@@ -1,6 +1,13 @@
+# Application needs
 Django
 psycopg2-binary
-coverage
 pygithub
+whitenoise
+
+# Deploy
+gunicorn
+
+# Development
 codecov
-mkdocs
+coverage
+flake8

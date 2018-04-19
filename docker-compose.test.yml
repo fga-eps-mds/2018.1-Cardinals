@@ -11,6 +11,8 @@ services:
 
   db:
     image: postgres
+    ports:
+      - "5432"
 
   web:
     build: .
@@ -20,3 +22,4 @@ services:
       - "8000:8000"
     depends_on:
       - db
+
