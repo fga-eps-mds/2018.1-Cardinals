@@ -65,7 +65,7 @@
 <p align = "justify">Como a Sprint teve uma elevada carga em sua pontuação, algumas tarefas vieram a ser terminadas completamente somente no final da sprint devido ao desenvolvimento múltiplo das tarefas.</p>
 
 # 4. Velocity
-<p align = "justify">Devido à alta quantidade de tarefas essa *Sprint* o velocity da equipe ficou em 30 pontos.
+<p align = "justify">Devido à alta quantidade de tarefas essa Sprint o velocity da equipe ficou em 30 pontos.
 
 [Velocity Sprint 2](https://github.com/fga-gpp-mds/2018.1-Cardinals/pulls#reports?report=velocity&milestones:not=3203197,3203199,3216818,3236714,3245388)</p>
 
