@@ -11,6 +11,7 @@ pages:
         - Documento de Arquitetura: documentos/Documento-de-Arquitetura.md
     - Gestão:
         - Termo de Abertura do Projeto: documentos/Termo-de-Abertura-do-Projeto.md
+        - Estrutura Analítica do Projeto: documentos/EAP.md
         - Práticas Ágeis: documentos/Práticas-Ágeis-Adotadas.md
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
     - Roadmaps:
