@@ -1,6 +1,9 @@
 Django
 psycopg2-binary
-coverage
 pygithub
-codecov
 mkdocs
+
+# Analysis tools
+coverage
+codecov
+flake8
