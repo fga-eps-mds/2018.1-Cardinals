@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'searchDocs',
     'user_commits',
     'issuesRepository',
+    'ranking_commiters',
 ]
 
 MIDDLEWARE = [

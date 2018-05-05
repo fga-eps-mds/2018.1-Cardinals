@@ -1,0 +1,18 @@
+{% extends "base_index.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div>
+                   <h2>Ranking Commiters</h2>
+                   {% for u in commits_user %}
+                   <li>{{u.author.name}} : {{u.total}}</li>
+                   {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
