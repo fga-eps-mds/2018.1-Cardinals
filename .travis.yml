@@ -39,6 +39,8 @@ jobs:
       - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
       - sudo docker-compose -f docker-compose.test.yml run --rm sut
+	  after_script:
+	  -sudo docker-compose -f docker-compose.test.yml down
 
     - stage: deploy to staging
       install: skip
