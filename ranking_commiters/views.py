@@ -30,13 +30,17 @@ def getStatsContributors():
     return contributors
 
 
-def getIssuesCreatedFor(contributor):
+def getIssuesCreatedFor(contributor_id):
 
-    issues_created = repo.get_issues(creator=contributor)
+    issues_all = repo.get_issues(state="all")
     num_issues_created = 0
+    index_issue = issues_all[0].number - 1
 
-    for i in issues_created:
-        num_issues_created += 1
+    while index_issue >= 0:
+        if issues_all[index_issue].user.id == contributor_id:
+            num_issues_created += 1
+
+        index_issue -= 1
 
     return num_issues_created
 
