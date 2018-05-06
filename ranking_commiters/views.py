@@ -9,7 +9,7 @@ org = g.get_organization('fga-gpp-mds')
 repo = org.get_repo('2018.1-Cardinals')
 
 
-def rankingCommiters(request):
+def getRankingCommiters(request):
 
     commits_user = repo.get_stats_contributors()
 

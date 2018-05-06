@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^user_commits/', include('user_commits.urls')),
     url(r'^issueRepo/', include('issuesRepository.urls')),
     url(r'^searchDocs/', include('searchDocs.urls')),
+    url(r'^rankingCommiters/', include('ranking_commiters.urls')),
 ]
