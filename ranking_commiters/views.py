@@ -24,7 +24,8 @@ def getStatsContributors():
     stats_contributors = repo.get_stats_contributors()
 
     for sc in stats_contributors:
-        contributors[sc.author.id] = {"name": sc.author.name,
+        contributors[sc.author.id] = {"id": sc.author.id,
+                                      "name": sc.author.name,
                                       "commits": sc.total}
 
     return contributors
@@ -45,15 +46,19 @@ def getIssuesCreatedFor(contributor_id):
     return num_issues_created
 
 
-def getIssuesClosedFor(contributor):
+def getIssuesClosedFor(contributor_id):
 
-    issues_closed = repo.get_issues(state="closed")
+    issues_all = repo.get_issues(state="all")
+    num_issues_closed = 0
+    index_issue = issues_all[0].number - 1
 
-    for i in issues_closed:
-        if i.closed_by == contributor:
-            issues_closed_for_contributor = issues_closed
+    while index_issue >= 0:
+        if issues_all[index_issue].closed_by.id == contributor_id:
+            num_issues_closed += 1
 
-    return issues_closed_for_contributor
+        index_issue -= 1
+
+    return num_issues_closed
 
 
 def scoreContributor():
