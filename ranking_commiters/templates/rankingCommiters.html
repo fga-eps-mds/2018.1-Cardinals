@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-lg-8">
                 <div>
-                   <h2>Ranking Commiters</h2>
-                   {% for rc in rankingCommiters %}
-                   <li>{{rc.nome}} | {{rc.commits}} | {{rc.issues_created}} | {{rc.issues_closed}}</li>
-                   {% endfor %}
+                    <h2>Ranking Commiters</h2>
+                    {% for rc in rankingCommiters %}
+                        <li>{{rc.name}} | commits: {{rc.commits}} | issues criadas: {{rc.issues_created}}</li>
+                    {% endfor %}    
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ repo = org.get_repo('2018.1-Cardinals')
 
 def getRankingCommiters(request):
 
-    rankingCommiters = scoreContributor()
+    rankingCommiters = getStatsContributors()
 
     return render(request, 'rankingCommiters.html',
                   {"rankingCommiters": rankingCommiters})
@@ -19,14 +19,16 @@ def getRankingCommiters(request):
 
 def getStatsContributors():
 
-    contributors = {}
+    contributors = []
 
     stats_contributors = repo.get_stats_contributors()
 
     for sc in stats_contributors:
-        contributors[sc.author.id] = {"id": sc.author.id,
-                                      "name": sc.author.name,
-                                      "commits": sc.total}
+        contributors.append({"id": sc.author.id,
+                             "name": sc.author.name,
+                             "commits": sc.total,
+                             "issues_created": getIssuesCreatedFor(sc.author.id)
+                             })
 
     return contributors
 
@@ -53,24 +55,10 @@ def getIssuesClosedFor(contributor_id):
     index_issue = issues_all[0].number - 1
 
     while index_issue >= 0:
-        if issues_all[index_issue].closed_by.id == contributor_id:
-            num_issues_closed += 1
+        if issues_all[index_issue].state == "closed":
+            if issues_all[index_issue].closed_by.id == contributor_id:
+                num_issues_closed += 1
 
         index_issue -= 1
 
     return num_issues_closed
-
-
-def scoreContributor():
-
-    contributors_ranked = []
-
-    stats_contributors = getStatsContributors()
-
-    for i, sc in stats_contributors:
-        contributors_ranked[i] = {"nome": sc.author.name,
-                                  "commits": sc.total,
-                                  "issues_created": getIssuesCreatedFor(sc.author),
-                                  "issue_closed": getIssuesClosedFor(sc.author)
-                                  }
-    return contributors_ranked
