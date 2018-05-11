@@ -7,8 +7,8 @@
             <div class="col-lg-8">
                 <div>
                     <h2>Ranking Commiters</h2>
-                    {% for rc in rankingCommiters %}
-                        <li>{{rc.name}} | commits: {{rc.commits}} | issues criadas: {{rc.issues_created}}</li>
+                    {% for rc in ranking_commiters %}
+                        <li>{{rc.name}} | score: {{rc.score}} </li>
                     {% endfor %}    
                 </div>
             </div>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from github import Github
 from oauth.credentials import get_credentials
+from operator import itemgetter
 
 username, password = get_credentials()
 
@@ -11,10 +12,19 @@ repo = org.get_repo('2018.1-Cardinals')
 
 def getRankingCommiters(request):
 
-    rankingCommiters = getStatsContributors()
+    commiters = []
+    contributors = getStatsContributors()
+
+    for rc in contributors:
+        commiters.append({"name": contributors["name"],
+                          "score": contributors["commits"] +
+                          contributors["issues_created"] +
+                          contributors["issues_closed"]})
+
+    ranking_commiters = sorted(commiters, key=itemgetter("score"), reverse=True)
 
     return render(request, 'rankingCommiters.html',
-                  {"rankingCommiters": rankingCommiters})
+                  {"ranking_commiters": ranking_commiters})
 
 
 def getStatsContributors():
@@ -24,10 +34,10 @@ def getStatsContributors():
     stats_contributors = repo.get_stats_contributors()
 
     for sc in stats_contributors:
-        contributors.append({"id": sc.author.id,
-                             "name": sc.author.name,
+        contributors.append({"name": sc.author.name,
                              "commits": sc.total,
-                             "issues_created": getIssuesCreatedFor(sc.author.id)
+                             "issues_created": getIssuesCreatedFor(sc.author.id),
+                             "issues_closed": getIssuesClosedFor(sc.author.id)
                              })
 
     return contributors
