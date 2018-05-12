@@ -2,10 +2,12 @@
 
 {% block body %}
 
-<div id="page-wrapper-index">
-    <div class="sidebar-search">
-        <nav class="">Busque um repositório:</nav>
-        <form class="search-repo" >
+<div id="">
+    <div class="">
+            <div class="title-block">
+                <h3 class="title"> Busque um repositório: </h3>
+            </div>
+        <form class="">
             {% csrf_token %}
             <input name="repository" type="search" class="form-control" placeholder="https://github.com/...">
             <span class="input-group-btn">
