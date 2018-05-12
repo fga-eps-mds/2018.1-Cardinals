@@ -1,10 +1,10 @@
-# Planejamento da Sprint 5
+# Planejamento da Sprint 6
 
 **Data de Início:** 16/04/2018
 
 **Data de Término:** 22/04/2018
 
-**Total de Pontos Planejados:** _31_
+**Total de Pontos Planejados:** _48_
 
 
 
@@ -21,6 +21,7 @@
 ## Overview
 | História/Issue | É Dívida Técnica? |
 | -------- | :----: |
+| Iss8 - Estrutura Analítica do Projeto | sim |
 | Iss41 - US05 - Verificar se existe documento de política de contribuição | não |
 | Iss42 - US06 - Verificar existência de documento de informações básicas iniciais (Readme) | não |
 | Iss43 - US07 - Verificar Existência de Issue Template e Pull Request Template | não |
@@ -30,6 +31,9 @@
 | Iss84 - Refatorar EAP, integrar ao /docs | não |
 | Iss96 - Configurar deploy contínuo | não |
 
+### [Iss8 - Estrutura Analítica do Projeto](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/48)
+* **Responsáveis** Equipe de EPS
+* **Pontuação** 5
 
 ### [Iss41 - US05 - Verificar se existe documento de política de contribuição](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/41)
 * **Responsáveis:** Mateus Augusto
@@ -61,4 +65,4 @@
 
 ### [Iss96 - Configurar deploy contínuo](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/96)
 * **Responsáveis:** Marlon e Amanda
-* **Pontuação:** 3
+* **Pontuação:** 13
