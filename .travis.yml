@@ -47,9 +47,9 @@ jobs:
         provider: heroku
         api_key:
           secure: $HEROKU_AUTH_TOKEN
-        app: cardinalstestbeta
+        app: cardinalsbeta
         on:
-          repo: amandabezerra/2018.1-Cardinals
+          repo: fga-gpp-mds/2018.1-Cardinals
           branch: config_ci
 
     - stage: deploy to production
@@ -59,8 +59,8 @@ jobs:
         provider: heroku
         api_key:
           secure: $HEROKU_AUTH_TOKEN
-        app: cardinalstest
+        app: cardinals
         on:
-          repo: amandabezerra/2018.1-Cardinals
+          repo: fga-gpp-mds/2018.1-Cardinals
           branch: master
 
