@@ -1,1 +1,1 @@
-web: bin/start-nginx -c cardinals/settings/gunicorn.py cardinals.wsgi
+web: bin/start-nginx gunicorn cardinals.wsgi
