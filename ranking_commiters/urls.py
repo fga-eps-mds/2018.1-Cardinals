@@ -5,4 +5,8 @@ urlpatterns = [
     url(r'getRankingCommiters/$',
         views.getRankingCommiters,
         name='getRankingCommiters'),
+
+    url(r'getRankingCommitersResult/$',
+        views.getRankingCommitersResult,
+        name='getRankingCommitersResult'),
 ]

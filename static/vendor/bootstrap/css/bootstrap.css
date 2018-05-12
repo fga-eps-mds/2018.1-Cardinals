@@ -4125,6 +4125,13 @@ div.sidebar-search{
   div.sidebar-search{
     width: 80%;
   }
+  .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 200px;
+    margin-bottom: 0;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar-default .navbar-brand,
@@ -4352,13 +4359,6 @@ div.sidebar-search{
   float: none;
   padding-right: 0;
   padding-left: 0;
-}
-.input-group .form-control {
-  position: relative;
-  z-index: 2;
-  float: left;
-  width: 100%;
-  margin-bottom: 0;
 }
 .input-group .form-control:focus {
   z-index: 3;

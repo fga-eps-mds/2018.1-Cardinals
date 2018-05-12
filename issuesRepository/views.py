@@ -2,6 +2,7 @@ from django.shortcuts import render
 from github import Github
 from oauth.credentials import get_credentials
 from datetime import datetime
+
 myRepository = ""
 allIssues = []
 

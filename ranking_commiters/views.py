@@ -11,20 +11,49 @@ repo = org.get_repo('2018.1-Cardinals')
 
 
 def getRankingCommiters(request):
+    return render(request, 'rankCommiters.html')
 
-    commiters = []
-    contributors = getStatsContributors()
 
-    for rc in contributors:
-        commiters.append({"name": contributors["name"],
-                          "score": contributors["commits"] +
-                          contributors["issues_created"] +
-                          contributors["issues_closed"]})
+def getRankingCommitersResult(request):
 
-    ranking_commiters = sorted(commiters, key=itemgetter("score"), reverse=True)
+    if request.method == 'GET':
 
-    return render(request, 'rankingCommiters.html',
-                  {"ranking_commiters": ranking_commiters})
+        commiters = []
+        contributors = getStatsContributors()
+
+        weight_commit = 1
+        weight_issues_created = 1
+        weight_issues_closed = 1
+
+        weight_commit = request.GET['weight_commit']
+        weight_issues_created = request.GET['weight_issues_created']
+        weight_issues_closed = request.GET['weight_issues_closed']
+
+        for rc in contributors:
+            commiters.append({"name": contributors["name"],
+                              "score": contributors["commits"] * weight_commit +
+                              contributors["issues_created"] * weight_issues_created +
+                              contributors["issues_closed"] * weight_issues_closed})
+
+        ranking_commiters = sorted(commiters, key=itemgetter("score"), reverse=True)
+
+        return render(request, 'rankingCommiters.html',
+                      {"ranking_commiters": ranking_commiters})
+
+    elif request.method == 'POST':
+        commiters = []
+        contributors = getStatsContributors()
+
+        for rc in contributors:
+            commiters.append({"name": contributors["name"],
+                              "score": contributors["commits"] +
+                              contributors["issues_created"] +
+                              contributors["issues_closed"]})
+
+        ranking_commiters = sorted(commiters, key=itemgetter("score"), reverse=True)
+
+        return render(request, 'rankingCommiters.html',
+                      {"ranking_commiters": ranking_commiters})
 
 
 def getStatsContributors():

@@ -5,6 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+                <label class="">Busque um repositório:</label>
+                <form role="form" action="{% url 'rankingCommiters' %}" method="GET">
+                    {% csrf_token %}
+                    <input name="weight_commit" type="number" class="form-control" placeholder="Peso dos commits">
+                    <input name="weight_issues_created" type="number" class="form-control" placeholder="Peso das Issues Abertas">
+                    <input name="weight_issues_closed" type="number" class="form-control" placeholder="Peso das Issues Fechadas">
+                    <button type="submit" class="btn btn-primary btn-lg">Inserir Pesos</button>
+                </form>
                 <div>
                     <h2>Ranking Commiters</h2>
                     {% for rc in ranking_commiters %}
