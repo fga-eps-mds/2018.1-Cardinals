@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def searchRepository(request):
+def index(request):
 
     if request.method == 'POST':
         repository = request.POST['repository']

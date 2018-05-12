@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from cardinals import views
 
 urlpatterns = [
-    url(r'^$', include('index.urls'), name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^dev/', include('dev.urls'), name='dev'),
     url(r'^pyGithub/', include('pygithub_api_integration.urls')),
     url(r'^user_commits/', include('user_commits.urls')),
