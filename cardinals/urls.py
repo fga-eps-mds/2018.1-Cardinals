@@ -19,10 +19,10 @@ from django.urls import path
 
 urlpatterns = [
     path('', include('index.urls'), name='index'),
+    path('pyGithub/', include('pygithub_api_integration.urls')),
 
     url(r'^searchDocs/', include('searchDocs.urls')),
     url(r'^dev/', include('dev.urls'), name='dev'),
-    path('pyGithub/', include('pygithub_api_integration.urls')),
     url(r'^user_commits/', include('user_commits.urls')),
     url(r'^issueRepo/', include('issuesRepository.urls')),
 ]
