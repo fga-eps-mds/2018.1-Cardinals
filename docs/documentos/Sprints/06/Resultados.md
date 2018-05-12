@@ -14,12 +14,15 @@
 
 | História / Issue | Concluída? |
 | -------- | :----: |
-| Iss10 - Roadmap | sim |
-| Iss16 - Criar a view para a página inicial do projeto | sim |
-| Iss50 - US12 - Gerar Métricas de commits por período | sim |
-| Iss96 - Configurar deploy contínuo | não |
-| Iss48 - US11 - Obter métricas de Issues abertas e fechadas | não |
-| Iss51 - US13 - Gerar métricas de commits realizados no repositório | não |
+| Iss8 - Estrutura Analítica do Projeto | sim |
+| Iss41 - US05 - Verificar se existe documento de política de contribuição | sim |
+| Iss42 - US06 - Verificar existência de documento de informações básicas iniciais (Readme) | sim |
+| Iss43 - US07 - Verificar Existência de Issue Template e Pull Request Template | sim |
+| Iss44 - US08 - Verificar existência de documento de descrição do projeto | sim |
+| Iss45 - US09 - Verificar existência de arquivo de licença (License) | sim |
+| Iss46 - US10 - Verificar Existência do documento de código de conduta (Code of Conduct) | sim |
+| Iss84 - Refatorar EAP, integrar ao /docs | sim |
+| Iss96 - Configurar deploy contínuo | sim |
 
 ## 1.1 O que foi feito (Completa)?
  * Todas as histórias e ou/ issues planejadas para esta Sprint foram concluídas
@@ -81,18 +84,15 @@
 * Melhorar configurações de ferramentas de cobertura de código e análise estática. 
 
 # 3. Burndown Chart
-![Sprint 05 - Burndown](https://i.imgur.com/D94R99y.png)
-
-<p align = "justify">Como essa Sprint Teve somente uma tarefa completada, ficando as outras como débito, o velocity da equipe ficou em apenas 8 pontos.</p>
-
+![Sprint 06 Burndown](https://i.imgur.com/KZqU9dH.png)
 
 
 # 4. Velocity
-<p align = "justify">Devido à baixa quantidade de tarefas e baixa pontuação da tarefa executada nessa Sprint o velocity da equipe ficou em apenas 24 pontos.
+<p align = "justify">Com a completude de todas as histórias, o velocity da equipe aumentou para 33 pontos.
 
-[Velocity Sprint 5](https://github.com/fga-gpp-mds/2018.1-Cardinals/pulls#reports?report=velocity&milestones:not=3203197,3203199,3203215,3216818,3236714)
+[Velocity Sprint 6](https://github.com/fga-gpp-mds/2018.1-Cardinals/milestones#reports?report=velocity&milestones:not=3291395,3329994,3330006,3341166)
 
 </p>
 
 # 5. Relato do Scrum Master
-<p align = "justify">Nesta Sprint a equipe deixou a desejar pelo fato da entrega da Release 1 estar próxima, porém o projeto continuou evoluindo em suas tarefas.</p>
+<p align = "justify">Nesta Sprint a equipe se comprometeu a fundo para a entrega das histórias e apresentação da Release 1.</p>
