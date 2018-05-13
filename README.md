@@ -10,4 +10,8 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+
+
 Para acessar a documentação referente a este projeto acesse [Documentação Cardinals](https://fga-gpp-mds.github.io/2018.1-Cardinals/).
+
+Para acessar a aplicação em ambiente de homologação acesse [Cardinals](https://cardinalsbeta.herokuapp.com).
