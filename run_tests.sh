@@ -7,14 +7,13 @@ coverage run --source='.' manage.py test
 RESULT=$?
 if [ ${RESULT} != "0" ]; then
 	echo -e "\nOh no, some test failed!"
-	# exit ${RESULT}
-    exit 0
+	exit ${RESULT}
 fi
 
 echo -e "\nGreat, all tests succeed!\n"
 
 coverage report
 
-# codecov -t 4bbc492c-d908-4f02-8595-8a510df37ef3
+codecov -t 4bbc492c-d908-4f02-8595-8a510df37ef3
 
 exit 0

@@ -20,12 +20,15 @@ analyze:
 	CONTAINER_TIMEOUT_SECONDS=1800 codeclimate analyze
 
 analyze-style: 
+	[ ! -z $(docker images -q codeclimate/codeclimate-pep8) ] || docker pull codeclimate/codeclimate-pep8
 	codeclimate analyze -e pep8
 
 analyze-complexity:
+	[ ! -z $(docker images -q codeclimate/codeclimate-radon) ] || docker pull codeclimate/codeclimate-radon
 	codeclimate analyze -e radon
 	
 analyze-sonar:
+	[ ! -z $(docker images -q codeclimate/codeclimate-sonar-python) ] || docker pull codeclimate/codeclimate-sonar-python
 	codeclimate analyze -e sonar-python
 
 analyze-duplication:
