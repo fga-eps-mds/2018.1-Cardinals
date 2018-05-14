@@ -1,11 +1,12 @@
 from django.shortcuts import render
+# from pygithub_api_integration.models import Repository
 
 
 def index(request):
 
     if request.method == 'POST':
-        repository = request.POST['repository']
+        full_name_repo = request.POST['full_name_repo']
 
-        return repository
+        return full_name_repo
 
     return render(request, 'index.html')

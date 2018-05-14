@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dev',
     'pygithub_api_integration',
     'searchDocs',
     'user_commits',

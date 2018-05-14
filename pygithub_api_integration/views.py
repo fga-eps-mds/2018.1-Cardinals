@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from github import Github
+# from github import Github
 from github import GithubException as GE
 from cardinals.views import index
-from oauth.credentials import get_credentials
+# from oauth.credentials import get_credentials
 from django.contrib import messages
 
 
@@ -15,13 +15,13 @@ def getContributors(repo):
 
 def getRepoInfo(request):
 
-    username, password = get_credentials()
+    # username, password = get_credentials()
 
     repo_name = index(request)
 
     try:
-        git = Github(username, password)
-        repo = git.get_repo(repo_name)
+        # git = Github(username, password)
+        # repo = git.get_repo(repo_name)
 
         contributors = getContributors(repo)
 

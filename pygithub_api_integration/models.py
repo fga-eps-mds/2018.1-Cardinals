@@ -3,6 +3,7 @@ from django.db import models
 
 class Repository(models.Model):
 
+    # id = models.BigAutoField(primary_key=True)
     full_name = models.CharField(primary_key=True, max_length=255)
     name = models.CharField(max_length=255, null=False)
 
@@ -19,7 +20,8 @@ class Contributor(models.Model):
     id = models.BigIntegerField(primary_key=True)
     username = models.CharField(max_length=255, null=False)
     repositories = models.ManyToManyField(Repository)
-    commits = models.ManyToManyField(Commit)
+    score = models.IntegerField()
+    # commits = models.ManyToManyField(Commit)
 
 
 class ContributingWeek(models.Model):

@@ -65,6 +65,7 @@ def getStatsContributors():
     for sc in stats_contributors:
         contributors.append({"name": sc.author.name,
                              "commits": sc.total,
+                             "line_code": getLineCode(sc),
                              "issues_created": getIssuesCreatedFor(sc.author.id),
                              "issues_closed": getIssuesClosedFor(sc.author.id)
                              })
@@ -72,17 +73,25 @@ def getStatsContributors():
     return contributors
 
 
+def getLineCode(contributors):
+
+    line_code = 0
+    weeks = contributors.weeks
+
+    for week in weeks:
+        line_code += weeks.a - weeks.d
+
+    return line_code
+
+
 def getIssuesCreatedFor(contributor_id):
 
     issues_all = repo.get_issues(state="all")
     num_issues_created = 0
-    index_issue = issues_all[0].number - 1
 
-    while index_issue >= 0:
-        if issues_all[index_issue].user.id == contributor_id:
+    for issue in issues_all:
+        if issue.user.id == contributor_id:
             num_issues_created += 1
-
-        index_issue -= 1
 
     return num_issues_created
 
@@ -91,13 +100,10 @@ def getIssuesClosedFor(contributor_id):
 
     issues_all = repo.get_issues(state="all")
     num_issues_closed = 0
-    index_issue = issues_all[0].number - 1
 
-    while index_issue >= 0:
-        if issues_all[index_issue].state == "closed":
-            if issues_all[index_issue].closed_by.id == contributor_id:
+    for issue in issues_all:
+        if issue.state == "closed":
+            if issue.closed_by.id == contributor_id:
                 num_issues_closed += 1
-
-        index_issue -= 1
 
     return num_issues_closed
