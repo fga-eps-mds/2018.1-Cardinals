@@ -20,9 +20,10 @@ from django.urls import path
 urlpatterns = [
     path('', include('index.urls'), name='index'),
     path('pyGithub/', include('pygithub_api_integration.urls')),
+    path('dev/', include('dev.urls'), name='dev'),
+    path('issueRepo/', include('issuesRepository.urls')),
+    path('searchDocs/', include('searchDocs.urls')),
 
-    url(r'^searchDocs/', include('searchDocs.urls')),
-    url(r'^dev/', include('dev.urls'), name='dev'),
     url(r'^user_commits/', include('user_commits.urls')),
-    url(r'^issueRepo/', include('issuesRepository.urls')),
+   
 ]
