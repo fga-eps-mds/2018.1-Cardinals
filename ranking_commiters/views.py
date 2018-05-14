@@ -22,16 +22,19 @@ def getRankingCommitersResult(request):
         contributors = getStatsContributors()
 
         weight_commit = 1
+        weight_line_code = 1
         weight_issues_created = 1
         weight_issues_closed = 1
 
         weight_commit = request.GET['weight_commit']
+        weight_line_code = request.GET['weight_line_code']
         weight_issues_created = request.GET['weight_issues_created']
         weight_issues_closed = request.GET['weight_issues_closed']
 
         for rc in contributors:
             commiters.append({"name": contributors["name"],
                               "score": contributors["commits"] * weight_commit +
+                              contributors["line_code"] * weight_line_code +
                               contributors["issues_created"] * weight_issues_created +
                               contributors["issues_closed"] * weight_issues_closed})
 
@@ -47,6 +50,7 @@ def getRankingCommitersResult(request):
         for rc in contributors:
             commiters.append({"name": contributors["name"],
                               "score": contributors["commits"] +
+                              contributors["line_code"] +
                               contributors["issues_created"] +
                               contributors["issues_closed"]})
 
