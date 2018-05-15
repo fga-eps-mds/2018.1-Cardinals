@@ -1,0 +1,17 @@
+[
+  {
+    "model" : "pygithub_api_integration.Repository",
+    "pk":1,
+    "fields": {
+      "name":"2018.1-Cardinals" 
+    }
+  },
+  {
+    "model" : "pygithub_api_integration.Contributor",
+    "pk":1,
+    "fields": {
+      "name":"Amanda",
+      "repository":"2018.1-Cardinals"
+    }
+  }
+]

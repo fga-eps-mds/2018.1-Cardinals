@@ -18,8 +18,12 @@ class Commit(models.Model):
 class Contributor(models.Model):
 
     id = models.BigIntegerField(primary_key=True)
-    username = models.CharField(max_length=255, null=False)
+    username = models.CharField(max_length=255)
     repositories = models.ManyToManyField(Repository)
+    commits = models.IntegerField()
+    line_code = models.IntegerField()
+    issues_created = models.IntegerField()
+    issues_closed = models.IntegerField()
     score = models.IntegerField()
     # commits = models.ManyToManyField(Commit)
 
