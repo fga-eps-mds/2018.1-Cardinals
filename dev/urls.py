@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from dev import views
 
 
 urlpatterns = [
-    url(r'getContributors/$', views.getContributors, name='getContributors')
+    path('getContributors/', views.getContributors, name='getContributors')
 ]

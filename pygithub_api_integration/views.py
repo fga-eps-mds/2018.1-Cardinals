@@ -17,7 +17,7 @@ def getRepoInfo(request):
 
     username, password = get_credentials()
 
-    repo_name = searchRepository(request)
+    repo_name = (searchRepository(request).content).decode('utf-8')
 
     try:
         git = Github(username, password)

@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from user_commits import views
 
 urlpatterns = [
-    url(r'getCommits/$', views.getCommits, name='getCommits'),
-    url(r'getResultCommits/$', views.getResultCommits, name='getResultCommits')
+    path('getCommits/', views.getCommits, name='getCommits'),
+    path('getResultCommits/', views.getResultCommits, name='getResultCommits')
 ]
