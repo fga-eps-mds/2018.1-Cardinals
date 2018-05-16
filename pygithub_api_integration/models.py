@@ -3,8 +3,8 @@ from django.db import models
 
 class Repository(models.Model):
 
-    # id = models.BigAutoField(primary_key=True)
-    full_name = models.CharField(primary_key=True, max_length=255)
+    id = models.AutoField(primary_key=True)
+    full_name = models.CharField(max_length=255, null=False)
     name = models.CharField(max_length=255, null=False)
 
 
@@ -19,12 +19,12 @@ class Contributor(models.Model):
 
     id = models.BigIntegerField(primary_key=True)
     username = models.CharField(max_length=255)
-    repositories = models.ManyToManyField(Repository)
     commits = models.IntegerField()
     line_code = models.IntegerField()
     issues_created = models.IntegerField()
     issues_closed = models.IntegerField()
     score = models.IntegerField()
+    # repository = models.ManyToManyField(Repository)
     # commits = models.ManyToManyField(Commit)
 
 
