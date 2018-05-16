@@ -6,14 +6,13 @@ class RepoInfoTests(TestCase):
 
     def test_get_repo_name(self):
 
+        organization = 'fga-gpp-mds'
         repo_name = '2018.1-Cardinals'
+        repo_path = organization + '/' + repo_name
+
         url = reverse('getRepoInfo')
 
-        response = self.client.post(url, {'repository': repo_name})
-
-        print('\n\n\n')
-        print('DEBUG')
-        print(response.context['repo'].name)
+        response =  self.client.post(url, {'repository': repo_path})
 
         response_repo_name = response.context['repo'].name
 
