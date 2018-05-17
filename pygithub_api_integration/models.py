@@ -23,7 +23,7 @@ class Contributor(models.Model):
     line_code = models.IntegerField()
     issues_created = models.IntegerField()
     issues_closed = models.IntegerField()
-    score = models.IntegerField()
+    score = models.DecimalField(max_digits=9, decimal_places=2)
     # repository = models.ManyToManyField(Repository)
     # commits = models.ManyToManyField(Commit)
 
