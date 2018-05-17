@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <label class="">Busque um repositório:</label>
-                <form role="form" action="{% url 'rankingCommiters' %}" method="GET">
+                <form role="form" action="{% url 'rankingCommitersResult' %}" method="GET">
                     {% csrf_token %}
                     <input name="weight_commit" type="number" class="form-control" placeholder="Peso dos commits">
                     <input name="weight_issues_created" type="number" class="form-control" placeholder="Peso das Issues Abertas">
@@ -16,7 +16,7 @@
                 <div>
                     <h2>Ranking Commiters</h2>
                     {% for rc in ranking_commiters %}
-                        <li>{{rc.name}} | score: {{rc.score}} </li>
+                        <li>{{rc.username}} | score: {{rc.score}} </li>
                     {% endfor %}    
                 </div>
             </div>

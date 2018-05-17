@@ -8,11 +8,11 @@ class Repository(models.Model):
     name = models.CharField(max_length=255, null=False)
 
 
-class Commit(models.Model):
-    id = models.BigIntegerField(primary_key=True)
-    created_at = models.DateTimeField()
-    id_repository = models.ForeignKey('Repository',
-                                      on_delete=models.CASCADE)
+# class Commit(models.Model):
+#     id = models.BigIntegerField(primary_key=True)
+#     created_at = models.DateTimeField()
+#     id_repository = models.ForeignKey('Repository',
+#                                       on_delete=models.CASCADE)
 
 
 class Contributor(models.Model):
@@ -27,22 +27,33 @@ class Contributor(models.Model):
     # repository = models.ManyToManyField(Repository)
     # commits = models.ManyToManyField(Commit)
 
+    def getStatsContributors():
 
-class ContributingWeek(models.Model):
+        contributors = Contributor.objects.all()
+        score = 0
+        for contributor in contributors:
+            contributor.score = float(contributor.issues_created + 
+                                      contributor.issues_closed +
+                                      contributor.commits +
+                                      contributor.line_code)        
 
-    line_add = models.IntegerField()
-    line_deletion = models.IntegerField()
-    total_commits = models.IntegerField()
-    id_contributor = models.ForeignKey('Contributor',
-                                       on_delete=models.CASCADE)
+        return contributors
+
+# class ContributingWeek(models.Model):
+
+#     line_add = models.IntegerField()
+#     line_deletion = models.IntegerField()
+#     total_commits = models.IntegerField()
+#     id_contributor = models.ForeignKey('Contributor',
+#                                        on_delete=models.CASCADE)
 
 
-class Issue(models.Model):
-    id = models.BigIntegerField(primary_key=True)
-    created_by = models.BigIntegerField()  # ID of creator contributor
-    closed_by = models.BigIntegerField()  # ID of closing contributor
-    is_closed = models.BooleanField(default=False)
-    created_at = models.DateTimeField()
-    closed_at = models.DateTimeField()
-    id_repository = models.ForeignKey('Repository',
-                                      on_delete=models.CASCADE)
+# class Issue(models.Model):
+#     id = models.BigIntegerField(primary_key=True)
+#     created_by = models.BigIntegerField()  # ID of creator contributor
+#     closed_by = models.BigIntegerField()  # ID of closing contributor
+#     is_closed = models.BooleanField(default=False)
+#     created_at = models.DateTimeField()
+#     closed_at = models.DateTimeField()
+#     id_repository = models.ForeignKey('Repository',
+#                                       on_delete=models.CASCADE)

@@ -37,10 +37,7 @@
                     </div>
                     <br>
                     <div>
-                        <form action="{% url 'getRankingCommitersResult' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg">Ranking Commiters</button>
-                        </form>
+                        <a href="{% url 'getRankingCommitersResult' %}" type="button" class="btn btn-primary btn-lg">Ranking Commiters</a>
                     </div> 
                 </div>
             </div>
