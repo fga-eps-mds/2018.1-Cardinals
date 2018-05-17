@@ -1,0 +1,5 @@
+coverage:
+  status:
+    project:
+      tests:
+        target: 60%  # Minimum coverage ratio that the commit must meet to be considered a success.

@@ -2,12 +2,13 @@
 Django
 psycopg2-binary
 pygithub
+
+# Analysis tools
+coverage
+codecov
 whitenoise
+flake8
+mkdocs
 
 # Deploy
 gunicorn
-
-# Development
-codecov
-coverage
-flake8
