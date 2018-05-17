@@ -24,10 +24,9 @@ def getRepoInfo(request):
         repo = git.get_repo(repo_name)
 
         contributors = getContributors(repo)
+        context = {"repo": repo, "contributors": contributors}
 
-        return render(request, 'repository_info.html',
-                      {"repo": repo,
-                       "contributors": contributors})
+        return render(request, 'repository_info.html', context)
 
     except GE:
         messages.add_message(
