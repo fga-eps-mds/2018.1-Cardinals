@@ -31,19 +31,22 @@ class RepoInfoTests(TestCase):
 
     def test_get_contributors(self):
 
-        contributor = 'Amanda Bezerra'
-        login = 'amandabezerra'
-        contributor_name = contributor + ':' + login
+        organization = 'fga-gpp-mds'
+        repo_name = '2018.1-Cardinals'
+        repo_path = organization + '/' + repo_name
 
-        url = reverse('getContributors')
-        content = {'contributors': contributor_name}
-
-        response = self.client.post(url, content)
-
-        #response_contributor_name = response.context['contributors'].name.login
+        url = reverse('getRepoInfo')
+        content = {'repository': repo_path}
+        response =  self.client.post(url, content)
 
         contributors =  response.context['contributors']
-        print(contributors)
 
-        self.assertEquals(True, False)
+        contributors_login_expected = ['amandabezerra', 'Mateusas3s', 'marlonbymendes', 'daluzguilherme',
+                                       'gustavoduartemoreira', 'matheusgomesf', 'jpmartins201', 'lorryaze',
+                                       'lucasca73', 'victorcmoura', 'MiguelNery']
+
+        contributors_login_expected = set(contributors_login_expected)
+        contributors_login = set([contributor.login for contributor in contributors])
+
+        self.assertEquals(contributors_login, contributors_login_expected)
 
