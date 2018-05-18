@@ -13,7 +13,24 @@ repo = org.get_repo('2018.1-Cardinals')
 
 def getRankingCommitersResult(request):
 
-    commiters = Contributor.getStatsContributors()
+    if request.method == 'GET':
+
+        commiters = Contributor.getStatsContributors()
+
+    elif request.method == 'POST':
+
+        weight = {"commit": 1,
+                  "line_code": 1,
+                  "issues_created": 1,
+                  "issues_closed": 1}
+
+        weight.commit = request.GET['weight_commit']
+        weight.line_code = request.GET['weight_line_code']
+        weight.issues_created = request.GET['weight_issues_created']
+        weight.issues_closed = request.GET['weight_issues_closed']
+
+        commiters = Contributor.getStatsContributors(weight)
+
     ranking_commiters = sorted(commiters,
                                key=attrgetter('score'),
                                reverse=True)

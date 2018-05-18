@@ -42,19 +42,28 @@ class Contributor(models.Model):
 
         return percent
 
-    def getStatsContributors():
+    def getStatsContributors(weight=None):
 
         contributors = Contributor.objects.all()
 
         line_code_repo = Contributor.getLineCodeRepo(contributors)
 
-        for contributor in contributors:
-            contributor.score = float(contributor.issues_created +
-                                      contributor.issues_closed +
-                                      contributor.commits +
-                                      Contributor.getPercent(contributor.line_code,
-                                                             line_code_repo))
-            contributor.save()
+        if weight is None:
+            for contributor in contributors:
+                contributor.score = float(contributor.commits +
+                                          Contributor.getPercent(contributor.line_code,
+                                                                 line_code_repo) +
+                                          contributor.issues_created +
+                                          contributor.issues_closed)
+                contributor.save()
+        else:
+            for contributor in contributors:
+                contributor.score = float(contributor.commits*weight.commits +
+                                          Contributor.getPercent(contributor.line_code,
+                                                                 line_code_repo)*weight.line_code +
+                                          contributor.issues_created*weight.issues_created +
+                                          contributor.issues_closed)*weight.issues_closed
+                contributor.save()
 
         contributors = Contributor.objects.all()
 
