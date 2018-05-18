@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from github import Github
 from oauth.credentials import get_credentials
-from operator import itemgetter
+from operator import attrgetter
 from pygithub_api_integration.models import Contributor
 
 username, password = get_credentials()
@@ -11,18 +11,16 @@ org = g.get_organization('fga-gpp-mds')
 repo = org.get_repo('2018.1-Cardinals')
 
 
-def getRankingCommiters(request):
-    return render(request, 'rankCommiters.html')
-
-
 def getRankingCommitersResult(request):
 
+    commiters = Contributor.getStatsContributors()
+    ranking_commiters = sorted(commiters,
+                               key=attrgetter('score'),
+                               reverse=True)
 
-     ranking_commiters  = Contributor.getStatsContributors()
-     # sorted(contributors, key=itemgetter("score"), reverse=True)
-     return render(request, 'rankingCommiters.html',{"ranking_commiters": ranking_commiters})
-    
-    
+    return render(request, 'rankingCommiters.html',
+                  {"ranking_commiters": ranking_commiters})
+
     # if request.method == 'GET':
 
     #     commiters = []

@@ -35,5 +35,4 @@ def getRepoInfo(request):
             messages.ERROR,
             'Insira um repositório válido!'
         )
-        # message = 'Insira um repositório válido!'
         return redirect('index')

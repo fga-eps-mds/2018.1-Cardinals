@@ -30,12 +30,12 @@ class Contributor(models.Model):
     def getStatsContributors():
 
         contributors = Contributor.objects.all()
-        score = 0
+
         for contributor in contributors:
-            contributor.score = float(contributor.issues_created + 
+            contributor.score = float(contributor.issues_created +
                                       contributor.issues_closed +
                                       contributor.commits +
-                                      contributor.line_code)        
+                                      contributor.line_code / 50)
 
         return contributors
 
