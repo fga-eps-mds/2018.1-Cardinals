@@ -18,5 +18,9 @@ site/
 ## VSCODE
 .vscode/
 #Docker
+
+#Pycharm
+.idea/
+
 # WARNING: .env file contains sensitive information, keep it on .gitignore.
 .env
