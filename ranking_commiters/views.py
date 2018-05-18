@@ -19,15 +19,12 @@ def getRankingCommitersResult(request):
 
     elif request.method == 'POST':
 
-        weight = {"commit": 1,
-                  "line_code": 1,
-                  "issues_created": 1,
-                  "issues_closed": 1}
+        weight = {}
 
-        weight.commit = request.GET['weight_commit']
-        weight.line_code = request.GET['weight_line_code']
-        weight.issues_created = request.GET['weight_issues_created']
-        weight.issues_closed = request.GET['weight_issues_closed']
+        weight["commit"] = request.POST['weight_commit']
+        weight["line_code"] = request.POST['weight_line_code']
+        weight["issues_created"] = request.POST['weight_issues_created']
+        weight["issues_closed"] = request.POST['weight_issues_closed']
 
         commiters = Contributor.getStatsContributors(weight)
 

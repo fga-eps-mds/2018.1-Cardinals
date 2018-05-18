@@ -50,22 +50,17 @@ class Contributor(models.Model):
 
         if weight is None:
             for contributor in contributors:
-                contributor.score = float(contributor.commits +
-                                          Contributor.getPercent(contributor.line_code,
-                                                                 line_code_repo) +
-                                          contributor.issues_created +
-                                          contributor.issues_closed)
+                contributor.score = round(float(contributor.commits +
+                                                Contributor.getPercent(contributor.line_code, line_code_repo) +
+                                                contributor.issues_created +
+                                                contributor.issues_closed), 2)
                 contributor.save()
         else:
             for contributor in contributors:
-                contributor.score = float(contributor.commits*weight.commits +
-                                          Contributor.getPercent(contributor.line_code,
-                                                                 line_code_repo)*weight.line_code +
-                                          contributor.issues_created*weight.issues_created +
-                                          contributor.issues_closed)*weight.issues_closed
-                contributor.save()
-
-        contributors = Contributor.objects.all()
+                contributor.score = round(float(contributor.commits * int(weight["commit"]) +
+                                                Contributor.getPercent(contributor.line_code, line_code_repo) * int(weight["line_code"]) +
+                                                contributor.issues_created * int(weight["issues_created"]) +
+                                                contributor.issues_closed * int(weight["issues_closed"])), 2)
 
         return contributors
 
