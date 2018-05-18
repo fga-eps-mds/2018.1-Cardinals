@@ -49,8 +49,6 @@ def getRankingCommitersResult(request):
     #                   {"ranking_commiters": ranking_commiters})
 
 
-
-
 # def getStatsContributors():
 
 #     contributors = []

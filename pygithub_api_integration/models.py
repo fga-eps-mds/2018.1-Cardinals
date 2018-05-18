@@ -27,17 +27,39 @@ class Contributor(models.Model):
     # repository = models.ManyToManyField(Repository)
     # commits = models.ManyToManyField(Commit)
 
+    def getLineCodeRepo(contributors):
+
+        line_code_repo = 0
+
+        for contributor in contributors:
+            line_code_repo += contributor.line_code
+
+        return line_code_repo
+
+    def getPercent(line_code, line_code_repo):
+
+        percent = (line_code*100)/line_code_repo
+
+        return percent
+
     def getStatsContributors():
 
         contributors = Contributor.objects.all()
+
+        line_code_repo = Contributor.getLineCodeRepo(contributors)
 
         for contributor in contributors:
             contributor.score = float(contributor.issues_created +
                                       contributor.issues_closed +
                                       contributor.commits +
-                                      contributor.line_code / 50)
+                                      Contributor.getPercent(contributor.line_code,
+                                                             line_code_repo))
+            contributor.save()
+
+        contributors = Contributor.objects.all()
 
         return contributors
+
 
 # class ContributingWeek(models.Model):
 
