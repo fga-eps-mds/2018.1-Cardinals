@@ -4,6 +4,7 @@ from github import GithubException as GE
 from index.views import searchRepository
 from oauth.credentials import get_credentials
 from django.contrib import messages
+from . import constants
 
 
 def getContributors(repo):
@@ -32,7 +33,7 @@ def getRepoInfo(request):
         messages.add_message(
             request,
             messages.ERROR,
-            'Insira um repositório válido!'
+            constants.INVALID_REPOSITORY_MESSAGE,
         )
         # message = 'Insira um repositório válido!'
         return redirect('index')

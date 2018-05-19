@@ -1,34 +1,34 @@
 from django.test import TestCase
 from django.urls import reverse
-# Create your tests here.
+
+from . import constants
+
 
 class RepoInfoTests(TestCase):
+    organization = 'fga-gpp-mds'
+    repo_name = '2018.1-Cardinals'
+    repo_path = organization + '/' + repo_name
+
+    def make_client_request(self, repo_path = None):
+        url = reverse('getRepoInfo')
+
+        if repo_path is None:
+            repo_path = RepoInfoTests.repo_path
+
+        content = {'repository': repo_path}
+        response = self.client.post(url, content)
+        return response
 
 
     def test_get_repo_name(self):
-
-        organization = 'fga-gpp-mds'
-        repo_name = '2018.1-Cardinals'
-        repo_path = organization + '/' + repo_name
-
-        url = reverse('getRepoInfo')
-        content = {'repository': repo_path}
-
-        response =  self.client.post(url, content)
-        
+        response = self.make_client_request()
         response_repo_name = response.context['repo'].name
-        
-        self.assertEquals(repo_name, response_repo_name)
+
+        self.assertEquals(RepoInfoTests.repo_name, response_repo_name)
 
 
     def test_get_contributors_name(self):
-        organization = 'fga-gpp-mds'
-        repo_name = '2018.1-Cardinals'
-        repo_path = organization + '/' + repo_name
-
-        url = reverse('getRepoInfo')
-        content = {'repository': repo_path}
-        response = self.client.post(url, content)
+        response = self.make_client_request()
 
         contributors = response.context['contributors']
 
@@ -44,14 +44,7 @@ class RepoInfoTests(TestCase):
 
 
     def test_get_contributors_login(self):
-
-        organization = 'fga-gpp-mds'
-        repo_name = '2018.1-Cardinals'
-        repo_path = organization + '/' + repo_name
-
-        url = reverse('getRepoInfo')
-        content = {'repository': repo_path}
-        response =  self.client.post(url, content)
+        response =  self.make_client_request()
 
         contributors =  response.context['contributors']
 
@@ -65,4 +58,10 @@ class RepoInfoTests(TestCase):
 
         self.assertEquals(contributors_login, contributors_login_expected)
 
+    def test_invalid_repository_name(self):
+        invalid_repo_path = 'just/a/long/url/to/make/sure/it/is/not/found/on/github/dot/com/9817231285103'
+        response = self.make_client_request(invalid_repo_path)
 
+        messages = [message.message for message in response.context['messages']]
+
+        self.assertTrue(constants.INVALID_REPOSITORY_MESSAGE in messages)
