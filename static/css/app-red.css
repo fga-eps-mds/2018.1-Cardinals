@@ -1741,7 +1741,7 @@ span a {
   margin-bottom: 0; }
 
 .header {
-  background-color: #d7dde4;
+  background-color: #3C3542 !important;
   height: 70px;
   position: absolute;
   left: 240px;
@@ -1772,7 +1772,7 @@ span a {
       padding: 5px; } }
 
 .sidebar {
-  background-color: #3a4651;
+  background-color:#3C3542 !important;
   width: 240px;
   padding-bottom: 60px;
   position: absolute;
@@ -1799,7 +1799,7 @@ span a {
     overflow-y: auto;
     overflow-x: hidden; }
     .sidebar .sidebar-container::-webkit-scrollbar-track {
-      background-color: #2c353e; }
+      background-color: #3C3542; }
   .sidebar .label {
     font-size: .75em;
     display: inline-block;
@@ -1835,7 +1835,7 @@ span a {
     .sidebar .sidebar-menu li.open > a,
     .sidebar .sidebar-menu li.open a:hover {
       color: #ffffff;
-      background-color: #2d363f; }
+      background-color: #3C3542; }
     .sidebar .sidebar-menu .arrow {
       float: right;
       font-size: 18px;
@@ -2581,7 +2581,7 @@ span a {
   margin-right: auto;
   white-space: nowrap; }
   .header .header-block-buttons .btn.header-btn {
-    background-color: transparent;
+    background-color: #3C3542;
     border: 1px solid #64798d;
     color: #64798d;
     margin: 0 5px;

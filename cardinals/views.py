@@ -1,10 +1,9 @@
 from django.shortcuts import render
 
-
-def getReposytory(request):
+def getRepository(request):
     repository = request.POST['repository']
 
-    return render(request, 'index.html')
+    return repository
 
 def index(request):
     return render(request, 'index.html')

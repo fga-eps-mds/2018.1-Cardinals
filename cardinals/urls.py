@@ -18,5 +18,6 @@ from cardinals import views
 
 urlpatterns = [
     url(r'^searchDocs/', include('searchDocs.urls')),
+    url(r'^users/', include('users.urls')),
     url(r'^$', views.index, name='index'),
 ]
