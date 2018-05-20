@@ -1,100 +1,49 @@
-from django.test import TestCase
+from test_utils.setup_test_cases import SetupTestCases
 from django.urls import reverse
 
-# Create your tests here.
-class SearchDocsTests(TestCase):
 
-   def test_ContributingFile(self):
+class SearchDocsTests(SetupTestCases):
 
-       organization = 'fga-gpp-mds'
-       repo_name = '2018.1-Cardinals'
-       repo_path = organization + '/' + repo_name
+    url = reverse('renderingDocs')
 
-       url = reverse('renderingDocs')
-       content = {'repository': repo_path}
+    def request_file_name(self, context_name):
+        response = self.client.get(SearchDocsTests.url)
+        file = response.context[context_name]
+        file_name = None
+        if file is not None:
+            file_name = file.name
+        return file_name
 
-       response = self.client.post(url, content)
+    def assert_file_name(self, context_name, expected_name):
+        response_file_name = self.request_file_name(context_name)
+        self.assertEquals(response_file_name, expected_name)
 
-       contributing = response.context['contributingFile']
+    def test_repo_without_contributing_file(self):
+        file_context = 'contributingFile'
+        expected_name = None
+        self.assert_file_name(file_context, expected_name)
 
-       file_expected = ['CONTRIBUTING.md']
-       file = [contributing.name]
+    def test_repo_with_issues_template(self):
+        file_context = 'issueTemplate'
+        expected_name = 'ISSUE_TEMPLATE.md'
+        self.assert_file_name(file_context, expected_name)
 
-       self.assertEquals(file_expected, file, True)
-       self.assertNotEqual(file_expected, file, False)
-    
-    def test_IssueTemplate(self):
+    def test_repo_with_pull_request_template(self):
+        file_context = 'pullRequestTemplate'
+        expected_name = 'PULL_REQUEST_TEMPLATE.md'
+        self.assert_file_name(file_context, expected_name)
 
-       organization = 'fga-gpp-mds'
-       repo_name = '2018.1-Cardinals'
-       repo_path = organization + '/' + repo_name
+    def test_repo_without_code_of_conduct(self):
+        file_context = 'conductFile'
+        expected_name = 'CODE_OF_CONDUCT.md'
+        self.assert_file_name(file_context, expected_name)
 
-       url = reverse('renderingDocs')
-       content = {'repository': repo_path}
+    def test_repo_with_readme(self):
+        file_context = 'readme'
+        expected_name = 'README.md'
+        self.assert_file_name(file_context, expected_name)
 
-       response = self.client.post(url, content)
-
-       issuetemplate = response.context['issueTemplate']
-
-       file_expected = ['ISSUE_TEMPLATE.md']
-
-       file = [issuetemplate.name]
-
-       self.assertEquals(file_expected, file)
-
-   def test_PullRequestTemplate(self):
-
-       organization = 'fga-gpp-mds'
-       repo_name = '2018.1-Cardinals'
-       repo_path = organization + '/' + repo_name
-
-       url = reverse('renderingDocs')
-       content = {'repository': repo_path}
-
-       response = self.client.post(url, content)
-
-       prtemplate = response.context['pullRequestTemplate']
-
-       file_expected = ['PULL_REQUEST_TEMPLATE.md']
-
-       file = [prtemplate.name]
-
-       self.assertEquals(file_expected, file)
-
-   def test_ConductFile(self):
-
-       organization = 'fga-gpp-mds'
-       repo_name = '2018.1-Cardinals'
-       repo_path = organization + '/' + repo_name
-
-       url = reverse('renderingDocs')
-       content = {'repository': repo_path}
-
-       response = self.client.post(url, content)
-
-       conductfile = response.context['conductFile']
-
-       file_expected = ['CODE_OF_CONDUCT.md']
-
-       file = [conductfile.name]
-
-       self.assertEquals(file_expected, file)
-
-   def test_Readme(self):
-
-       organization = 'fga-gpp-mds'
-       repo_name = '2018.1-Cardinals'
-       repo_path = organization + '/' + repo_name
-
-       url = reverse('renderingDocs')
-       content = {'repository': repo_path}
-
-       response = self.client.post(url, content)
-
-       readmefile = response.context['readme']
-
-       file_expected = ['README.md']
-
-       file = [readmefile.name]
-
-       self.assertEquals(file_expected, file)
+    def test_repo_with_license(self):
+        file_context = 'linceseFile'
+        expected_name = 'LICENSE'
+        self.assert_file_name(file_context, expected_name)

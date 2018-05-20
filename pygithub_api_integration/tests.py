@@ -1,34 +1,21 @@
-from django.test import TestCase
-from django.urls import reverse
+from test_utils.setup_test_cases import SetupTestCases
 
 from . import constants
 
 
-class RepoInfoTests(TestCase):
-    organization = 'fga-gpp-mds'
-    repo_name = '2018.1-Cardinals'
-    repo_path = organization + '/' + repo_name
+class RepoInfoTests(SetupTestCases):
 
-    def make_client_request(self, repo_path = None):
-        url = reverse('getRepoInfo')
-
-        if repo_path is None:
-            repo_path = RepoInfoTests.repo_path
-
-        content = {'repository': repo_path}
-        response = self.client.post(url, content)
-        return response
-
+    url_name = 'getRepoInfo'
 
     def test_get_repo_name(self):
-        response = self.make_client_request()
+        response = self.make_client_request(RepoInfoTests.url_name)
         response_repo_name = response.context['repo'].name
 
-        self.assertEquals(RepoInfoTests.repo_name, response_repo_name)
+        self.assertEquals(SetupTestCases .repo_name, response_repo_name)
 
 
     def test_get_contributors_name(self):
-        response = self.make_client_request()
+        response = self.make_client_request(RepoInfoTests.url_name)
 
         contributors = response.context['contributors']
 
@@ -44,7 +31,7 @@ class RepoInfoTests(TestCase):
 
 
     def test_get_contributors_login(self):
-        response =  self.make_client_request()
+        response = self.make_client_request(RepoInfoTests.url_name)
 
         contributors =  response.context['contributors']
 
@@ -60,7 +47,7 @@ class RepoInfoTests(TestCase):
 
     def test_invalid_repository_name(self):
         invalid_repo_path = 'just/a/long/url/to/make/sure/it/is/not/found/on/github/dot/com/9817231285103'
-        response = self.make_client_request(invalid_repo_path)
+        response = self.make_client_request(RepoInfoTests.url_name, invalid_repo_path)
 
         messages = [message.message for message in response.context['messages']]
 
