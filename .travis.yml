@@ -8,20 +8,9 @@ jobs:
   include:
 
     - stage: static analysis
-      services:
-      - docker
-      env:
-        COMPOSE_VERSION: 1.19.0
-      install: skip
-      before_script:
-      - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
-        -s`-`uname -m` > docker-compose
-      - chmod +x docker-compose
-      - sudo mv docker-compose /usr/local/bin
-      - sudo docker-compose -f docker-compose.test.yml build
-      - sudo docker-compose -f docker-compose.test.yml run -d db
+      install: pip install flake8
       script:
-      - sudo docker-compose -f docker-compose.test.yml run web ./run_analysis.sh
+      - flake8 --exit-zero .
 
     - stage: unit tests
       services:
