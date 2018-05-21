@@ -7,5 +7,5 @@ def getRepository(request):
     return repository
 
 
-def index(request):
+def searchRepository(request):
     return render(request, 'index.html')

@@ -1,0 +1,8 @@
+[run]
+omit =
+	*apps.py
+	*__init__.py
+    *wsgi.py
+    *manage.py
+    test*
+

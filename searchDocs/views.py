@@ -33,7 +33,7 @@ def getReadme():
     try:
         readme = repo.get_file_contents("README.md")
     except GithubException:
-        readme = ''
+        readme = None
 
     return readme
 
@@ -43,7 +43,7 @@ def getContributingFile():
     try:
         contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
     except GithubException:
-        contributingFile = ''
+        contributingFile = None
 
     return contributingFile
 
@@ -53,8 +53,7 @@ def getCodeConduct():
     try:
         conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
     except GithubException:
-        conductFile = ''
-
+        conductFile = None
     return conductFile
 
 
@@ -63,8 +62,7 @@ def getLicenseFile():
     try:
         licenseFile = repo.get_file_contents("LICENSE")
     except GithubException:
-        licenseFile = ''
-
+        licenseFile = None
     return licenseFile
 
 
@@ -73,8 +71,7 @@ def getIssueTemplate():
     try:
         issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
     except GithubException:
-        issueTemplate = ''
-
+        issueTemplate = None
     return issueTemplate
 
 
@@ -85,6 +82,5 @@ def getPullRequestTemplate():
     try:
         pullRequestTemplate = repo.get_file_contents(way_doc)
     except GithubException:
-        pullRequestTemplate = ''
-
+        pullRequestTemplate = None
     return pullRequestTemplate
