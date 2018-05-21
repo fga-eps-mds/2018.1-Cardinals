@@ -1,6 +1,6 @@
-from django.conf.urls import url
+from django.urls import path
 from searchDocs import views
 
 urlpatterns = [
-    url(r'getFiles/$', views.renderingDocs, name='renderingDocs'),
+    path('getFiles/', views.renderingDocs, name='renderingDocs'),
 ]

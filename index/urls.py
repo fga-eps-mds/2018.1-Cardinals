@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from index import views
 
 
 urlpatterns = [
-    url(r'^', views.searchRepository, name='index')
+    path('', views.searchRepository, name='index')
 ]
