@@ -1,0 +1,25 @@
+.bg-color{
+    background-color: #3C3542 !important;
+}
+
+nav a, nav a:hover{
+    color: #D83844;
+}
+
+.bg-red{
+    color: #D83844 !important;
+}
+
+nav .dropdown-menu > a, nav .dropdown-menu > a:hover {
+    color: #D83844;
+    background-color: #3C3542;
+}
+
+nav .dropdown-menu{
+    background-color: #3C3542;
+    border:  none;
+}
+
+.caixa{
+    border: 1px solid red !important;
+}
