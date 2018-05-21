@@ -18,9 +18,7 @@ from cardinals import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^pyGithub/', include('pygithub_api_integration.urls')),
-    url(r'^user_commits/', include('user_commits.urls')),
-    url(r'^issueRepo/', include('issuesRepository.urls')),
     url(r'^searchDocs/', include('searchDocs.urls')),
     url(r'^rankingCommiters/', include('ranking_commiters.urls')),
+    url(r'^users/', include('users.urls'))
 ]

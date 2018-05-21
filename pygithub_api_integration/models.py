@@ -49,18 +49,24 @@ class Contributor(models.Model):
         line_code_repo = Contributor.getLineCodeRepo(contributors)
 
         if weight is None:
-            for contributor in contributors:
-                contributor.score = round(float(contributor.commits +
-                                                Contributor.getPercent(contributor.line_code, line_code_repo) +
-                                                contributor.issues_created +
-                                                contributor.issues_closed), 2)
-                contributor.save()
+            for c in contributors:
+                c.score = round(float(c.commits +
+                                      Contributor.getPercent(c.line_code,
+                                                             line_code_repo) +
+                                      c.issues_created +
+                                      c.issues_closed), 2)
+                c.save()
+
         else:
-            for contributor in contributors:
-                contributor.score = round(float(contributor.commits * int(weight["commit"]) +
-                                                Contributor.getPercent(contributor.line_code, line_code_repo) * int(weight["line_code"]) +
-                                                contributor.issues_created * int(weight["issues_created"]) +
-                                                contributor.issues_closed * int(weight["issues_closed"])), 2)
+            for c in contributors:
+                c.score = round(float(c.commits * int(weight["commit"]) +
+                                      Contributor.getPercent(c.line_code,
+                                                             line_code_repo) *
+                                      int(weight["line_code"]) +
+                                      c.issues_created *
+                                      int(weight["issues_created"]) +
+                                      c.issues_closed *
+                                      int(weight["issues_closed"])), 2)
 
         return contributors
 

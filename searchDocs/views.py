@@ -54,6 +54,7 @@ def getCodeConduct():
         conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
     except GithubException:
         conductFile = ''
+
     return conductFile
 
 
@@ -63,6 +64,7 @@ def getLicenseFile():
         licenseFile = repo.get_file_contents("LICENSE")
     except GithubException:
         licenseFile = ''
+
     return licenseFile
 
 
@@ -72,6 +74,7 @@ def getIssueTemplate():
         issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
     except GithubException:
         issueTemplate = ''
+
     return issueTemplate
 
 
@@ -83,4 +86,5 @@ def getPullRequestTemplate():
         pullRequestTemplate = repo.get_file_contents(way_doc)
     except GithubException:
         pullRequestTemplate = ''
+
     return pullRequestTemplate

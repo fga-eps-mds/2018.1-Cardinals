@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pygithub_api_integration',
     'searchDocs',
-    'user_commits',
-    'issuesRepository',
     'ranking_commiters',
+    'users',
 ]
 
 MIDDLEWARE = [

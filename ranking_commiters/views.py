@@ -52,12 +52,18 @@ def getRankingCommitersResult(request):
 
     #     for rc in contributors:
     #         commiters.append({"name": contributors["name"],
-    #                           "score": contributors["commits"] * weight_commit +
-    #                           contributors["line_code"] * weight_line_code +
-    #                           contributors["issues_created"] * weight_issues_created +
-    #                           contributors["issues_closed"] * weight_issues_closed})
+    #                           "score": contributors["commits"] *
+    #                           weight_commit +
+    #                           contributors["line_code"] *
+    #                           weight_line_code +
+    #                           contributors["issues_created"] *
+    #                           weight_issues_created +
+    #                           contributors["issues_closed"] *
+    #                           weight_issues_closed})
 
-    #     ranking_commiters = sorted(commiters, key=itemgetter("score"), reverse=True)
+    #     ranking_commiters = sorted(commiters,
+    #                                key=itemgetter("score"),
+    #                                reverse=True)
 
     #     return render(request, 'rankingCommiters.html',
     #                   {"ranking_commiters": ranking_commiters})
@@ -69,12 +75,12 @@ def getRankingCommitersResult(request):
 
 #     stats_contributors = repo.get_stats_contributors()
 
-#     for sc in stats_contributors:
-#         contributors.append({"name": sc.author.name,
-#                              "commits": sc.total,
-#                              "line_code": getLineCode(sc),
-#                              "issues_created": getIssuesCreatedFor(sc.author.id),
-#                              "issues_closed": getIssuesClosedFor(sc.author.id)
+#     for s in stats_contributors:
+#         contributors.append({"name": s.author.name,
+#                              "commits": s.total,
+#                              "line_code": getLineCode(s),
+#                              "issues_created": getIssuesCreated(s.author.id),
+#                              "issues_closed": getIssuesClosed(s.author.id)
 #                              })
 
 #     return contributors
@@ -91,7 +97,7 @@ def getRankingCommitersResult(request):
 #     return line_code
 
 
-# def getIssuesCreatedFor(contributor_id):
+# def getIssuesCreated(contributor_id):
 
 #     issues_all = repo.get_issues(state="all")
 #     num_issues_created = 0
@@ -103,7 +109,7 @@ def getRankingCommitersResult(request):
 #     return num_issues_created
 
 
-# def getIssuesClosedFor(contributor_id):
+# def getIssuesClosed(contributor_id):
 
 #     issues_all = repo.get_issues(state="all")
 #     num_issues_closed = 0
