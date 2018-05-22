@@ -17,7 +17,8 @@ jobs:
       - docker
       env:
         COMPOSE_VERSION: 1.19.0
-      install: skip
+      install:
+      - pip install codecov
       before_script:
       - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
         -s`-`uname -m` > docker-compose
@@ -28,6 +29,8 @@ jobs:
       - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
       - sudo docker-compose -f docker-compose.test.yml run --rm sut
+      after_script:
+      - codecov
 
     - stage: deploy to staging
       install: skip
@@ -36,10 +39,10 @@ jobs:
         provider: heroku
         api_key:
           secure: $HEROKU_AUTH_TOKEN
-        app: cardinalsbeta
+        app: cardinalstestbeta
         on:
-          repo: fga-gpp-mds/2018.1-Cardinals
-          branch: config_ci
+          repo: amandabezerra/2018.1-Cardinals
+          branch: config
 
     - stage: deploy to production
       install: skip
@@ -48,8 +51,8 @@ jobs:
         provider: heroku
         api_key:
           secure: $HEROKU_AUTH_TOKEN
-        app: cardinals
+        app: cardinalstest
         on:
-          repo: fga-gpp-mds/2018.1-Cardinals
+          repo: amandabezerra/2018.1-Cardinals
           branch: master
 
