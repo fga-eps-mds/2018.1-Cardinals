@@ -1,6 +1,7 @@
-# from test_utils.setup_test_cases import SetupTestCases
 from django.test import TestCase
 from .models import Contributor
+
+# from test_utils.setup_test_cases import SetupTestCases
 # from . import constants
 
 
@@ -22,13 +23,15 @@ from .models import Contributor
 #         contributors_name_expected = ['Amanda Bezerra',
 #                                       'Mateus Augusto Sousa e Silva',
 #                                       'Marlon Mendes', 'Guilherme da Luz',
-#                                       'Lucas Costa', 'Gustavo Duarte Moreira',
+#                                       'Lucas Costa',
+#                                       'Gustavo Duarte Moreira',
 #                                       'Matheus Gomes', 'Lorrany Azevedo',
 #                                       'João Pedro', 'Mik', 'Victor Moura']
 
 #         contributors_name_expected = set(contributors_name_expected)
 
-#         contributors_name = set([contributor.name for contributor in contributors])
+#         contributors_name = set([contributor.name
+#                                   for contributor in contributors])
 
 #         self.assertEquals(contributors_name, contributors_name_expected)
 
@@ -39,23 +42,27 @@ from .models import Contributor
 
 #         contributors_login_expected = ['amandabezerra', 'Mateusas3s',
 #                                        'marlonbymendes', 'daluzguilherme'
-#                                        'gustavoduartemoreira', 'matheusgomesf',
+#                                        'gustavoduartemoreira',
+#                                        'matheusgomesf',
 #                                        'jpmartins201', 'lorryaze',
 #                                        'lucasca73', 'victorcmoura',
 #                                        'MiguelNery']
 
 #         contributors_login_expected = set(contributors_login_expected)
 
-#         contributors_login = set([contributor.login for contributor in contributors])
+#         contributors_login = set([contributor.login
+#                                    for contributor in contributors])
 
 #         self.assertEquals(contributors_login, contributors_login_expected)
 
 #     def test_invalid_repository_name(self):
-#         invalid_repo_path = 'just/a/long/url/to/make/sure/it/is/not/found/on/github/dot/com/9817231285103'
+#         invalid_repo_path =
+# just/a/long/url/to/make/sure/it/is/not/found/on/github/dot/com/9817231285103'
 #         response = self.make_client_request(RepoInfoTests.url_name,
 #                                             invalid_repo_path)
 
-#         messages = [message.message for message in response.context['messages']]
+#         messages = [message.message
+#                     for message in response.context['messages']]
 
 #         self.assertTrue(constants.INVALID_REPOSITORY_MESSAGE in messages)
 

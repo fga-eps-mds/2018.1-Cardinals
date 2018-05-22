@@ -1,20 +1,10 @@
 from django.shortcuts import render
-from github import Github
-from oauth.credentials import get_credentials
 from operator import attrgetter
 from pygithub_api_integration.models import Contributor
 
-username, password = get_credentials()
-
-g = Github(username, password)
-org = g.get_organization('fga-gpp-mds')
-repo = org.get_repo('2018.1-Cardinals')
-
 
 def getRankingCommitersResult(request):
-
     if request.method == 'GET':
-
         commiters = Contributor.getStatsContributors()
 
     elif request.method == 'POST':

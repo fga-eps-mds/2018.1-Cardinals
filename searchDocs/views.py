@@ -3,14 +3,21 @@ from django.shortcuts import render
 from github import GithubException
 from oauth.credentials import get_credentials
 
-username, password = get_credentials()
 
-g = Github(username, password)
-org = g.get_organization('fga-gpp-mds')
-repo = org.get_repo('2018.1-Cardinals')
+g = org = repo = None
+
+
+def setup_repository():
+    username, password = get_credentials()
+    g = Github(username, password)
+    org = g.get_organization('fga-gpp-mds')
+    repo = org.get_repo('2018.1-Cardinals')
 
 
 def renderingDocs(request):
+    if g is None:
+        setup_repository()
+
     contributingFile = getContributingFile()
     licenseFile = getLicenseFile()
     issueTemplate = getIssueTemplate()
