@@ -20,7 +20,7 @@ class SearchDocsTests(SetupTestCases):
 
     def test_repo_without_contributing_file(self):
         file_context = 'contributingFile'
-        expected_name = None
+        expected_name = 'CONTRIBUTING.md'
         self.assert_file_name(file_context, expected_name)
 
     def test_repo_with_issues_template(self):
@@ -35,7 +35,7 @@ class SearchDocsTests(SetupTestCases):
 
     def test_repo_without_code_of_conduct(self):
         file_context = 'conductFile'
-        expected_name = None
+        expected_name = 'CODE_OF_CONDUCT.md'
         self.assert_file_name(file_context, expected_name)
 
     def test_repo_with_readme(self):
