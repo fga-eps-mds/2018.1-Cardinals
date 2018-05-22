@@ -1,12 +1,13 @@
 from django.urls import reverse
 from django.test import TestCase
 
+
 class SetupTestCases(TestCase):
     organization = 'fga-gpp-mds'
     repo_name = '2018.1-Cardinals'
     repo_path = organization + '/' + repo_name
 
-    def make_client_request(self, url_name, repo_path = None):
+    def make_client_request(self, url_name, repo_path=None):
         url = reverse(url_name)
 
         if repo_path is None:
