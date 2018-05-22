@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from github import Github
 from github import GithubException as GE
-from cardinals.views import searchRepository
+from cardinals.views import getRepository
 from oauth.credentials import get_credentials
 from django.contrib import messages
 from . import constants
@@ -18,7 +18,7 @@ def getRepoInfo(request):
 
     username, password = get_credentials()
 
-    repo_name = (searchRepository(request).content).decode('utf-8')
+    repo_name = getRepository(request)
 
     try:
         git = Github(username, password)

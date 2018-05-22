@@ -7,7 +7,7 @@
         <div class="title-block">
             <h3 class="title mt-5"> Busque um repositório: </h3>
         </div>
-        <form action="{% url 'user' %}" method="POST">
+        <form action="{% url 'getRepoInfo' %}" method="POST">
             {% csrf_token %}
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
