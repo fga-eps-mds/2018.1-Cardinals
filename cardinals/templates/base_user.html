@@ -48,7 +48,18 @@
                                     <a class="bg-red" href="#"><i class="fa fa-code"></i> Commits</a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="#"><i class="fa fa-user"></i> Contributors</a>
+                                    <a class="bg-red" href="{% url 'renderingDocs' %}"><i class="fa fa-file-o"></i> Documentos</a>
+                                </li>
+                                <li>
+                                    <a class="bg-red" href="">
+                                        <i class="fa fa-user"></i> Contributors
+                                        <i class="fa arrow"></i>
+                                    </a>  
+                                    <ul class="sidebar-nav">
+                                        <li>
+                                            <a class="bg-red" href="{% url 'getRankingCommitersResult' %}"><i class="fa fa-trophy"></i> Ranking Commiters</a> 
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </nav>
