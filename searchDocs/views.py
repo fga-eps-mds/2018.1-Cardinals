@@ -3,20 +3,20 @@ from django.shortcuts import render
 from github import GithubException
 from oauth.credentials import get_credentials
 
+def setup_repository_if_none(request):
+    global username, password, g, org, repo
 
-g = org = repo = None
+    if 'username' not in request.session:
+        username, password = get_credentials()
+        g = Github(username, password)
+        org = g.get_organization('fga-gpp-mds')
+        repo = org.get_repo('2018.1-Cardinals')
+        request.session['username'] = username
 
-
-def setup_repository():
-    username, password = get_credentials()
-    g = Github(username, password)
-    org = g.get_organization('fga-gpp-mds')
-    repo = org.get_repo('2018.1-Cardinals')
 
 
 def renderingDocs(request):
-    if g is None:
-        setup_repository()
+    setup_repository_if_none(request)
 
     contributingFile = getContributingFile()
     licenseFile = getLicenseFile()
