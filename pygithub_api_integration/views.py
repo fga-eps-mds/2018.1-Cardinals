@@ -13,7 +13,6 @@ def getContributors(repo):
 
     return contributors
 
-
 def getRepoInfo(request):
 
     username, password = get_credentials()

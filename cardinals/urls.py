@@ -18,6 +18,7 @@ from django.urls import path
 
 
 urlpatterns = [
+
     path('', include('index.urls'), name='index'),
     path('pyGithub/', include('pygithub_api_integration.urls')),
     path('dev/', include('dev.urls'), name='dev'),

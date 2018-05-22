@@ -3,5 +3,7 @@ from index import views
 
 
 urlpatterns = [
+
     path('', views.searchRepository, name='index')
+
 ]

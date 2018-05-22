@@ -8,13 +8,14 @@ class RepoInfoTests(SetupTestCases):
     url_name = 'getRepoInfo'
 
     def test_get_repo_name(self):
+
         response = self.make_client_request(RepoInfoTests.url_name)
         response_repo_name = response.context['repo'].name
 
-        self.assertEquals(SetupTestCases .repo_name, response_repo_name)
-
+        self.assertEquals(SetupTestCases.repo_name, response_repo_name)
 
     def test_get_contributors_name(self):
+
         response = self.make_client_request(RepoInfoTests.url_name)
 
         contributors = response.context['contributors']
@@ -29,8 +30,8 @@ class RepoInfoTests(SetupTestCases):
 
         self.assertEquals(contributors_name, contributors_name_expected)
 
-
     def test_get_contributors_login(self):
+
         response = self.make_client_request(RepoInfoTests.url_name)
 
         contributors =  response.context['contributors']
@@ -46,6 +47,7 @@ class RepoInfoTests(SetupTestCases):
         self.assertEquals(contributors_login, contributors_login_expected)
 
     def test_invalid_repository_name(self):
+
         invalid_repo_path = 'just/a/long/url/to/make/sure/it/is/not/found/on/github/dot/com/9817231285103'
         response = self.make_client_request(RepoInfoTests.url_name, invalid_repo_path)
 
