@@ -1,0 +1,56 @@
+{% extends "base_user.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container">
+        <div class="page-header">
+            <h1>Commits</h1> 
+        </div>
+            <div class="row">
+                <div clgitass="col-lg-12">
+                        <div clgitass="col-lg-12">
+                                <div style="border: 1px solid #D8D7CC;border-radius: 5px; padding: 5px; margin-top: 4px">
+                                    <form class="search-repo form-inline" action="" method="GET">
+                                            {% csrf_token %}
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div>
+                                                        <label for="dataInicio">Data Inicial</label>
+                                                        <input type="date" name="dataInicio">
+                                                    
+                                                        <label for="dataFinal">Data Final</label>
+                                                        <input type="date" name="dataFinal">
+                                                    </div>
+                                                </div>
+                                                    <div class="form-group">
+                                                    <button class="btn btn-danger" type="submit">
+                                                        Pesquisar <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </div>
+                                <p>{{data}}</p>
+                    <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q in commits %}
+                                <tr>
+                                    <td>{{q.commit.author.name}}</td>
+                                    <td>{{q.commit.message}}</td>
+                                    <td>{{q.commit.author.date.date}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
