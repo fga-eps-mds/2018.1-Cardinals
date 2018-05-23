@@ -70,12 +70,13 @@ class ModelContributorsTest(TestCase):
 
         for i in range(10):
             self.contributors.append(Contributor(id=1,
-                                                 username='Warnoldison',
+                                                 name='Warnoldison',
+                                                 login='warnoldison@gmail.com',
                                                  commits=10,
                                                  line_code=100,
                                                  issues_created=10,
                                                  issues_closed=10,
-                                                 score=0))
+                                                 score=40))
 
     def testGetLineCodeRepo(self):
 

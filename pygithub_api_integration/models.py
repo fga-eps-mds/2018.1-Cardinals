@@ -1,4 +1,6 @@
 from django.db import models
+from github import Github
+from oauth.credentials import get_credentials
 
 
 class Repository(models.Model):
@@ -6,6 +8,19 @@ class Repository(models.Model):
     id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=255, null=False)
     name = models.CharField(max_length=255, null=False)
+
+    def requestRepo(repo_name, username=None, password=None):
+
+        if (username is None) and (password is None):
+
+            username, password = get_credentials()
+            git = Github(username, password)
+            repo = git.get_repo(repo_name)
+
+        else:
+            pass
+
+        return repo
 
 
 # class Commit(models.Model):
@@ -18,13 +33,14 @@ class Repository(models.Model):
 class Contributor(models.Model):
 
     id = models.BigIntegerField(primary_key=True)
-    username = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    login = models.CharField(max_length=255)
     commits = models.IntegerField()
     line_code = models.IntegerField()
     issues_created = models.IntegerField()
     issues_closed = models.IntegerField()
     score = models.DecimalField(max_digits=9, decimal_places=2)
-    # repository = models.ManyToManyField(Repository)
+    repository = models.ManyToManyField(Repository)
     # commits = models.ManyToManyField(Commit)
 
     def getLineCodeRepo(contributors):

@@ -1,30 +1,48 @@
 from django.shortcuts import render, redirect
-from github import Github
 from github import GithubException as GE
 from cardinals.views import getRepository
-from oauth.credentials import get_credentials
+from pygithub_api_integration.models import Repository
+from pygithub_api_integration.models import Contributor
 from django.contrib import messages
 from . import constants
 
 
 def getContributors(repo):
 
-    contributors = repo.get_contributors()
+    contributors = repo.get_stats_contributors()
 
     return contributors
 
 
 def getRepoInfo(request):
 
-    username, password = get_credentials()
-
     repo_name = getRepository(request)
 
     try:
-        git = Github(username, password)
-        repo = git.get_repo(repo_name)
 
-        contributors = getContributors(repo)
+        repo_request = Repository.requestRepo(repo_name)
+        contributors = getContributors(repo_request)
+
+        repo = Repository(full_name=repo_request.full_name,
+                          name=repo_request.name)
+        repo.save()
+
+        for c in contributors:
+            contributor = Contributor()
+            contributor.id = c.author.id
+            contributor.name = c.author.name
+            contributor.login = c.author.login
+            contributor.commits = c.total
+            contributor.line_code = 0
+            contributor.issues_created = 0
+            contributor.issues_closed = 0
+            contributor.score = 0
+
+            contributor.save()
+            contributor.repository.add(repo)
+
+        contributors = Contributor.objects.filter(repository=repo.id)
+
         context = {"repo": repo, "contributors": contributors}
 
         return render(request, 'repository_info.html', context)
