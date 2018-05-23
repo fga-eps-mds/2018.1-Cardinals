@@ -33,10 +33,6 @@ def getRepoInfo(request):
             contributor.name = c.author.name
             contributor.login = c.author.login
             contributor.commits = c.total
-            contributor.line_code = 0
-            contributor.issues_created = 0
-            contributor.issues_closed = 0
-            contributor.score = 0
 
             contributor.save()
             contributor.repository.add(repo)
