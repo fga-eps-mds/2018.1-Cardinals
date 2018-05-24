@@ -19,4 +19,5 @@ from cardinals import views
 urlpatterns = [
     url(r'^searchDocs/', include('searchDocs.urls')),
     url(r'^$', views.index, name='index'),
+    url(r'commits_charts/', include('commits_charts.urls')),
 ]
