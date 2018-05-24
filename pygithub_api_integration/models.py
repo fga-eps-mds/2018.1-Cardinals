@@ -116,11 +116,31 @@ class Contributor(models.Model):
 #                                     on_delete=models.CASCADE)
 
 
-# class Commit(models.Model):
-#     id = models.BigIntegerField(primary_key=True)
-#     created_at = models.DateTimeField()
-#     repository = models.ForeignKey('Repository',
-#                                    on_delete=models.CASCADE)
+class Commit(models.Model):
+    sha = models.CharField(max_length=255, primary_key=True)
+    date = models.DateTimeField()
+    repository = models.ForeignKey('Repository',
+                                   on_delete=models.CASCADE)
+    author = models.ManyToManyField(Contributor)
+
+    def requestCommit(repo_request):
+
+        commit_request = repo_request.get_commits()
+
+        return commit_request
+
+    def saveCommit(commit_request, repo, contributors):
+
+        for c in commit_request:
+            commit = Commit()
+            commit.sha = c.sha
+            commit.date = c.commit.author.date
+            commit.repository = repo
+
+            commit.save()
+            for cont in contributors:
+                if c.author.id == cont.id:
+                    commit.author.add(cont)
 
 
 class Issue(models.Model):
