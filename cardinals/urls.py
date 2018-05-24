@@ -21,6 +21,6 @@ urlpatterns = [
     path('', views.searchRepository, name='index'),
     path('searchDocs/', include('searchDocs.urls')),
     path('rankingCommiters/', include('ranking_commiters.urls')),
-    path('users/', include('users.urls'))
-
+    path('users/', include('users.urls')),
+    path('issues/', include('time_issue.urls'))
 ]

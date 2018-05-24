@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'searchDocs',
     'ranking_commiters',
     'users',
+    'time_issue',
 ]
 
 MIDDLEWARE = [
