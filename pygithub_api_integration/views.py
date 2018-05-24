@@ -3,6 +3,7 @@ from github import GithubException as GE
 from cardinals.views import getRepository
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Contributor
+from pygithub_api_integration.models import Issue
 from django.contrib import messages
 from . import constants
 
@@ -19,13 +20,16 @@ def getRepoInfo(request):
     repo_name = getRepository(request)
 
     try:
-
         repo_request = Repository.requestRepo(repo_name)
         contributors = getContributors(repo_request)
 
-        repo = Repository(full_name=repo_request.full_name,
-                          name=repo_request.name)
+        repo = Repository()
+        repo.full_name = repo_request.full_name
+        repo.name = repo_request.name
+
         repo.save()
+
+        Issue.requestIssues(repo_request, repo)
 
         for c in contributors:
             contributor = Contributor()

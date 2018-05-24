@@ -23,13 +23,6 @@ class Repository(models.Model):
         return repo
 
 
-# class Commit(models.Model):
-#     id = models.BigIntegerField(primary_key=True)
-#     created_at = models.DateTimeField()
-#     id_repository = models.ForeignKey('Repository',
-#                                       on_delete=models.CASCADE)
-
-
 class Contributor(models.Model):
 
     id = models.BigIntegerField(primary_key=True)
@@ -41,7 +34,6 @@ class Contributor(models.Model):
     issues_closed = models.IntegerField(null=True)
     score = models.DecimalField(max_digits=9, decimal_places=2, null=True)
     repository = models.ManyToManyField(Repository)
-    # commits = models.ManyToManyField(Commit)
 
     def getLineCodeRepo(contributors):
 
@@ -92,8 +84,15 @@ class Contributor(models.Model):
 #     line_add = models.IntegerField()
 #     line_deletion = models.IntegerField()
 #     total_commits = models.IntegerField()
-#     id_contributor = models.ForeignKey('Contributor',
-#                                        on_delete=models.CASCADE)
+#     contributor = models.ForeignKey('Contributor',
+#                                     on_delete=models.CASCADE)
+
+
+# class Commit(models.Model):
+#     id = models.BigIntegerField(primary_key=True)
+#     created_at = models.DateTimeField()
+#     repository = models.ForeignKey('Repository',
+#                                    on_delete=models.CASCADE)
 
 
 class Issue(models.Model):
@@ -103,21 +102,21 @@ class Issue(models.Model):
     state = models.CharField(max_length=255)
     created_at = models.DateTimeField()
     closed_at = models.DateTimeField(null=True)
-    id_repository = models.ForeignKey('Repository',
-                                      on_delete=models.CASCADE)
+    repository = models.ForeignKey('Repository',
+                                   on_delete=models.CASCADE)
 
-    def requesIssues(repo):
+    def requestIssues(repo_request, repo):
 
-        issues_all = repo.get_issues(state="all")
+        issues_all = repo_request.get_issues(state="all")
 
         for i in issues_all:
             issue = Issue()
             issue.id = i.id
             issue.created_by = i.user.id
-            issue.closed_by = i.closed_by.id
+            if i.closed_by is not None:
+                issue.closed_by = i.closed_by.id
             issue.state = i.state
             issue.created_at = i.created_at
             issue.closed_at = i.closed_at
-
+            issue.id_repository = repo
             issue.save()
-            issue.objects.add(repo)
