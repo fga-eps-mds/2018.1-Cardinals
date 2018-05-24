@@ -8,38 +8,19 @@ from django.contrib import messages
 from . import constants
 
 
-def getContributors(repo):
-
-    contributors = repo.get_stats_contributors()
-
-    return contributors
-
-
 def getRepoInfo(request):
 
     repo_name = getRepository(request)
 
     try:
         repo_request = Repository.requestRepo(repo_name)
-        contributors = getContributors(repo_request)
+        repo = Repository.saveRepo(repo_request)
 
-        repo = Repository()
-        repo.full_name = repo_request.full_name
-        repo.name = repo_request.name
+        contributors_request = Contributor.requestContributors(repo_request)
+        Contributor.saveContributors(contributors_request, repo)
 
-        repo.save()
-
-        Issue.requestIssues(repo_request, repo)
-
-        for c in contributors:
-            contributor = Contributor()
-            contributor.id = c.author.id
-            contributor.name = c.author.name
-            contributor.login = c.author.login
-            contributor.commits = c.total
-
-            contributor.save()
-            contributor.repository.add(repo)
+        issue_request = Issue.requestIssues(repo_request)
+        Issue.saveIssues(issue_request, repo)
 
         contributors = Contributor.objects.filter(repository=repo.id)
 

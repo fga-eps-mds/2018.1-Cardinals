@@ -15,10 +15,20 @@ class Repository(models.Model):
 
             username, password = get_credentials()
             git = Github(username, password)
-            repo = git.get_repo(repo_name)
+            repo_request = git.get_repo(repo_name)
 
         else:
             pass
+
+        return repo_request
+
+    def saveRepo(repo_request):
+
+        repo = Repository()
+        repo.full_name = repo_request.full_name
+        repo.name = repo_request.name
+
+        repo.save()
 
         return repo
 
@@ -34,6 +44,24 @@ class Contributor(models.Model):
     issues_closed = models.IntegerField(null=True)
     score = models.DecimalField(max_digits=9, decimal_places=2, null=True)
     repository = models.ManyToManyField(Repository)
+
+    def requestContributors(repo_request):
+
+        contributors_request = repo_request.get_stats_contributors()
+
+        return contributors_request
+
+    def saveContributors(contributors_request, repo):
+
+        for c in contributors_request:
+            contributor = Contributor()
+            contributor.id = c.author.id
+            contributor.name = c.author.name
+            contributor.login = c.author.login
+            contributor.commits = c.total
+
+            contributor.save()
+            contributor.repository.add(repo)
 
     def getLineCodeRepo(contributors):
 
@@ -105,11 +133,15 @@ class Issue(models.Model):
     repository = models.ForeignKey('Repository',
                                    on_delete=models.CASCADE)
 
-    def requestIssues(repo_request, repo):
+    def requestIssues(repo_request):
 
-        issues_all = repo_request.get_issues(state="all")
+        issues_request = repo_request.get_issues(state="all")
 
-        for i in issues_all:
+        return issues_request
+
+    def seveIssues(issues_request, repo):
+
+        for i in issues_request:
             issue = Issue()
             issue.id = i.id
             issue.created_by = i.user.id
@@ -118,5 +150,5 @@ class Issue(models.Model):
             issue.state = i.state
             issue.created_at = i.created_at
             issue.closed_at = i.closed_at
-            issue.id_repository = repo
+            issue.repository = repo
             issue.save()
