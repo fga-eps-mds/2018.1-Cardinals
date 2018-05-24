@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'pygithub_api_integration',
     'searchDocs',
     'ranking_commiters',
+    'pull_request_metrics',
 ]
 
 MIDDLEWARE = [
