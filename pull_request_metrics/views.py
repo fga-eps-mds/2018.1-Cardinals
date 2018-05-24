@@ -19,6 +19,15 @@ def analyze_pull_requests(request, organization, repository):
 
     out = '<h1> Pull requests<h1><br>'
     for pr in github_pull_requests:
-        out += (pr.title + '<br>')
+        out += (pr.title + ' ')
 
-    return HttpResponse(out)
+        time_open = pr.created_at
+        time_close = pr.closed_at
+
+        if time_close is None:
+            time_close = datetime.now()
+
+        metric_time = (time_close - time_open)
+        out += str(metric_time) + '<br>'
+
+    return HttpResponse(metric_time)
