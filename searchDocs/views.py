@@ -14,6 +14,7 @@ def setup_repository_if_none(request):
         request.session['username'] = username
 
 
+paths = ["docs/", ".github/", ""]
 
 def renderingDocs(request):
     setup_repository_if_none(request)
@@ -38,7 +39,7 @@ def renderingDocs(request):
 def getReadme():
 
     try:
-        readme = repo.get_file_contents("README.md")
+        readme = repo.get_readme()
     except GithubException:
         readme = None
 
@@ -47,27 +48,38 @@ def getReadme():
 
 def getContributingFile():
 
-    try:
-        contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
-    except GithubException:
-        contributingFile = None
+    contributingFile = None
+    i = 0
+    while contributingFile is None and i <= 2:
+        try:
+            contributingFile = repo.get_file_contents(paths[i] + "CONTRIBUTING.md")
+                    
+        except GithubException:
+            contributingFile = None
+
+        i += 1
 
     return contributingFile
 
 
 def getCodeConduct():
+    
+    conductFile = None
+    i=0
+    while conductFile is None and i <= 2:
+        try:
+            conductFile = repo.get_file_contents(paths[i] + "CODE_OF_CONDUCT.md")
+        except GithubException:
+            conductFile = None
 
-    try:
-        conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
-    except GithubException:
-        conductFile = None
+        i += 1
     return conductFile
 
 
 def getLicenseFile():
 
     try:
-        licenseFile = repo.get_file_contents("LICENSE")
+        licenseFile = repo.get_license()
     except GithubException:
         licenseFile = None
     return licenseFile
@@ -75,19 +87,28 @@ def getLicenseFile():
 
 def getIssueTemplate():
 
-    try:
-        issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
-    except GithubException:
-        issueTemplate = None
+    issueTemplate = None
+    i =0
+    while issueTemplate is None and i <= 2:
+        try:
+            issueTemplate = repo.get_file_contents(paths[i] + "ISSUE_TEMPLATE.md")
+        except GithubException:
+            issueTemplate = None
+
+        i += 1
     return issueTemplate
 
 
 def getPullRequestTemplate():
 
-    way_doc = ".github/PULL_REQUEST_TEMPLATE.md"
+    pullRequestTemplate = None
+    i =0
 
-    try:
-        pullRequestTemplate = repo.get_file_contents(way_doc)
-    except GithubException:
-        pullRequestTemplate = None
+    while pullRequestTemplate is None and i <= 2:
+        try:
+            pullRequestTemplate = repo.get_file_contents(paths[i] + "PULL_REQUEST_TEMPLATE.md")
+        except GithubException:
+            pullRequestTemplate = None
+
+        i += 1
     return pullRequestTemplate
