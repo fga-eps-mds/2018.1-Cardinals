@@ -37,6 +37,7 @@ class Contributor(models.Model):
 
     id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=255, null=True)
+    email = models.EmailField(max_length=254, null=True)
     login = models.CharField(max_length=255)
     commits = models.IntegerField(null=True)
     line_code = models.IntegerField(null=True)
@@ -58,6 +59,7 @@ class Contributor(models.Model):
             contributor.id = c.author.id
             contributor.name = c.author.name
             contributor.login = c.author.login
+            contributor.email = c.author.email
             contributor.commits = c.total
 
             contributor.save()
@@ -119,9 +121,11 @@ class Contributor(models.Model):
 class Commit(models.Model):
     sha = models.CharField(max_length=255, primary_key=True)
     date = models.DateTimeField()
+    message = models.TextField(null=True)
     repository = models.ForeignKey('Repository',
                                    on_delete=models.CASCADE)
-    author = models.ManyToManyField(Contributor)
+    author = models.ForeignKey('Contributor',
+                               on_delete=models.CASCADE)
 
     def requestCommit(repo_request):
 
@@ -135,12 +139,12 @@ class Commit(models.Model):
             commit = Commit()
             commit.sha = c.sha
             commit.date = c.commit.author.date
+            commit.message = c.commit.message
             commit.repository = repo
-
+            for contr in contributors:
+                if c.author.id == contr.id:
+                    commit.author = contr
             commit.save()
-            for cont in contributors:
-                if c.author.id == cont.id:
-                    commit.author.add(cont)
 
 
 class Issue(models.Model):
