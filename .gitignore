@@ -6,6 +6,7 @@ Gemfile*
 __pycache__/
 */__pycache__/
 *.pyc
+*/migrations/
 
 ## Coverage
 htmlcov/
@@ -18,5 +19,8 @@ site/
 ## VSCODE
 .vscode/
 #Docker
+
+#Pycharm
+.idea/
+
 # WARNING: .env file contains sensitive information, keep it on .gitignore.
-.env

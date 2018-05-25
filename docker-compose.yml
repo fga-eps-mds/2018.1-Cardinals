@@ -2,8 +2,10 @@ version: '3'
 
 services:
   db:
+    container_name: cardinalsdb
     image: postgres
   web:
+    container_name: cardinalsweb
     build: .
     volumes:
       - .:/code

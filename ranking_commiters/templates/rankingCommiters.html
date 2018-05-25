@@ -1,0 +1,39 @@
+{% extends "base_user.html" %}
+
+{% block body %}
+<div id="page-wrapper-index">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <label>Defina os seguintes pesos</label>
+                <form action="{% url 'getRankingCommitersResult' %}" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><label for="weight_commit">Commits: </label></td>
+                            <td><input type="number" value="1" min="0" max="10" name="weight_commit"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="weight_line_code">Linhas de Código: </label></td>
+                            <td><input type="number" value="1" min="0" max="10" name="weight_line_code"></td>     
+                        </tr>
+                        <tr>
+                            <td><label for="weight_issues_created">Issues Criadas: </label></td>
+                            <td><input type="number" value="1" min="0" max="10" name="weight_issues_created"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="weight_issues_closed">Issues Fechadas: </label></td>
+                            <td><input type="number" value="1" min="0" max="10" name="weight_issues_closed"></td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-danger" type="submit">Ranquear</button>
+                </form>
+                <h2>Ranking Commiters</h2>
+                {% for rc in ranking_commiters %}
+                    <li>{{rc.username}} | score: {{rc.score}} </li>
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,27 @@
-languages:
-    Python: true
+version: "2"
+
 plugins:
   pep8:
     enabled: true
+    config:
+      languages:
+      - python 
+  radon: 
+    enabled: true
+    config:
+      languages:
+      - python 
+  sonar-python:
+    enabled: true
+    config:
+      languages:
+      - python 
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python
+
+exclude_patterns:
+  - "static/"
+  - "templates/"

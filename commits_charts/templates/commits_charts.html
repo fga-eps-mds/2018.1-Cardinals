@@ -1,31 +1,7 @@
-{% extends "base_index.html" %}
+{% extends "base_user.html" %}
 
 {% block body %}
-
-<canvas class ="line-chart"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-
-<script>
-    var ctx = document.getElementsByClassName("line-chart");
-
-    var chartGraph = new Chart(ctx,{
-        type: 'line',
-        data: {
-            labels: ["JAN","FEV", "MAR"],
-            datasets:[{
-                label: "Commits por usuário",
-                data: [5,6,3,6,4,2,4,6,4,2,4,5],
-                borderWidth: 2,
-                borderColor: 'rgba(77,166,253,0.85)',
-                backgroundColor: 'transparent',
-            }]
-        }
-
-    });
-
-
-
-</script>
-
-
+<p>{{dates}}</p>
+<p>{{all_commits}}</p>
+<p>{{signed_commits}}</p>
 {% endblock %}
