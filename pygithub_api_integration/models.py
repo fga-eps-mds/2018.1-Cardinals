@@ -64,6 +64,7 @@ class Contributor(models.Model):
 
             contributor.save()
             contributor.repository.add(repo)
+            ContributingWeek.saveContributingWeek(c, contributor)
 
     def getLineCodeRepo(contributors):
 
@@ -109,13 +110,27 @@ class Contributor(models.Model):
         return contributors
 
 
-# class ContributingWeek(models.Model):
+class ContributingWeek(models.Model):
 
-#     line_add = models.IntegerField()
-#     line_deletion = models.IntegerField()
-#     total_commits = models.IntegerField()
-#     contributor = models.ForeignKey('Contributor',
-#                                     on_delete=models.CASCADE)
+    week = models.CharField(max_length=255)
+    line_add = models.IntegerField()
+    line_del = models.IntegerField()
+    commits = models.IntegerField()
+    contributor = models.ForeignKey('Contributor',
+                                    on_delete=models.CASCADE)
+
+    def saveContributingWeek(contributor_request, contributor):
+
+        weeks = contributor_request.weeks
+
+        for week in weeks:
+            contrib_week = ContributingWeek()
+            contrib_week.week = week.w
+            contrib_week.line_add = week.a
+            contrib_week.line_del = week.d
+            contrib_week.commits = week.c
+            contrib_week.contributor = contributor
+            contrib_week.save()
 
 
 class Commit(models.Model):
@@ -141,9 +156,9 @@ class Commit(models.Model):
             commit.date = c.commit.author.date
             commit.message = c.commit.message
             commit.repository = repo
-            for contr in contributors:
-                if c.author.id == contr.id:
-                    commit.author = contr
+            for contrib in contributors:
+                if c.author.id == contrib.id:
+                    commit.author = contrib
             commit.save()
 
 
