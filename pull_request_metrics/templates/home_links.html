@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Bokeh graphs example {% endblock %}
+
+{% block main %}
+    <p><h2> Bokeh graph examples</h2></p>
+    <ul>
+        <li>
+            <a href="{% url 'plot' %}">Plot</a>
+        </li>
+        <li>
+            <a href="{% url 'bar' %}">Bar</a>
+        </li>
+    </ul>
+{% endblock %}

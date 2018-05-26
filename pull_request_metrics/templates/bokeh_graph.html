@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Bokeh child! {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+{% endblock %}
+
+{% block main %}
+    {{ div | safe }}
+    {{ script | safe }}
+{% endblock %}
