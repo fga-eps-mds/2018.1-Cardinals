@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends "base_user.html" %}
 
-{% block title %} Bokeh child! {% endblock %}
+{% block title %} Pull Request {% endblock %}
 
 {% block head %}
     <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
@@ -10,7 +10,11 @@
     </script>
 {% endblock %}
 
-{% block main %}
+{% block body %}
+
+    <p>{{repository}}</p>
+
     {{ div | safe }}
     {{ script | safe }}
+
 {% endblock %}
