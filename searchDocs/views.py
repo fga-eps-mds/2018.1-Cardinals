@@ -1,22 +1,19 @@
-from github import Github
 from django.shortcuts import render
 from github import GithubException
-from oauth.credentials import get_credentials
-
-username, password = get_credentials()
-
-g = Github(username, password)
-org = g.get_organization('fga-gpp-mds')
-repo = org.get_repo('2018.1-Cardinals')
+from pygithub_api_integration.models import Repository
 
 
-def renderingDocs(request):
-    contributingFile = getContributingFile()
-    licenseFile = getLicenseFile()
-    issueTemplate = getIssueTemplate()
-    pullRequestTemplate = getPullRequestTemplate()
-    conductFile = getCodeConduct()
-    readme = getReadme()
+def renderingDocs(request, repo_id):
+
+    repo_name = Repository.objects.get(id=repo_id).full_name
+    repo = Repository.requestRepo(repo_name)
+
+    contributingFile = getContributingFile(repo)
+    licenseFile = getLicenseFile(repo)
+    issueTemplate = getIssueTemplate(repo)
+    pullRequestTemplate = getPullRequestTemplate(repo)
+    conductFile = getCodeConduct(repo)
+    readme = getReadme(repo)
 
     return render(request, 'searchDocs.html',
                   {'contributingFile': contributingFile,
@@ -28,7 +25,7 @@ def renderingDocs(request):
                    })
 
 
-def getReadme():
+def getReadme(repo):
 
     try:
         readme = repo.get_file_contents("README.md")
@@ -38,7 +35,7 @@ def getReadme():
     return readme
 
 
-def getContributingFile():
+def getContributingFile(repo):
 
     try:
         contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
@@ -48,7 +45,7 @@ def getContributingFile():
     return contributingFile
 
 
-def getCodeConduct():
+def getCodeConduct(repo):
 
     try:
         conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
@@ -57,7 +54,7 @@ def getCodeConduct():
     return conductFile
 
 
-def getLicenseFile():
+def getLicenseFile(repo):
 
     try:
         licenseFile = repo.get_file_contents("LICENSE")
@@ -66,7 +63,7 @@ def getLicenseFile():
     return licenseFile
 
 
-def getIssueTemplate():
+def getIssueTemplate(repo):
 
     try:
         issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
@@ -75,7 +72,7 @@ def getIssueTemplate():
     return issueTemplate
 
 
-def getPullRequestTemplate():
+def getPullRequestTemplate(repo):
 
     way_doc = ".github/PULL_REQUEST_TEMPLATE.md"
 

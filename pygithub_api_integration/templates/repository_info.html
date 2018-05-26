@@ -13,6 +13,9 @@
                         <li>{{c.name}} : {{c.login}}</li>
                         {% endfor %}
                     </div>
+                    <div>
+                        <a class="bg-red" href="{% url 'renderingDocs' repo.id %}"><i class="fa fa-file-o"></i> Documentos</a>
+                    </div>
                 </div>
             </div>
         </div>
