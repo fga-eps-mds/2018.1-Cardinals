@@ -1,26 +1,27 @@
 version: '3'
 
 services:
-
-  sut:
-    build: .
+  web:
+    container_name: cardinalsdb
+    build: ./
+    command: bash -c ./run_tests.sh
+    volumes:
+      - ./:/code:rw
     depends_on:
       - db
-      - web
-    command: ./run_tests.sh
-
-  db:
-    image: postgres
-    ports:
-      - "5432"
-
-  web:
-    build: .
-    volumes:
-      - .:/code
+    environment:
+      DJANGO_SETTINGS_MODULE: cardinals.settings.development
     ports:
       - "8000:8000"
-    depends_on:
-      - db
     env_file:
       - .env
+
+  db:
+    restart: always
+    image: postgres:10-alpine
+    volumes:
+      - ./.dbdata:/var/lib/postgresql:rw
+    environment:
+      POSTGRES_USER: cardinals
+      POSTGRES_PASSWORD: cardinals
+      POSTGRES_DB: cardinals
