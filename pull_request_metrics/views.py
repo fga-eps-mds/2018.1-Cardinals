@@ -74,5 +74,8 @@ def analyze_pull_requests(request, organization, repository):
     plot = get_vbar_plot(prs_opened_time)
     script, div = components(plot)
 
-    return render(request, 'bokeh_graph.html',
-                  {'script': script, 'div': div})
+    context = {'script': script,
+               'div': div,
+               'repository': repository_url}
+
+    return render(request, 'bokeh_graph.html', context)
