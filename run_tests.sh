@@ -14,6 +14,4 @@ echo -e "\nGreat, all tests succeed!\n"
 
 coverage report
 
-codecov -t 4bbc492c-d908-4f02-8595-8a510df37ef3
-
 exit 0
