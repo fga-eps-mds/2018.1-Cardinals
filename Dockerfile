@@ -6,4 +6,3 @@ ADD requirements /code/requirements
 RUN pip install --upgrade pip
 RUN pip install -r requirements/development.txt
 ADD . /code/
-CMD ./run.sh
