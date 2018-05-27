@@ -25,3 +25,6 @@ plugins:
 exclude_patterns:
   - "static/"
   - "templates/"
+  - "manage.py"
+  - "cardinals/*"
+  - "*/migrations/*"
