@@ -3,6 +3,7 @@ from .base import *
 DEBUG = True
 ALLOWED_HOSTS = ['cardinalsbeta.herokuapp.com']
 SECRET_KEY = os.environ['SECRET_KEY']
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
