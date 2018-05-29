@@ -18,14 +18,7 @@ def getResult(request, repo_id):
 
     elif request.method == 'POST':
 
-        weight = Weight()
-
-        weight.commit = request.POST['weight_commit']
-        weight.line_code = request.POST['weight_line_code']
-        weight.issues_created = request.POST['weight_issues_created']
-        weight.issues_closed = request.POST['weight_issues_closed']
-
-        weight.save()
+        weight = Weight.requestWeight(request)
 
         commiters = Contributor.getScore(commiters, weight=weight)
 

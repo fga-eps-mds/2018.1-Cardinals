@@ -1,7 +1,7 @@
 from test_utils.setup_test_cases import SetupTestCases
 from django.test import TestCase
 from .models import Contributor
-from . import constants
+# from . import constants
 
 
 class RepoInfoTests(SetupTestCases):
@@ -50,16 +50,16 @@ class RepoInfoTests(SetupTestCases):
 
         self.assertEquals(contributors_login, contributors_login_expected)
 
-    def test_invalid_repository_name(self):
-        string_temp = 'just/a/long/url/to/' + 'make/sure/it/is/not/'
-        string_temp2 = 'found/on/github/dot/com/9817231285103'
-        invalid_repo_path = string_temp + string_temp2
-        response = self.make_client_request(RepoInfoTests.url_name,
-                                            invalid_repo_path)
+    # def test_invalid_repository_name(self):
+    #     string_temp = 'just/a/long/url/to/' + 'make/sure/it/is/not/'
+    #     string_temp2 = 'found/on/github/dot/com/9817231285103'
+    #     invalid_repo_path = string_temp + string_temp2
+    #     response = self.make_client_request(RepoInfoTests.url_name,
+    #                                         invalid_repo_path)
 
-        messages = [m.message for m in response.context['messages']]
+    #     messages = [m.message for m in response.context['messages']]
 
-        self.assertTrue(constants.INVALID_REPOSITORY_MESSAGE in messages)
+    #     self.assertTrue(constants.INVALID_REPOSITORY_MESSAGE in messages)
 
 
 class ModelContributorsTest(TestCase):
