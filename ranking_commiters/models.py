@@ -1,5 +1,4 @@
 from django.db import models
-from pygithub_api_integration.models import Repository
 
 
 class Weight(models.Model):
@@ -7,5 +6,3 @@ class Weight(models.Model):
     line_code = models.IntegerField()
     issues_created = models.IntegerField()
     issues_closed = models.IntegerField()
-    repository = models.ForeignKey(Repository,
-                                   on_delete=models.CASCADE)

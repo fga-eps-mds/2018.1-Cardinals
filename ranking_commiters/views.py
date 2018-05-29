@@ -10,6 +10,10 @@ def getResult(request, repo_id):
 
     if request.method == 'GET':
 
+        Contributor.setLineCodeContrib(commiters)
+        Contributor.setIssuesCreatedFor(commiters, repo_id)
+        Contributor.setIssuesClosedFor(commiters, repo_id)
+
         commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
@@ -29,5 +33,6 @@ def getResult(request, repo_id):
                                key=attrgetter('score'),
                                reverse=True)
 
-    return render(request, 'rankingCommiters.html',
-                  {"ranking_commiters": ranking_commiters})
+    context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
+
+    return render(request, 'rankingCommiters.html', context)

@@ -66,6 +66,42 @@ class Contributor(models.Model):
             contributor.repository.add(repo)
             ContributingWeek.saveContributingWeek(c, contributor)
 
+    def setLineCodeContrib(contributors):
+
+        for c in contributors:
+            line_code = 0
+            weeks = ContributingWeek.objects.filter(contributor=c.id)
+            for week in weeks:
+                line_code += week.line_add + week.line_del
+
+            c.line_code = line_code
+            c.save()
+
+    def setIssuesCreatedFor(contributors, repo_id):
+
+        for c in contributors:
+            num_issues_created = 0
+            issues_all = Issue.objects.filter(repository=repo_id)
+            for issue in issues_all:
+                if issue.created_by == c.id:
+                    num_issues_created += 1
+
+            c.issues_created = num_issues_created
+            c.save()
+
+    def setIssuesClosedFor(contributors, repo_id):
+
+        for c in contributors:
+            num_issues_closed = 0
+            issues_all = Issue.objects.filter(repository=repo_id)
+            for issue in issues_all:
+                if issue.state == "closed":
+                    if issue.closed_by == c.id:
+                        num_issues_closed += 1
+
+            c.issues_closed = num_issues_closed
+            c.save()
+
     def getLineCodeRepo(contributors):
 
         line_code_repo = 0
@@ -96,14 +132,14 @@ class Contributor(models.Model):
 
         else:
             for c in contributors:
-                c.score = round(float(c.commits * int(weight["commit"]) +
+                c.score = round(float(c.commits * int(weight.commit) +
                                       Contributor.getPercent(c.line_code,
                                                              line_code_repo) *
-                                      int(weight["line_code"]) +
+                                      int(weight.line_code) +
                                       c.issues_created *
-                                      int(weight["issues_created"]) +
+                                      int(weight.issues_created) +
                                       c.issues_closed *
-                                      int(weight["issues_closed"])), 2)
+                                      int(weight.issues_closed)), 2)
 
         return contributors
 
@@ -176,7 +212,7 @@ class Issue(models.Model):
 
         return issues_request
 
-    def seveIssues(issues_request, repo):
+    def saveIssues(issues_request, repo):
 
         for i in issues_request:
             issue = Issue()
