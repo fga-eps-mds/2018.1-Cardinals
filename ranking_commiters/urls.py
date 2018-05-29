@@ -1,6 +1,6 @@
-from django.conf.urls import url
+from django.urls import path
 from ranking_commiters import views
 
 urlpatterns = [
-    url(r'getResult/$', views.getResult, name='getResult'),
+    path('getResult/<int:repo_id>/', views.getResult, name='getResult'),
 ]

@@ -39,10 +39,10 @@ class Contributor(models.Model):
     name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=254, null=True)
     login = models.CharField(max_length=255)
-    commits = models.IntegerField(null=True)
-    line_code = models.IntegerField(null=True)
-    issues_created = models.IntegerField(null=True)
-    issues_closed = models.IntegerField(null=True)
+    commits = models.IntegerField(default=0, null=True)
+    line_code = models.IntegerField(default=0, null=True)
+    issues_created = models.IntegerField(default=0, null=True)
+    issues_closed = models.IntegerField(default=0, null=True)
     score = models.DecimalField(max_digits=9, decimal_places=2, null=True)
     repository = models.ManyToManyField(Repository)
 
@@ -81,9 +81,7 @@ class Contributor(models.Model):
 
         return percent
 
-    def getStatsContributors(weight=None):
-
-        contributors = Contributor.objects.all()
+    def getScore(contributors, weight=None):
 
         line_code_repo = Contributor.getLineCodeRepo(contributors)
 
