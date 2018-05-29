@@ -10,7 +10,8 @@ plugins:
     enabled: true
     config:
       languages:
-      - python 
+      - python
+      threshold: "C"
   sonar-python:
     enabled: true
     config:
