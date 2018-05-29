@@ -15,14 +15,16 @@ def renderingDocs(request, repo_id):
     conductFile = getCodeConduct(repo)
     readme = getReadme(repo)
 
-    return render(request, 'searchDocs.html',
-                  {'contributingFile': contributingFile,
-                   'licenseFile': licenseFile,
-                   'issueTemplate': issueTemplate,
-                   'pullRequestTemplate': pullRequestTemplate,
-                   'conductFile': conductFile,
-                   'readme': readme
-                   })
+    context = {'contributingFile': contributingFile,
+               'licenseFile': licenseFile,
+               'issueTemplate': issueTemplate,
+               'pullRequestTemplate': pullRequestTemplate,
+               'conductFile': conductFile,
+               'readme': readme,
+               'repo_id': repo.id
+               }
+
+    return render(request, 'searchDocs.html', context)
 
 
 def getReadme(repo):

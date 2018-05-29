@@ -48,7 +48,8 @@
                                     <a class="bg-red" href="#"><i class="fa fa-code"></i> Commits</a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="#"><i class="fa fa-file-o"></i> Documentos</a>
+                                    {% block renderingDocs %}
+                                    {% endblock %}
                                 </li>
                                 <li>
                                     <a class="bg-red" href="">
@@ -57,7 +58,8 @@
                                     </a>  
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a class="bg-red" href="#"><i class="fa fa-trophy"></i> Ranking Commiters</a> 
+                                            {% block getResult %}
+                                            {% endblock %}
                                         </li>
                                     </ul>
                                 </li>
