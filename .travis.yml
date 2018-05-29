@@ -17,8 +17,7 @@ jobs:
       - docker
       env:
         COMPOSE_VERSION: 1.19.0
-      install:
-      - pip install codecov
+      install: skip
       before_script:
       - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
         -s`-`uname -m` > docker-compose
@@ -30,7 +29,6 @@ jobs:
       - sudo docker-compose -f docker-compose.test.yml run --rm web
       after_script:
       - sudo docker-compose down
-      - codecov
 
     - stage: deploy to staging
       install: skip
