@@ -1,17 +1,27 @@
 version: '3'
 
 services:
-  db:
-    container_name: cardinalsdb
-    image: postgres
   web:
     container_name: cardinalsweb
-    build: .
+    build: ./
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+      - ./:/code:rw
     depends_on:
       - db
+    environment:
+      DJANGO_SETTINGS_MODULE: cardinals.settings.development
+    ports:
+      - "8000:8000"
     env_file:
       - .env
+
+  db:
+    restart: always
+    image: postgres:10-alpine
+    volumes:
+      - ./.dbdata:/var/lib/postgresql:rw
+    environment:
+      POSTGRES_USER: cardinals
+      POSTGRES_PASSWORD: cardinals
+      POSTGRES_DB: cardinals

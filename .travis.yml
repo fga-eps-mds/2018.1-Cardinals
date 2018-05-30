@@ -8,20 +8,9 @@ jobs:
   include:
 
     - stage: static analysis
-      services:
-      - docker
-      env:
-        COMPOSE_VERSION: 1.19.0
-      install: skip
-      before_script:
-      - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname
-        -s`-`uname -m` > docker-compose
-      - chmod +x docker-compose
-      - sudo mv docker-compose /usr/local/bin
-      - sudo docker-compose -f docker-compose.test.yml build
-      - sudo docker-compose -f docker-compose.test.yml run -d db
+      install: pip install flake8
       script:
-      - sudo docker-compose -f docker-compose.test.yml run web ./run_analysis.sh
+      - flake8 --exit-zero .
 
     - stage: unit tests
       services:
@@ -35,10 +24,11 @@ jobs:
       - chmod +x docker-compose
       - sudo mv docker-compose /usr/local/bin
       - echo -e "USERNAME=$CREDENTIAL_USERNAME\nPASSWORD=$CREDENTIAL_PASSWORD" >> .env
-      - sudo docker-compose -f docker-compose.test.yml build
       - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
-      - sudo docker-compose -f docker-compose.test.yml run --rm sut
+      - sudo docker-compose -f docker-compose.test.yml run --rm web
+      after_script:
+      - sudo docker-compose down
 
     - stage: deploy to staging
       install: skip
@@ -50,7 +40,7 @@ jobs:
         app: cardinalsbeta
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
-          branch: config_ci
+          branch: config_deploy
 
     - stage: deploy to production
       install: skip
@@ -63,4 +53,3 @@ jobs:
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
           branch: master
-

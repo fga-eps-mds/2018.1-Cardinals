@@ -58,7 +58,6 @@ class RepoInfoTests(SetupTestCases):
     #                                         invalid_repo_path)
 
     #     messages = [m.message for m in response.context['messages']]
-
     #     self.assertTrue(constants.INVALID_REPOSITORY_MESSAGE in messages)
 
 

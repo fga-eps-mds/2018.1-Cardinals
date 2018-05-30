@@ -2,6 +2,8 @@ from django.shortcuts import render
 from github import GithubException
 from pygithub_api_integration.models import Repository
 
+paths = ["docs/", ".github/", ""]
+
 
 def renderingDocs(request, repo_id):
 
@@ -21,7 +23,7 @@ def renderingDocs(request, repo_id):
                'pullRequestTemplate': pullRequestTemplate,
                'conductFile': conductFile,
                'readme': readme,
-               'repo_id': repo.id
+               'repo_id': repo_id
                }
 
     return render(request, 'searchDocs.html', context)
@@ -30,7 +32,8 @@ def renderingDocs(request, repo_id):
 def getReadme(repo):
 
     try:
-        readme = repo.get_file_contents("README.md")
+        readme = repo.get_readme()
+
     except GithubException:
         readme = None
 
@@ -39,47 +42,75 @@ def getReadme(repo):
 
 def getContributingFile(repo):
 
-    try:
-        contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
-    except GithubException:
-        contributingFile = None
+    contributing_file = None
+    i = 0
+    while contributing_file is None and i <= 2:
+        try:
+            contributing_file = repo.get_file_contents(paths[i] +
+                                                       "CONTRIBUTING.md")
 
-    return contributingFile
+        except GithubException:
+            contributing_file = None
+
+        i += 1
+
+    return contributing_file
 
 
 def getCodeConduct(repo):
 
-    try:
-        conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
-    except GithubException:
-        conductFile = None
-    return conductFile
+    conduct_file = None
+    i = 0
+    while conduct_file is None and i <= 2:
+        try:
+            conduct_file = repo.get_file_contents(paths[i] +
+                                                  "CODE_OF_CONDUCT.md")
+        except GithubException:
+            conduct_file = None
+
+        i += 1
+
+    return conduct_file
 
 
 def getLicenseFile(repo):
 
     try:
-        licenseFile = repo.get_file_contents("LICENSE")
+        license_file = repo.get_license()
+
     except GithubException:
-        licenseFile = None
-    return licenseFile
+        license_file = None
+
+    return license_file
 
 
 def getIssueTemplate(repo):
 
-    try:
-        issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
-    except GithubException:
-        issueTemplate = None
-    return issueTemplate
+    template_issue = None
+    i = 0
+    while template_issue is None and i <= 2:
+        try:
+            template_issue = repo.get_file_contents(paths[i] +
+                                                    "ISSUE_TEMPLATE.md")
+        except GithubException:
+            template_issue = None
+
+        i += 1
+
+    return template_issue
 
 
 def getPullRequestTemplate(repo):
 
-    way_doc = ".github/PULL_REQUEST_TEMPLATE.md"
+    template_pr = None
+    i = 0
+    while template_pr is None and i <= 2:
+        try:
+            template_pr = repo.get_file_contents(paths[i] +
+                                                 "PULL_REQUEST_TEMPLATE.md")
+        except GithubException:
+            template_pr = None
 
-    try:
-        pullRequestTemplate = repo.get_file_contents(way_doc)
-    except GithubException:
-        pullRequestTemplate = None
-    return pullRequestTemplate
+        i += 1
+
+    return template_pr
