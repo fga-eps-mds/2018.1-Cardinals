@@ -113,7 +113,7 @@ class Contributor(models.Model):
 
     def getPercent(line_code, line_code_repo):
 
-        percent = (line_code*100)/line_code_repo
+        percent = (line_code * 100) / line_code_repo
 
         return percent
 

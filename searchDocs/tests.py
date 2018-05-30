@@ -1,10 +1,11 @@
 # from test_utils.setup_test_cases import SetupTestCases
+# from pygithub_api_integration.models import Repository
 # from django.urls import reverse
 
 
 # class SearchDocsTests(SetupTestCases):
 
-#     url = reverse('renderingDocs')
+#     url = reverse('renderingDocs', kwargs={'repo_id': '1'})
 
 #     def request_file_name(self, context_name):
 #         response = self.client.get(SearchDocsTests.url)
