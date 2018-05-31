@@ -34,12 +34,12 @@
                 <aside class="sidebar bg-color">
                     <div class="sidebar-container">
                         <div class="sidebar-header">
-                            <div class="brand bg-red"> Cardinals </div>
+                            <a href="{% url 'index' %}" class="brand bg-red"> Cardinals </a>
                         </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li>
-                                    <a class="bg-red" href="#"><i class="fa fa-home"></i> Home </a>
+                                    <a class="bg-red" href="getRepoInfo"><i class="fa fa-home"></i> Home </a>
                                 </li>
                                 <li>
                                     <a class="bg-red" href="#"><i class="fa fa-code-fork"></i> Issue</a>
@@ -48,7 +48,8 @@
                                     <a class="bg-red" href="#"><i class="fa fa-code"></i> Commits</a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="{% url 'renderingDocs' %}"><i class="fa fa-file-o"></i> Documentos</a>
+                                    {% block renderingDocs %}
+                                    {% endblock %}
                                 </li>
                                 <li>
                                     <a class="bg-red" href="">
@@ -57,7 +58,8 @@
                                     </a>  
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a class="bg-red" href="{% url 'getRankingCommitersResult' %}"><i class="fa fa-trophy"></i> Ranking Commiters</a> 
+                                            {% block getResult %}
+                                            {% endblock %}
                                         </li>
                                     </ul>
                                 </li>
