@@ -3,10 +3,8 @@ version: '3'
 services:
   web:
     container_name: cardinalsweb
-    build: ./
-    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./:/code:rw
+    build: ./cardinalsproject
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000'
     depends_on:
       - db
     environment:
@@ -16,7 +14,19 @@ services:
     env_file:
       - .env
 
+  updater:
+    container_name: updater
+    build: ./updaterproject
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py runserver 0.0.0.0:3000'
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
   db:
+    container_name: db
     restart: always
     image: postgres:10-alpine
     volumes:

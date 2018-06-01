@@ -2,11 +2,9 @@ version: '3'
 
 services:
   web:
-    container_name: cardinalsdb
-    build: ./
-    command: bash -c ./run_tests.sh
-    volumes:
-      - ./:/code:rw
+    container_name: cardinalsweb
+    build: ./cardinalsproject
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; ./run_tests.sh'
     depends_on:
       - db
     environment:

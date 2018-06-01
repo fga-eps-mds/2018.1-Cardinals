@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Static analysis
-flake8
+flake8 .
 
 RESULT=$?
 if [ ${RESULT} != "0" ]; then
@@ -11,6 +11,6 @@ To more information, visit: http://flake8.pycqa.org/en/latest/index.html\n"
 	exit ${RESULT}
 fi
 
-echo -e "\nGreat, no issues here to report!\n"
+echo -e "\nGreat, no issues here to report.\n"
 
 exit 0

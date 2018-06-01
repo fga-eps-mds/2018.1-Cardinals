@@ -6,6 +6,10 @@ build:
 
 up:
 	# Create and start containers
+	docker-compose up
+
+upd:
+	# Create and start containers in the background
 	docker-compose up -d
 
 stop:
@@ -27,14 +31,20 @@ shell:
 	# Execute the bash of the main container
 	docker exec -it $(CONTAINER_NAME) bash
 
+updatershell:
+	# Execute the bash of the main container
+	docker exec -it updater bash
+
+dbshell:
+	docker exec -it db psql -U cardinals -W cardinals
+
 test:
 	# Execute the tests
 	docker-compose -f docker-compose.test.yml run --rm web
 
 analyze-flake8:
 	# Run static analysis
-	docker-compose up -d
-	docker exec -it $(CONTAINER_NAME) ./run_analysis.sh
+	docker-compose run --rm web ./run_analysis.sh
 
 analyze:
 	# Run the Codeclimate's static analysis locally
