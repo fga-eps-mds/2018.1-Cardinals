@@ -17,7 +17,7 @@ services:
   updater:
     container_name: updater
     build: ./updaterproject
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py runserver 0.0.0.0:3000'
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:3000'
     depends_on:
       - db
     ports:

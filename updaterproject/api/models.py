@@ -1,6 +1,6 @@
+from __future__ import unicode_literals
+
 from django.db import models
-from github import Github
-from oauth.credentials import get_credentials
 
 
 class Repository(models.Model):
@@ -9,7 +9,6 @@ class Repository(models.Model):
     full_name = models.CharField(max_length=255, null=False)
     name = models.CharField(max_length=255, null=False)
     # update handling attributes
-    # blank=False
     events_url = models.CharField(max_length=200, null=True)
     updated_at = models.DateTimeField(null=True)
 

@@ -1,3 +1,5 @@
-# Requirements common to all environments
-Django==2.0.5
+Django==1.9.3
+djangorestframework==3.3.2
 psycopg2-binary==2.7.4
+pygithub==1.39
+requests==2.18.4
