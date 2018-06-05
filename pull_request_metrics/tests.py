@@ -91,3 +91,13 @@ class PullRequestTests(TestCase):
 
         self.assertEquals(x[0], 3)
         self.assertTrue(x[1] >= 0)
+
+    def test_analyze_pull_requests_context(self):
+        url = reverse('pull_requests', kwargs={'organization': SetUp.organization,
+                                               'repository': SetUp.repository})
+        response = self.client.get(url)
+
+        necessary_context = ('script', 'div', 'repository')
+        for context in necessary_context:
+            self.assertTrue(context in response.context.keys())
+            self.assertIsNotNone(response.context[context])

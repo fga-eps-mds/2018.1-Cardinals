@@ -46,10 +46,6 @@ def get_vbar_plot(prs_opened_time):
 
     x_ticks = [i for i in range(0, max(x) + 2, 2)]
 
-    print('\n' * 5)
-    print('plot(x) = {}'.format(x))
-    print('plot(y) = {}'.format(y))
-
     plot.vbar(x=x, width=0.5, bottom=0, top=y, color="#CAB2D6")
 
     plot.xaxis.axis_label = 'Tempo aberto (dias)'
