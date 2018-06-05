@@ -2,9 +2,10 @@ version: '3'
 
 services:
   web:
-    container_name: cardinalsdb
+    restart: on-failure
+    container_name: cardinalsweb
     build: ./
-    command: bash -c ./run_tests.sh
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; ./run_tests.sh'
     volumes:
       - ./:/code:rw
     depends_on:
@@ -17,10 +18,13 @@ services:
       - .env
 
   db:
+    container_name: db
     restart: always
     image: postgres:10-alpine
     volumes:
       - ./.dbdata:/var/lib/postgresql:rw
+    ports:
+      - 5432
     environment:
       POSTGRES_USER: cardinals
       POSTGRES_PASSWORD: cardinals

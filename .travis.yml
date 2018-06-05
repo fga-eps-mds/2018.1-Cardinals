@@ -24,7 +24,6 @@ jobs:
       - chmod +x docker-compose
       - sudo mv docker-compose /usr/local/bin
       - echo -e "USERNAME=$CREDENTIAL_USERNAME\nPASSWORD=$CREDENTIAL_PASSWORD" >> .env
-      - sudo docker-compose -f docker-compose.test.yml run -d db
       script:
       - sudo docker-compose -f docker-compose.test.yml run --rm web
       after_script:
