@@ -11,7 +11,9 @@ from bokeh.embed import components
 
 from oauth.credentials import get_credentials
 
+
 username, password = get_credentials()
+
 
 def get_pull_request_opened_time(pull_request):
     assert isinstance(pull_request, PullRequest.PullRequest)
@@ -32,12 +34,14 @@ def get_pull_requests_opened_time(pull_requests):
     opened_times = [get_pull_request_opened_time(pr) for pr in pull_requests]
     return opened_times
 
+
 def get_opened_time_xy_axis(prs_opened_time):
     counter = Counter(opened_time.days for opened_time in prs_opened_time)
 
     x = list(counter.keys())
     y = list(counter.values())
     return (x, y)
+
 
 def get_vbar_plot(prs_opened_time):
     plot = figure(plot_width=800, plot_height=500)

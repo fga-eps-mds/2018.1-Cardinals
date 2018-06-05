@@ -7,12 +7,12 @@ from pygithub_api_integration.models import Contributor
 from django.contrib import messages
 from . import constants
 
+
 def save_repository_name_in_session(request, repo_name):
     request.session['repository'] = repo_name
 
 
 def getRepoInfo(request):
-
     repo_name = getRepository(request)
     save_repository_name_in_session(request, repo_name)
 

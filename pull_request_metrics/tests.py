@@ -4,11 +4,10 @@ from oauth.credentials import get_credentials
 
 from github import Github, PaginatedList, PullRequest
 
-# Create your tests here.
-
 from .views import (get_opened_time_xy_axis,
                     get_pull_request_opened_time,
                     get_pull_requests_opened_time,)
+
 
 class SetUp:
     organization = 'fgacardinals'
@@ -17,6 +16,7 @@ class SetUp:
 
     username, password = get_credentials()
 
+
 class PullRequestTests(TestCase):
     url_params = {'organization': SetUp.organization,
                   'repository': SetUp.repository}
@@ -24,14 +24,15 @@ class PullRequestTests(TestCase):
     repository_url = SetUp.organization + '/' + SetUp.repository
     github = Github(SetUp.username, SetUp.password)
 
-    def get_pr_by_title(self,  pull_requests, title):
+    def get_pr_by_title(self, pull_requests, title):
         for pr in pull_requests:
             if pr.title == title:
                 return pr
         return None
 
     def test_pull_request_opened_time_for_closed_pr(self):
-        repository = PullRequestTests.github.get_repo(PullRequestTests.repository_url)
+        repository = PullRequestTests.github.\
+            get_repo(PullRequestTests.repository_url)
 
         pull_requests = repository.get_pulls(state='all')
 
@@ -44,8 +45,9 @@ class PullRequestTests(TestCase):
         self.assertEquals(pr.title, expected_pr_title)
         self.assertEquals(opened_time, expected_opened_time)
 
-    def test_pull_request_opened_time_for_closed_pr(self):
-        repository = PullRequestTests.github.get_repo(PullRequestTests.repository_url)
+    def test_pull_request_opened_time_for_opened_pr(self):
+        repository = PullRequestTests.github.\
+            get_repo(PullRequestTests.repository_url)
 
         pull_requests = repository.get_pulls(state='all')
 
@@ -60,7 +62,8 @@ class PullRequestTests(TestCase):
         self.assertTrue(opened_time >= expected_opened_time)
 
     def test_get_pull_requests_opened_time(self):
-        repository = PullRequestTests.github.get_repo(PullRequestTests.repository_url)
+        repository = PullRequestTests.github.\
+            get_repo(PullRequestTests.repository_url)
 
         pull_requests = repository.get_pulls(state='all')
 
@@ -68,7 +71,6 @@ class PullRequestTests(TestCase):
         closed_pr_expected_opened_time = 3
 
         still_opened_pr_title = 'Auto commit: peDBFQDrihx'
-        titles = (closed_pr_title, still_opened_pr_title)
 
         prs_opened_time = get_pull_requests_opened_time(pull_requests)
         for index, pr in enumerate(pull_requests):
@@ -79,7 +81,8 @@ class PullRequestTests(TestCase):
                 self.assertTrue(opened_time >= 0)
 
     def test_get_opened_time_xy_axis(self):
-        repository = PullRequestTests.github.get_repo(PullRequestTests.repository_url)
+        repository = PullRequestTests.github.\
+            get_repo(PullRequestTests.repository_url)
 
         pull_requests = repository.get_pulls(state='all')
         prs_opened_time = get_pull_requests_opened_time(pull_requests)
@@ -93,8 +96,9 @@ class PullRequestTests(TestCase):
         self.assertTrue(x[1] >= 0)
 
     def test_analyze_pull_requests_context(self):
-        url = reverse('pull_requests', kwargs={'organization': SetUp.organization,
-                                               'repository': SetUp.repository})
+        url = reverse('pull_requests',
+                      kwargs={'organization': SetUp.organization,
+                              'repository': SetUp.repository})
         response = self.client.get(url)
 
         necessary_context = ('script', 'div', 'repository')
