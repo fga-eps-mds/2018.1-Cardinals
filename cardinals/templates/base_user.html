@@ -5,11 +5,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title> Cardinals </title>
+        <title>{% block title %} Cardinals {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
         <link rel="stylesheet" id="theme-style" href="{% static 'css/app-red.css' %}">
+        {% block head %} <!-- Head content --> {% endblock %}
     </head>
     <body class="loaded">
         <div id="main-wrapper">
@@ -51,6 +52,12 @@
                                     {% block renderingDocs %}
                                     {% endblock %}
                                 </li>
+
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/pull_requests/"><i class="fa fa-long-arrow-up"></i>
+                                    Pull Requests</a>
+                                </li>
+
                                 <li>
                                     <a class="bg-red" href="">
                                         <i class="fa fa-user"></i> Contributors

@@ -8,9 +8,13 @@ from django.contrib import messages
 from . import constants
 
 
-def getRepoInfo(request):
+def save_repository_name_in_session(request, repo_name):
+    request.session['repository'] = repo_name
 
+
+def getRepoInfo(request):
     repo_name = getRepository(request)
+    save_repository_name_in_session(request, repo_name)
 
     try:
         repo_request = Repository.requestRepo(repo_name)
