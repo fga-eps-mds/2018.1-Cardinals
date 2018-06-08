@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'ranking_commiters',
     'users',
     'time_issue',
+    'pull_request_metrics',
 ]
 
 MIDDLEWARE = [
@@ -71,8 +72,9 @@ WSGI_APPLICATION = 'cardinals.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'cardinals',
+        'USER': 'cardinals',
+        'PASSWORD': 'cardinals',
         'HOST': 'db',
         'PORT': 5432,
     }
@@ -109,7 +111,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

@@ -10,7 +10,8 @@ plugins:
     enabled: true
     config:
       languages:
-      - python 
+      - python
+      threshold: "C"
   sonar-python:
     enabled: true
     config:
@@ -25,3 +26,6 @@ plugins:
 exclude_patterns:
   - "static/"
   - "templates/"
+  - "manage.py"
+  - "cardinals/*"
+  - "*/migrations/*"
