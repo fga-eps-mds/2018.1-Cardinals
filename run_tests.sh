@@ -1,8 +1,10 @@
 #!/bin/bash
 
 python manage.py makemigrations
+
 python manage.py migrate
-coverage run --source='.' manage.py test
+
+coverage run manage.py test
 
 RESULT=$?
 if [ ${RESULT} != "0" ]; then

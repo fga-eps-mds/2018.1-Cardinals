@@ -5,6 +5,16 @@ from oauth.credentials import get_credentials
 from collections import *
 from datetime import datetime, timedelta
 
+from bokeh.plotting import figure, output_file, show
+from bokeh.embed import components
+
+username, password = get_credentials()
+dates=[]
+all_amount_by_date=[]
+signed_amount_by_date=[]
+
+
+
 def commits_charts(request):
     username, password = get_credentials()
     g = Github(username, password)
@@ -12,7 +22,7 @@ def commits_charts(request):
     org = g.get_organization("fga-gpp-mds")
     repos = user.get_repos()
     repo = org.get_repo("2018.1-Cardinals")
-
+ 
 
     all_commit_count = defaultdict(list)
     signed_commit_count = Counter()
@@ -42,7 +52,37 @@ def commits_charts(request):
     signed_amount_by_date = [x[1] for x in signed_commit_count]
 
 
-    return render(request, 'commits_charts.html' 
-                         , {'dates': dates
-                         ,  'all_commits': all_amount_by_date
-                         ,  'signed_commits': signed_amount_by_date})
+    return (dates, all_amount_by_date, signed_amount_by_date)
+    
+
+def get_multi_line_plot(commits_charts):
+    plot = figure(plot_width=800, plot_height=500)
+
+    plot.multi_line(xs=[[1, 2, 3], [2, 3, 4]], ys=[[6, 7, 2], [4, 5, 7]],
+             color=['red','green'])
+    
+    plot.xaxis.axis_label = 'Data do Commit'
+    plot.yaxis.axis_label = 'Commits'
+    """ plot.xaxis.ticker = x_ticks """
+
+    plot.title.text = 'Commits Pareados X Commits Individuais'
+    plot.title.align = 'center'
+    plot.title.text_font_size = '20pt'
+
+    return plot
+
+
+def analyze_commits_charts(request, organization, repository):
+
+    repository_url = organization + '/' + repository
+    github = Github(username, password)
+    repository = github.get_repo(repository_url)
+    plot = get_multi_line_plot(commits_charts)
+    script, div = components(plot)
+
+    context = {'script': script,
+               'div': div,
+               'repository': repository_url}
+
+    return render(request, 'bokeh_graph.html', context)
+
