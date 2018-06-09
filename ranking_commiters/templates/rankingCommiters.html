@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <label>Defina os seguintes pesos</label>
-                <form action="{% url 'getRankingCommitersResult' %}" method="POST">
+                <form action="{% url 'getResult' repo_id %}" method="POST">
                     {% csrf_token %}
                     <table>
                         <tr>
@@ -30,10 +30,22 @@
                 </form>
                 <h2>Ranking Commiters</h2>
                 {% for rc in ranking_commiters %}
-                    <li>{{rc.username}} | score: {{rc.score}} </li>
+                    <li>{{rc.name}} | score: {{rc.score}} </li>
                 {% endfor %}    
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block renderingDocs %}
+    {% with repo_id=repo_id %}
+    <a class="bg-red" href="{% url 'renderingDocs' repo_id %}"><i class="fa fa-file-o"></i> Documentos</a>
+    {% endwith %}
+{% endblock %}
+
+{% block getResult %}
+    {% with repo_id=repo_id %}
+    <a class="bg-red" href="{% url 'getResult' repo_id %}"><i class="fa fa-trophy"></i> Ranking Commiters</a>
+    {% endwith %}
 {% endblock %}

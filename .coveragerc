@@ -5,4 +5,4 @@ omit =
     *wsgi.py
     *manage.py
     test*
-
+    *tests.py
