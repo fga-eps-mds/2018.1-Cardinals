@@ -15,7 +15,7 @@ username, password = get_credentials()
 
 # Create your views here.
 
-def get_multi_line_plot(days, amount):
+def get_bar_plot(days, amount):
     plot = figure(plot_width=800, plot_height=500)
 
     plot.vbar(x=amount, width=0.5, bottom=0, top=days, color="#CAB2D6")
@@ -62,7 +62,7 @@ def analyze_issue_graph(request, organization, repository):
 
     mean = sum(amount)/len(amount)  
 
-    plot = get_multi_line_plot(days, amount)
+    plot = get_bar_plot(days, amount)
     script, div = components(plot)
 
 
