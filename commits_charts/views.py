@@ -15,14 +15,15 @@ signed_amount_by_date=[]
 
 
 
-def commits_charts(request):
+def commits_charts(commits_charts):
+    
     username, password = get_credentials()
     g = Github(username, password)
     user = g.get_user()
     org = g.get_organization("fga-gpp-mds")
     repos = user.get_repos()
     repo = org.get_repo("2018.1-Cardinals")
- 
+  
 
     all_commit_count = defaultdict(list)
     signed_commit_count = Counter()
@@ -58,7 +59,11 @@ def commits_charts(request):
 def get_multi_line_plot(commits_charts):
     plot = figure(plot_width=800, plot_height=500)
 
-    plot.multi_line(xs=[[1, 2, 3], [2, 3, 4]], ys=[[6, 7, 2], [4, 5, 7]],
+    dates = commits_charts(commits_charts)
+    all_amount_by_date = commits_charts(commits_charts)
+    signed_amount_by_date = commits_charts(commits_charts)
+    
+    plot.multi_line(xs=[dates,dates], ys= [all_amount_by_date,signed_amount_by_date],
              color=['red','green'])
     
     plot.xaxis.axis_label = 'Data do Commit'
