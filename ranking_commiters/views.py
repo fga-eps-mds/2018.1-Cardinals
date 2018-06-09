@@ -8,11 +8,11 @@ from ranking_commiters.models import Weight
 
 def getResult(request, repo_id):
 
-    repo = Repository.objects.get(id=repo_id)
-    repo_request = Repository.requestRepo(repo.full_name)
+    # repo = Repository.objects.get(id=repo_id)
+    # repo_request = Repository.requestRepo(repo.full_name)
 
-    issue_request = Issue.requestIssues(repo_request)
-    Issue.saveIssues(issue_request, repo)
+    # issue_request = Issue.requestIssues(repo_request)
+    # Issue.saveIssues(issue_request, repo)
 
     commiters = Contributor.objects.filter(repository=repo_id)
 
