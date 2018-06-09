@@ -16,8 +16,13 @@ def getRepoInfo(request):
     repo_name = getRepository(request)
     save_repository_name_in_session(request, repo_name)
 
+    repo_request = None
+
     try:
-        repo_request = Repository.requestRepo(repo_name)
+
+        while repo_request is None:
+            repo_request = Repository.requestRepo(repo_name)
+
         repo = Repository.saveRepo(repo_request)
 
         contributors_request = Contributor.requestContributors(repo_request)
