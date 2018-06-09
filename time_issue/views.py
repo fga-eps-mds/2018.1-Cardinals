@@ -39,6 +39,7 @@ def timeIssue(request):
     amount = [x[1] for x in time_open]
     print(amount)
 
+
     mean = sum(amount)/len(amount)
-    return render(request, 'timeissue.html', {'repo' : days, 'time' : time_open})
+    return render(request, 'timeissue.html', {'repo' : days})
 
