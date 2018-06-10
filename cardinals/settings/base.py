@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'pygithub_api_integration',
     'searchDocs',
     'ranking_commiters',
-    'users',
     'time_issue',
     'commits_charts',
     'pull_request_metrics',
