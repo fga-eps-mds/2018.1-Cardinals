@@ -38,18 +38,18 @@ def getRepoInfo(request):
 
         return render(request, 'repository_info.html', context)
 
-    except GE:
-        messages.add_message(
-            request,
-            messages.ERROR,
-            constants.INVALID_REPOSITORY_MESSAGE,
-        )
-
     except socket.timeout and socket.gaierror:
         messages.add_message(
             request,
             messages.ERROR,
             constants.TIMEOUT_MESSAGE,
+        )
+
+    except GE:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            constants.INVALID_REPOSITORY_MESSAGE,
         )
 
         return redirect('index')
