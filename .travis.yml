@@ -39,7 +39,7 @@ jobs:
         app: cardinalsbeta
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
-          branch: config_deploy
+          branch: develop
 
     - stage: deploy to production
       install: skip

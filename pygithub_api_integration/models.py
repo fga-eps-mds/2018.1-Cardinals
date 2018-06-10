@@ -9,16 +9,14 @@ class Repository(models.Model):
     full_name = models.CharField(max_length=255, null=False)
     name = models.CharField(max_length=255, null=False)
 
-    def requestRepo(repo_name, username=None, password=None):
+    def requestRepo(repo_name):
 
-        if (username is None) and (password is None):
+        username, password = get_credentials()
+        git = Github(username, password)
 
-            username, password = get_credentials()
-            git = Github(username, password)
+        repo_request = None
+        while repo_request is None:
             repo_request = git.get_repo(repo_name)
-
-        else:
-            pass
 
         return repo_request
 
@@ -48,7 +46,9 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contributors_request = repo_request.get_stats_contributors()
+        contributors_request = None
+        while contributors_request is None:
+            contributors_request = repo_request.get_stats_contributors()
 
         return contributors_request
 
@@ -155,7 +155,9 @@ class ContributingWeek(models.Model):
 
     def saveContributingWeek(contributor_request, contributor):
 
-        weeks = contributor_request.weeks
+        weeks = None
+        while weeks is None:
+            weeks = contributor_request.weeks
 
         for week in weeks:
             contrib_week = ContributingWeek()
@@ -178,7 +180,9 @@ class Commit(models.Model):
 
     def requestCommit(repo_request):
 
-        commit_request = repo_request.get_commits()
+        commit_request = None
+        while commit_request is None:
+            commit_request = repo_request.get_commits()
 
         return commit_request
 
@@ -208,7 +212,9 @@ class Issue(models.Model):
 
     def requestIssues(repo_request):
 
-        issues_request = repo_request.get_issues(state="all")
+        issues_request = None
+        while issues_request is None:
+            issues_request = repo_request.get_issues(state="all")
 
         return issues_request
 
