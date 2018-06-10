@@ -21,11 +21,6 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
             'color': ['red','green']}
     source = ColumnDataSource(data)
     plot.multi_line(xs='xs', ys='ys', legend='labels',color= 'color', source=source)
-    """ 
-    plot.multi_line(xs=[dates,dates], ys=[all_amount_by_date, signed_amount_by_date],
-             legend=["Commits individuais","Commits pareados"],
-             color=['red','green'])
-     """
     
     plot.xaxis.formatter=DatetimeTickFormatter(
         hours=["%d %B %Y"],
@@ -33,9 +28,8 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
         months=["%d %B %Y"],
         years=["%d %B %Y"],
     )
-    plot.xaxis.axis_label = 'Data do Commit'
-    plot.yaxis.axis_label = 'Commits'
-    """ plot.xaxis.ticker = x_ticks """
+    plot.xaxis.axis_label = 'Data dos Commits'
+    plot.yaxis.axis_label = 'Quantidade de Commits'
 
     plot.title.text = 'Commits Pareados X Commits Individuais'
     plot.title.align = 'center'
@@ -57,9 +51,6 @@ def analyze_commits_charts(request, organization, repository):
     for commit in repository.get_commits():
         real_date = commit.commit.author.date - timedelta(hours=2)
         all_commit_count[real_date.date()].append(commit.commit)
-#     for saved_commit in all_commit_count[real_date.date()]:
-#         if "Merge" in saved_commit.message or "Merging" in saved_commit.message:
-#             all_commit_count[real_date.date()].remove(saved_commit)
         if (commit.commit.message.count("Co-authored-by:") > 1 or (commit.commit.message.count("Co-authored-by:") == 1)) or (commit.commit.message.count("Signed-off-by:") > 1 or (commit.commit.message.count("Signed-off-by:") == 1 and
             commit.commit.author.email not in commit.commit.message) or ((commit.commit.author.email != commit.commit.committer.email) 
             and ("noreply@github.com" not in commit.commit.committer.email))):
