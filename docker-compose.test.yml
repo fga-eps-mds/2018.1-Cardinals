@@ -1,26 +1,31 @@
 version: '3'
 
 services:
-
-  sut:
-    build: .
+  web:
+    restart: on-failure
+    container_name: cardinalsweb
+    build: ./
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; ./run_tests.sh'
+    volumes:
+      - ./:/code:rw
     depends_on:
       - db
-      - web
-    command: ./run_tests.sh
-
-  db:
-    image: postgres
-    ports:
-      - "5432"
-
-  web:
-    build: .
-    volumes:
-      - .:/code
+    environment:
+      DJANGO_SETTINGS_MODULE: cardinals.settings.development
     ports:
       - "8000:8000"
-    depends_on:
-      - db
     env_file:
       - .env
+
+  db:
+    container_name: db
+    restart: always
+    image: postgres:10-alpine
+    volumes:
+      - ./.dbdata:/var/lib/postgresql:rw
+    ports:
+      - 5432
+    environment:
+      POSTGRES_USER: cardinals
+      POSTGRES_PASSWORD: cardinals
+      POSTGRES_DB: cardinals

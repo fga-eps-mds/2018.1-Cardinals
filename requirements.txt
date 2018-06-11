@@ -1,13 +1,1 @@
-# Application needs
-Django
-psycopg2-binary
-pygithub
-whitenoise
-
-# Deploy
-gunicorn
-
-# Development
-codecov
-coverage
-flake8
+-r requirements/production.txt

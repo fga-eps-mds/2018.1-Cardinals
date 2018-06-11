@@ -1,4 +1,4 @@
-{% extends "base_index.html" %}
+{% extends "base_user.html" %}
 
 {% block body %}
 <div id="page-wrapper-index">
@@ -15,29 +15,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="container-index">
-                    <br>
-                    <div>
-                        <a href="{% url 'renderingDocs' %}" type="button" class="btn btn-primary btn-lg">Documentos</a>
-                    </div>
-                    <br>
-                    <div>
-                        <form action="{% url 'getResultIssues' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg">Issues</button>
-                        </form>
-                    </div>
-                    <br>
-                    <div>
-                        <form action="{% url 'getResultCommits' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary btn-lg">Commits</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block renderingDocs %}
+    {% with repo_id=repo.id %}
+    <a class="bg-red" href="{% url 'renderingDocs' repo_id %}"><i class="fa fa-file-o"></i> Documentos</a>
+    {% endwith %}
+{% endblock %}
+
+{% block getResult %}
+    {% with repo_id=repo.id %}
+    <a class="bg-red" href="{% url 'getResult' repo_id %}"><i class="fa fa-trophy"></i> Ranking Commiters</a>
+    {% endwith %}
 {% endblock %}

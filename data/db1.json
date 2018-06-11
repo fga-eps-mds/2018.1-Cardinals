@@ -1,0 +1,352 @@
+[
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 1,
+      "fields": {
+         "app_label": "admin",
+         "model": "logentry"
+      }
+   },
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 2,
+      "fields": {
+         "app_label": "auth",
+         "model": "permission"
+      }
+   },
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 3,
+      "fields": {
+         "app_label": "auth",
+         "model": "group"
+      }
+   },
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 4,
+      "fields": {
+         "app_label": "auth",
+         "model": "user"
+      }
+   },
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 5,
+      "fields": {
+         "app_label": "contenttypes",
+         "model": "contenttype"
+      }
+   },
+   {
+      "model": "contenttypes.contenttype",
+      "pk": 6,
+      "fields": {
+         "app_label": "sessions",
+         "model": "session"
+      }
+   },
+   {
+      "model": "pygithub_api_integration.repository",
+      "pk": 1,
+      "fields": {
+         "full_name": "fga-gpp-mds/2018.1-Cardinals",
+         "name": "2018.1-Cardinals"
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 4073773,
+      "fields": {
+         "username": "Guilherme da Luz",
+         "commits": 32,
+         "line_code": 1560,
+         "issues_created": 43,
+         "issues_closed": 23,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 4529055,
+      "fields": {
+         "username": "Lucas Costa",
+         "commits": 8,
+         "line_code": 2032,
+         "issues_created": 10,
+         "issues_closed": 13,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 12221113,
+      "fields": {
+         "username": "Marlon Mendes",
+         "commits": 35,
+         "line_code": 285,
+         "issues_created": 22,
+         "issues_closed": 21,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 14143623,
+      "fields": {
+         "username": "Mik",
+         "commits": 1,
+         "line_code": 0,
+         "issues_created": 1,
+         "issues_closed": 7,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 16064248,
+      "fields": {
+         "username": "Amanda Bezerra",
+         "commits": 49,
+         "line_code": 358,
+         "issues_created": 17,
+         "issues_closed": 18,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 18116735,
+      "fields": {
+         "username": "Mateus Augusto Sousa e Silva",
+         "commits": 36,
+         "line_code": 79979,
+         "issues_created": 13,
+         "issues_closed": 12,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 26290053,
+      "fields": {
+         "username": "Victor Moura",
+         "commits": 1,
+         "line_code": 1,
+         "issues_created": 0,
+         "issues_closed": 0,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 30262806,
+      "fields": {
+         "username": "Lorrany Azevedo",
+         "commits": 9,
+         "line_code": 117,
+         "issues_created": 8,
+         "issues_closed": 5,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 30712408,
+      "fields": {
+         "username": "Jo\u00e3o Pedro",
+         "commits": 11,
+         "line_code": 204,
+         "issues_created": 1,
+         "issues_closed": 0,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 32913216,
+      "fields": {
+         "username": "Gustavo Duarte Moreira",
+         "commits": 15,
+         "line_code": 527,
+         "issues_created": 4,
+         "issues_closed": 1,
+         "score": 0
+      }
+   },
+   {
+      "model": "pygithub_api_integration.contributor",
+      "pk": 37123561,
+      "fields": {
+         "username": "Matheus Gomes",
+         "commits": 13,
+         "line_code": 22032,
+         "issues_created": 4,
+         "issues_closed": 1,
+         "score": 0
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 1,
+      "fields": {
+         "name": "Can add log entry",
+         "content_type": 1,
+         "codename": "add_logentry"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 2,
+      "fields": {
+         "name": "Can change log entry",
+         "content_type": 1,
+         "codename": "change_logentry"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 3,
+      "fields": {
+         "name": "Can delete log entry",
+         "content_type": 1,
+         "codename": "delete_logentry"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 4,
+      "fields": {
+         "name": "Can add permission",
+         "content_type": 2,
+         "codename": "add_permission"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 5,
+      "fields": {
+         "name": "Can change permission",
+         "content_type": 2,
+         "codename": "change_permission"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 6,
+      "fields": {
+         "name": "Can delete permission",
+         "content_type": 2,
+         "codename": "delete_permission"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 7,
+      "fields": {
+         "name": "Can add group",
+         "content_type": 3,
+         "codename": "add_group"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 8,
+      "fields": {
+         "name": "Can change group",
+         "content_type": 3,
+         "codename": "change_group"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 9,
+      "fields": {
+         "name": "Can delete group",
+         "content_type": 3,
+         "codename": "delete_group"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 10,
+      "fields": {
+         "name": "Can add user",
+         "content_type": 4,
+         "codename": "add_user"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 11,
+      "fields": {
+         "name": "Can change user",
+         "content_type": 4,
+         "codename": "change_user"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 12,
+      "fields": {
+         "name": "Can delete user",
+         "content_type": 4,
+         "codename": "delete_user"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 13,
+      "fields": {
+         "name": "Can add content type",
+         "content_type": 5,
+         "codename": "add_contenttype"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 14,
+      "fields": {
+         "name": "Can change content type",
+         "content_type": 5,
+         "codename": "change_contenttype"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 15,
+      "fields": {
+         "name": "Can delete content type",
+         "content_type": 5,
+         "codename": "delete_contenttype"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 16,
+      "fields": {
+         "name": "Can add session",
+         "content_type": 6,
+         "codename": "add_session"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 17,
+      "fields": {
+         "name": "Can change session",
+         "content_type": 6,
+         "codename": "change_session"
+      }
+   },
+   {
+      "model": "auth.permission",
+      "pk": 18,
+      "fields": {
+         "name": "Can delete session",
+         "content_type": 6,
+         "codename": "delete_session"
+      }
+   }
+]
