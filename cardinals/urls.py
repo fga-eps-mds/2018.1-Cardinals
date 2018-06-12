@@ -8,6 +8,8 @@ urlpatterns = [
     path('searchDocs/', include('searchDocs.urls')),
     path('rankingCommiters/', include('ranking_commiters.urls')),
     path('generateReport/', include('generate_report.urls')),
+    path('issues/', include('time_issue.urls')),
+    path('<str:organization>/<str:repository>/', include('commits_charts.urls')),
     path('<str:organization>/<str:repository>/', include('pull_request_metrics.urls')),
 
 ]
