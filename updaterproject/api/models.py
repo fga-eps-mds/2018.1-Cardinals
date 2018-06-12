@@ -12,19 +12,6 @@ class Repository(models.Model):
     events_url = models.CharField(max_length=200, null=True)
     updated_at = models.DateTimeField(null=True)
 
-    def requestRepo(repo_name, username=None, password=None):
-
-        if (username is None) and (password is None):
-
-            username, password = get_credentials()
-            git = Github(username, password)
-            repo_request = git.get_repo(repo_name)
-
-        else:
-            pass
-
-        return repo_request
-
     def saveRepo(repo_request):
 
         repo = Repository()

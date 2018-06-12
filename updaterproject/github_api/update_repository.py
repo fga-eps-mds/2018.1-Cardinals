@@ -1,12 +1,15 @@
-from api.models import Repository
+from api.models import Repository, Contributor
 from github import Github
 from github import GithubException
 
 import requests
 from datetime import datetime
+from github_api.credentials import get_credentials
 import re
 
-git = Github('mdscardinals', '(cardinals1)')
+
+username, password = get_credentials()
+git = Github(username, password)
 
 ## Github Access and Model update
 def get_github_repository(name):
@@ -44,19 +47,23 @@ def create_new_repository(full_name):
     org_name = array_full_name[0]
     repo_name = array_full_name[1]
 
-    repo = get_repo_github(org_name,repo_name)
+    github_repo = get_repo_github(org_name,repo_name)
 
-    if repo == None:
+    if github_repo == None:
         return None
 
-    events = repo.get_events()
+    events = github_repo.get_events()
     last_event = events[0]
 
     new_model_repo = Repository()
-    new_model_repo.full_name = repo.full_name
+    new_model_repo.full_name = github_repo.full_name
     new_model_repo.name = repo_name
     new_model_repo.updated_at = last_event.created_at
-    new_model_repo.events_url = repo.events_url
+    new_model_repo.events_url = github_repo.events_url
+    new_model_repo.save()
+
+    # Updating contributors
+    update_contributors(github_repo, new_model_repo)
 
     return new_model_repo
 
@@ -83,8 +90,10 @@ def update_repository(repo):
     repo.events_url = github_repo.events_url
 
     repo.save()
-
     print("Repository updated!")
+
+    # Updating contributors
+    update_contributors(github_repo, repo)
 
 
 def get_last_event_date(repository):
@@ -92,3 +101,7 @@ def get_last_event_date(repository):
     last_date_unicode = req.json()[0]['created_at']
     last_date = datetime.strptime(last_date_unicode, '%Y-%m-%dT%H:%M:%SZ')
     return last_date
+
+def update_contributors(github_repo, repository):
+    contributors_request = Contributor.requestContributors(github_repo)
+    Contributor.saveContributors(contributors_request, repository)

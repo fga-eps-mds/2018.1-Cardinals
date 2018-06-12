@@ -1,6 +1,5 @@
 import os
 
-
 def get_credentials():
     ENV_USERNAME, ENV_PASSWORD = 'USERNAME', 'PASSWORD'
     env_credentials = [ENV_USERNAME, ENV_PASSWORD]

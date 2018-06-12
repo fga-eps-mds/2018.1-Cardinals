@@ -19,6 +19,12 @@ stop:
 down:
 	# Stop and remove containers
 	docker-compose down
+
+reload:
+	make down
+	make build
+	make up
+
 ps:
 	# List containers
 	docker ps
@@ -34,6 +40,9 @@ shell:
 updatershell:
 	# Execute the bash of the main container
 	docker exec -it updater bash
+
+cardinalswebshell:
+	docker exec -it cardinalsweb bash
 
 dbshell:
 	docker exec -it db psql -U cardinals -W cardinals

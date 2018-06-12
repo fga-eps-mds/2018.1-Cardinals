@@ -5,6 +5,8 @@ services:
     container_name: cardinalsweb
     build: ./cardinalsproject
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000'
+    volumes:
+      - ./cardinalsproject:/code:rw
     depends_on:
       - db
     environment:
@@ -13,11 +15,15 @@ services:
       - "8000:8000"
     env_file:
       - .env
+    links:
+    - "updater:updater"
 
   updater:
     container_name: updater
     build: ./updaterproject
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:3000'
+    volumes:
+      - ./updaterproject:/code:rw
     depends_on:
       - db
     ports:

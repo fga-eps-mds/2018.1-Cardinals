@@ -1,32 +1,41 @@
 from django.shortcuts import render, redirect
 from github import GithubException as GE
-from cardinals.views import getRepository
-from pygithub_api_integration.models import Repository
-from pygithub_api_integration.models import Contributor
+from pygithub_api_integration.models import Repository, Contributor
 # from pygithub_api_integration.models import Commit
 from django.contrib import messages
 from . import constants
+from pygithub_api_integration.updater_api import getAsyncRepoId
 
 
 def getRepoInfo(request):
 
-    repo_name = getRepository(request)
+    repo_name = request.POST['repository']
+
+    # repo_name = getRepository(request)
 
     try:
-        repo_request = Repository.requestRepo(repo_name)
-        repo = Repository.saveRepo(repo_request)
+        # repo_request = Repository.requestRepo(repo_name)
+        # repo = Repository.saveRepo(repo_request)
 
-        contributors_request = Contributor.requestContributors(repo_request)
-        Contributor.saveContributors(contributors_request, repo)
+        # contributors_request = Contributor.requestContributors(repo_request)
+        # Contributor.saveContributors(contributors_request, repo)
 
-        contributors = Contributor.objects.filter(repository=repo.id)
+        repo_id = getAsyncRepoId(repo_name)
 
-        # commit_request = Commit.requestCommit(repo_request)
-        # Commit.saveCommit(commit_request, repo, contributors)
+        if( repo_id is not None ):
 
-        context = {"repo": repo, "contributors": contributors}
+            repo = Repository.objects.filter(id=repo_id)
+            contributors = Contributor.objects.filter(repository=repo_id)
 
-        return render(request, 'repository_info.html', context)
+            # commit_request = Commit.requestCommit(repo_request)
+            # Commit.saveCommit(commit_request, repo, contributors)
+
+            context = {"repo": repo, "contributors": contributors}
+
+            return render(request, 'repository_info.html', context)
+        else:
+            return redirect('index')
+        
 
     except GE:
         messages.add_message(
