@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'searchDocs',
     'ranking_commiters',
     'pull_request_metrics',
+    'generate_report',
 ]
 
 MIDDLEWARE = [

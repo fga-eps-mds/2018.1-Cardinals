@@ -59,17 +59,14 @@
                                 </li>
 
                                 <li>
-                                    <a class="bg-red" href="">
-                                        <i class="fa fa-user"></i> Contributors
-                                        <i class="fa arrow"></i>
-                                    </a>  
-                                    <ul class="sidebar-nav">
-                                        <li>
-                                            {% block getResult %}
-                                            {% endblock %}
-                                        </li>
-                                    </ul>
+                                    {% block getResult %}
+                                    {% endblock %}
                                 </li>
+
+                                <li>
+                                    <a class="bg-red" href="{% url 'pdfView' %}"><i class="fa fa-file-o"></i> Relatório</a>
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
