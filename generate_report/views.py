@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 def pdfView(request):
     # Crie o objeto HttpResponse com o cabeçalho de PDF apropriado.
-    response = HttpResponse(mimetype='application/pdf')
+    response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename=somefilename.pdf'
 
     # Crie o objeto PDF, usando o objeto response como seu "arquivo".
