@@ -1,22 +1,27 @@
 from django.shortcuts import render
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
+from pygithub_api_integration.models import Repository
+from pygithub_api_integration.models import Contributor
+from generate_report.models import Report
 
 
-def pdfView(request):
-    # Crie o objeto HttpResponse com o cabeçalho de PDF apropriado.
+def pdfView(request, repo_id):
+
+    repo = Repository.objects.get(id=repo_id)
+    report_id = Report.savePdf(repo)
+    report = Report.objects.get(id=report_id)
+    # commiters = Contributor.objects.filter(repository=repo_id)
+
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename=somefilename.pdf'
+    report_name = 'attachment; filename=Relatorio_' + repo.name + '.pdf'
+    response['Content-Disposition'] = report_name
 
-    # Crie o objeto PDF, usando o objeto response como seu "arquivo".
-    p = canvas.Canvas(response)
+    pdf = canvas.Canvas(response, pagesize=A4)
 
-    # Desenhe coisas no PDF. Aqui é onde a geração do PDF acontece.
-    # Veja a documentação do ReportLab para a lista completa de
-    # funcionalidades.
-    p.drawString(100, 100, "Hello world.")
+    pdf.drawString(100, 100, "Hello world.")
 
-    # Feche o objeto PDF, e está feito.
-    p.showPage()
-    p.save()
+    pdf.showPage()
+    pdf.save()
     return response
