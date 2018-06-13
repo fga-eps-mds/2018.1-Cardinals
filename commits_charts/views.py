@@ -1,32 +1,36 @@
 from django.shortcuts import render
 from github import Github
 from github import GithubException as GE
-from oauth.credentials import get_credentials 
-from collections import *
+from oauth.credentials import get_credentials
 from datetime import datetime, timedelta
 
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
+from bokeh.io import export_png
+
 
 username, password = get_credentials()
 
+
 def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
     plot = figure(plot_width=800, plot_height=500)
-    
+
     data = {'xs': [dates, dates],
             'ys': [all_amount_by_date, signed_amount_by_date],
             'labels': ['Individual', 'Pareado'],
             'color': ['red', 'green']}
     source = ColumnDataSource(data)
-    plot.multi_line(xs='xs', ys='ys', 
-                    legend= 'labels',
-                    color= 'color', 
-                    source= source)
+    plot.multi_line(xs='xs', ys='ys',
+                    legend='labels',
+                    color='color',
+                    source=source)
+
     plot.xaxis.formatter=DatetimeTickFormatter(hours=["%d %B %Y"],
                                                days=["%d %B %Y"],
                                                months=["%d %B %Y"],
                                                years=["%d %B %Y"],)
+
     plot.xaxis.axis_label = 'Data dos Commits'
     plot.yaxis.axis_label = 'Quantidade de Commits'
     plot.title.text = 'Commits Pareados X Commits Individuais'
@@ -57,7 +61,7 @@ def analyze_commits_charts(request, organization, repository):
             signed_commit_count [real_date.date()] += 0
 
     commit_count = {k: len(v) for k, v in all_commit_count.items()}
-        
+
     dates = list(commit_count.keys())
     dates.sort()
 
@@ -69,9 +73,10 @@ def analyze_commits_charts(request, organization, repository):
     plot = get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date)
     script, div = components(plot)
 
+    export_png(plot, filename="'../static/images/charts/chart_commit.png'")
+
     context = {'script': script,
                'div': div,
                'repository': repository_url}
 
     return render(request, 'commits_charts.html', context)
-

@@ -8,6 +8,8 @@ from github import Github, PaginatedList, PullRequest
 
 from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
+from bokeh.io import export_png
+
 
 from oauth.credentials import get_credentials
 
@@ -73,6 +75,8 @@ def analyze_pull_requests(request, organization, repository):
     prs_opened_time = get_pull_requests_opened_time(pull_requests)
     plot = get_vbar_plot(prs_opened_time)
     script, div = components(plot)
+
+    export_png(plot, filename="'../static/images/charts/chart_pr.png'")
 
     context = {'script': script,
                'div': div,
