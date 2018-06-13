@@ -8,7 +8,7 @@ class Report(models.Model):
     chart_pr = models.ImageField(null=True)
     chart_commit = models.ImageField(null=True)
     chart_issue = models.ImageField(null=True)
-    repository = models.ForeignKey('Repository',
+    repository = models.ForeignKey(Repository,
                                    on_delete=models.CASCADE)
 
     def savePdf(repo):
