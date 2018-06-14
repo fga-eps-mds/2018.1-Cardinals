@@ -9,6 +9,7 @@ from ranking_commiters.models import Weight
 def getResult(request, repo_id):
 
     repo = Repository.objects.get(id=repo_id)
+    commiters = Contributor.objects.filter(repository=repo_id)
 
     if request.method == 'GET':
 
@@ -17,8 +18,6 @@ def getResult(request, repo_id):
         issue_request = Issue.requestIssues(repo_request)
         Issue.saveIssues(issue_request, repo)
 
-        commiters = Contributor.objects.filter(repository=repo_id)
-
         Contributor.setLineCodeContrib(commiters)
         Contributor.setIssuesCreatedFor(commiters, repo_id)
         Contributor.setIssuesClosedFor(commiters, repo_id)
@@ -26,8 +25,6 @@ def getResult(request, repo_id):
         commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
-
-        commiters = Contributor.objects.filter(repository=repo_id)
 
         weight = Weight.requestWeight(request, repo)
 
