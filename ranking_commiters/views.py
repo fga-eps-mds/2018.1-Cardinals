@@ -6,27 +6,29 @@ from pygithub_api_integration.models import Issue
 from ranking_commiters.models import Weight
 
 
-def getResult(request, repo_id):
+def getResult(request, organization, repository):
+
+    repo_name = organization + '/' + repository
 
     if request.method == 'GET':
 
-        repo = Repository.objects.get(id=repo_id)
-        repo_request = Repository.requestRepo(repo.full_name)
+        repo_request = Repository.requestRepo(repo_name)
+        repo = Repository.saveRepo(repo_request)
 
         issue_request = Issue.requestIssues(repo_request)
         Issue.saveIssues(issue_request, repo)
 
-        commiters = Contributor.objects.filter(repository=repo_id)
+        commiters = Contributor.objects.filter(repository=repo.id)
 
         Contributor.setLineCodeContrib(commiters)
-        Contributor.setIssuesCreatedFor(commiters, repo_id)
-        Contributor.setIssuesClosedFor(commiters, repo_id)
+        Contributor.setIssuesCreatedFor(commiters, repo_name)
+        Contributor.setIssuesClosedFor(commiters, repo_name)
 
         commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
 
-        commiters = Contributor.objects.filter(repository=repo_id)
+        commiters = Contributor.objects.filter(repository=repo_name)
 
         weight = Weight.requestWeight(request)
 
@@ -36,6 +38,6 @@ def getResult(request, repo_id):
                                key=attrgetter('score'),
                                reverse=True)
 
-    context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
+    context = {"repo_id": repo_name, "ranking_commiters": ranking_commiters}
 
     return render(request, 'rankingCommiters.html', context)

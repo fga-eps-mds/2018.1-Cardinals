@@ -28,6 +28,6 @@
 
 {% block getResult %}
     {% with repo_id=repo.id %}
-    <a class="bg-red" href="{% url 'getResult' repo_id %}"><i class="fa fa-trophy"></i> Ranking Commiters</a>
+    <a class="bg-red" href="/{{request.session.repository}}/ranking_commiters/"><i class="fa fa-trophy"></i> Ranking Commiters</a>
     {% endwith %}
 {% endblock %}
