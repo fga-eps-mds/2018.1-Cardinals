@@ -22,7 +22,7 @@
 
 {% block renderingDocs %}
     {% with repo_id=repo.id %}
-    <a class="bg-red" href="{% url 'renderingDocs' repo_id %}"><i class="fa fa-file-o"></i> Documentos</a>
+    <a class="bg-red" href="/{{request.session.repository}}/community/"><i class="fa fa-file-o"></i> Documentos</a>
     {% endwith %}
 {% endblock %}
 

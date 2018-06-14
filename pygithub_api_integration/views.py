@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from github import GithubException as GE
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Contributor
-# from pygithub_api_integration.models import Issue
-# from pygithub_api_integration.models import Commit
 from django.contrib import messages
 import socket
 from . import constants

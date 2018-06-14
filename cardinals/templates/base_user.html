@@ -40,13 +40,17 @@
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li>
-                                    <a class="bg-red" href="getRepoInfo"><i class="fa fa-home"></i> Home </a>
+                                    <a class="bg-red" href="{% url 'index' %}"><i class="fa fa-home"></i>
+                                    Home </a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="#"><i class="fa fa-code-fork"></i> Issue</a>
+                                    <a class="bg-red" href="#"><i class="fa fa-code-fork"></i>
+                                    Issue</a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="/{{request.session.repository}}/commits_charts/"><i class="fa fa-code"></i> Commits</a>
+                                    <a class="bg-red" href="/{{request.session.repository}}/commits_charts/"><i
+                                    class="fa fa-code"></i>
+                                    Commits</a>
                                 </li>
                                 <li>
                                     {% block renderingDocs %}
