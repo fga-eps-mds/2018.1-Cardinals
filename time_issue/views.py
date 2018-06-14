@@ -10,7 +10,9 @@ from datetime import datetime, timedelta
 def timeIssue(request):
     username, password = get_credentials()
     g = Github(username, password)
+    user = g.get_user()
     org = g.get_organization("fga-gpp-mds")
+    repos = user.get_repos()
     repo = org.get_repo("2018.1-Cardinals")
 
     issues = repo.get_issues(state="all")
@@ -18,7 +20,7 @@ def timeIssue(request):
     time_open = Counter()
 
     for issue in issues:
-        if issue.pull_request is None:
+        if issue.pull_request == None:
             created_time = issue.created_at - timedelta(hours=2)
             if issue.state == "closed":
                 closed_time = issue.closed_at - timedelta(hours=2)
@@ -32,5 +34,7 @@ def timeIssue(request):
     days.sort()
 
     time_open = sorted(time_open.items())
+    amount = [x[1] for x in time_open]
 
-    return render(request, 'timeissue.html', {'repo': days, 'time': time_open})
+    mean = sum(amount)/len(amount)
+    return render(request, 'timeissue.html', {'repo' : days, 'time' : time_open})

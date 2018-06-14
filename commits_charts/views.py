@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from github import Github
 from github import GithubException as GE
-from oauth.credentials import get_credentials
+from oauth.credentials import get_credentials 
+from collections import *
 from datetime import datetime, timedelta
 
 from bokeh.plotting import figure, output_file, show
@@ -30,7 +31,6 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
                                                days=["%d %B %Y"],
                                                months=["%d %B %Y"],
                                                years=["%d %B %Y"],)
-
     plot.xaxis.axis_label = 'Data dos Commits'
     plot.yaxis.axis_label = 'Quantidade de Commits'
     plot.title.text = 'Commits Pareados X Commits Individuais'
@@ -72,7 +72,7 @@ def analyze_commits_charts(request, organization, repository):
     plot = get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date)
     script, div = components(plot)
 
-    export_png(plot, filename="../static/images/charts/chart_commit.png")
+    # export_png(plot, filename="../static/images/charts/chart_commit.png")
 
     context = {'script': script,
                'div': div,
