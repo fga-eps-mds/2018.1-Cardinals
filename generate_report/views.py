@@ -20,7 +20,10 @@ def pdfView(request, repo_id):
 
     pdf = canvas.Canvas(response, pagesize=A4)
 
-    pdf.drawString(20, 50, report.repo_name)
+    pdf.setFont('Times-Bold', 32)
+    pdf.drawString(50, 750, report.repo_name)
+
+    canvas.drawImage(report.chart_pr, 50, 700)
 
     pdf.showPage()
     pdf.save()
