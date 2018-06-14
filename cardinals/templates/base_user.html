@@ -64,7 +64,8 @@
                                 </li>
 
                                 <li>
-                                    <a class="bg-red" href="{% url 'pdfView' %}"><i class="fa fa-file-o"></i> Relatório</a>
+                                    {% block pdfView %}
+                                    {% endblock %}                               
                                 </li>
 
                             </ul>

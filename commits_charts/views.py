@@ -44,7 +44,6 @@ def analyze_commits_charts(request, organization, repository):
     repository_url = organization + '/' + repository
     github = Github(username, password)
     repository = github.get_repo(repository_url)
-    
 
     all_commit_count = defaultdict(list)
     signed_commit_count = Counter()
@@ -73,7 +72,7 @@ def analyze_commits_charts(request, organization, repository):
     plot = get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date)
     script, div = components(plot)
 
-    export_png(plot, filename="'../static/images/charts/chart_commit.png'")
+    export_png(plot, filename="../static/images/charts/chart_commit.png")
 
     context = {'script': script,
                'div': div,
