@@ -8,9 +8,10 @@ from ranking_commiters.models import Weight
 
 def getResult(request, repo_id):
 
+    repo = Repository.objects.get(id=repo_id)
+
     if request.method == 'GET':
 
-        repo = Repository.objects.get(id=repo_id)
         repo_request = Repository.requestRepo(repo.full_name)
 
         issue_request = Issue.requestIssues(repo_request)
@@ -28,7 +29,7 @@ def getResult(request, repo_id):
 
         commiters = Contributor.objects.filter(repository=repo_id)
 
-        weight = Weight.requestWeight(request)
+        weight = Weight.requestWeight(request, repo)
 
         commiters = Contributor.getScore(commiters, weight=weight)
 

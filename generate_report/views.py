@@ -10,7 +10,7 @@ def pdfView(request, repo_id):
 
     repo = Repository.objects.get(id=repo_id)
 
-    # commiters = Contributor.objects.filter(repository=repo_id)
+    commiters = Contributor.objects.filter(repository=repo_id)
 
     response = HttpResponse(content_type='application/pdf')
     report_name = 'attachment; filename=Relatorio_' + repo.name + '.pdf'
