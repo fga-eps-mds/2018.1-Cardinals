@@ -5,11 +5,13 @@ from github import Github, Issue
 
 from .views import (analyze_issue_graph,)
 
+
 class SetUp:
     organization = 'fgacardinals'
     repository = 'testing'
     url_name = 'time_issue'
     username, password = get_credentials()
+
 
 class IssuesTests(TestCase):
     url_params = {'organization': SetUp.organization,
