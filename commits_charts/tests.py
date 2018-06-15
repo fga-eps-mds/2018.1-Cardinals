@@ -5,11 +5,13 @@ from github import Github, Commit
 
 from .views import (analyze_commits_charts,)
 
+
 class SetUp:
     organization = 'fgacardinals'
     repository = 'testing'
     url_name = 'commits_charts'
     username, password = get_credentials()
+
 
 class CommitsTests(TestCase):
     url_params = {'organization': SetUp.organization,
