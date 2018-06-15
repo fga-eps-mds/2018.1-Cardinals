@@ -54,11 +54,10 @@ def analyze_issue_graph(request, organization, repository):
 
     days = list(time_open.keys())
     days.sort()
-    print(days)
 
     time_open = sorted(time_open.items())
     amount = [x[1] for x in time_open]
-    print(amount)
+    
 
     mean = sum(amount)/len(amount)  
 
@@ -71,4 +70,4 @@ def analyze_issue_graph(request, organization, repository):
                'repository': repository_url}
 
 
-    return render(request, 'timeissue.html', context)
+    return render(request, 'time_issue.html', context)

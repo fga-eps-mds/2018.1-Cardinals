@@ -1,30 +1,30 @@
 from django.test import TestCase
 from django.urls import reverse
 from oauth.credentials import get_credentials
-from github import Github, Issue
+from github import Github, Commit
 
-from .views import (analyze_issue_graph,)
+from .views import (analyze_commits_charts,)
 
 class SetUp:
     organization = 'fgacardinals'
     repository = 'testing'
-    url_name = 'time_issue'
+    url_name = 'commits_charts'
     username, password = get_credentials()
 
-class IssuesTests(TestCase):
+class CommitsTests(TestCase):
     url_params = {'organization': SetUp.organization,
                   'repository': SetUp.repository}
     repository_url = SetUp.organization + '/' + SetUp.repository
     github = Github(SetUp.username, SetUp.password)
 
-    def get_issue_by_id(self, time_issue, id):
-        for issue_id in time_issue:
-            if issue_id.id == id:
-                return issue_id
+    def get_commit_by_sha(self, commits_charts, sha):
+        for pr in commits_charts:
+            if pr.sha == sha:
+                return pr
         return None
 
-    def test_analyze_issue_graph_context(self):
-        url = reverse('time_issue',
+    def test_analyze_commits_charts_context(self):
+        url = reverse('commits_charts',
                       kwargs={'organization': SetUp.organization,
                               'repository': SetUp.repository})
         response = self.client.get(url)

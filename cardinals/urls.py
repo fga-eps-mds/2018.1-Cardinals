@@ -9,4 +9,6 @@ urlpatterns = [
     path('rankingCommiters/', include('ranking_commiters.urls')),
     path('<str:organization>/<str:repository>/', include('time_issue.urls')),
     path('<str:organization>/<str:repository>/', include('pull_request_metrics.urls')),
+    path('<str:organization>/<str:repository>/', include('commits_charts.urls')),
+
 ]
