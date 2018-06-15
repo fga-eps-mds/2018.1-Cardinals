@@ -8,6 +8,7 @@ from ranking_commiters.models import Weight
 
 MARGIN_LEFT = 50
 SPACE_VERT = 20
+LINE = 213
 
 
 def pdfView(request, repo_id):
@@ -24,25 +25,35 @@ def pdfView(request, repo_id):
 
     pdf = canvas.Canvas(response, pagesize=A4)
 
-    pdf.setFont('Times-Bold', 28)
-    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 40, repo.name)
+    pdf.setFont('Times-Bold', 26)
+    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.5, repo.name)
 
     line_down = 0
 
     for c in commiters:
-        pdf.setFont('Times-Bold', 10)
-        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (30 - line_down),
+        pdf.setFont('Times-Bold', 9)
+        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (31.8 - line_down),
                        c.name + '/' + c.login + ' | ' + str(c.score))
 
-        line_down -= 0.8
+        line_down -= 0.65
+
+    pdf.line(MARGIN_LEFT, (LINE * 3) - 28, MARGIN_LEFT * 11, (LINE * 3) - 28)
 
     pdf.drawImage('static/images/charts/chart_commit.png',
-                  MARGIN_LEFT + 10, SPACE_VERT + 300,
-                  width=300, height=200)
+                  MARGIN_LEFT + 10, SPACE_VERT * 21,
+                  width=300, height=190)
+
+    pdf.line(MARGIN_LEFT, (LINE * 2) - 15, MARGIN_LEFT * 11, (LINE * 2) - 15)
+
+    pdf.drawImage('static/images/charts/chart_commit.png',
+                  MARGIN_LEFT + 10, SPACE_VERT * 11,
+                  width=300, height=190)
+
+    pdf.line(MARGIN_LEFT, LINE, MARGIN_LEFT * 11, LINE)
 
     pdf.drawImage('static/images/charts/chart_pr.png',
                   MARGIN_LEFT + 10, SPACE_VERT,
-                  width=300, height=200)
+                  width=300, height=190)
 
     pdf.showPage()
     pdf.save()
