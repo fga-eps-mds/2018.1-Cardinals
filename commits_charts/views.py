@@ -11,6 +11,7 @@ from bokeh.embed import components
 
 username, password = get_credentials()
 
+
 def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
     plot = figure(plot_width=800, plot_height=500)
     
@@ -40,7 +41,6 @@ def analyze_commits_charts(request, organization, repository):
     repository_url = organization + '/' + repository
     github = Github(username, password)
     repository = github.get_repo(repository_url)
-    
 
     all_commit_count = defaultdict(list)
     signed_commit_count = Counter()
