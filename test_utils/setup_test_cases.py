@@ -3,12 +3,16 @@ from django.test import TestCase
 
 
 class SetupTestCases(TestCase):
-    organization = 'fga-gpp-mds'
-    repo_name = '2018.1-Cardinals'
+    organization = 'fgacardinals'
+    repo_name = 'testing'
     repo_path = organization + '/' + repo_name
 
-    def make_client_request(self, url_name, repo_path=None):
-        url = reverse(url_name)
+    def make_client_request(self, repo_path=None):
+
+        kwargs = {'organization': SetupTestCases.organization,
+                  'repository': SetupTestCases.repo_name}
+
+        url = reverse('get_repo_info', kwargs=kwargs)
 
         if repo_path is None:
             repo_path = SetupTestCases.repo_path
