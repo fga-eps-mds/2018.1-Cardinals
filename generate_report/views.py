@@ -9,6 +9,7 @@ from ranking_commiters.models import Weight
 MARGIN_LEFT = 50
 SPACE_VERT = 20
 LINE = 213
+CENTER_PAG = 300
 
 
 def pdfView(request, repo_id):
@@ -26,20 +27,28 @@ def pdfView(request, repo_id):
     pdf = canvas.Canvas(response, pagesize=A4)
 
     pdf.setFont('Times-Bold', 26)
-    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.5, repo.name)
+    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.6, repo.name)
+
+    pdf.line(MARGIN_LEFT, (LINE * 3.8) - 20,
+             MARGIN_LEFT * 11, (LINE * 3.8) - 20)
+
+    pdf.line(CENTER_PAG, 780, CENTER_PAG, 620)
+
+    pdf.setFont('Times-Bold', 12)
+    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 38.65, "Ranking de Commiters:")
 
     line_down = 0
 
     for c in commiters:
         pdf.setFont('Times-Bold', 9)
-        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (31.8 - line_down),
+        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (31.5 - line_down),
                        c.name + '/' + c.login + ' | ' + str(c.score))
 
         line_down -= 0.65
 
     pdf.line(MARGIN_LEFT, (LINE * 3) - 28, MARGIN_LEFT * 11, (LINE * 3) - 28)
 
-    pdf.drawImage('static/images/charts/chart_commit.png',
+    pdf.drawImage('static/images/charts/chart_issue.png',
                   MARGIN_LEFT + 10, SPACE_VERT * 21,
                   width=300, height=190)
 
@@ -57,4 +66,5 @@ def pdfView(request, repo_id):
 
     pdf.showPage()
     pdf.save()
+
     return response
