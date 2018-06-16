@@ -18,16 +18,16 @@ def pdfView(request, repo_id):
     commiters = Contributor.objects.filter(repository=repo_id)
     weight = Weight.objects.get(repository=repo_id)
 
-    Contributor.getScore(commiters, weight)
+    ranking_commiters = Contributor.getScore(commiters, weight)
 
     response = HttpResponse(content_type='application/pdf')
-    report_name = 'attachment; filename=Relatorio_' + repo.name + '.pdf'
+    report_name = 'attachment; filename=Relatorio_' + repo.full_name + '.pdf'
     response['Content-Disposition'] = report_name
 
     pdf = canvas.Canvas(response, pagesize=A4)
 
     pdf.setFont('Times-Bold', 26)
-    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.6, repo.name)
+    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.6, repo.full_name)
 
     pdf.line(MARGIN_LEFT, (LINE * 3.8) - 20,
              MARGIN_LEFT * 11, (LINE * 3.8) - 20)
@@ -39,12 +39,12 @@ def pdfView(request, repo_id):
 
     line_down = 0
 
-    for c in commiters:
+    for c in ranking_commiters:
         pdf.setFont('Times-Bold', 9)
-        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (31.5 - line_down),
+        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (38 - line_down),
                        c.name + '/' + c.login + ' | ' + str(c.score))
 
-        line_down -= 0.65
+        line_down += 0.65
 
     pdf.line(MARGIN_LEFT, (LINE * 3) - 28, MARGIN_LEFT * 11, (LINE * 3) - 28)
 
