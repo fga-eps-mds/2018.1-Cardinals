@@ -5,7 +5,6 @@ from cardinals import views
 urlpatterns = [
     path('', views.searchRepository.as_view(), name='index'),
     path('pyGithub/', include('pygithub_api_integration.urls')),
-    path('rankingCommiters/', include('ranking_commiters.urls')),
     path('issues/', include('time_issue.urls')),
     path('<str:organization>/<str:repository>/', include('redirecter.urls')),
 ]

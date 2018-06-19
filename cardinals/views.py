@@ -5,11 +5,15 @@ from django.views import View
 def save_repository_name_in_session(request):
     repository_key = 'repository'
     repository_value = request.POST[repository_key]
+
     request.session[repository_key] = repository_value
 
 
 def get_organization_repository_from_session(request):
     return request.session['repository'].split('/')
+
+def get_repository_name_in_session(request):
+    return request.session['repository']
 
 
 class searchRepository(View):
