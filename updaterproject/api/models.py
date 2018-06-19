@@ -12,6 +12,7 @@ class Repository(models.Model):
     events_url = models.CharField(max_length=200, null=True)
     updated_at = models.DateTimeField(null=True)
 
+
     def saveRepo(repo_request):
 
         repo = Repository()
@@ -35,6 +36,16 @@ class Contributor(models.Model):
     issues_closed = models.IntegerField(default=0, null=True)
     score = models.DecimalField(max_digits=9, decimal_places=2, null=True)
     repository = models.ManyToManyField(Repository)
+
+    def mock(self):
+        contributor = Contributor()
+        contributor.id = 123
+        contributor.name = 'Robson'
+        contributor.login = 'Robson@git'
+        contributor.email = 'Robson2003@email.com'
+        contributor.commits = '100'
+        return contributor
+
 
     def requestContributors(repo_request):
 

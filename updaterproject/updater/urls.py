@@ -19,6 +19,7 @@ from api import views
 
 router = routers.DefaultRouter()
 router.register(r"repository", views.RepositoryViewSet)
+# router.register(r"repository/contributors", views.RepositoryViewSet)
 
 urlpatterns = [
     url(r"^", include(router.urls)),
