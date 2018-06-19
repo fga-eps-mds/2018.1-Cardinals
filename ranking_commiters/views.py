@@ -4,31 +4,33 @@ from pygithub_api_integration.models import Contributor
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Issue
 from ranking_commiters.models import Weight
+from cardinals.views import get_repository_name_in_session
 
 
-def getResult(request, organization, repository):
+def ranking_commiters(request, organization, repository):
 
-    repo_name = organization + '/' + repository
+    name = organization + '/' + repository
+    repo = Repository.objects.get(full_name=name)
+    repo_id = repo.id
 
     if request.method == 'GET':
 
-        repo_request = Repository.requestRepo(repo_name)
-        repo = Repository.saveRepo(repo_request)
+        repo_request = Repository.requestRepo(repo.full_name)
 
         issue_request = Issue.requestIssues(repo_request)
         Issue.saveIssues(issue_request, repo)
 
-        commiters = Contributor.objects.filter(repository=repo.id)
+        commiters = Contributor.objects.filter(repository=repo_id)
 
         Contributor.setLineCodeContrib(commiters)
-        Contributor.setIssuesCreatedFor(commiters, repo_name)
-        Contributor.setIssuesClosedFor(commiters, repo_name)
+        Contributor.setIssuesCreatedFor(commiters, repo_id)
+        Contributor.setIssuesClosedFor(commiters, repo_id)
 
         commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
 
-        commiters = Contributor.objects.filter(repository=repo_name)
+        commiters = Contributor.objects.filter(repository=repo_id)
 
         weight = Weight.requestWeight(request)
 
@@ -38,6 +40,6 @@ def getResult(request, organization, repository):
                                key=attrgetter('score'),
                                reverse=True)
 
-    context = {"repo_id": repo_name, "ranking_commiters": ranking_commiters}
+    context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
 
     return render(request, 'rankingCommiters.html', context)
