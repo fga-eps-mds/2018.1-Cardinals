@@ -21,6 +21,7 @@ class Repository(models.Model):
         return repo_request
 
     def saveRepo(repo_request):
+        Repository.objects.filter(full_name = repo_request.full_name).delete()
 
         repo = Repository()
         repo.full_name = repo_request.full_name
