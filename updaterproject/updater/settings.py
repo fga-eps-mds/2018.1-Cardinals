@@ -25,7 +25,7 @@ SECRET_KEY = 'oxr9a@de(pje(#w0ieid2mq8q4$@969eby0kfgs-b7l=hb01+y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

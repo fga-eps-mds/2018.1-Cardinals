@@ -5,3 +5,4 @@ pygithub==1.39
 whitenoise==3.3.1
 aiohttp==3.3.1
 asyncio
+requests

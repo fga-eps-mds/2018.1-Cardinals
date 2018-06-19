@@ -1,5 +1,19 @@
 import aiohttp
 import asyncio
+import requests
+
+base_address = 'http://updater:3000/'
+
+
+def getRepoAndContributors(repo_name):
+    url = base_address + 'repository/' + repo_name
+    response = requests.get(url)
+    response_data = response.json()
+    
+    repo = response_data["Repository"]
+    contributors = response_data["Contributors"]
+
+    return repo, contributors
 
 async def _getRepoFromUpdater(repo_name):
 
