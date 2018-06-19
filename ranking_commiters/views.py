@@ -43,3 +43,4 @@ def ranking_commiters(request, organization, repository):
     context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
 
     return render(request, 'rankingCommiters.html', context)
+

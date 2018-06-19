@@ -5,11 +5,13 @@ from github import Github, Commit
 
 from .views import (analyze_commits_charts,)
 
+
 class SetUp:
     organization = 'fgacardinals'
     repository = 'testing'
     url_name = 'commits_charts'
     username, password = get_credentials()
+
 
 class CommitsTests(TestCase):
     url_params = {'organization': SetUp.organization,
@@ -32,3 +34,5 @@ class CommitsTests(TestCase):
         for context in necessary_context:
             self.assertTrue(context in response.context.keys())
             self.assertIsNotNone(response.context[context])
+
+
