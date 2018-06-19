@@ -34,5 +34,3 @@ class CommitsTests(TestCase):
         for context in necessary_context:
             self.assertTrue(context in response.context.keys())
             self.assertIsNotNone(response.context[context])
-
-
