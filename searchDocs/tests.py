@@ -16,9 +16,9 @@ class SearchDocsTests(SetupTestCases):
             file_name = file.name
         return file_name
 
-#     def assert_file_name(self, context_name, expected_name):
-#         response_file_name = self.request_file_name(context_name)
-#         self.assertEquals(response_file_name, expected_name)
+    def assert_file_name(self, context_name, expected_name):
+        response_file_name = self.request_file_name(context_name)
+        self.assertEquals(response_file_name, expected_name)
 
 #     def test_repo_without_contributing_file(self):
 #         file_context = 'contributingFile'
