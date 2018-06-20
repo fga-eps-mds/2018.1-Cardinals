@@ -1,19 +1,20 @@
-# from test_utils.setup_test_cases import SetupTestCases
-# from pygithub_api_integration.models import Repository
-# from django.urls import reverse
+from test_utils.setup_test_cases import SetupTestCases
+from pygithub_api_integration.models import Repository
+from django.urls import reverse
 
 
-# class SearchDocsTests(SetupTestCases):
+class SearchDocsTests(SetupTestCases):
+    url = reverse('pull_requests',
+                  kwargs={'organization': SetupTestCases.organization,
+                          'repository': SetupTestCases.repo_name})
 
-#     url = reverse('renderingDocs', kwargs={'repo_id': '1'})
-
-#     def request_file_name(self, context_name):
-#         response = self.client.get(SearchDocsTests.url)
-#         file = response.context[context_name]
-#         file_name = None
-#         if file is not None:
-#             file_name = file.name
-#         return file_name
+    def request_file_name(self, context_name):
+        response = self.client.get(SearchDocsTests.url)
+        file = response.context[context_name]
+        file_name = None
+        if file is not None:
+            file_name = file.name
+        return file_name
 
 #     def assert_file_name(self, context_name, expected_name):
 #         response_file_name = self.request_file_name(context_name)
