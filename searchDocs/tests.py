@@ -25,15 +25,15 @@ class SearchDocsTests(SetupTestCases):
         expected_name = None
         self.assert_file_name(file_context, expected_name)
 
-#     def test_repo_with_issues_template(self):
-#         file_context = 'issueTemplate'
-#         expected_name = 'ISSUE_TEMPLATE.md'
-#         self.assert_file_name(file_context, expected_name)
+    def test_repo_with_issues_template(self):
+        file_context = 'issueTemplate'
+        expected_name = 'ISSUE_TEMPLATE.md'
+        self.assert_file_name(file_context, expected_name)
 
-#     def test_repo_with_pull_request_template(self):
-#         file_context = 'pullRequestTemplate'
-#         expected_name = 'PULL_REQUEST_TEMPLATE.md'
-#         self.assert_file_name(file_context, expected_name)
+    def test_repo_with_pull_request_template(self):
+        file_context = 'pullRequestTemplate'
+        expected_name = 'PULL_REQUEST_TEMPLATE.md'
+        self.assert_file_name(file_context, expected_name)
 
 #     def test_repo_without_code_of_conduct(self):
 #         file_context = 'conductFile'
