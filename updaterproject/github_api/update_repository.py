@@ -1,9 +1,10 @@
 from api.models import Repository, Contributor
 from github import Github
 from github import GithubException
+from collections import Counter, defaultdict
 
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from github_api.credentials import get_credentials
 import re
 
@@ -105,3 +106,35 @@ def get_last_event_date(repository):
 def update_contributors(github_repo, repository):
     contributors_request = Contributor.requestContributors(github_repo)
     Contributor.saveContributors(contributors_request, repository)
+
+
+def get_commits_chart_data(full_name):
+    # repository_url = organization + '/' + repository
+    github = Github(username, password)
+    repository = github.get_repo(full_name)
+
+    all_commit_count = defaultdict(list)
+    signed_commit_count = Counter()
+
+    for commit in repository.get_commits():
+        real_date = commit.commit.author.date - timedelta(hours=2)
+        all_commit_count[real_date.date()].append(commit.commit)
+        if (commit.commit.message.count("Co-authored-by:") > 1 or (commit.commit.message.count("Co-authored-by:") == 1)) or (commit.commit.message.count("Signed-off-by:") > 1 or (commit.commit.message.count("Signed-off-by:") == 1 and
+            commit.commit.author.email not in commit.commit.message) or ((commit.commit.author.email != commit.commit.committer.email)
+            and ("noreply@github.com" not in commit.commit.committer.email))):
+
+            signed_commit_count[real_date.date()] += 1
+        else:
+            signed_commit_count[real_date.date()] += 0
+
+    commit_count = {k: len(v) for k, v in all_commit_count.items()}
+
+    dates = list(commit_count.keys())
+    dates.sort()
+
+    commit_count = sorted(commit_count.items())
+    all_amount_by_date = [x[1] for x in commit_count]
+    signed_commit_count = sorted(signed_commit_count.items())
+    signed_amount_by_date = [x[1] for x in signed_commit_count]
+
+    return dates, all_amount_by_date, signed_amount_by_date
