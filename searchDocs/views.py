@@ -5,9 +5,8 @@ from pygithub_api_integration.models import Repository
 paths = ["docs/", ".github/", ""]
 
 
-def renderingDocs(request, repo_id):
-
-    repo_name = Repository.objects.get(id=repo_id).full_name
+def renderingDocs(request, organization, repository):
+    repo_name = organization + '/' + repository
     repo = Repository.requestRepo(repo_name)
 
     contributingFile = getContributingFile(repo)
@@ -16,6 +15,7 @@ def renderingDocs(request, repo_id):
     pullRequestTemplate = getPullRequestTemplate(repo)
     conductFile = getCodeConduct(repo)
     readme = getReadme(repo)
+    repo_id = repo.id
 
     context = {'contributingFile': contributingFile,
                'licenseFile': licenseFile,
