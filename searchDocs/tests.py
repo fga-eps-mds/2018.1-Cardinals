@@ -35,10 +35,10 @@ class SearchDocsTests(SetupTestCases):
         expected_name = None
         self.assert_file_name(file_context, expected_name)
 
-#    def dest_repo_without_code_of_conduct(self):
-#        file_context = 'conductFile'
-#        expected_name = None
-#        self.assert_file_name(file_context, expected_name)
+    def test_repo_without_code_of_conduct(self):
+        file_context = 'conductFile'
+        expected_name = 'CODE_OF_CONDUCT.md'
+        self.assert_file_name(file_context, expected_name)
 
 #    def test_repo_with_readme(self):
 #        file_context = 'readme'
