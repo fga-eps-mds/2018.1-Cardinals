@@ -45,7 +45,7 @@ class SearchDocsTests(SetupTestCases):
         expected_name = None
         self.assert_file_name(file_context, expected_name)
 
-#     def test_repo_with_license(self):
-#         file_context = 'licenseFile'
-#         expected_name = 'LICENSE'
-#         self.assert_file_name(file_context, expected_name)
+    def test_repo_with_license(self):
+        file_context = 'licenseFile'
+        expected_name = None
+        self.assert_file_name(file_context, expected_name)
