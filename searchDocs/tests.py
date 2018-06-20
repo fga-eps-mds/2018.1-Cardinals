@@ -20,10 +20,10 @@ class SearchDocsTests(SetupTestCases):
         response_file_name = self.request_file_name(context_name)
         self.assertEquals(response_file_name, expected_name)
 
-#     def test_repo_without_contributing_file(self):
-#         file_context = 'contributingFile'
-#         expected_name = None
-#         self.assert_file_name(file_context, expected_name)
+    def test_repo_without_contributing_file(self):
+        file_context = 'contributingFile'
+        expected_name = None
+        self.assert_file_name(file_context, expected_name)
 
 #     def test_repo_with_issues_template(self):
 #         file_context = 'issueTemplate'
