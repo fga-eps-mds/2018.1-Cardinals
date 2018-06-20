@@ -8,6 +8,7 @@ from pygithub_api_integration.models import Contributor
 from django.contrib import messages
 import socket
 from . import constants
+from commits_charts.views import *
 
 
 def save_repository_name_in_session(request, repo_name):
@@ -53,3 +54,4 @@ def getRepoInfo(request):
         )
 
         return redirect('index')
+
