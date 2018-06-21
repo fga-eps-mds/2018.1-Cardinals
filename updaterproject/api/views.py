@@ -108,45 +108,39 @@ class RepositoryCommits(APIView):
         return Response(response_data)
 
 
+class RepositoryCommitVsPairData(APIView):
 
+    def get_chart_data(self, repo_address):
+        repo = get_repository(repo_address)
+        custom_data = {}
 
-class RepositoryViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    Repository view set, ReadOnlyModelViewSet
-    """
-    queryset = Repository.objects.all()
-    serializer_class = RepositorySerializer
-    lookup_field = 'full_name'
+        if repo:
 
-    def retrieve(self, request, full_name='null'):
+            dates, commits, paired = get_commits_chart_data(repo.full_name)
 
-        repo = self.get_object()
+            custom_data = {
+                'dates': dates,
+                'commits': commits,
+                'paired':paired
+            }
+        else:
+            custom_data = {"error": "could not find repository"}
+        
+        return custom_data
 
-        custom_data = {
-            'Repository': RepositorySerializer(repo).data
-        }
+    def get(self, request, format=None):
 
-        contrib = Contributor.objects.filter(repository__full_name__contains=repo.full_name) 
+        address = self.request.query_params.get('address')
 
-        custom_data.update({
-            'Contributors': ContributorSerializer(contrib, many=True).data
-        })
+        response_data = {}
 
-        return Response(custom_data)
+        if address:
+            response_data = self.get_chart_data(address)
+        else:
+            response_data = {"error": "address not defined"}
+        
 
-
-    @method_decorator(cache_page(180))
-    @action(methods=['get'], detail=True)
-    def commits_chart_data(self, request, full_name=None):
-        dates, commits, paired = get_commits_chart_data('fga-gpp-mds/2018.1-Cardinals')
-
-        custom_data = {
-            'dates': dates,
-            'commits': commits,
-            'paired':paired
-        }
-
-        return Response(custom_data)
+        return Response(response_data)
 
 
 # http://localhost:8000/request/?address=https://github.com/HaskellTeam/TheGame
