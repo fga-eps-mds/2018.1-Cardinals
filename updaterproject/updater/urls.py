@@ -18,10 +18,11 @@ from rest_framework import routers
 from api import views
 
 router = routers.DefaultRouter()
-router.register(r"repository", views.RepositoryViewSet)
+# router.register(r"repository", views.RepositoryViewSet )
 # router.register(r"repository/contributors", views.RepositoryViewSet)
 
 urlpatterns = [
     url(r"^", include(router.urls)),
-    url(r"^request/$", views.api_request),
+    url(r"^test", views.APIParamsTest.as_view(), name='test'),
+    url(r"^repository", views.RepositoryData.as_view() ),
 ]

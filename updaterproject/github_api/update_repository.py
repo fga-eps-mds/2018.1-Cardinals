@@ -71,7 +71,7 @@ def create_new_repository(full_name):
 def is_updated(repository):
     last_date = get_last_event_date(repository)
 
-    if last_date > repository.updated_at:
+    if not repository.updated_at or last_date > repository.updated_at:
         return False
     else:
         return True
@@ -98,6 +98,9 @@ def update_repository(repo):
 
 
 def get_last_event_date(repository):
+    if not repository.events_url:
+        return datetime(1,1,1)
+
     req = requests.get(repository.events_url)
     last_date_unicode = req.json()[0]['created_at']
     last_date = datetime.strptime(last_date_unicode, '%Y-%m-%dT%H:%M:%SZ')

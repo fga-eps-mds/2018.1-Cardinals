@@ -19,6 +19,65 @@ from github_api.update_repository import get_commits_chart_data
 
 from api.address_handler import get_repository
 
+
+class APIParamsTest(APIView):
+    '''
+        http://localhost:3000/test/?param=qwe%20rty
+    '''
+
+    def get(self, request, format=None):
+        test_param = self.request.query_params.get('param')
+
+        if not test_param:
+            test_param = 'none param given'
+        return Response({"param":test_param})
+
+class RepositoryData(APIView):
+
+    def getOne(self, repo_address):
+
+        repo = get_repository(repo_address)
+        status = repo != None
+        custom_data = {}
+
+        if status:
+            custom_data = {
+                'Repository': RepositorySerializer(repo).data
+            }
+
+            contrib = Contributor.objects.filter(repository__full_name__contains=repo.full_name) 
+
+            custom_data.update({
+                'Contributors': ContributorSerializer(contrib, many=True).data
+            })
+        else:
+            custom_data = {"error":"could not find repository"}
+        
+        return custom_data
+
+    def getAll(self):
+        allRepos = Repository.objects.all()
+        
+        custom_data = {}
+
+        for r in allRepos:
+            custom_data.update(RepositorySerializer(r).data)
+
+        return custom_data
+
+    def get(self, request, format=None):
+        address = self.request.query_params.get('address')
+
+        response_data = {}
+
+        if address:
+            response_data = self.getOne(address)
+        else:
+            response_data = self.getAll()
+            
+        return Response(response_data)
+
+
 class RepositoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Repository view set, ReadOnlyModelViewSet
