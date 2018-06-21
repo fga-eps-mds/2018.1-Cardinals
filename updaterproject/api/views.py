@@ -58,10 +58,7 @@ class RepositoryData(APIView):
     def getAll(self):
         allRepos = Repository.objects.all()
         
-        custom_data = {}
-
-        for r in allRepos:
-            custom_data.update(RepositorySerializer(r).data)
+        custom_data = RepositorySerializer(allRepos, many=True).data
 
         return custom_data
 
@@ -80,13 +77,31 @@ class RepositoryData(APIView):
 
 class RepositoryCommits(APIView):
 
+    def getAll(self, repo_address):
+
+        repo = get_repository(repo_address)
+        custom_data = {}
+
+        if repo:
+            commits = Commit.objects.filter(repository__full_name__contains=repo.full_name) 
+
+            custom_data = {
+                'Repository': RepositorySerializer(repo).data,
+                'Commits': CommitSerializer(commits, many=True).data
+            }
+
+        else:
+            custom_data = {"error": "could not find repository"}
+
+        return custom_data
+
     def get(self, request, format=None):
         address = self.request.query_params.get('address')
 
         response_data = {}
 
         if address:
-            response_data = {"commit":"123"}
+            response_data = self.getAll(address)
         else:
             response_data = {"error": "address not defined"}
             
