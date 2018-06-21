@@ -16,3 +16,8 @@ class CommitSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Commit
 		fields = "__all__"
+
+class IssueSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Issue
+		fields = "__all__"

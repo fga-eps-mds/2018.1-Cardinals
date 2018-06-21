@@ -20,6 +20,7 @@ urlpatterns = [
     url(r"^test", views.APIParamsTest.as_view(), name='test'),
     url(r"^repository/commits_pair_chart_data", views.RepositoryCommitVsPairData.as_view() ),
     url(r"^repository/commits", views.RepositoryCommits.as_view() ),
+    url(r"^repository/issues", views.RepositoryIssues.as_view() ),
     url(r"^repository", views.RepositoryData.as_view() ),
 
 ]

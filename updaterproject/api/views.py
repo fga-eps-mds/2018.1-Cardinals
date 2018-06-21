@@ -143,6 +143,39 @@ class RepositoryCommitVsPairData(APIView):
         return Response(response_data)
 
 
+class RepositoryIssues(APIView):
+
+    def getAll(self, repo_address):
+
+        repo = get_repository(repo_address)
+        custom_data = {}
+
+        if repo:
+            issues = Issue.objects.filter(repository__full_name__contains=repo.full_name) 
+
+            custom_data = {
+                'Repository': RepositorySerializer(repo).data,
+                'Issues': IssueSerializer(issues, many=True).data
+            }
+
+        else:
+            custom_data = {"error": "could not find repository"}
+
+        return custom_data
+
+    def get(self, request, format=None):
+        address = self.request.query_params.get('address')
+
+        response_data = {}
+
+        if address:
+            response_data = self.getAll(address)
+        else:
+            response_data = {"error": "address not defined"}
+            
+        return Response(response_data)
+
+
 # http://localhost:8000/request/?address=https://github.com/HaskellTeam/TheGame
 def api_request(request):
     address = request.GET["address"]
