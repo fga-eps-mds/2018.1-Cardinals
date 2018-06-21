@@ -20,17 +20,28 @@ from github_api.update_repository import get_commits_chart_data
 from api.address_handler import get_repository
 
 
-class APIParamsTest(APIView):
+class APIHome(APIView):
     '''
-        http://localhost:3000/test/?param=qwe%20rty
+        Hello There!
+
+        Welcome to the Cardinals API
+
     '''
 
     def get(self, request, format=None):
-        test_param = self.request.query_params.get('param')
 
-        if not test_param:
-            test_param = 'none param given'
-        return Response({"param":test_param})
+        resp = {
+            "example":"http://localhost:3000/repository/?address=https://github.com/fga-gpp-mds/2018.1-Cardinals",
+
+            "endpoints":[
+            "repository/commits_pair_chart_data",
+            "repository/commits",
+            "repository/issues",
+            "repository"
+            ]
+        }
+
+        return Response(resp)
 
 class RepositoryData(APIView):
 
