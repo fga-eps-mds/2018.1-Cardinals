@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from github import Github
 from oauth.credentials import get_credentials
-from github import GithubException
 from collections import Counter
 from datetime import datetime, timedelta
 
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure
 from bokeh.embed import components
 
 username, password = get_credentials()

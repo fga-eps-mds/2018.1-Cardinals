@@ -1,12 +1,11 @@
 from collections import Counter
 from datetime import datetime
 
-from django.http import HttpResponse
 from django.shortcuts import render
 
 from github import Github, PaginatedList, PullRequest
 
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure
 from bokeh.embed import components
 
 from oauth.credentials import get_credentials
