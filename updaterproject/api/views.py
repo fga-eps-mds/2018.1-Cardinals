@@ -78,6 +78,23 @@ class RepositoryData(APIView):
         return Response(response_data)
 
 
+class RepositoryCommits(APIView):
+
+    def get(self, request, format=None):
+        address = self.request.query_params.get('address')
+
+        response_data = {}
+
+        if address:
+            response_data = {"commit":"123"}
+        else:
+            response_data = {"error": "address not defined"}
+            
+        return Response(response_data)
+
+
+
+
 class RepositoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
     Repository view set, ReadOnlyModelViewSet

@@ -27,7 +27,12 @@ def get_github_repository(name):
 
 def get_repo_github(org_name,repo_name):
     org = git.get_organization(org_name)
-    repo = org.get_repo(repo_name)
+    repo = None
+    try:
+        repo = org.get_repo(repo_name)
+    except Exception as ex:
+        pass
+    
     return repo
 
 
