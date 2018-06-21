@@ -6,7 +6,7 @@ from .models import Contributor
 
 class RepoInfoTests(SetupTestCases):
 
-    url_name = 'getRepoInfo'
+    url_name = SetupTestCases.organization + '/' + SetupTestCases.repo_name
 
     def test_get_repo_name(self):
         response = self.make_client_request(RepoInfoTests.url_name)
@@ -19,12 +19,7 @@ class RepoInfoTests(SetupTestCases):
 
         contributors = response.context['contributors']
 
-        contributors_name_expected = ['Amanda Bezerra',
-                                      'Mateus Augusto Sousa e Silva',
-                                      'Marlon Mendes', 'Guilherme da Luz',
-                                      'Lucas Costa', 'Gustavo Duarte Moreira',
-                                      'Matheus Gomes', 'Lorrany Azevedo',
-                                      'João Pedro', 'Mik', 'Victor Moura']
+        contributors_name_expected = ['Marlon Mendes']
 
         contributors_name_expected = set(contributors_name_expected)
 
@@ -37,12 +32,7 @@ class RepoInfoTests(SetupTestCases):
 
         contributors = response.context['contributors']
 
-        contributors_login_expected = ['amandabezerra', 'Mateusas3s',
-                                       'marlonbymendes', 'daluzguilherme',
-                                       'gustavoduartemoreira', 'matheusgomesf',
-                                       'jpmartins201', 'lorryaze',
-                                       'lucasca73', 'victorcmoura',
-                                       'MiguelNery']
+        contributors_login_expected = ['marlonbymendes']
 
         contributors_login_expected = set(contributors_login_expected)
 

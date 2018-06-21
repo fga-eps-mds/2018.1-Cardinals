@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from github import Github
-from github import GithubException as GE
 from oauth.credentials import get_credentials
 from collections import Counter, defaultdict
-from datetime import datetime, timedelta
+from datetime import timedelta
 
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
 
