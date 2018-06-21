@@ -1,11 +1,15 @@
-from api.models import Repository, Contributor
+from github_api.credentials import get_credentials
+from api.models import *
+
 from github import Github
 from github import GithubException
+
 from collections import Counter, defaultdict
+from datetime import datetime, timedelta
 
 import requests
-from datetime import datetime, timedelta
-from github_api.credentials import get_credentials
+import threading
+import time
 import re
 
 
@@ -59,6 +63,11 @@ def create_new_repository(full_name):
         return None
 
     events = github_repo.get_events()
+    
+    # when there is no events on repository
+    if not events:
+        return None
+
     last_event = events[0]
 
     new_model_repo = Repository()
@@ -69,7 +78,7 @@ def create_new_repository(full_name):
     new_model_repo.save()
 
     # Updating contributors
-    update_contributors(github_repo, new_model_repo)
+    lazy_update_repository(github_repo, new_model_repo)
 
     return new_model_repo
 
@@ -96,11 +105,11 @@ def update_repository(repo):
     repo.events_url = github_repo.events_url
 
     repo.save()
-    print("Repository updated!")
 
-    # Updating contributors
-    update_contributors(github_repo, repo)
+    # Updating database secundary models
+    lazy_update_repository(github_repo, repo)
 
+    pass
 
 def get_last_event_date(repository):
     if not repository.events_url:
@@ -111,20 +120,69 @@ def get_last_event_date(repository):
     last_date = datetime.strptime(last_date_unicode, '%Y-%m-%dT%H:%M:%SZ')
     return last_date
 
-def update_contributors(github_repo, repository):
-    contributors_request = Contributor.requestContributors(github_repo)
-    Contributor.saveContributors(contributors_request, repository)
+def lazy_update_repository(github_repo, repo):
+    update_contributors(github_repo, repo)
+    run_in_background(update_commits, github_repo, repo)
+    run_in_background(update_issues, github_repo, repo)
 
+def update_contributors(github_repo, repository):
+    print (" -- updating contributors")
+    contributors_request = Contributor.requestContributors(github_repo)
+    
+    if not contributors_request:
+        print(" Error: could not find contributors")
+        return
+
+    Contributor.saveContributors(contributors_request, repository)
+    print (" -- contributors updated")
+
+def update_commits(github_repo, repository):
+    print (" -- updating commits")
+    repository.commits_db_updated = 0
+    repository.save() # update repository info
+    request = Commit.requestCommit(github_repo)
+    if not request:
+        print(" Error: could not find commits")
+        return
+    contributors = Contributor.objects.filter(repository__full_name__contains=repository.full_name) 
+    Commit.saveCommit(request, repository, contributors)
+    repository.commits_db_updated = 1
+    repository.save() # update repository info
+    print (" -- commits updated")
+
+def update_issues(github_repo, repository):
+    print (" -- updating issues")
+    repository.issues_db_updated = 0
+    repository.save() # update repository info
+    request = Issue.requestIssues(github_repo)
+    if not request:
+        print(" Error: could not find issues")
+        return
+    Issue.saveIssues(request, repository)
+    repository.issues_db_updated = 1
+    repository.save() # update repository info
+    print (" -- issues updated")
+
+def run_in_background( action, github_repo, repository):
+    thread = threading.Thread(target=action, args=(github_repo, repository,))
+    thread.daemon = True
+    thread.start()
+    pass
+
+
+def get_commits_from_repository(full_name):
+    github = Github(username, password)
+    repository = github.get_repo(full_name)
+    return repository.get_commits()
 
 def get_commits_chart_data(full_name):
     # repository_url = organization + '/' + repository
-    github = Github(username, password)
-    repository = github.get_repo(full_name)
+    all_commits = get_commits_from_repository(full_name)
 
     all_commit_count = defaultdict(list)
     signed_commit_count = Counter()
 
-    for commit in repository.get_commits():
+    for commit in all_commits:
         real_date = commit.commit.author.date - timedelta(hours=2)
         all_commit_count[real_date.date()].append(commit.commit)
         if (commit.commit.message.count("Co-authored-by:") > 1 or (commit.commit.message.count("Co-authored-by:") == 1)) or (commit.commit.message.count("Signed-off-by:") > 1 or (commit.commit.message.count("Signed-off-by:") == 1 and

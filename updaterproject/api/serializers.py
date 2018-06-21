@@ -11,3 +11,8 @@ class ContributorSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Contributor
 		fields = "__all__"
+
+class CommitSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Commit
+		fields = "__all__"

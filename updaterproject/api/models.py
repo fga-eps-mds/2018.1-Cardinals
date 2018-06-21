@@ -12,6 +12,8 @@ class Repository(models.Model):
     events_url = models.CharField(max_length=200, null=True)
     updated_at = models.DateTimeField(null=True)
 
+    issues_db_updated = models.IntegerField(default=0, null=False)
+    commits_db_updated = models.IntegerField(default=0, null=False)
 
     def saveRepo(repo_request):
 
@@ -49,11 +51,18 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contributors_request = repo_request.get_stats_contributors()
+        retry = 3
+        contributors_request = None
+        while(contributors_request == None and retry >= 0):
+            retry -= 1
+            contributors_request = repo_request.get_stats_contributors()
 
         return contributors_request
 
     def saveContributors(contributors_request, repo):
+
+        if not contributors_request:
+            return
 
         for c in contributors_request:
             contributor = Contributor()
@@ -179,11 +188,18 @@ class Commit(models.Model):
 
     def requestCommit(repo_request):
 
-        commit_request = repo_request.get_commits()
+        retry = 3
+        commit_request = None
+        while(commit_request == None and retry >= 0):
+            retry -= 1
+            commit_request = repo_request.get_commits()
 
         return commit_request
 
     def saveCommit(commit_request, repo, contributors):
+
+        if not commit_request:
+            return
 
         for c in commit_request:
             commit = Commit()
@@ -191,6 +207,8 @@ class Commit(models.Model):
             commit.date = c.commit.author.date
             commit.message = c.commit.message
             commit.repository = repo
+            if not c.author:
+                continue
             for contrib in contributors:
                 if c.author.id == contrib.id:
                     commit.author = contrib
@@ -209,11 +227,18 @@ class Issue(models.Model):
 
     def requestIssues(repo_request):
 
-        issues_request = repo_request.get_issues(state="all")
+        retry = 3
+        issues_request = None
+        while(issues_request == None and retry >= 0):
+            retry -= 1
+            issues_request = repo_request.get_issues(state="all")
 
         return issues_request
 
     def saveIssues(issues_request, repo):
+
+        if not issues_request:
+            return
 
         for i in issues_request:
             issue = Issue()
