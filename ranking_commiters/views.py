@@ -3,14 +3,14 @@ from operator import attrgetter
 from pygithub_api_integration.models import Contributor
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Issue
+from pygithub_api_integration.views import populate_db_if_data_is_old
 from ranking_commiters.models import Weight
 from cardinals.views import get_repository_name_in_session
-
 
 def ranking_commiters(request, organization, repository):
 
     name = organization + '/' + repository
-    repo = Repository.objects.get(full_name=name)
+    repo = populate_db_if_data_is_old(name)
     repo_id = repo.id
 
     if request.method == 'GET':
