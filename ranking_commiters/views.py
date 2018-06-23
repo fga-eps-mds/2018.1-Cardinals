@@ -4,7 +4,6 @@ from pygithub_api_integration.models import Contributor
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Issue
 from ranking_commiters.models import Weight
-from cardinals.views import get_repository_name_in_session
 
 
 def ranking_commiters(request, organization, repository):
@@ -43,4 +42,3 @@ def ranking_commiters(request, organization, repository):
     context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
 
     return render(request, 'rankingCommiters.html', context)
-
