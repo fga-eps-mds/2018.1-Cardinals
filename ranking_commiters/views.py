@@ -33,6 +33,9 @@ def ranking_commiters(request, organization, repository):
         commiters = Contributor.objects.filter(repository=repo_id)
 
         weight = Weight.requestWeight(request)
+        print('\nDEBUG\n\n')
+        print('INSIDE POST')
+        print('weight = {}'.format(str(weight)))
 
         commiters = Contributor.getScore(commiters, weight=weight)
 

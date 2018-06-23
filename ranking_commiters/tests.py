@@ -1,8 +1,6 @@
 from test_utils.setup_test_cases import SetupTestCases
 from django.shortcuts import render, redirect, reverse
-from pygithub_api_integration.models import Repository
 from django.test import TestCase
-#from .models import Contributor
 
 
 class RankingCommitsTests(TestCase):
