@@ -12,6 +12,11 @@
         <link rel="shortcut icon" href="{% static 'images/logo/favicon.ico' %}" type="image/x-icon">
         <link rel="icon" href="{% static 'images/logo/favicon.ico' %}" type="image/x-icon">
         <link rel="stylesheet" id="theme-style" href="{% static 'css/app-red.css' %}">
+        <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
         {% block head %} <!-- Head content --> {% endblock %}
     </head>
     <body class="loaded">
@@ -80,6 +85,8 @@
                 <article class="content">
                     <section class="section">
                         {% block body %}
+                            {% block chart %}
+                            {% endblock %}
                         {% endblock %}
                     </section> 
                 </article> 

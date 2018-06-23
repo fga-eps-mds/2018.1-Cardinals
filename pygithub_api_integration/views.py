@@ -37,6 +37,8 @@ def getRepoInfo(request):
 
         context = {"repo": repo, "contributors": contributors}
 
+        analyze_commits_charts(request, "fga-gpp-mds", "2018.1-Cardinals")
+
         return render(request, 'repository_info.html', context)
 
     except socket.timeout and socket.gaierror:

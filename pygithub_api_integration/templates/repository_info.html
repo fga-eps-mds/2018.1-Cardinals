@@ -1,13 +1,8 @@
 {% extends "base_user.html" %}
 
-{% block title %} Commits Charts {% endblock %}
+{% block title %}Página principal{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
-    <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
-    <script type="text/javascript">
-        Bokeh.set_log_level("info");
-    </script>
 {% endblock %}
 
 {% block body %}
@@ -42,15 +37,13 @@
             <div class="card-block">
                 <h4 class="card-title">Revenue Statistics</h4>
                 <div class="flot-chart">
-                    {% block chart %}
-                    {% endblock %}
+                    {% include "../../commits_charts/templates/commits_charts.html" %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-
 {% block renderingDocs %}
     {% with repo_id=repo.id %}
     <a class="bg-red" href="{% url 'renderingDocs' repo_id %}"><i class="fa fa-file-o"></i> Documentos</a>
