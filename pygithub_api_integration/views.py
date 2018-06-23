@@ -3,6 +3,7 @@ from github import GithubException as GE
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Contributor
 from django.contrib import messages
+from datetime import datetime, timedelta
 import socket
 from . import constants
 from cardinals.views import *
@@ -22,10 +23,16 @@ def get_repo_info(request, organization, repository):
         contributors = Contributor.objects.filter(repository=repo.id)
 
         analyze_commits_charts(request, organization, repository, 500, 350)
+        analyze_issue_graph(request, organization, repository)
+        
         div = divCommit()
         script = scriptCommit()
+        div2 = divIssue()
+        script2 = scriptIssue()
 
-        context = {"repo": repo, "contributors": contributors, "div": div, "script": script}
+        context = {"repo": repo, "contributors": contributors,
+                   "div": div, "script": script,
+                   "div2": div2, "script2": script2}
 
         return render(request, 'repository_info.html', context)
 

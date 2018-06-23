@@ -4,14 +4,14 @@ from django.shortcuts import render
 from github import Github
 from oauth.credentials import get_credentials
 from collections import Counter, defaultdict
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 from bokeh.plotting import figure
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
 
 username, password = get_credentials()
-global divCommit, scriptCommit
+global divCommit, scriptCommit, divIssue, scriptIssue
 
 def save_repository_name_in_session(request):
     repository_key = 'repository'
@@ -63,6 +63,19 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date, tamW, 
     plot.title.text_font_size = '13pt'
     return plot
 
+def get_bar_plot(days, amount):
+    plot = figure(plot_width=500, plot_height=350)
+
+    plot.vbar(x=amount, width=0.5, bottom=0, top=days, color="#CAB2D6")
+
+    plot.xaxis.axis_label = 'Quantidade de issues'
+    plot.yaxis.axis_label = 'Tempo que a issue ficou aberta (dias)'
+
+    plot.title.text = 'Período em que as issues ficam abertas'
+    plot.title.align = 'center'
+    plot.title.text_font_size = '20pt'
+
+    return plot
 
 def analyze_commits_charts(request, organization, repository, tamW, tamH):
     global divCommit, scriptCommit
@@ -100,9 +113,48 @@ def analyze_commits_charts(request, organization, repository, tamW, tamH):
     divCommit = div
     scriptCommit = script
 
+def analyze_issue_graph(request, organization, repository):
+    global divIssue, scriptIssue
+
+    github = Github(username, password)
+    repository_url = organization + '/' + repository
+    repository = github.get_repo(repository_url)
+
+    issues = repository.get_issues(state="all")
+    all_issues = []
+    time_open = Counter()
+
+    for issue in issues:
+        if issue.pull_request is None:
+            created_time = issue.created_at - timedelta(hours=2)
+            if issue.state == "closed":
+                closed_time = issue.closed_at - timedelta(hours=2)
+            else:
+                closed_time = datetime.now()
+            all_issues.append(issue)
+
+            time_open[(closed_time - created_time).days] += 1
+
+    days = list(time_open.keys())
+    days.sort()
+
+    time_open = sorted(time_open.items())
+    amount = [x_var[1] for x_var in time_open]
+
+    plot = get_bar_plot(days, amount)
+    script, div = components(plot)
+
+    divIssue = div
+    scriptIssue = script
 
 def scriptCommit():
     return scriptCommit
 
 def divCommit():
     return divCommit
+
+def scriptIssue():
+    return scriptIssue
+
+def divIssue():
+    return divIssue
