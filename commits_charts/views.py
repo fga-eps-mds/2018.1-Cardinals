@@ -37,8 +37,8 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
 
 def analyze_commits_charts(request, organization, repository):
 
-    repository_url = organization + '/' + repository
     github = Github(username, password)
+    repository_url = organization + '/' + repository
     repository = github.get_repo(repository_url)
 
     all_commit_count = defaultdict(list)
@@ -55,15 +55,15 @@ def analyze_commits_charts(request, organization, repository):
         else:
             signed_commit_count[real_date.date()] += 0
 
-    commit_count = {k: len(v) for k, v in all_commit_count.items()}
+    commit_count = {k_var: len(var) for k_var, var in all_commit_count.items()}
 
     dates = list(commit_count.keys())
     dates.sort()
 
     commit_count = sorted(commit_count.items())
-    all_amount_by_date = [x[1] for x in commit_count]
+    all_amount_by_date = [x_var[1] for x_var in commit_count]
     signed_commit_count = sorted(signed_commit_count.items())
-    signed_amount_by_date = [x[1] for x in signed_commit_count]
+    signed_amount_by_date = [x_var[1] for x_var in signed_commit_count]
 
     plot = get_multi_line_plot(dates, all_amount_by_date,
                                signed_amount_by_date)

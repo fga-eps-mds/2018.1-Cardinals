@@ -17,7 +17,6 @@ def get_bar_plot(days, amount):
 
     plot.xaxis.axis_label = 'Quantidade de issues'
     plot.yaxis.axis_label = 'Tempo que a issue ficou aberta (dias)'
-    """ plot.xaxis.ticker = x_ticks """
 
     plot.title.text = 'Período em que as issues ficam abertas'
     plot.title.align = 'center'
@@ -28,8 +27,8 @@ def get_bar_plot(days, amount):
 
 def analyze_issue_graph(request, organization, repository):
 
-    repository_url = organization + '/' + repository
     github = Github(username, password)
+    repository_url = organization + '/' + repository
     repository = github.get_repo(repository_url)
 
     issues = repository.get_issues(state="all")
@@ -51,9 +50,7 @@ def analyze_issue_graph(request, organization, repository):
     days.sort()
 
     time_open = sorted(time_open.items())
-    amount = [x[1] for x in time_open]
-
-    # mean = sum(amount) / len(amount)
+    amount = [x_var[1] for x_var in time_open]
 
     plot = get_bar_plot(days, amount)
     script, div = components(plot)

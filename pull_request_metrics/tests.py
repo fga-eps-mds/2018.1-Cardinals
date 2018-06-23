@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from oauth.credentials import get_credentials
 
-from github import Github, PaginatedList, PullRequest
+from github import Github
 
 from .views import (get_opened_time_xy_axis,
                     get_pull_request_opened_time,

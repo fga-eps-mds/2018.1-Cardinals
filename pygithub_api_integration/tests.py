@@ -8,6 +8,10 @@ class RepoInfoTests(SetupTestCases):
 
     url_name = SetupTestCases.organization + '/' + SetupTestCases.repo_name
 
+    def setUp(self):
+        response = self.make_client_request(RepoInfoTests.url_name)
+        self.contributors = response.context['contributors']
+
     def test_get_repo_name(self):
         response = self.make_client_request(RepoInfoTests.url_name)
         response_repo_name = response.context['repo'].name
@@ -15,28 +19,22 @@ class RepoInfoTests(SetupTestCases):
         self.assertEquals(SetupTestCases .repo_name, response_repo_name)
 
     def test_get_contributors_name(self):
-        response = self.make_client_request(RepoInfoTests.url_name)
-
-        contributors = response.context['contributors']
 
         contributors_name_expected = ['Marlon Mendes']
 
         contributors_name_expected = set(contributors_name_expected)
 
-        contributors_name = set([c.name for c in contributors])
+        contributors_name = set([c.name for c in self.contributors])
 
         self.assertEquals(contributors_name, contributors_name_expected)
 
     def test_get_contributors_login(self):
-        response = self.make_client_request(RepoInfoTests.url_name)
-
-        contributors = response.context['contributors']
 
         contributors_login_expected = ['marlonbymendes']
 
         contributors_login_expected = set(contributors_login_expected)
 
-        contributors_login = set([c.login for c in contributors])
+        contributors_login = set([c.login for c in self.contributors])
 
         self.assertEquals(contributors_login, contributors_login_expected)
 
