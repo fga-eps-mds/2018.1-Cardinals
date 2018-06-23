@@ -5,7 +5,7 @@ from pygithub_api_integration.models import Contributor
 from django.contrib import messages
 import socket
 from . import constants
-from commits_charts.views import *
+from cardinals.views import *
 
 
 def get_repo_info(request, organization, repository):
@@ -21,7 +21,9 @@ def get_repo_info(request, organization, repository):
 
         contributors = Contributor.objects.filter(repository=repo.id)
 
-        context = {"repo": repo, "contributors": contributors}
+        valor = analyze_commits_charts(request, organization, repository, 500, 350)
+
+        context = {"repo": repo, "contributors": contributors, "div": valor[0], "script": valor[1]}
 
         return render(request, 'repository_info.html', context)
 

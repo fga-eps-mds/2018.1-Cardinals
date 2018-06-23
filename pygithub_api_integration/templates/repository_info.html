@@ -1,48 +1,44 @@
 {% extends "base_user.html" %}
 
+{% block title %}Página principal{% endblock %}
+
+{% block head %}
+{% endblock %}
+
 {% block body %}
-<div id="page-wrapper-index">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="container-index">
-                    <h1>Repositório {{repo.name}}</h1>
-                    <div class="row">
-                        <!-- Column -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="text-center" class="card-block">
-                                    <h4 class="card-title">Total de Commits</h4>
-                                    <div class="text-center">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> 2120</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Column -->
-                        <!-- Column -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div  class="text-center" class="card-block">
-                                    <h4 class="card-title">Commits Pareados</h4>
-                                    <div class="text-center">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> 2000</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Column -->
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4 class="card-title">Revenue Statistics</h4>
-                                    <div class="flot-chart">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<h1>Repositório {{repo.name}}</h1>
+<div class="row">
+    <!-- Column -->
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="text-center" class="card-block">
+                <h4 class="card-title">Total de Commits</h4>
+                <div class="text-center">
+                    <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> 2120</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-sm-6">
+        <div class="card">
+            <div  class="text-center" class="card-block">
+                <h4 class="card-title">Commits Pareados</h4>
+                <div class="text-center">
+                    <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> 2000</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="">
+                <h4 class="">Revenue Statistics</h4>
+                <div class="">
+                    {{ div | safe }}
+                    {{ script | safe }}
                 </div>
             </div>
         </div>
