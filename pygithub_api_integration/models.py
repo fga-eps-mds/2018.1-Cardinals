@@ -111,7 +111,7 @@ class Contributor(models.Model):
         for contributor in contributors:
             line_code_repo += contributor.line_code
 
-        return line_code_repo
+        return max(line_code_repo, 1)
 
     def getPercent(line_code, line_code_repo):
 
