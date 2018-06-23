@@ -3,7 +3,7 @@ from github import Github
 from oauth.credentials import get_credentials
 
 
-def certifyRequest(return_function):
+def certify_request(return_function):
 
     obj_request = None
 
@@ -24,7 +24,7 @@ class Repository(models.Model):
         username, password = get_credentials()
         git = Github(username, password)
 
-        repo_request = certifyRequest(git.get_repo(repo_name))
+        repo_request = certify_request(git.get_repo(repo_name))
 
         return repo_request
 
@@ -55,7 +55,7 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contrib_request = certifyRequest(repo_request.get_stats_contributors())
+        contrib_request = certify_request(repo_request.get_stats_contributors())
 
         return contrib_request
 
@@ -162,7 +162,7 @@ class ContributingWeek(models.Model):
 
     def saveContributingWeek(contributor_request, contributor):
 
-        weeks = certifyRequest(contributor_request.weeks)
+        weeks = certify_request(contributor_request.weeks)
 
         for week in weeks:
             contrib_week = ContributingWeek()
@@ -185,7 +185,7 @@ class Commit(models.Model):
 
     def requestCommit(repo_request):
 
-        commit_request = certifyRequest(repo_request.get_commits())
+        commit_request = certify_request(repo_request.get_commits())
 
         return commit_request
 
@@ -215,7 +215,7 @@ class Issue(models.Model):
 
     def requestIssues(repo_request):
 
-        issues_request = certifyRequest(repo_request.get_issues(state="all"))
+        issues_request = certify_request(repo_request.get_issues(state="all"))
 
         return issues_request
 
