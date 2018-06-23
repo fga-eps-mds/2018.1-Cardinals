@@ -59,7 +59,7 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date, tamW, 
     plot.yaxis.axis_label = 'Quantidade de Commits'
     plot.title.text = 'Commits Pareados X Commits Individuais'
     plot.title.align = 'center'
-    plot.title.text_font_size = '20pt'
+    plot.title.text_font_size = '13pt'
     return plot
 
 
