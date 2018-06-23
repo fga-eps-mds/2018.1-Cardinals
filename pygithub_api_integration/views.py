@@ -17,9 +17,12 @@ def populate_db_if_data_is_old(repo_full_name):
 
     if repository_set.count() > 0:
         repository = repository_set[0]
-        diff_time = now() - repository.created_at
-        if diff_time.total_seconds() < DIFF_UPDATE_TIME_IN_SECONDS:
-            populate = False
+        contributors_set = Contributor.objects.filter(repository=repository.id)
+
+        if contributors_set.count() > 0:
+            diff_time = now() - repository.created_at
+            if diff_time.total_seconds() < DIFF_UPDATE_TIME_IN_SECONDS:
+                populate = False
 
     if populate:
         repo_request = Repository.requestRepo(repo_full_name)

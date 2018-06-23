@@ -55,6 +55,8 @@ class Contributor(models.Model):
         return contributors_request
 
     def saveContributors(contributors_request, repo):
+        contributors = Contributor.objects.filter(repository=repo.id)
+        contributors.delete()
 
         for c in contributors_request:
             contributor = Contributor()
