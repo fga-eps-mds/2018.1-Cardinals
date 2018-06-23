@@ -7,8 +7,8 @@
 
 {% block body %}
 <h1>Repositório {{repo.name}}</h1>
+
 <div class="row">
-    <!-- Column -->
     <div class="col-sm-6">
         <div class="card">
             <div class="">
@@ -19,7 +19,9 @@
             </div>
         </div>
     </div>
+</div>
 
+<div class="row">
     <!-- Column -->
     <div class="col-sm-6">
         <div class="card">
@@ -27,6 +29,18 @@
                 <div class="">
                     {{ div2 | safe }}
                     {{ script2 | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column -->
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="">
+                <div class="">
+                    {{ divPR | safe }}
+                    {{ scriptPR | safe }}
                 </div>
             </div>
         </div>
