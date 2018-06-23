@@ -61,60 +61,60 @@ class Contributor(models.Model):
 
     def saveContributors(contributors_request, repo):
 
-        for c in contributors_request:
+        for contrib in contributors_request:
             contributor = Contributor()
-            contributor.id = c.author.id
-            contributor.name = c.author.name
-            contributor.login = c.author.login
-            contributor.email = c.author.email
-            contributor.commits = c.total
+            contributor.id = contrib.author.id
+            contributor.name = contrib.author.name
+            contributor.login = contrib.author.login
+            contributor.email = contrib.author.email
+            contributor.commits = contrib.total
 
             contributor.save()
             contributor.repository.add(repo)
-            ContributingWeek.saveContributingWeek(c, contributor)
+            ContributingWeek.saveContributingWeek(contrib, contributor)
 
     def setLineCodeContrib(contributors):
 
-        for c in contributors:
+        for contrib in contributors:
             line_code = 0
-            weeks = ContributingWeek.objects.filter(contributor=c.id)
+            weeks = ContributingWeek.objects.filter(contributor=contrib.id)
             for week in weeks:
                 line_code += week.line_add + week.line_del
 
-            c.line_code = line_code
-            c.save()
+            contrib.line_code = line_code
+            contrib.save()
 
     def setIssuesCreatedFor(contributors, repo_id):
 
-        for c in contributors:
+        for contrib in contributors:
             num_issues_created = 0
             issues_all = Issue.objects.filter(repository=repo_id)
             for issue in issues_all:
-                if issue.created_by == c.id:
+                if issue.created_by == contrib.id:
                     num_issues_created += 1
 
-            c.issues_created = num_issues_created
-            c.save()
+            contrib.issues_created = num_issues_created
+            contrib.save()
 
     def setIssuesClosedFor(contributors, repo_id):
 
-        for c in contributors:
+        for contrib in contributors:
             num_issues_closed = 0
             issues_all = Issue.objects.filter(repository=repo_id)
             for issue in issues_all:
                 if issue.state == "closed":
-                    if issue.closed_by == c.id:
+                    if issue.closed_by == contrib.id:
                         num_issues_closed += 1
 
-            c.issues_closed = num_issues_closed
-            c.save()
+            contrib.issues_closed = num_issues_closed
+            contrib.save()
 
     def getLineCodeRepo(contributors):
 
         line_code_repo = 0
 
-        for contributor in contributors:
-            line_code_repo += contributor.line_code
+        for contrib in contributors:
+            line_code_repo += contrib.line_code
 
         return line_code_repo
 
@@ -129,23 +129,24 @@ class Contributor(models.Model):
         line_code_repo = Contributor.getLineCodeRepo(contributors)
 
         if weight is None:
-            for c in contributors:
-                c.score = round(float(c.commits +
-                                      Contributor.getPercent(c.line_code,
+            for contrib in contributors:
+                contrib.score = round(float(contrib.commits +
+                                      Contributor.getPercent(contrib.line_code,
                                                              line_code_repo) +
-                                      c.issues_created +
-                                      c.issues_closed), 2)
-                c.save()
+                                      contrib.issues_created +
+                                      contrib.issues_closed), 2)
+                contrib.save()
 
         else:
-            for c in contributors:
-                c.score = round(float(c.commits * int(weight.commit) +
-                                      Contributor.getPercent(c.line_code,
+            for contrib in contributors:
+                contrib.score = round(float(contrib.commits *
+                                      int(weight.commit) +
+                                      Contributor.getPercent(contrib.line_code,
                                                              line_code_repo) *
                                       int(weight.line_code) +
-                                      c.issues_created *
+                                      contrib.issues_created *
                                       int(weight.issues_created) +
-                                      c.issues_closed *
+                                      contrib.issues_closed *
                                       int(weight.issues_closed)), 2)
 
         return contributors
@@ -191,14 +192,14 @@ class Commit(models.Model):
 
     def saveCommit(commit_request, repo, contributors):
 
-        for c in commit_request:
+        for commit_r in commit_request:
             commit = Commit()
-            commit.sha = c.sha
-            commit.date = c.commit.author.date
-            commit.message = c.commit.message
+            commit.sha = commit_r.sha
+            commit.date = commit_r.commit.author.date
+            commit.message = commit_r.commit.message
             commit.repository = repo
             for contrib in contributors:
-                if c.author.id == contrib.id:
+                if commit_r.author.id == contrib.id:
                     commit.author = contrib
             commit.save()
 
@@ -221,14 +222,14 @@ class Issue(models.Model):
 
     def saveIssues(issues_request, repo):
 
-        for i in issues_request:
+        for issue_r in issues_request:
             issue = Issue()
-            issue.id = i.id
-            issue.created_by = i.user.id
-            if i.closed_by is not None:
-                issue.closed_by = i.closed_by.id
-            issue.state = i.state
-            issue.created_at = i.created_at
-            issue.closed_at = i.closed_at
+            issue.id = issue_r.id
+            issue.created_by = issue_r.user.id
+            if issue_r.closed_by is not None:
+                issue.closed_by = issue_r.closed_by.id
+            issue.state = issue_r.state
+            issue.created_at = issue_r.created_at
+            issue.closed_at = issue_r.closed_at
             issue.repository = repo
             issue.save()
