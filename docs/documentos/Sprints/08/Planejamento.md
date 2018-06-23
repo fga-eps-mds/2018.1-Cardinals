@@ -1,6 +1,6 @@
 # Planejamento da Sprint 8
 
-**Data de Início:** 30/05/2018
+**Data de Início:** 31/04/2018
 
 **Data de Término:** 07/05/2018
 
