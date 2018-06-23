@@ -37,24 +37,11 @@
             <div class="card-block">
                 <h4 class="card-title">Revenue Statistics</h4>
                 <div class="flot-chart">
-                    {% include "../../commits_charts/templates/commits_charts.html" %}
+                    {{ div | safe }}
+                    {{ script | safe }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-<<<<<<< HEAD
-{% block renderingDocs %}
-    {% with repo_id=repo.id %}
-    <a class="bg-red" href="{% url 'renderingDocs' repo_id %}"><i class="fa fa-file-o"></i> Documentos</a>
-    {% endwith %}
-{% endblock %}
-
-{% block getResult %}
-    {% with repo_id=repo.id %}
-    <a class="bg-red" href="{% url 'getResult' repo_id %}"><i class="fa fa-trophy"></i> Ranking Commiters</a>
-    {% endwith %}
-{% endblock %}
-=======
->>>>>>> origin/develop

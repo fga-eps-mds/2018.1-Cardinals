@@ -1,9 +1,14 @@
-    <p><h3> asdasdaasd {{ repository }}</h3></p>
+{% extends "base_user.html" %}
+
+{% block title %} Commits Charts {% endblock %}
+
+
+{% block body %}
+
+    <p><h3>{{repository}}</h3></p>
    
     {{ div | safe }}
     {{ script | safe }}
-<<<<<<< HEAD
-=======
 
     <br>
     <div class="col-md-12">
@@ -17,4 +22,3 @@
     </div>
 
 {% endblock %}
->>>>>>> origin/develop
