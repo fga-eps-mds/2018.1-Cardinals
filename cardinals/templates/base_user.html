@@ -47,17 +47,20 @@
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li>
-                                    <a class="bg-red" href="getRepoInfo"><i class="fa fa-home"></i> Home </a>
+                                    <a class="bg-red" href="/{{request.session.repository}}/"><i class="fa fa-home"></i>
+                                    Home </a>
                                 </li>
                                 <li>
                                     <a class="bg-red" href="/{{request.session.repository}}/time_issue/"><i class="fa fa-code-fork"></i> Issue</a>
                                 </li>
                                 <li>
-                                    <a class="bg-red" href="/{{request.session.repository}}/commits_charts/"><i class="fa fa-code"></i> Commits</a>
+                                    <a class="bg-red" href="/{{request.session.repository}}/commits_charts/"><i
+                                    class="fa fa-code"></i>
+                                    Commits</a>
                                 </li>
                                 <li>
-                                    {% block renderingDocs %}
-                                    {% endblock %}
+                                    <a class="bg-red" href="/{{request.session.repository}}/community/"><i class="fa fa-file-o"></i> Documentos</a>
+
                                 </li>
 
                                 <li>
@@ -66,16 +69,7 @@
                                 </li>
 
                                 <li>
-                                    <a class="bg-red" href="">
-                                        <i class="fa fa-user"></i> Contributors
-                                        <i class="fa arrow"></i>
-                                    </a>  
-                                    <ul class="sidebar-nav">
-                                        <li>
-                                            {% block getResult %}
-                                            {% endblock %}
-                                        </li>
-                                    </ul>
+                                    <a class="bg-red" href="/{{request.session.repository}}/ranking_commiters/"><i class="fa fa-trophy"></i> Ranking Commiters</a>
                                 </li>
                             </ul>
                         </nav>
