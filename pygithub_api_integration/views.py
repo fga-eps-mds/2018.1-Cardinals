@@ -1,23 +1,15 @@
 from django.shortcuts import render, redirect
 from github import GithubException as GE
-from cardinals.views import getRepository
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Contributor
-# from pygithub_api_integration.models import Issue
-# from pygithub_api_integration.models import Commit
 from django.contrib import messages
 import socket
 from . import constants
 from commits_charts.views import *
 
 
-def save_repository_name_in_session(request, repo_name):
-    request.session['repository'] = repo_name
-
-
-def getRepoInfo(request):
-    repo_name = getRepository(request)
-    save_repository_name_in_session(request, repo_name)
+def get_repo_info(request, organization, repository):
+    repo_name = organization + '/' + repository
 
     try:
 
@@ -28,12 +20,6 @@ def getRepoInfo(request):
         Contributor.saveContributors(contributors_request, repo)
 
         contributors = Contributor.objects.filter(repository=repo.id)
-
-        # commit_request = Commit.requestCommit(repo_request)
-        # Commit.saveCommit(commit_request, repo, contributors)
-
-        # issue_request = Issue.requestIssues(repo_request)
-        # Issue.saveIssues(issue_request, repo)
 
         context = {"repo": repo, "contributors": contributors}
 

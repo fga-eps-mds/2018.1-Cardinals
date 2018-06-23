@@ -5,23 +5,23 @@ from pygithub_api_integration.models import Repository
 paths = ["docs/", ".github/", ""]
 
 
-def renderingDocs(request, repo_id):
-
-    repo_name = Repository.objects.get(id=repo_id).full_name
+def rendering_docs(request, organization, repository):
+    repo_name = organization + '/' + repository
     repo = Repository.requestRepo(repo_name)
 
-    contributingFile = getContributingFile(repo)
-    licenseFile = getLicenseFile(repo)
-    issueTemplate = getIssueTemplate(repo)
-    pullRequestTemplate = getPullRequestTemplate(repo)
-    conductFile = getCodeConduct(repo)
-    readme = getReadme(repo)
+    contributing_file = get_contributing_file(repo)
+    license_file = get_license_file(repo)
+    issue_template = get_issue_template(repo)
+    pull_request_template = get_pull_request_template(repo)
+    conduct_file = get_code_conduct(repo)
+    readme = get_readme(repo)
+    repo_id = repo.id
 
-    context = {'contributingFile': contributingFile,
-               'licenseFile': licenseFile,
-               'issueTemplate': issueTemplate,
-               'pullRequestTemplate': pullRequestTemplate,
-               'conductFile': conductFile,
+    context = {'contributingFile': contributing_file,
+               'licenseFile': license_file,
+               'issueTemplate': issue_template,
+               'pullRequestTemplate': pull_request_template,
+               'conductFile': conduct_file,
                'readme': readme,
                'repo_id': repo_id
                }
@@ -29,7 +29,22 @@ def renderingDocs(request, repo_id):
     return render(request, 'searchDocs.html', context)
 
 
-def getReadme(repo):
+def check_path(repo, name_file):
+    file = None
+    i = 0
+    while file is None and i <= 2:
+        try:
+            file = repo.get_file_contents(paths[i] + name_file)
+
+        except GithubException:
+            file = None
+
+        i += 1
+
+    return file
+
+
+def get_readme(repo):
 
     try:
         readme = repo.get_readme()
@@ -40,40 +55,7 @@ def getReadme(repo):
     return readme
 
 
-def getContributingFile(repo):
-
-    contributing_file = None
-    i = 0
-    while contributing_file is None and i <= 2:
-        try:
-            contributing_file = repo.get_file_contents(paths[i] +
-                                                       "CONTRIBUTING.md")
-
-        except GithubException:
-            contributing_file = None
-
-        i += 1
-
-    return contributing_file
-
-
-def getCodeConduct(repo):
-
-    conduct_file = None
-    i = 0
-    while conduct_file is None and i <= 2:
-        try:
-            conduct_file = repo.get_file_contents(paths[i] +
-                                                  "CODE_OF_CONDUCT.md")
-        except GithubException:
-            conduct_file = None
-
-        i += 1
-
-    return conduct_file
-
-
-def getLicenseFile(repo):
+def get_license_file(repo):
 
     try:
         license_file = repo.get_license()
@@ -84,33 +66,29 @@ def getLicenseFile(repo):
     return license_file
 
 
-def getIssueTemplate(repo):
+def get_contributing_file(repo):
 
-    template_issue = None
-    i = 0
-    while template_issue is None and i <= 2:
-        try:
-            template_issue = repo.get_file_contents(paths[i] +
-                                                    "ISSUE_TEMPLATE.md")
-        except GithubException:
-            template_issue = None
+    contributing_file = check_path(repo, "CONTRIBUTING.md")
 
-        i += 1
+    return contributing_file
+
+
+def get_code_conduct(repo):
+
+    conduct_file = check_path(repo, "CODE_OF_CONDUCT.md")
+
+    return conduct_file
+
+
+def get_issue_template(repo):
+
+    template_issue = check_path(repo, "ISSUE_TEMPLATE.md")
 
     return template_issue
 
 
-def getPullRequestTemplate(repo):
+def get_pull_request_template(repo):
 
-    template_pr = None
-    i = 0
-    while template_pr is None and i <= 2:
-        try:
-            template_pr = repo.get_file_contents(paths[i] +
-                                                 "PULL_REQUEST_TEMPLATE.md")
-        except GithubException:
-            template_pr = None
-
-        i += 1
+    template_pr = check_path(repo, "PULL_REQUEST_TEMPLATE.md")
 
     return template_pr

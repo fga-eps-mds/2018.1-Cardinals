@@ -1,9 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from oauth.credentials import get_credentials
-from github import Github, Issue
-
-from .views import (analyze_issue_graph,)
+from github import Github
 
 
 class SetUp:
