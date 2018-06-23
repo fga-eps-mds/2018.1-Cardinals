@@ -11,6 +11,7 @@ from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
 
 username, password = get_credentials()
+global divCommit, scriptCommit
 
 def save_repository_name_in_session(request):
     repository_key = 'repository'
@@ -64,7 +65,7 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date, tamW, 
 
 
 def analyze_commits_charts(request, organization, repository, tamW, tamH):
-
+    global divCommit, scriptCommit
     github = Github(username, password)
     repository_url = organization + '/' + repository
     repository = github.get_repo(repository_url)
@@ -95,9 +96,13 @@ def analyze_commits_charts(request, organization, repository, tamW, tamH):
 
     plot = get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date, tamW, tamH)
     script, div = components(plot)
+    
+    divCommit = div
+    scriptCommit = script
 
-    context = {'script': script,
-               'div': div,
-               'repository': repository_url}
 
-    return [div, script]
+def scriptCommit():
+    return scriptCommit
+
+def divCommit():
+    return divCommit

@@ -21,9 +21,11 @@ def get_repo_info(request, organization, repository):
 
         contributors = Contributor.objects.filter(repository=repo.id)
 
-        valor = analyze_commits_charts(request, organization, repository, 500, 350)
+        analyze_commits_charts(request, organization, repository, 500, 350)
+        div = divCommit()
+        script = scriptCommit()
 
-        context = {"repo": repo, "contributors": contributors, "div": valor[0], "script": valor[1]}
+        context = {"repo": repo, "contributors": contributors, "div": div, "script": script}
 
         return render(request, 'repository_info.html', context)
 
