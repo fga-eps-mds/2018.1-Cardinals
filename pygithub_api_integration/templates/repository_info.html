@@ -7,38 +7,40 @@
 
 {% block body %}
 <h1>Repositório {{repo.name}}</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="">
+                <div class="">
+                    {{ div | safe }}
+                    {{ script | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <!-- Column -->
     <div class="col-sm-6">
         <div class="card">
-            <div class="text-center" class="card-block">
-                <h4 class="card-title">Total de Commits</h4>
-                <div class="text-center">
-                    <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> 2120</h2>
+            <div class="">
+                <div class="">
+                    {{ div2 | safe }}
+                    {{ script2 | safe }}
                 </div>
             </div>
         </div>
     </div>
-    <!-- Column -->
+
     <!-- Column -->
     <div class="col-sm-6">
         <div class="card">
-            <div  class="text-center" class="card-block">
-                <h4 class="card-title">Commits Pareados</h4>
-                <div class="text-center">
-                    <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> 2000</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
-    <div class="col-sm-12">
-        <div class="card">
             <div class="">
-                <h4 class="">Revenue Statistics</h4>
                 <div class="">
-                    {{ div | safe }}
-                    {{ script | safe }}
+                    {{ divPR | safe }}
+                    {{ scriptPR | safe }}
                 </div>
             </div>
         </div>
