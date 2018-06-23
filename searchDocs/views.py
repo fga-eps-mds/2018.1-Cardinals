@@ -5,23 +5,23 @@ from pygithub_api_integration.models import Repository
 paths = ["docs/", ".github/", ""]
 
 
-def renderingDocs(request, organization, repository):
+def rendering_docs(request, organization, repository):
     repo_name = organization + '/' + repository
     repo = Repository.requestRepo(repo_name)
 
-    contributingFile = getContributingFile(repo)
-    licenseFile = getLicenseFile(repo)
-    issueTemplate = getIssueTemplate(repo)
-    pullRequestTemplate = getPullRequestTemplate(repo)
-    conductFile = getCodeConduct(repo)
-    readme = getReadme(repo)
+    contributing_file = get_contributing_file(repo)
+    license_file = get_license_file(repo)
+    issue_template = get_issue_template(repo)
+    pull_request_template = get_pull_request_template(repo)
+    conduct_file = get_code_conduct(repo)
+    readme = get_readme(repo)
     repo_id = repo.id
 
-    context = {'contributingFile': contributingFile,
-               'licenseFile': licenseFile,
-               'issueTemplate': issueTemplate,
-               'pullRequestTemplate': pullRequestTemplate,
-               'conductFile': conductFile,
+    context = {'contributingFile': contributing_file,
+               'licenseFile': license_file,
+               'issueTemplate': issue_template,
+               'pullRequestTemplate': pull_request_template,
+               'conductFile': conduct_file,
                'readme': readme,
                'repo_id': repo_id
                }
@@ -29,7 +29,7 @@ def renderingDocs(request, organization, repository):
     return render(request, 'searchDocs.html', context)
 
 
-def checkPath(repo, name_file):
+def check_path(repo, name_file):
     file = None
     i = 0
     while file is None and i <= 2:
@@ -44,7 +44,7 @@ def checkPath(repo, name_file):
     return file
 
 
-def getReadme(repo):
+def get_readme(repo):
 
     try:
         readme = repo.get_readme()
@@ -55,7 +55,7 @@ def getReadme(repo):
     return readme
 
 
-def getLicenseFile(repo):
+def get_license_file(repo):
 
     try:
         license_file = repo.get_license()
@@ -66,29 +66,29 @@ def getLicenseFile(repo):
     return license_file
 
 
-def getContributingFile(repo):
+def get_contributing_file(repo):
 
-    contributing_file = checkPath(repo, "CONTRIBUTING.md")
+    contributing_file = check_path(repo, "CONTRIBUTING.md")
 
     return contributing_file
 
 
-def getCodeConduct(repo):
+def get_code_conduct(repo):
 
-    conduct_file = checkPath(repo, "CODE_OF_CONDUCT.md")
+    conduct_file = check_path(repo, "CODE_OF_CONDUCT.md")
 
     return conduct_file
 
 
-def getIssueTemplate(repo):
+def get_issue_template(repo):
 
-    template_issue = checkPath(repo, "ISSUE_TEMPLATE.md")
+    template_issue = check_path(repo, "ISSUE_TEMPLATE.md")
 
     return template_issue
 
 
-def getPullRequestTemplate(repo):
+def get_pull_request_template(repo):
 
-    template_pr = checkPath(repo, "PULL_REQUEST_TEMPLATE.md")
+    template_pr = check_path(repo, "PULL_REQUEST_TEMPLATE.md")
 
     return template_pr

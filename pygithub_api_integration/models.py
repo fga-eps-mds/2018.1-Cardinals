@@ -102,8 +102,7 @@ class Contributor(models.Model):
             num_issues_closed = 0
             issues_all = Issue.objects.filter(repository=repo_id)
             for issue in issues_all:
-                if issue.state == "closed":
-                    if issue.closed_by == contrib.id:
+                if issue.state == "closed" and issue.closed_by == contrib.id:
                         num_issues_closed += 1
 
             contrib.issues_closed = num_issues_closed

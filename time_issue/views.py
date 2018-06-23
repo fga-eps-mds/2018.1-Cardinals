@@ -17,7 +17,6 @@ def get_bar_plot(days, amount):
 
     plot.xaxis.axis_label = 'Quantidade de issues'
     plot.yaxis.axis_label = 'Tempo que a issue ficou aberta (dias)'
-    """ plot.xaxis.ticker = x_ticks """
 
     plot.title.text = 'Período em que as issues ficam abertas'
     plot.title.align = 'center'
