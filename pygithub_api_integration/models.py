@@ -3,6 +3,16 @@ from github import Github
 from oauth.credentials import get_credentials
 
 
+def certifyRequest(return_function):
+
+    obj_request = None
+
+    while obj_request is None:
+        obj_request = return_function
+
+    return obj_request
+
+
 class Repository(models.Model):
 
     id = models.AutoField(primary_key=True)
@@ -14,14 +24,12 @@ class Repository(models.Model):
         username, password = get_credentials()
         git = Github(username, password)
 
-        repo_request = None
-        while repo_request is None:
-            repo_request = git.get_repo(repo_name)
+        repo_request = certifyRequest(git.get_repo(repo_name))
 
         return repo_request
 
     def saveRepo(repo_request):
-        Repository.objects.filter(full_name = repo_request.full_name).delete()
+        Repository.objects.filter(full_name=repo_request.full_name).delete()
 
         repo = Repository()
         repo.full_name = repo_request.full_name
@@ -47,11 +55,9 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contributors_request = None
-        while contributors_request is None:
-            contributors_request = repo_request.get_stats_contributors()
+        contrib_request = certifyRequest(repo_request.get_stats_contributors())
 
-        return contributors_request
+        return contrib_request
 
     def saveContributors(contributors_request, repo):
 
@@ -156,9 +162,7 @@ class ContributingWeek(models.Model):
 
     def saveContributingWeek(contributor_request, contributor):
 
-        weeks = None
-        while weeks is None:
-            weeks = contributor_request.weeks
+        weeks = certifyRequest(contributor_request.weeks)
 
         for week in weeks:
             contrib_week = ContributingWeek()
@@ -181,9 +185,7 @@ class Commit(models.Model):
 
     def requestCommit(repo_request):
 
-        commit_request = None
-        while commit_request is None:
-            commit_request = repo_request.get_commits()
+        commit_request = certifyRequest(repo_request.get_commits())
 
         return commit_request
 
@@ -213,9 +215,7 @@ class Issue(models.Model):
 
     def requestIssues(repo_request):
 
-        issues_request = None
-        while issues_request is None:
-            issues_request = repo_request.get_issues(state="all")
+        issues_request = certifyRequest(repo_request.get_issues(state="all"))
 
         return issues_request
 
