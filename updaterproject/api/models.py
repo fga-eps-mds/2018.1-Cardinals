@@ -12,8 +12,8 @@ class Repository(models.Model):
     events_url = models.CharField(max_length=200, null=True)
     updated_at = models.DateTimeField(null=True)
 
-    issues_db_updated = models.IntegerField(default=0, null=False)
-    commits_db_updated = models.IntegerField(default=0, null=False)
+    issues_db_updated = models.BooleanField(default=False)
+    commits_db_updated = models.BooleanField(default=False)
 
     def saveRepo(repo_request):
 
@@ -181,6 +181,7 @@ class Commit(models.Model):
     sha = models.CharField(max_length=255, primary_key=True)
     date = models.DateTimeField()
     message = models.TextField(null=True)
+    paired = models.BooleanField(default=False)
     repository = models.ForeignKey('Repository',
                                    on_delete=models.CASCADE)
     author = models.ForeignKey('Contributor',
@@ -207,6 +208,12 @@ class Commit(models.Model):
             commit.date = c.commit.author.date
             commit.message = c.commit.message
             commit.repository = repo
+
+            coauthored = commit.message.count("Co-authored-by:") >= 1
+            signedof = commit.message.count("Signed-off-by:") >= 1
+
+            commit.paired = coauthored or signedof
+
             if not c.author:
                 continue
             for contrib in contributors:

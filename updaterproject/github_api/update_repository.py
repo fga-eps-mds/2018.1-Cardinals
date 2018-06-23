@@ -176,31 +176,22 @@ def get_commits_from_repository(full_name):
     return repository.get_commits()
 
 def get_commits_chart_data(full_name):
-    # repository_url = organization + '/' + repository
-    all_commits = get_commits_from_repository(full_name)
+    all_commits = Commit.objects.filter(repository__full_name__contains=full_name).order_by("date")
 
-    all_commit_count = defaultdict(list)
-    signed_commit_count = Counter()
+    commits_count = Counter()
+    paired_count = Counter()
 
     for commit in all_commits:
-        real_date = commit.commit.author.date - timedelta(hours=2)
-        all_commit_count[real_date.date()].append(commit.commit)
-        if (commit.commit.message.count("Co-authored-by:") > 1 or (commit.commit.message.count("Co-authored-by:") == 1)) or (commit.commit.message.count("Signed-off-by:") > 1 or (commit.commit.message.count("Signed-off-by:") == 1 and
-            commit.commit.author.email not in commit.commit.message) or ((commit.commit.author.email != commit.commit.committer.email)
-            and ("noreply@github.com" not in commit.commit.committer.email))):
+        simplified_date = commit.date.strftime('%d-%m-%Y')
 
-            signed_commit_count[real_date.date()] += 1
+        commits_count[simplified_date] += 1
+
+        if commit.paired:
+            paired_count[simplified_date] += 1
         else:
-            signed_commit_count[real_date.date()] += 0
+            paired_count[simplified_date] += 0
 
-    commit_count = {k: len(v) for k, v in all_commit_count.items()}
-
-    dates = list(commit_count.keys())
+    dates = list(commits_count.keys())
     dates.sort()
 
-    commit_count = sorted(commit_count.items())
-    all_amount_by_date = [x[1] for x in commit_count]
-    signed_commit_count = sorted(signed_commit_count.items())
-    signed_amount_by_date = [x[1] for x in signed_commit_count]
-
-    return dates, all_amount_by_date, signed_amount_by_date
+    return dates, commits_count.values(), paired_count.values()
