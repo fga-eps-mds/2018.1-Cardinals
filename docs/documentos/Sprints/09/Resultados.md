@@ -65,12 +65,12 @@
 # 3. Burndown Chart
 <!-- ![Sprint  - Burndown](https://i.imgur.com/) -->
 
-<p align = "justify">Como esta sprint não houve histórias/issues entregues, o Burndown ficou com seus 42 pontos não completados.</p>
+<p align = "justify">Como esta sprint não houve histórias/issues implementadas, o Burndown ficou com seus 42 pontos não completados.</p>
 
 
 
 # 4. Velocity
-<p align = "justify">Devido à baixa quantidade de tarefas e baixa pontuação da tarefa executada nessa Sprint o velocity da equipe ficou em apenas 24 pontos.
+<p align = "justify">
 
 [Velocity Sprint 9](https://github.com/fga-gpp-mds/2018.1-Cardinals/milestone/10#reports?report=velocity&milestones:not=3341166,3362959,3406308,3406310,3423561)
 
