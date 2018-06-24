@@ -26,5 +26,4 @@ site/
 # WARNING: .env file contains sensitive information, keep it on .gitignore.
 .env
 
-## Folder images
-static/images/charts/
+
