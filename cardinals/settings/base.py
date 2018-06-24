@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'pull_request_metrics',
     'redirecter',
     'social_django',
+    'login_github',
 ]
 
 MIDDLEWARE = [
