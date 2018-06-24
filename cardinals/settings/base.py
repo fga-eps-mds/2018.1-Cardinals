@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'commits_charts',
     'pull_request_metrics',
     'generate_report',
+    'redirecter',
 ]
 
 MIDDLEWARE = [

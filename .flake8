@@ -1,2 +1,4 @@
 [flake8]
-exclude = manage.py,cardinals/*,*/migrations/*,
+exclude = manage.py, cardinals/*, */migrations/*,
+ignore = W391
+

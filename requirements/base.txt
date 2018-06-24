@@ -1,7 +1,6 @@
 # Requirements common to all environments
 Django==2.0.5
 psycopg2-binary==2.7.4
-pygithub==1.39
 whitenoise==3.3.1
 bokeh==0.12.16
 reportlab==3.4.0
