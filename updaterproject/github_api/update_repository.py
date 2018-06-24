@@ -124,6 +124,7 @@ def lazy_update_repository(github_repo, repo):
     update_contributors(github_repo, repo)
     run_in_background(update_commits, github_repo, repo)
     run_in_background(update_issues, github_repo, repo)
+    run_in_background(update_pullrequests, github_repo, repo)
 
 def update_contributors(github_repo, repository):
     print (" -- updating contributors")
@@ -149,6 +150,19 @@ def update_commits(github_repo, repository):
     repository.commits_db_updated = 1
     repository.save() # update repository info
     print (" -- commits updated")
+
+def update_pullrequests(github_repo, repository):
+    print (" -- updating pullrequests")
+    repository.pulls_db_updated = 0
+    repository.save() # update repository info
+    request = PullRequest.requestPR(github_repo)
+    if not request:
+        print(" Error: could not find pr")
+        return
+    PullRequest.savePR(request, repository)
+    repository.pulls_db_updated = 1
+    repository.save() # update repository info
+    print (" -- pullrequests updated")
 
 def update_issues(github_repo, repository):
     print (" -- updating issues")

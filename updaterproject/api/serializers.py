@@ -21,3 +21,8 @@ class IssueSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Issue
 		fields = "__all__"
+
+class PullRequestSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Issue
+		fields = "__all__"

@@ -14,6 +14,7 @@ class Repository(models.Model):
 
     issues_db_updated = models.BooleanField(default=False)
     commits_db_updated = models.BooleanField(default=False)
+    pulls_db_updated = models.BooleanField(default=False)
 
     def saveRepo(repo_request):
 
@@ -214,12 +215,46 @@ class Commit(models.Model):
 
             commit.paired = coauthored or signedof
 
-            if not c.author:
+            if not c.author or not c.author.id:
                 continue
             for contrib in contributors:
                 if c.author.id == contrib.id:
                     commit.author = contrib
             commit.save()
+
+class PullRequest(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    created_by = models.BigIntegerField()  # ID of creator contributor
+    state = models.CharField(max_length=255)
+    created_at = models.DateTimeField()
+    closed_at = models.DateTimeField(null=True)
+    repository = models.ForeignKey('Repository',
+                                   on_delete=models.CASCADE)
+    
+    def requestPR(repo_request):
+
+        retry = 3
+        request = None
+        while(request == None and retry >= 0):
+            retry -= 1
+            request = repo_request.get_pulls(state="all")
+
+        return request
+
+    def savePR(pr_request, repo):
+
+        if not pr_request:
+            return
+
+        for pr in pr_request:
+            pull = PullRequest()
+            pull.id = pr.id
+            pull.created_by = pr.user.id
+            pull.state = pr.state
+            pull.created_at = pr.created_at
+            pull.closed_at = pr.closed_at
+            pull.repository = repo
+            pull.save()
 
 
 class Issue(models.Model):
