@@ -94,10 +94,14 @@ class RepositoryCommits(APIView):
         custom_data = {}
 
         if repo:
-            commits = Commit.objects.filter(repository__full_name__contains=repo.full_name) 
+            commits = Commit.objects.filter(repository__full_name__contains=repo.full_name)
+            total_commits = commits.count()
+            total_paired_commits = commits.filter(paired=True).count()
 
             custom_data = {
                 'Repository': RepositorySerializer(repo).data,
+                'total_commits': total_commits,
+                'total_paired_commits': total_paired_commits,
                 'Commits': CommitSerializer(commits, many=True).data
             }
 
