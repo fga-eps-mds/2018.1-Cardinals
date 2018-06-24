@@ -10,14 +10,14 @@ class GithubSingleton:
 
     def __set_github(self, request):
         token = get_access_token(request)
-        self._github = Github(token)
-        return self._github
+        GithubSingleton._github = Github(token)
+        return GithubSingleton._github
 
     def get_github(self, request):
         assert request.user.is_authenticated
 
-        if self._github:
-            return self._github
+        if GithubSingleton._github:
+            return GithubSingleton._github
         else:
             return self.__set_github(request)
 
@@ -70,6 +70,7 @@ def get_repos_from_organization(request, login):
     return repositories
 
 def organization(request, login):
+    print('Im inside organization')
     repositories = get_repos_from_organization(request, login)
     context = {'login': login,
                'repositories': repositories}
