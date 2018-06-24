@@ -22,7 +22,7 @@ def get_repo_info(request, organization, repository):
 
         contributors = Contributor.objects.filter(repository=repo.id)
 
-        analyze_commits_charts(request, organization, repository, 1100, 400)
+        analyze_commits_charts(request, organization, repository, 1000, 400)
         analyze_issue_graph(request, organization, repository)
         analyze_pull_requests(request, organization, repository)
 
