@@ -23,7 +23,6 @@
 | -------- | :----: |
 | Iss36 - US02 - Atribuir Pesos a Critérios de Ranqueamento | Sim |
 | Iss37 - US03 - Ranquear commiters | Sim |
-| Iss48 - US11 - Obter Métricas de Issues abertas e fechadas | Sim |
 | Iss50 - US12 - Gerar Métricas de commits por período | Sim |
 | Iss51 - US13 - Fornecer número de commits realizados no repositário em um dado intervalo de tempo | Sim |
 
@@ -33,10 +32,6 @@
 
 ### [Iss37 - US03 - Ranquear commiters](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/37)
 * **Responsáveis:** Mateus Augusto e João Pedro
-* **Pontuação:** 8
-
-### [Iss48 - US11 - Obter métricas de Issues abertas e fechadas](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/48)
-* **Responsáveis:** Gustavo e Matheus Gomes
 * **Pontuação:** 8
 
 ### [Iss50 - US12 - Gerar métricas de commits por período](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/50)

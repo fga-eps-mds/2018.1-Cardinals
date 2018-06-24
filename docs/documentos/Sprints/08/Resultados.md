@@ -24,7 +24,7 @@
  * Todas as histórias e ou/ issues planejadas para esta Sprint não foram concluídas
 
 ## 1.2. O não foi feito e por que não foi feito?
- * Nesta Sprint o grupo se dispersou em função de outras disciplinas dado que o esforço na sprint anterior foi muito focado, deixando assim dívidas em outras atividades acadêmicas 
+ * Nesta Sprint o grupo se dispersou em função de outras disciplinas que estavam com o conteúdo atrasado
 
 <!-- # 2. Retrospectiva
 

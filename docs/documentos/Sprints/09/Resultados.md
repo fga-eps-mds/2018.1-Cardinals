@@ -18,16 +18,15 @@
 | -------- | :----: |
 | Iss36 - US02 - Atribuir Pesos a Critérios de Ranqueamento | Não |
 | Iss37 - US03 - Ranquear commiters | Não |
-| Iss48 - US11 - Obter Métricas de Issues abertas e fechadas | Não |
-| Iss50 - US12 - Gerar Métricas de commits por período | Não |
-| Iss51 - US13 - Fornecer número de commits realizados no repositário em um dado intervalo de tempo | Não |
+| Iss48 - US11 - Obter Métricas de Issues abertas e fechadas | Sim |
+| Iss50 - US12 - Gerar Métricas de commits por período | Sim |
+| Iss51 - US13 - Fornecer número de commits realizados no repositário em um dado intervalo de tempo | Sim |
 
 ## 1.1 O que foi feito (Completa)?
- * Todas as histórias e ou/ issues planejadas para esta Sprint não foram concluídas
+ * As histórias de usuário: US11 - Obter Métricas de Issues abertas e fechadas, US12 - Gerar Métricas de commits por período e US13 - Fornecer número de commits realizados no repositário em um dado intervalo de tempo foram fechadas a pedido do P.O por ele não ver valor agragado às mesmas, histórias estas que foram refatoradas em outras histórias
 
 ## 1.2. O não foi feito e por que não foi feito?
- * Nesta Sprint o grupo se dispersou em função de outras disciplinas dado que o esforço na sprint anterior foi muito focado, deixando assim dívidas em outras atividades acadêmicas 
-
+ * Nesta _Sprint_ não houve histórias implementadas pois o P.O não viu valor às histórias planeadas para a _Sprint_.
 
 # 2. Retrospectiva
 
@@ -78,4 +77,5 @@
 </p>
 
 # 5. Relato do Scrum Master
-<p align = "justify">Nesta Sprint a equipe deixou a desejar pelo fato da entrega da Release 1 ter ocorrido e ficando o grupo disperso para realizar outras atividades acadêmicas, ficando assim a equipe "congelada" na Release 1.</p>
+<p align = "justify">Nesta Sprint a equipe se reuniu com o P.O. o qual pediu que 3 histórias fossem refatoradas e canceladas pois não estavam de acordo com o escopo do projeto. Nesta mesma reunião foram feitas novas histórias de usuário de acordo com os requisitos.
+</p>
