@@ -1,7 +1,13 @@
-from django.shortcuts import render
-from reportlab.pdfgen import canvas
+import time
+
+from reportlab.lib.enums import TA_JUSTIFY
 from reportlab.lib.pagesizes import A4
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+
 from django.http import HttpResponse
+
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Contributor
 from ranking_commiters.models import Weight
@@ -24,47 +30,31 @@ def pdfView(request, repo_id):
     report_name = 'attachment; filename=Relatorio_' + repo.full_name + '.pdf'
     response['Content-Disposition'] = report_name
 
-    pdf = canvas.Canvas(response, pagesize=A4)
+    pdf = SimpleDocTemplate(response, pagesize=A4)
 
-    pdf.setFont('Times-Bold', 26)
-    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 39.6, repo.full_name)
+    Story = []
 
-    pdf.line(MARGIN_LEFT, (LINE * 3.8) - 20,
-             MARGIN_LEFT * 11, (LINE * 3.8) - 20)
+    # nome do repositório
+    styles = getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+    ptext = '<font size=16>%s</font>' % repo.full_name
 
-    pdf.line(CENTER_PAG, 780, CENTER_PAG, 620)
+    Story.append(Paragraph(ptext, styles["Normal"]))
+    Story.append(Spacer(1, 12))
 
-    pdf.setFont('Times-Bold', 12)
-    pdf.drawString(MARGIN_LEFT, SPACE_VERT * 38.65, "Ranking de Commiters:")
+    # contribuidores
+    styles = getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+    ptext = '<font size=12>%s</font>' % "Contribuidores"
 
-    line_down = 0
+    Story.append(Paragraph(ptext, styles["Normal"]))
+    Story.append(Spacer(1, 4))
 
     for c in ranking_commiters:
-        pdf.setFont('Times-Bold', 9)
-        pdf.drawString(MARGIN_LEFT + 10, SPACE_VERT * (38 - line_down),
-                       c.name + '/' + c.login + ' | ' + str(c.score))
+        contrib = c.name + ' / ' + c.login + ' | ' + str(c.score)
+        ptext = '<font size=10>%s</font>' % contrib
+        Story.append(Paragraph(ptext, styles["Normal"]))
 
-        line_down += 0.65
-
-    pdf.line(MARGIN_LEFT, (LINE * 3) - 28, MARGIN_LEFT * 11, (LINE * 3) - 28)
-
-    pdf.drawImage('static/images/charts/chart_issue.png',
-                  MARGIN_LEFT + 10, SPACE_VERT * 21,
-                  width=300, height=190)
-
-    pdf.line(MARGIN_LEFT, (LINE * 2) - 15, MARGIN_LEFT * 11, (LINE * 2) - 15)
-
-    pdf.drawImage('static/images/charts/chart_commit.png',
-                  MARGIN_LEFT + 10, SPACE_VERT * 11,
-                  width=300, height=190)
-
-    pdf.line(MARGIN_LEFT, LINE, MARGIN_LEFT * 11, LINE)
-
-    pdf.drawImage('static/images/charts/chart_pr.png',
-                  MARGIN_LEFT + 10, SPACE_VERT,
-                  width=300, height=190)
-
-    pdf.showPage()
-    pdf.save()
+    pdf.build(Story)
 
     return response
