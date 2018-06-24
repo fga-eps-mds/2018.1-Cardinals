@@ -54,7 +54,11 @@ def convert_html2image(img_obj, path_html, path_jpg):
     return path_jpg
 
 
-def pdf_view(request, repo_id):
+def pdf_view(request, organization, repository):
+
+    name = organization + '/' + repository
+    repo = Repository.objects.get(full_name=name)
+    repo_id = repo.id
 
     repo = Repository.objects.get(id=repo_id)
     commiters = Contributor.objects.filter(repository=repo_id)
@@ -70,11 +74,9 @@ def pdf_view(request, repo_id):
 
     Story = []
 
-    # nome do repositório
     create_pdf_paragraph(Story, repo.full_name, 16)
     create_pdf_space(Story, 12)
 
-    # contribuidores
     create_pdf_paragraph(Story, "Contribuidores", 12)
     create_pdf_space(Story, 10)
 

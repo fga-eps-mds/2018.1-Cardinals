@@ -19,9 +19,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block pdfView %}
-    {% with repo_id=repo.id %}
-    <a class="bg-red" href="{% url 'pdf_view' repo_id %}"><i class="fa fa-file-o"></i> Relatório</a>
-    {% endwith %}
-{% endblock %}
