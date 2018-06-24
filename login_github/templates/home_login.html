@@ -1,0 +1,22 @@
+{% extends "base_login.html" %}
+
+{% block title %}
+    Cardinals
+{% endblock %}
+
+{% block head %}
+    <!-- HEAD -->
+{% endblock %}
+
+
+
+{% block body %}
+    {% if user.username %}
+        <h3>Hello {{ user.username }}!</h3><br>
+        <br><br>
+        <a href="{% url 'logout' %}">Sign out</a><br>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+    {% endif %}
+
+{% endblock %}
