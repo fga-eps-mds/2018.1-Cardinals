@@ -15,10 +15,10 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if contributingFile.name == 'CONTRIBUTING.md' %}
+                        {% if contributingFile %}
                             <span class="fa fa-check fa-fw"></span>
                             <span>
-                                {{contributingFile.name}}
+                                CONTRIBUTING.md
                             </span>
                         {% else %}
                             <span class="fa fa-times fa-fw"></span>
@@ -35,10 +35,10 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if issueTemplate.name == 'ISSUE_TEMPLATE.md' %}
+                        {% if issueTemplate %}
                             <span class="fa fa-check fa-fw"></span>
                             <span>
-                                {{issueTemplate.name}}
+                                ISSUE_TEMPLATE.md
                             </span>
                                 
                         {% else %}
@@ -56,10 +56,10 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if pullRequestTemplate.name == 'PULL_REQUEST_TEMPLATE.md' %}
+                        {% if pullRequestTemplate %}
                             <span class="fa fa-check fa-fw"></span>
                             <span>
-                                {{pullRequestTemplate.name}}
+                                PULL_REQUEST_TEMPLATE.md
                             </span>
                         {% else %}
                             <span class="fa fa-times fa-fw"></span>
@@ -76,10 +76,10 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if conductFile.name == 'CODE_OF_CONDUCT.md' %}
+                        {% if conductFile %}
                             <span class="fa fa-check fa-fw"></span>
                             <span>
-                                {{conductFile.name}}
+                                CODE_OF_CONDUCT.md
                              </span>
                         {% else %}
                             <span class="fa fa-times fa-fw"></span>
@@ -96,11 +96,11 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if licenseFile.name == 'LICENSE' %}
-                                <span class="fa fa-check fa-fw"></span>
-                                <span>
-                                    {{licenseFile.name}}
-                                </span>
+                        {% if licenseFile %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                LICENSE
+                            </span>
                         {% else %}
                             <span class="fa fa-times fa-fw"></span>
                             <span>
@@ -116,10 +116,10 @@
                 </div>
                 <div class="card-header">
                     <div class="header-block">
-                        {% if readme.name == 'README.md' %}
+                        {% if readme %}
                             <span class="fa fa-check fa-fw"></span>
                             <span>
-                                {{readme.name}}
+                                README.md
                             </span>
                         {% else %}
                             <span class="fa fa-times fa-fw"></span>

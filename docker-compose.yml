@@ -29,8 +29,6 @@ services:
       - "3000:3000"
     env_file:
       - .env
-    networks:
-      - cardinals_master_default
 
   db:
     container_name: db

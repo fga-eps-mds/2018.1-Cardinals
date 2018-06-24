@@ -8,6 +8,11 @@ __pycache__/
 *.pyc
 */migrations/
 
+*/__pycache__/
+*/*/__pycache__/
+*/*.pyc
+*/*/migrations/
+
 ## Coverage
 htmlcov/
 .coverage
