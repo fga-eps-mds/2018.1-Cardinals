@@ -84,7 +84,7 @@ class Contributor(models.Model):
         if not contributors_request:
             return
 
-        for c in contributors_request:
+        for contrib in contributors_request:
             contributor = Contributor()
             contributor.id = contrib.author.id
             contributor.name = contrib.author.name
