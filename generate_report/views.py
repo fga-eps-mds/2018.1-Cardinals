@@ -1,4 +1,3 @@
-import time
 import pdfcrowd
 
 from reportlab.lib.enums import TA_JUSTIFY
@@ -23,13 +22,13 @@ def create_pdf_paragraph(vector, text, size):
     vector.append(Paragraph(ptext, styles["Normal"]))
 
 
-def create_pdf_space(vector):
-    vector.append(Spacer(1, 12))
+def create_pdf_space(vector, size):
+    vector.append(Spacer(1, size))
 
 
 def create_pdf_img(vector, img_obj, image):
 
-    img_obj = Image(image, 6.5 * inch, 3 * inch)
+    img_obj = Image(image, 7 * inch, 3.5 * inch)
     vector.append(img_obj)
 
 
@@ -73,11 +72,11 @@ def pdf_view(request, repo_id):
 
     # nome do repositório
     create_pdf_paragraph(Story, repo.full_name, 16)
-    create_pdf_space(Story)
+    create_pdf_space(Story, 12)
 
     # contribuidores
     create_pdf_paragraph(Story, "Contribuidores", 12)
-    create_pdf_space(Story)
+    create_pdf_space(Story, 10)
 
     for c in ranking_commiters:
         contrib = c.name + ' / ' + c.login + ' | ' + str(c.score)
