@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    restart: on-failure
     container_name: cardinalsweb
     build: ./cardinalsproject
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000'
@@ -37,6 +38,8 @@ services:
     image: postgres:10-alpine
     volumes:
       - ./.dbdata:/var/lib/postgresql:rw
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: cardinals
       POSTGRES_PASSWORD: cardinals

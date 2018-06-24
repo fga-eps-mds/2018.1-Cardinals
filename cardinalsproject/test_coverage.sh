@@ -1,4 +1,6 @@
 #!/bin/bash
 
-coverage run --source='.' manage.py test -v 2
-coverage report --show-missing --skip-covered
+rm -rf .coverage
+coverage run manage.py test -v 2 --failfast 
+coverage report --show-missing
+coverage html -i

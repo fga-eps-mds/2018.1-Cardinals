@@ -5,4 +5,5 @@ WORKDIR /code
 ADD requirements /code/requirements
 RUN pip install --upgrade pip
 RUN pip install -r requirements/development.txt
+RUN pip install --pre --upgrade PyGithub
 ADD ./ /code/

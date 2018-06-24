@@ -6,17 +6,20 @@ from pygithub_api_integration.models import Issue
 from ranking_commiters.models import Weight
 
 
-def getResult(request, repo_id):
+def ranking_commiters(request, organization, repository):
 
-    repo = Repository.objects.get(id=repo_id)
-    repo_request = Repository.requestRepo(repo.full_name)
-
-    issue_request = Issue.requestIssues(repo_request)
-    Issue.saveIssues(issue_request, repo)
-
-    commiters = Contributor.objects.filter(repository=repo_id)
+    name = organization + '/' + repository
+    repo = Repository.objects.get(full_name=name)
+    repo_id = repo.id
 
     if request.method == 'GET':
+
+        repo_request = Repository.requestRepo(repo.full_name)
+
+        issue_request = Issue.requestIssues(repo_request)
+        Issue.saveIssues(issue_request, repo)
+
+        commiters = Contributor.objects.filter(repository=repo_id)
 
         Contributor.setLineCodeContrib(commiters)
         Contributor.setIssuesCreatedFor(commiters, repo_id)
@@ -25,6 +28,8 @@ def getResult(request, repo_id):
         commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
+
+        commiters = Contributor.objects.filter(repository=repo_id)
 
         weight = Weight.requestWeight(request)
 
