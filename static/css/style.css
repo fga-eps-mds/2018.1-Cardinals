@@ -23,3 +23,25 @@ nav .dropdown-menu{
 .caixa{
     border: 1px solid red !important;
 }
+
+.header-block-search > form {
+    float: right; }
+  .header-block-search .input-container {
+    position: relative;
+    color: #7e8e9f; }
+    .header-block-search .input-container i {
+      position: absolute;
+      pointer-events: none;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      left: 0; }
+    .header-block-search .input-container input {
+      background-color: transparent;
+      border: none;
+      padding-left: 25px;
+      height: 40px;
+      max-width: 700px; }
+    .header-block-search .input-container input:focus + .underline {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1); }
