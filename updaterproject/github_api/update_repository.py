@@ -1,4 +1,5 @@
 from github_api.credentials import get_credentials
+from api.check_community_files import get_docs
 from api.models import *
 
 from github import Github
@@ -75,6 +76,9 @@ def create_new_repository(full_name):
     new_model_repo.name = repo_name
     new_model_repo.updated_at = last_event.created_at
     new_model_repo.events_url = github_repo.events_url
+
+    update_documents_check(github_repo, new_model_repo)
+
     new_model_repo.save()
 
     # Updating contributors
@@ -104,12 +108,24 @@ def update_repository(repo):
     repo.updated_at = last_event.created_at
     repo.events_url = github_repo.events_url
 
+    update_documents_check(github_repo, repo)
+
     repo.save()
 
     # Updating database secundary models
     lazy_update_repository(github_repo, repo)
 
     pass
+
+def update_documents_check(repository_github, repository):
+    contrib, lic, issue, pr, conduct, readme = get_docs(repository_github)
+
+    repository.contributing_file = contrib
+    repository.license_file = lic
+    repository.issue_template = issue
+    repository.pull_request_template = pr
+    repository.conduct_file = conduct
+    repository.readme = readme
 
 def get_last_event_date(repository):
     if not repository.events_url:

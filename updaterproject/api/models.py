@@ -16,6 +16,14 @@ class Repository(models.Model):
     commits_db_updated = models.BooleanField(default=False)
     pulls_db_updated = models.BooleanField(default=False)
 
+    # community files
+    contributing_file = models.BooleanField(default=False)
+    license_file = models.BooleanField(default=False)
+    issue_template = models.BooleanField(default=False)
+    pull_request_template = models.BooleanField(default=False)
+    conduct_file = models.BooleanField(default=False)
+    readme = models.BooleanField(default=False)
+
     def saveRepo(repo_request):
 
         repo = Repository()
