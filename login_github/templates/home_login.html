@@ -13,6 +13,15 @@
 {% block body %}
     {% if user.username %}
         <h3>Hello {{ user.username }}!</h3><br>
+
+
+        <p>Meus repositórios</p>
+        <ul>
+            {% for row in rows %}
+                <li>{{row.0}}</li>
+            {% endfor %}
+        </ul>
+
         <br><br>
         <a href="{% url 'logout' %}">Sign out</a><br>
     {% else %}
