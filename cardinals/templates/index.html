@@ -39,3 +39,22 @@
     </div> 
 </div>
 {% endblock %}
+
+
+{% block login %}
+    {% if user.username %}
+        <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Sair
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Entrar
+            </button>
+        </a>
+    {% endif %}
+{% endblock %}

@@ -15,8 +15,9 @@ urlpatterns = [
 
 urlpatterns += [
     path('home/', login_views.home, name='home'),
-    path('<str:login>/', login_views.organization, name='organization'),
     path('login/', auth_views.login, name='login'),
     path('logout/', auth_views.logout, name='logout'),
-    path('oauth/', include('social_django.urls', namespace='social')),  # <--
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('<str:login>/', login_views.organization, name='organization'),
+# <--
 ]

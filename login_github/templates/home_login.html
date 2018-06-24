@@ -8,31 +8,83 @@
     <!-- HEAD -->
 {% endblock %}
 
-
-
 {% block body %}
+    
+
     {% if user.username %}
-        <h3>Hello {{ user.username }}!</h3><br>
-
-
-        <p>Meus repositórios</p>
-        <ul>
-            {% for full_name in repositories %}
-                <li><a href="/{{full_name}}/"> {{full_name}}</a></li>
-            {% endfor %}
-        </ul>
-
-        <p>Minhas organizações</p>
-        <ul>
-            {% for login in organizations %}
-                <li><a href="/{{login}}/"> {{login}}</a></li>
-            {% endfor %}
-        </ul>
-
         <br><br>
-        <a href="{% url 'logout' %}">Sign out</a><br>
-    {% else %}
-        <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+        <div class="title-block">
+            <h3 class="title"> 
+                {{ user.username }}        
+            </h3>
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="header-block">
+                                <h2 class="title"> Meus Repositórios </h2>
+                            </div>
+                        </div>
+                        <div class="card-block">        
+                            <ul>
+                                {% for full_name in repositories %}
+                                    <li><a href="/{{full_name}}/"> {{full_name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="header-block">
+                                <h2 class="title"> Minhas Organizações </h2>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <ul>
+                                {% for login in organizations %}
+                                    <li><a href="/{{login}}/"> {{login}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
     {% endif %}
 
 {% endblock %}
+
+{% block login %}
+    {% if user.username %}
+        <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Sair
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Entrar
+            </button>
+        </a>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

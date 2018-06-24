@@ -14,15 +14,13 @@
         <div id="container">
             <nav class="navbar navbar-expand-lg bg-color">
                 <a class="navbar-brand" href="{% url 'index' %}">Cardinals</a>
-                <div class="dropdown ml-auto">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-github"></i>
-                        Entrar
-                    </a>
+
+                <div class="button-login">
+                </div>
                     
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Entrar</a>
-                    </div>
+                <div class="button-login">
+                    {% block login %}
+                    {% endblock %}
                 </div>
             </nav>
 
