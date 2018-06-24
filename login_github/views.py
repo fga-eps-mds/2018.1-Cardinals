@@ -38,8 +38,13 @@ def home(request):
     if request.user.is_authenticated:
         g = github_singleton.get_github(request)
         user = g.get_user()
-        repo_names = [(repo.full_name, repo.archive_url)
+        repo_names = [(repo.full_name, repo.html_url)
                       for repo in user.get_repos(type='all')]
-        context = {'header': 'My repositories',
-                   'rows': repo_names}
+
+        orgs = user.get_orgs()
+        orgs_names = [(org.login, org.html_url) for org in orgs]
+
+        context = {'repositories': repo_names,
+                   'organizations': orgs_names}
+
     return render(request, 'home_login.html', context=context)

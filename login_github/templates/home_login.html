@@ -17,8 +17,15 @@
 
         <p>Meus repositórios</p>
         <ul>
-            {% for row in rows %}
-                <li>{{row.0}}</li>
+            {% for row in repositories %}
+                <li><a href="{{row.1}}"> {{row.0}}</a></li>
+            {% endfor %}
+        </ul>
+
+        <p>Minhas organizações</p>
+        <ul>
+            {% for row in organizations %}
+                <li><a href="{{row.1}}"> {{row.0}}</a></li>
             {% endfor %}
         </ul>
 
