@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
-from bokeh.io import export_png
 
 
 username, password = get_credentials()
@@ -68,11 +67,13 @@ def analyze_commits_charts(request, organization, repository):
     signed_commit_count = sorted(signed_commit_count.items())
     signed_amount_by_date = [x[1] for x in signed_commit_count]
 
+    output_file("static/images/charts/chart_commit.html")
+
     plot = get_multi_line_plot(dates, all_amount_by_date,
                                signed_amount_by_date)
     script, div = components(plot)
 
-    # export_png(plot, filename="../static/images/charts/chart_commit.png")
+    show(plot)
 
     context = {'script': script,
                'div': div,

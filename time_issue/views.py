@@ -54,8 +54,12 @@ def analyze_issue_graph(request, organization, repository):
     time_open = sorted(time_open.items())
     amount = [x[1] for x in time_open]
 
+    output_file("static/images/charts/chart_issue.html")
+
     plot = get_bar_plot(days, amount)
     script, div = components(plot)
+
+    show(plot)
 
     context = {'script': script,
                'div': div,
