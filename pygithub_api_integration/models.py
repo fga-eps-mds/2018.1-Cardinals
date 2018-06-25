@@ -56,9 +56,9 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contrib_request = certify_request(repo_request.get_stats_contributors())
+        contr_request = certify_request(repo_request.get_stats_contributors())
 
-        return contrib_request
+        return contr_request
 
     def saveContributors(contributors_request, repo):
 

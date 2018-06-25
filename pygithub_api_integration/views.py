@@ -9,6 +9,7 @@ from . import constants
 
 def get_repo_info(request, organization, repository):
     repo_name = organization + '/' + repository
+    request.session['repository'] = repo_name
 
     try:
 

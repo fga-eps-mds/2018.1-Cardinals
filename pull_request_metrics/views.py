@@ -47,13 +47,10 @@ def get_vbar_plot(prs_opened_time):
 
     x_var, y_var = get_opened_time_xy_axis(prs_opened_time)
 
-    x_ticks = [i for i in range(0, max(x_var) + 2, 2)]
-
     plot.vbar(x=x_var, width=0.5, bottom=0, top=y_var, color="#CAB2D6")
 
     plot.xaxis.axis_label = 'Tempo aberto (dias)'
     plot.yaxis.axis_label = 'Número de pull requests'
-    plot.xaxis.ticker = x_ticks
 
     plot.title.text = 'Tempo que um pull request fica aberto'
     plot.title.align = 'center'
