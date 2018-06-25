@@ -1,0 +1,33 @@
+{% extends "base_user.html" %}
+
+{% block title %} Commits Charts {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <p><h3>{{repository}}</h3></p>
+   
+    {{ div | safe }}
+    {{ script | safe }}
+
+    <br>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="text-block">
+                    <p>Este gráfico possui a visualização da quantidade de Commits individuais e pareados (eixo-y) por cada dia (eixo-x).</p> 
+                    <p>Dentro de cada projeto, a prática ideal é aproximar a quantidade de Commits individuais com a quantidade de Commits pareados.</p>
+                    <p>Dessa forma, para que o repositório de um projeto tenha indícios desta prática, é necessário que a curva de Commits pareados esteja próxima da curva de Commits individuais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

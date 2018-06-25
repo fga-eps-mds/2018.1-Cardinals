@@ -1,5 +1,31 @@
-languages:
-    Python: true
+version: "2"
+
 plugins:
   pep8:
     enabled: true
+    config:
+      languages:
+      - python 
+  radon: 
+    enabled: true
+    config:
+      languages:
+      - python
+      threshold: "C"
+  sonar-python:
+    enabled: true
+    config:
+      languages:
+      - python 
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python
+
+exclude_patterns:
+  - "static/"
+  - "templates/"
+  - "manage.py"
+  - "cardinals/*"
+  - "*/migrations/*"

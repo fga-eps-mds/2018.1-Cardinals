@@ -1,0 +1,33 @@
+{% extends "base_user.html" %}
+
+{% block title %} Time Issue {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.16.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <p><h3>{{repository}}</h3></p>
+
+    {{ div | safe }}
+    {{ script | safe }}
+
+    <br>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="text-block">
+                    <p>Este gráfico possui a visualização da quantidade de Issues (eixo-x) que ficaram abertas dentro de um período de dias (eixo-y).</p> 
+                    <p>Dentro de cada projeto, a prática ideal é limitar o tempo de duração de uma Issue aberta ao período limite de uma Sprint.</p>
+                    <p>Assim, se num projeto em que o período da Sprint for de uma semana, os indícios de práticas ágeis se fazem presentes caso o tempo de duração não ultrapasse 7 dias no gráfico acima.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

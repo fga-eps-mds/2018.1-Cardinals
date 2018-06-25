@@ -1,86 +1,94 @@
-from github import Github
 from django.shortcuts import render
 from github import GithubException
-from oauth.credentials import get_credentials
+from pygithub_api_integration.models import Repository
 
-username, password = get_credentials()
-
-g = Github(username, password)
-org = g.get_organization('fga-gpp-mds')
-repo = org.get_repo('2018.1-Cardinals')
+paths = ["docs/", ".github/", ""]
 
 
-def renderingDocs(request):
-    contributingFile = getContributingFile()
-    licenseFile = getLicenseFile()
-    issueTemplate = getIssueTemplate()
-    pullRequestTemplate = getPullRequestTemplate()
-    conductFile = getCodeConduct()
-    readme = getReadme()
+def rendering_docs(request, organization, repository):
+    repo_name = organization + '/' + repository
+    repo = Repository.requestRepo(repo_name)
 
-    return render(request, 'searchDocs.html',
-                  {'contributingFile': contributingFile,
-                   'licenseFile': licenseFile,
-                   'issueTemplate': issueTemplate,
-                   'pullRequestTemplate': pullRequestTemplate,
-                   'conductFile': conductFile,
-                   'readme': readme
-                   })
+    contributing_file = get_contributing_file(repo)
+    license_file = get_license_file(repo)
+    issue_template = get_issue_template(repo)
+    pull_request_template = get_pull_request_template(repo)
+    conduct_file = get_code_conduct(repo)
+    readme = get_readme(repo)
+    repo_id = repo.id
+
+    context = {'contributingFile': contributing_file,
+               'licenseFile': license_file,
+               'issueTemplate': issue_template,
+               'pullRequestTemplate': pull_request_template,
+               'conductFile': conduct_file,
+               'readme': readme,
+               'repo_id': repo_id
+               }
+
+    return render(request, 'searchDocs.html', context)
 
 
-def getReadme():
+def check_path(repo, name_file):
+    file = None
+    i = 0
+    while file is None and i <= 2:
+        try:
+            file = repo.get_file_contents(paths[i] + name_file)
+
+        except GithubException:
+            file = None
+
+        i += 1
+
+    return file
+
+
+def get_readme(repo):
 
     try:
-        readme = repo.get_file_contents("README.md")
+        readme = repo.get_readme()
+
     except GithubException:
-        readme = ''
+        readme = None
 
     return readme
 
 
-def getContributingFile():
+def get_license_file(repo):
 
     try:
-        contributingFile = repo.get_file_contents(".github/CONTRIBUTING.md")
+        license_file = repo.get_license()
+
     except GithubException:
-        contributingFile = ''
+        license_file = None
 
-    return contributingFile
-
-
-def getCodeConduct():
-
-    try:
-        conductFile = repo.get_file_contents(".github/CODE_OF_CONDUCT.md")
-    except GithubException:
-        conductFile = ''
-    return conductFile
+    return license_file
 
 
-def getLicenseFile():
+def get_contributing_file(repo):
 
-    try:
-        licenseFile = repo.get_file_contents("LICENSE")
-    except GithubException:
-        licenseFile = ''
-    return licenseFile
+    contributing_file = check_path(repo, "CONTRIBUTING.md")
+
+    return contributing_file
 
 
-def getIssueTemplate():
+def get_code_conduct(repo):
 
-    try:
-        issueTemplate = repo.get_file_contents(".github/ISSUE_TEMPLATE.md")
-    except GithubException:
-        issueTemplate = ''
-    return issueTemplate
+    conduct_file = check_path(repo, "CODE_OF_CONDUCT.md")
+
+    return conduct_file
 
 
-def getPullRequestTemplate():
+def get_issue_template(repo):
 
-    way_doc = ".github/PULL_REQUEST_TEMPLATE.md"
+    template_issue = check_path(repo, "ISSUE_TEMPLATE.md")
 
-    try:
-        pullRequestTemplate = repo.get_file_contents(way_doc)
-    except GithubException:
-        pullRequestTemplate = ''
-    return pullRequestTemplate
+    return template_issue
+
+
+def get_pull_request_template(repo):
+
+    template_pr = check_path(repo, "PULL_REQUEST_TEMPLATE.md")
+
+    return template_pr

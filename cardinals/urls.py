@@ -1,25 +1,23 @@
-"""composeexample URL Configuration
+from django.conf.urls import include
+from django.urls import path
+from cardinals import views
+from django.contrib.auth import views as auth_views
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
-from django.conf.urls import url, include
+import login_github.views as login_views
 
-urlpatterns = [
-    url(r'^searchDocs/', include('searchDocs.urls')),
-    url(r'^$', include('index.urls'), name='index'),
-    url(r'^dev/', include('dev.urls'), name='dev'),
-    url(r'^pyGithub/', include('pygithub_api_integration.urls')),
-    url(r'^user_commits/', include('user_commits.urls')),
-    url(r'^issueRepo/', include('issuesRepository.urls')),
+
+urlpatterns = []
+
+urlpatterns += [
+    path('home/', login_views.home, name='home'),
+    path('login/', auth_views.login, name='login'),
+    path('logout/', auth_views.logout, name='logout'),
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('organization/<str:login>/', login_views.organization,
+                                       name='organization'),
+]
+
+urlpatterns += [
+    path('', views.searchRepository.as_view(), name='index'),
+    path('<str:organization>/<str:repository>/', include('redirecter.urls')),
 ]

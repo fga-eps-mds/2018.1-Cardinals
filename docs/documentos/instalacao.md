@@ -1,4 +1,4 @@
-# Instalação
+# Instalação e Testes
 
 ## Pré requisitos
 
@@ -8,15 +8,15 @@ Estar num ambiente Linux, com os seguintes programas já instalados: Git, Docker
 
 1. Clone nosso repositório:
 
-    ``$ git clone https://github.com/fga-gpp-mds/2018.1-Grupo2.git``
+    ``$ git clone https://github.com/fga-gpp-mds/2018.1-Cardinals.git``
 
 2. Entre no diretório do projeto:
 
-    ``$ cd  2018.1-Grupo2/``
+    ``$ cd  2018.1-Cardinals`
 
 3. Inicialize os serviços necessários para aplicação:
 
-    ``$ sudo docker-compose up -d``
+    ``$ sudo make up``
 
 4. Acesse a página por meio do seu browser favorito:
 
@@ -28,12 +28,14 @@ Para avaliar a cobertura de testes localmente utilize os seguintes comandos no t
 
 * Para rodar os testes:
 
-    ``./run_tests.sh``
+    ``sudo make test``
 
-* Para gerar relatório de cobertura no terminal:
+## Avaliando a qualidade do código
 
-    ``coverage report``
+* Para identificar problemas de estilo e complexidade utilizando o [Flake8](http://flake8.pycqa.org/en/latest/):
 
-* Para gerar relatório de cobertura em html:
+    ``sudo make analyze-flake8:``
 
-    ``coverage html``
+* Para realizar análises do [Codeclimate](https://docs.codeclimate.com) localmente:
+    ``sudo make analyze``
+

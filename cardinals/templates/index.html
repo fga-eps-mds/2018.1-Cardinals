@@ -1,0 +1,60 @@
+{% extends "base_index.html" %}
+
+{% block body %}
+
+<div id="">
+    <div class="">
+        <div class="title-block">
+            <h3 class="title mt-5"> Busque um repositório: </h3>
+        </div>
+        <form action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">https://github.com/</span>
+                </div>
+                <input  name="repository" type="search" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Organização/Repositório">
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-text">
+                        <ion-icon name="search"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+          <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}" style="font-size: 20px">{{ message|safe }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row" >
+            <img class="mx-auto" src="../../static/images/logo/logo_cardinals.png" >
+        </div>
+        <div class="row ">
+            <p class="text-describe text-center">
+                O Cardinals é uma aplicação web para gestão de equipes ágeis. O objetivo do Cardinals é auxiliar membros de equipes ágeis, em particular os gestores, a monitorar o desenvolvimento de projetos a partir de informações que estão bem próximas do desenvolvimento: o próprio Git. Os projetos serão monitorados em nívels de repositório (issues, branches, pull requests), a nível de boas práticas (testes, análise estática de código, Docker) e a um nível de pessoas (como cada pessoa está contribuindo com o projeto?).
+            </p>
+        </div>
+    </div> 
+</div>
+{% endblock %}
+
+
+{% block login %}
+    {% if user.username %}
+        <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Sair
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Entrar
+            </button>
+        </a>
+    {% endif %}
+{% endblock %}
