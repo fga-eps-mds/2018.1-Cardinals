@@ -29,6 +29,20 @@ jobs:
       after_script:
       - sudo docker-compose down
 
+    - stage: deploy documentation
+      install:
+        - pip install mkdocs
+        - pip install mkdocs-rtd-dropdown
+      script:
+        - mkdocs build --verbose --clean
+      deploy:
+       provider: pages
+       skip_cleanup: true
+       github_token: $GITHUB_TOKEN
+       local_dir: site
+       on:
+         branch: docs
+
     - stage: deploy to staging
       install: skip
       script: skip
@@ -41,6 +55,11 @@ jobs:
           repo: fga-gpp-mds/2018.1-Cardinals
           branch: config_env
 
+    - stage: test staging
+      script:
+        - 'curl https://cardinalsbeta.herokuapp.com/'
+        - 'curl https://cardinalsbeta.herokuapp.com/fga-gpp-mds/2018.1-Cardinals/'
+
     - stage: deploy to production
       install: skip
       script: skip
@@ -52,3 +71,8 @@ jobs:
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
           branch: master
+
+    - stage: test production
+      script:
+        - 'curl https://cardinals.herokuapp.com'
+        - 'curl https://cardinals.herokuapp.com/fga-gpp-mds/2018.1-Cardinals/'
