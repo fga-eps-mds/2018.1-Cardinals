@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from github import Github, PaginatedList, PullRequest
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 
 from oauth.credentials import get_credentials
@@ -70,9 +70,14 @@ def analyze_pull_requests(request, organization, repository):
 
     pull_requests = repository.get_pulls(state='all')
 
+    output_file("static/images/charts/chart_pr.html")
+
     prs_opened_time = get_pull_requests_opened_time(pull_requests)
     plot = get_vbar_plot(prs_opened_time)
+
     script, div = components(plot)
+
+    show(plot)
 
     context = {'script': script,
                'div': div,

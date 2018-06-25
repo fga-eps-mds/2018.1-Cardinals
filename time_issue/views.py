@@ -4,7 +4,7 @@ from oauth.credentials import get_credentials
 from collections import Counter
 from datetime import datetime, timedelta
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 
 username, password = get_credentials()
@@ -52,8 +52,12 @@ def analyze_issue_graph(request, organization, repository):
     time_open = sorted(time_open.items())
     amount = [x_var[1] for x_var in time_open]
 
+    output_file("static/images/charts/chart_issue.html")
+
     plot = get_bar_plot(days, amount)
     script, div = components(plot)
+
+    show(plot)
 
     context = {'script': script,
                'div': div,

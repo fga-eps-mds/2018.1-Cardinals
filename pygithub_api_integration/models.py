@@ -1,4 +1,5 @@
 from django.db import models
+from operator import attrgetter
 from github import Github
 from oauth.credentials import get_credentials
 
@@ -148,7 +149,11 @@ class Contributor(models.Model):
                                       contrib.issues_closed *
                                       int(weight.issues_closed)), 2)
 
-        return contributors
+        ranking_commiters = sorted(contributors,
+                                   key=attrgetter('score'),
+                                   reverse=True)
+
+        return ranking_commiters
 
 
 class ContributingWeek(models.Model):
