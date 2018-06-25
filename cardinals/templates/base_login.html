@@ -19,8 +19,12 @@
                     <form role="search" action="{% url 'index' %}" method="POST">
                         {% csrf_token %}
                         <div class="input-container">
-                            <i class="fa fa-search"></i>
-                            <input type="search" placeholder="Buscar repositórios">
+                            <div class="input-group mb-3">
+                                <input  name="repository" type="search" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Buscar repositórios">
+                                <div class="input-group-append">
+                                    <button type="submit" class="input-group-text fa fa-search">
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
