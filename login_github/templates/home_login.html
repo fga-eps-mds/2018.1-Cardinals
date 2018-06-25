@@ -27,17 +27,17 @@
                             </div>
                         </div>
                         <div class="card-block">
-                                <div class="card items">    
-                                <ul class="item-list striped"></ul>        
-                                {% for full_name in repositories %}
-                                            <li class="item">
-                                                <div class="item-row">
-                                                    <a href="/{{full_name}}/"> <h4 class=item-title>{{full_name}}</h4></a>
-                                                </div>
-                                            </li>   
-                                {% endfor %}
-                                </ul>
-                                </div>            
+                            <section class="example">    
+                                <table class="table table-inverse">
+                                    <tbody>
+                                        <td>
+                                            {% for full_name in repositories %}
+                                                 <a href="/{{full_name}}/"> <h4 class=item-title>{{full_name}}</h4></a>   
+                                            {% endfor %}
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </section>            
                         </div>
                     </div>
                 </div>
@@ -50,11 +50,18 @@
                             </div>
                         </div>
                         <div class="card-block">
-                            <ul>
-                                {% for login in organizations %}
-                                    <li><a href="/organization/{{login}}/"> {{login}}</a></li>
-                                {% endfor %}
-                            </ul>
+                                <section class="example">    
+                                    <table class="table table-inverse">
+                                        <tbody>
+                                            <td>
+                                                {% for login in organizations %}
+                                                    <a href="/organization/{{login}}/"> <h4>{{login}}</h4></a>
+                                                {% endfor %}
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </section>            
+                            </div>
                         </div>
                     </div>
                 </div>

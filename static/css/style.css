@@ -70,7 +70,7 @@ nav a, nav a:hover{
 
 
 .button-login{
-  padding-left: 853px;
+  padding-left: 500px;
 }
 
 .search-pad{
@@ -78,6 +78,7 @@ nav a, nav a:hover{
 }
 
 .card-block{
+  padding-bottom: 100px;
   padding-left: 80px;
   padding-right: 80px;
 }
