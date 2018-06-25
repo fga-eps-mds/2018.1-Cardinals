@@ -21,11 +21,4 @@ def get_repo_info(request, organization, repository):
             constants.TIMEOUT_MESSAGE,
         )
 
-    except GE:
-        messages.add_message(
-            request,
-            messages.ERROR,
-            constants.INVALID_REPOSITORY_MESSAGE,
-        )
-
         return redirect('index')

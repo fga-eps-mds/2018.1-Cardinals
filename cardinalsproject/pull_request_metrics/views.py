@@ -3,49 +3,14 @@ from datetime import datetime
 
 from django.shortcuts import render
 
-from github import Github, PaginatedList, PullRequest
-
 from bokeh.plotting import figure
 from bokeh.embed import components
 
-from oauth.credentials import get_credentials
+from api_request.models import RequestPullRequest
 
 
-username, password = get_credentials()
-
-
-def get_pull_request_opened_time(pull_request):
-    assert isinstance(pull_request, PullRequest.PullRequest)
-
-    time_open = pull_request.created_at
-    time_close = pull_request.closed_at
-
-    if time_close is None:
-        time_close = datetime.now()
-
-    opened_time = (time_close - time_open)
-    return opened_time
-
-
-def get_pull_requests_opened_time(pull_requests):
-    assert isinstance(pull_requests, PaginatedList.PaginatedList)
-
-    opened_times = [get_pull_request_opened_time(pr) for pr in pull_requests]
-    return opened_times
-
-
-def get_opened_time_xy_axis(prs_opened_time):
-    counter = Counter(opened_time.days for opened_time in prs_opened_time)
-
-    x = list(counter.keys())
-    y = list(counter.values())
-    return (x, y)
-
-
-def get_vbar_plot(prs_opened_time):
+def get_vbar_plot(x_var, y_var):
     plot = figure(plot_width=800, plot_height=500)
-
-    x_var, y_var = get_opened_time_xy_axis(prs_opened_time)
 
     x_ticks = [i for i in range(0, max(x_var) + 2, 2)]
 
@@ -64,18 +29,22 @@ def get_vbar_plot(prs_opened_time):
 
 def analyze_pull_requests(request, organization, repository):
 
-    github = Github(username, password)
-    repository_url = organization + '/' + repository
-    repository = github.get_repo(repository_url)
+    requestPR = RequestPullRequest(organization, repository)
 
-    pull_requests = repository.get_pulls(state='all')
+    time_open = Counter()
 
-    prs_opened_time = get_pull_requests_opened_time(pull_requests)
-    plot = get_vbar_plot(prs_opened_time)
+    for pr in requestPR.pulls:
+        time_open[pr.duration] += 1
+
+    days = list( time_open.keys() )
+    amount = list( time_open.values() )
+    days.sort()
+
+    plot = get_vbar_plot(days,amount)
     script, div = components(plot)
 
     context = {'script': script,
                'div': div,
-               'repository': repository_url}
+               'repository': organization + '/' + repository }
 
     return render(request, 'bokeh_graph.html', context)

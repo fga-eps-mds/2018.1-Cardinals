@@ -35,6 +35,7 @@ class APIHome(APIView):
 
             "endpoints":[
             "repository/commits_pair_chart_data",
+            "repository/pulls",
             "repository/commits",
             "repository/issues",
             "repository"

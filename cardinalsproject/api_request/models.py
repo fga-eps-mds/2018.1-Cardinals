@@ -114,4 +114,30 @@ class IssueAPI():
 
         self.duration = (self.closed_date - self.created_date).days
 
-        print(" - " + str(self.duration) )
+class RequestPullRequest():
+    def __init__(self, organization, repository):
+
+        self.pulls = []
+
+        response = _get_api_reponse("/repository/pulls/" ,organization ,repository)
+
+        for pull in response["PullRequests"]:
+            pr = PullRequestAPI(pull)
+            self.pulls.append(pr)
+        pass
+
+
+class PullRequestAPI():
+    def __init__(self, pr_dict):
+
+        # 2018-06-25T01:00:00
+        date_regex = '%Y-%m-%dT%H:%M:%S'
+
+        self.created_date = datetime.strptime( pr_dict['created_at'], date_regex)
+
+        if pr_dict['state'] == 'open':
+            self.closed_date = datetime.now()
+        else:
+            self.closed_date = datetime.strptime( pr_dict['closed_at'], date_regex)
+
+        self.duration = (self.closed_date - self.created_date).days
