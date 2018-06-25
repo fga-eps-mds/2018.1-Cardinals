@@ -29,6 +29,20 @@ jobs:
       after_script:
       - sudo docker-compose down
 
+    - stage: deploy documentation
+      install:
+        - pip install mkdocs
+        - pip install mkdocs-rtd-dropdown
+      script:
+        - mkdocs build --verbose --clean
+      deploy:
+       provider: pages
+       skip_cleanup: true
+       github_token: $GITHUB_TOKEN
+       local_dir: site
+       on:
+         branch: docs
+
     - stage: deploy to staging
       install: skip
       script: skip
