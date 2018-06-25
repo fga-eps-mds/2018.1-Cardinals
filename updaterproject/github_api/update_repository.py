@@ -131,9 +131,12 @@ def get_last_event_date(repository):
     if not repository.events_url:
         return datetime(1,1,1)
 
-    req = requests.get(repository.events_url)
-    last_date_unicode = req.json()[0]['created_at']
-    last_date = datetime.strptime(last_date_unicode, '%Y-%m-%dT%H:%M:%SZ')
+    try:
+        req = requests.get(repository.events_url)
+        last_date_unicode = req.json()[0]['created_at']
+        last_date = datetime.strptime(last_date_unicode, '%Y-%m-%dT%H:%M:%SZ')
+    except:
+        return datetime(1,1,1)
     return last_date
 
 def lazy_update_repository(github_repo, repo):
