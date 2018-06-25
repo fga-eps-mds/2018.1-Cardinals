@@ -1,84 +1,88 @@
-.bg-color{
-    background-color: #3C3542 !important;
-}
-
-nav a, nav a:hover{
-    color: #D8D7CC;
-}
-
-.bg-red{
-    color: #D8D7CC !important;
-}
 
 .btn.btn-primary {
-    color: #D8D7CC;
-    background-color: #3C3542;
-    border-color: #483F4F;}
-    .btn.btn-primary:hover {
-      color: #D8D7CC;
-      background-color: #483F4F;
-      border-color: #483F4F; }
-    .btn.btn-primary:focus, .btn.btn-primary.focus {
-      -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5);
-              box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5); }
-    .btn.btn-primary.disabled, .btn.btn-primary:disabled {
-      color: #1C191F;
-      background-color: #3C3542;
-      border-color: #3C3542; }
-    .btn.btn-primary:not(:disabled):not(.disabled):active, .btn.btn-primary:not(:disabled):not(.disabled).active,
-    .show > .btn.btn-primary.dropdown-toggle {
-      color: #D8D7CC;
-      background-color: #483F4F;
-      border-color: #483F4F; }
-      .btn.btn-primary:not(:disabled):not(.disabled):active:focus, .btn.btn-primary:not(:disabled):not(.disabled).active:focus,
-      .show > .btn.btn-primary.dropdown-toggle:focus {
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5);
-                box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5); }
-    .btn.btn-primary, .btn.btn-primary:hover {
-      color: #D8D7CC; }
-
-.caixa{
-    border: 1px solid #D8D7CC !important;
+  color: #D8D7CC;
+  background-color: #3C3542;
+  border-color: #483F4F;
+}
+.btn.btn-primary:hover {
+  color: #D8D7CC;
+  background-color: #483F4F;
+  border-color: #483F4F;
+}
+.btn.btn-primary:focus, .btn.btn-primary.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5);
+}
+.btn.btn-primary.disabled, .btn.btn-primary:disabled {
+  color: #1C191F;
+  background-color: #3C3542;
+  border-color: #3C3542;
+}
+.btn.btn-primary:not(:disabled):not(.disabled):active, .btn.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn.btn-primary.dropdown-toggle {
+  color: #D8D7CC;
+  background-color: #483F4F;
+  border-color: #483F4F;
+}
+.btn.btn-primary:not(:disabled):not(.disabled):active:focus, .btn.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn.btn-primary.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(130, 114, 142, 0.5); 
+}
+.btn.btn-primary, .btn.btn-primary:hover {
+  color: #D8D7CC;
 }
 
 .header-block-search > form {
     float: right;
-  }
-  
-  .header-block-search .input-container {
-    position: relative;
-    color: #D8D7CC;
-  }
-    .header-block-search .input-container i {
-      position: absolute;
-      pointer-events: none;
-      display: block;
-      height: 40px;
-      line-height: 40px;
-      right: 10px;
-    }
-    .header-block-search .input-container input {
-      background-color: #4C4454;
-      border: transparent;
-      border-radius: 7px;
-      padding-left: 25px;
-      height: 40px;
-      max-width: 700px; }
-    .header-block-search .input-container input:focus + .underline {
-      -webkit-transform: scaleX(1);
-              transform: scaleX(1); }
-
-
-.button-login{
-  padding-left: 500px;
+}
+.header-block-search .input-container {
+  position: relative;
+  color: #D8D7CC;
+}
+.header-block-search .input-container i {
+  position: absolute;
+  pointer-events: none;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  right: 10px;
+}
+.header-block-search .input-container input {
+  background-color: #4C4454;
+  border: transparent;
+  border-radius: 7px;
+  padding-left: 25px;
+  height: 40px;
+  max-width: 700px;
+}
+.header-block-search .input-container input:focus + .underline {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1); 
 }
 
-.search-pad{
-  padding-left: 182px;
+.bg-color{
+  background-color: #3C3542 !important;
+}
+
+.bg-red{
+  color: #D8D7CC !important;
+}
+
+nav a, nav a:hover{
+  color: #D8D7CC;
+}
+
+.caixa{
+  border: 1px solid #D8D7CC !important;
 }
 
 .card-block{
   padding-bottom: 100px;
   padding-left: 80px;
   padding-right: 80px;
+}
+
+footer{
+  height: 50px;
 }
