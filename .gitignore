@@ -24,6 +24,7 @@ site/
 ## SQLite
 db.sqlite3
 */db.sqlite3
+*/*/db.sqlite3
 
 ## VSCODE
 .vscode/
