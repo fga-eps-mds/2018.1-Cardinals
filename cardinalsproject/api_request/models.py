@@ -4,8 +4,17 @@ from datetime import datetime
 base_path = 'http://updater:3000'
 
 def _create_github_url(full_name):
-    url = 'https://github.com/' + full_name + '&format=json'
+    url = '?address=https://github.com/' + full_name + '&format=json'
     return url
+
+def _get_api_reponse(api_url , organization, repository):
+        address_repo = _create_github_url(organization + '/' + repository)
+        url = base_path + api_url + address_repo
+
+        response = requests.get(url)
+        response_data = response.json()
+        
+        return response_data
 
 class RepositoryAPI():
     
@@ -22,20 +31,11 @@ class RepositoryAPI():
         self.conduct_file = False
         self.readme = False
 
-        response = RepositoryAPI._get_response(organization, repository)
+        response = _get_api_reponse("/repository/" ,organization ,repository)
 
         self._update_docs(response["Repository"])
         self._update_repository(response["Repository"])
         self._update_contributors(response["Contributors"])
-
-    def _get_response(organization, repository):
-        address_repo = _create_github_url(organization + '/' + repository)
-        url = base_path + '/repository/?address=' + address_repo
-
-        response = requests.get(url)
-        response_data = response.json()
-
-        return response_data
 
     def _update_docs(self, repo_dict):
         self.contributing_file = repo_dict["contributing_file"]
@@ -71,19 +71,9 @@ class CommitsChartAPI():
         self.commits = []
         self.dates = []
 
-        reponse = self._get_commit_chart_reponse(organization, repository)
+        reponse = _get_api_reponse("/repository/commits_pair_chart_data/" ,organization ,repository)
         self._update_chart_data(reponse)
         pass
-
-    def _get_commit_chart_reponse(self, organization, repository):
-        address_repo = _create_github_url(organization + '/' + repository)
-        url = base_path + '/repository/commits_pair_chart_data/?address=' + address_repo
-
-        response = requests.get(url)
-        response_data = response.json()
-        
-        return response_data
-
 
     def _update_chart_data(self, response_data):
 
@@ -96,3 +86,32 @@ class CommitsChartAPI():
         
         self.dates.sort()
 
+class RequestIssuesAPI():
+    def __init__(self, organization, repository):
+
+        self.issues = []
+
+        response = _get_api_reponse("/repository/issues/" ,organization ,repository)
+
+        for issue_dict in response["Issues"]:
+            issue = IssueAPI(issue_dict)
+            self.issues.append(issue)
+        pass
+
+
+class IssueAPI():
+    def __init__(self, issue_dict):
+
+        # 2018-06-25T01:00:00
+        date_regex = '%Y-%m-%dT%H:%M:%S'
+
+        self.created_date = datetime.strptime( issue_dict['created_at'], date_regex)
+
+        if issue_dict['state'] == 'open':
+            self.closed_date = datetime.now()
+        else:
+            self.closed_date = datetime.strptime( issue_dict['closed_at'], date_regex)
+
+        self.duration = (self.closed_date - self.created_date).days
+
+        print(" - " + str(self.duration) )

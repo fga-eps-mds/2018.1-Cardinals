@@ -302,6 +302,10 @@ class Issue(models.Model):
             return
 
         for i in issues_request:
+
+            if not i.pull_request:
+                continue
+
             issue = Issue()
             issue.id = i.id
             issue.created_by = i.user.id

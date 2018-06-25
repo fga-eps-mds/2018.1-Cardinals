@@ -1,13 +1,11 @@
 from django.shortcuts import render
-from github import Github
-from oauth.credentials import get_credentials
 from collections import Counter
 from datetime import datetime, timedelta
 
 from bokeh.plotting import figure
 from bokeh.embed import components
 
-username, password = get_credentials()
+from api_request.models import RequestIssuesAPI
 
 
 def get_bar_plot(days, amount):
@@ -15,8 +13,8 @@ def get_bar_plot(days, amount):
 
     plot.vbar(x=amount, width=0.5, bottom=0, top=days, color="#CAB2D6")
 
-    plot.xaxis.axis_label = 'Quantidade de issues'
-    plot.yaxis.axis_label = 'Tempo que a issue ficou aberta (dias)'
+    plot.xaxis.axis_label = 'Tempo que a issue ficou aberta (dias)'
+    plot.yaxis.axis_label = 'Quantidade de issues'
 
     plot.title.text = 'Período em que as issues ficam abertas'
     plot.title.align = 'center'
@@ -26,37 +24,21 @@ def get_bar_plot(days, amount):
 
 
 def analyze_issue_graph(request, organization, repository):
-
-    github = Github(username, password)
-    repository_url = organization + '/' + repository
-    repository = github.get_repo(repository_url)
-
-    issues = repository.get_issues(state="all")
-    all_issues = []
+    issuesRequest = RequestIssuesAPI(organization, repository)
     time_open = Counter()
 
-    for issue in issues:
-        if issue.pull_request is None:
-            created_time = issue.created_at - timedelta(hours=2)
-            if issue.state == "closed":
-                closed_time = issue.closed_at - timedelta(hours=2)
-            else:
-                closed_time = datetime.now()
-            all_issues.append(issue)
+    for issue in issuesRequest.issues:
+        time_open[issue.duration] += 1
 
-            time_open[(closed_time - created_time).days] += 1
-
-    days = list(time_open.keys())
+    amount = list( time_open.keys() )
+    days = list( time_open.values() )
     days.sort()
 
-    time_open = sorted(time_open.items())
-    amount = [x_var[1] for x_var in time_open]
-
-    plot = get_bar_plot(days, amount)
+    plot = get_bar_plot( days, amount )
     script, div = components(plot)
 
     context = {'script': script,
                'div': div,
-               'repository': repository_url}
+               'repository': organization + '/' + repository}
 
     return render(request, 'time_issue.html', context)
