@@ -53,7 +53,7 @@ jobs:
         app: cardinalsbeta
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
-          branch: config_env
+          branch: develop
 
     - stage: test staging
       script:
