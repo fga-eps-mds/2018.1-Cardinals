@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'time_issue',
     'commits_charts',
     'pull_request_metrics',
+    'generate_report',
     'redirecter',
     'social_django',
     'login_github',

@@ -7,7 +7,7 @@ import socket
 from . import constants
 
 
-def getRepoInfo(request, organization, repository):
+def get_repo_info(request, organization, repository):
     repo_name = organization + '/' + repository
     request.session['repository'] = repo_name
 

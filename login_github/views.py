@@ -68,10 +68,12 @@ def home(request):
 
     return render(request, 'home_login.html', context=context)
 
+
 def get_repos_from_organization(request, login):
     organizations = request.session.get('organizations', None)
     repositories = organizations.get(login, None)
     return repositories
+
 
 def organization(request, login):
     print('Im inside organization')

@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from github import Github, PaginatedList, PullRequest
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 
 from oauth.credentials import get_credentials
@@ -45,9 +45,11 @@ def get_opened_time_xy_axis(prs_opened_time):
 def get_vbar_plot(prs_opened_time):
     plot = figure(plot_width=800, plot_height=500)
 
-    x, y = get_opened_time_xy_axis(prs_opened_time)
+    x_var, y_var = get_opened_time_xy_axis(prs_opened_time)
 
-    plot.vbar(x=x, width=0.5, bottom=0, top=y, color="#CAB2D6")
+    # x_ticks = [i for i in range(0, max(x_var) + 2, 2)]
+
+    plot.vbar(x=x_var, width=0.5, bottom=0, top=y_var, color="#CAB2D6")
 
     plot.xaxis.axis_label = 'Tempo aberto (dias)'
     plot.yaxis.axis_label = 'Número de pull requests'
@@ -61,14 +63,20 @@ def get_vbar_plot(prs_opened_time):
 
 def analyze_pull_requests(request, organization, repository):
 
-    repository_url = organization + '/' + repository
     github = Github(username, password)
+    repository_url = organization + '/' + repository
     repository = github.get_repo(repository_url)
+
     pull_requests = repository.get_pulls(state='all')
+
+    output_file("static/images/charts/chart_pr.html")
 
     prs_opened_time = get_pull_requests_opened_time(pull_requests)
     plot = get_vbar_plot(prs_opened_time)
+
     script, div = components(plot)
+
+    show(plot)
 
     context = {'script': script,
                'div': div,

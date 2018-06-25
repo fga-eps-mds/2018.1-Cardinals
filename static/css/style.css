@@ -99,7 +99,7 @@ body {
   right: 10px;
 }
 .header-block-search .input-container input {
-  background-color: #4C4454;
+  background-color: #D8D7CC;
   border: transparent;
   border-radius: 7px;
   padding-left: 25px;
@@ -243,6 +243,7 @@ nav a, nav a:hover{
 
 footer{
   height: 50px;
+  margin-top: 180px;
 }
 
 footer p{
