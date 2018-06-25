@@ -1,5 +1,4 @@
 from test_utils.setup_test_cases import SetupTestCases
-from pygithub_api_integration.models import Repository
 from django.urls import reverse
 
 

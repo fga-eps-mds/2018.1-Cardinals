@@ -13,7 +13,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">https://github.com/</span>
                 </div>
-                <input  name="repository" type="search" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Organization/Repository">
+                <input  name="repository" type="search" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Organização/Repositório">
                 <div class="input-group-append">
                     <button type="submit" class="input-group-text">
                         <ion-icon name="search"></ion-icon>
@@ -29,7 +29,7 @@
     </div>
     <div class="container">
         <div class="row" >
-            <img class="mx-auto" src="../static/images/logo/logo_mini.png" >
+            <img class="mx-auto" src="../../static/images/logo/logo_cardinals.png" >
         </div>
         <div class="row ">
             <p class="text-describe text-center">
@@ -38,4 +38,23 @@
         </div>
     </div> 
 </div>
+{% endblock %}
+
+
+{% block login %}
+    {% if user.username %}
+        <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Sair
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Entrar
+            </button>
+        </a>
+    {% endif %}
 {% endblock %}

@@ -37,15 +37,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block renderingDocs %}
-    {% with repo_id=repo_id %}
-    <a class="bg-red" href="/{{request.session.repository}}/community/"><i class="fa fa-file-o"></i> Documentos</a>
-    {% endwith %}
-{% endblock %}
-
-{% block getResult %}
-    {% with repo_id=repo_id %}
-    <a class="bg-red" href="/{{request.session.repository}}/ranking_commiters/"><i class="fa fa-trophy"></i> Ranking Commiters</a>
-    {% endwith %}
-{% endblock %}

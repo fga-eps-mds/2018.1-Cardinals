@@ -33,8 +33,10 @@ def populate_db_if_data_is_old(repo_full_name):
 
     return Repository.objects.get(full_name=repo_full_name)
 
+
 def getRepoInfo(request, organization, repository):
     repo_full_name = organization + '/' + repository
+    request.session['repository'] = repo_full_name
 
     try:
 

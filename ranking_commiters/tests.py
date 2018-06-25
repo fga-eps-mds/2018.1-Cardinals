@@ -1,5 +1,4 @@
-from test_utils.setup_test_cases import SetupTestCases
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import reverse
 from django.test import TestCase
 
 
@@ -44,7 +43,5 @@ class RankingCommitsTests(TestCase):
         score = dict()
         for commiter in commiters:
             score[commiter.login] = commiter.score
-
-        print('score = {}'.format(score))
 
         self.assertTrue(score[contributors[0]] >= score[contributors[1]])

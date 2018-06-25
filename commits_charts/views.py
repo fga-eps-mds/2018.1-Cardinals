@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from github import Github
-from github import GithubException as GE
 from oauth.credentials import get_credentials
 from collections import Counter, defaultdict
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
+
 
 username, password = get_credentials()
 
@@ -38,8 +38,8 @@ def get_multi_line_plot(dates, all_amount_by_date, signed_amount_by_date):
 
 def analyze_commits_charts(request, organization, repository):
 
-    repository_url = organization + '/' + repository
     github = Github(username, password)
+    repository_url = organization + '/' + repository
     repository = github.get_repo(repository_url)
 
     all_commit_count = defaultdict(list)
@@ -56,19 +56,23 @@ def analyze_commits_charts(request, organization, repository):
         else:
             signed_commit_count[real_date.date()] += 0
 
-    commit_count = {k: len(v) for k, v in all_commit_count.items()}
+    commit_count = {k_var: len(var) for k_var, var in all_commit_count.items()}
 
     dates = list(commit_count.keys())
     dates.sort()
 
     commit_count = sorted(commit_count.items())
-    all_amount_by_date = [x[1] for x in commit_count]
+    all_amount_by_date = [x_var[1] for x_var in commit_count]
     signed_commit_count = sorted(signed_commit_count.items())
-    signed_amount_by_date = [x[1] for x in signed_commit_count]
+    signed_amount_by_date = [x_var[1] for x_var in signed_commit_count]
+
+    output_file("static/images/charts/chart_commit.html")
 
     plot = get_multi_line_plot(dates, all_amount_by_date,
                                signed_amount_by_date)
     script, div = components(plot)
+
+    show(plot)
 
     context = {'script': script,
                'div': div,

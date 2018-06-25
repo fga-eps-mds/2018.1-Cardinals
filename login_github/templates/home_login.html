@@ -1,0 +1,89 @@
+{% extends "base_login.html" %}
+
+{% block title %}
+    Cardinals
+{% endblock %}
+
+{% block head %}
+    <!-- HEAD -->
+{% endblock %}
+
+{% block body %}
+    {% if user.username %}
+
+        <br><br>
+        <div class="title-block">
+            <h2 class="title"> 
+                {{ user.username }}        
+            </h2>
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="header-block">
+                                <h3 class="title"> Meus Repositórios </h3>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                            <section class="example">    
+                                <table class="table table-inverse">
+                                    <tbody>
+                                        <td>
+                                            {% for repo in repositories %}
+                                                 <a href="{% url 'get_repo_info' repo.org repo.name %}"> <h4 class=item-title>{{repo.full_name}}</h4></a>
+                                            {% endfor %}
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </section>            
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="header-block">
+                                <h2 class="title"> Minhas Organizações </h2>
+                            </div>
+                        </div>
+                        <div class="card-block">
+                                <section class="example">    
+                                    <table class="table table-inverse">
+                                        <tbody>
+                                            <td>
+                                                {% for login in organizations %}
+                                                    <a href="{% url 'organization' login %}"> <h4>{{login}}</h4></a>
+                                                {% endfor %}
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </section>            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block login %}
+    {% if user.username %}
+        <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Sair
+            </button>
+        </a>
+    {% else %}
+        <a href="{% url 'social:begin' 'github' %}">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-github"></i>
+                Entrar
+            </button>
+        </a>
+    {% endif %}
+{% endblock %}
