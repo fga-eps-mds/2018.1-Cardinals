@@ -29,20 +29,20 @@ body {
     transition: left 0.3s ease, padding-left 0.3s ease;
     overflow: hidden; }
     .app .content {
-      padding: 95px 20px 75px 20px;
+      padding: 35px 20px 75px 20px;
       min-height: 100vh; }
       @media (min-width: 1200px) {
         .app .content {
-          padding: 105px 40px 85px 40px; } }
+          padding: 30px 40px 85px 40px; } }
       @media (min-width: 992px) and (max-width: 1199.98px) {
         .app .content {
-          padding: 100px 35px 80px 35px; } }
+          padding: 25px 35px 80px 35px; } }
       @media (min-width: 768px) and (max-width: 991.98px) {
         .app .content {
-          padding: 95px 20px 75px 20px; } }
+          padding: 20px 20px 75px 20px; } }
       @media (max-width: 767.98px) {
         .app .content {
-          padding: 70px 20px 70px 20px; } }
+          padding: 15px 20px 70px 20px; } }
     @media (max-width: 991.98px) {
       .app {
         padding-left: 0; } }
@@ -255,4 +255,3 @@ footer p{
 .text-block{
   margin-top: 50px; 
 }
-

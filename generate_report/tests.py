@@ -1,3 +1,19 @@
 from django.test import TestCase
+import pdfcrowd
+from .views import config_convert_img, convert_html2image
 
-# Create your tests here.
+
+class ReportTests(TestCase):
+
+
+   def setUp(self):
+      self.path_html = 'static/images/charts/chart_commit.html'
+      self.path_jpg = 'static/images/charts/chart_commit.jpg'
+
+   def test_config_convert_img(self):
+      self.assertIsNotNone(config_convert_img())
+
+
+   def test_convert_html2image(self):
+      self.img_test = config_convert_img()
+      self.assertEqual(convert_html2image(self.img_test, self.path_html, self.path_jpg), self.path_jpg)
