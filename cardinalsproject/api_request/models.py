@@ -10,6 +10,11 @@ def _create_github_url(full_name):
 class RepositoryAPI():
     
     def __init__(self, organization, repository):
+
+        self.contributors = []
+        self.name = ""
+        self.full_name = ""
+
         self.contributing_file = False
         self.license_file = False
         self.issue_template = False
@@ -17,19 +22,20 @@ class RepositoryAPI():
         self.conduct_file = False
         self.readme = False
 
-        repo_dict = RepositoryAPI._get_repository(organization, repository)
-        self._update_docs(repo_dict)
+        response = RepositoryAPI._get_response(organization, repository)
 
-    def _get_repository(organization, repository):
+        self._update_docs(response["Repository"])
+        self._update_repository(response["Repository"])
+        self._update_contributors(response["Contributors"])
+
+    def _get_response(organization, repository):
         address_repo = _create_github_url(organization + '/' + repository)
         url = base_path + '/repository/?address=' + address_repo
 
         response = requests.get(url)
-        
         response_data = response.json()
-        repo_dict = response_data["Repository"]
 
-        return repo_dict
+        return response_data
 
     def _update_docs(self, repo_dict):
         self.contributing_file = repo_dict["contributing_file"]
@@ -39,6 +45,23 @@ class RepositoryAPI():
         self.conduct_file = repo_dict["conduct_file"]
         self.readme = repo_dict["readme"]
 
+    def _update_contributors(self, repo_dict):
+        for contrib in repo_dict:
+            new_contrib = _RepositoryContributorAPI(contrib)
+            self.contributors.append(new_contrib)
+        pass
+
+    def _update_repository(self, repo_dict):
+        self.name = repo_dict["name"]
+        self.full_name = repo_dict["full_name"]
+        pass
+
+# private class for repository use
+class _RepositoryContributorAPI():
+    def __init__(self, repo_dict):
+        self.name = repo_dict["name"]
+        self.login = repo_dict["login"]
+        self.commits = repo_dict["commits"]
 
 
 class CommitsChartAPI():
