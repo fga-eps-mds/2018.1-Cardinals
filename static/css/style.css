@@ -33,9 +33,6 @@
   color: #D8D7CC;
 }
 
-.header-block-search > form {
-    float: right;
-}
 .header-block-search .input-container {
   position: relative;
   color: #D8D7CC;
@@ -54,7 +51,8 @@
   border-radius: 7px;
   padding-left: 25px;
   height: 40px;
-  max-width: 700px;
+  width: 70rem;
+  max-width: 500px;
 }
 .header-block-search .input-container input:focus + .underline {
   -webkit-transform: scaleX(1);
