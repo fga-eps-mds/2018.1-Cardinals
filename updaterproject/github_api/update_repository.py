@@ -152,6 +152,7 @@ def update_contributors(github_repo, repository):
 
     Contributor.saveContributors(contributors_request, repository)
     print (" -- contributors updated")
+    update_contributors_scores(repository.id)
 
 def update_commits(github_repo, repository):
     print (" -- updating commits")
@@ -166,6 +167,7 @@ def update_commits(github_repo, repository):
     repository.commits_db_updated = 1
     repository.save() # update repository info
     print (" -- commits updated")
+    update_contributors_scores(repository.id)
 
 def update_pullrequests(github_repo, repository):
     print (" -- updating pullrequests")
@@ -179,6 +181,7 @@ def update_pullrequests(github_repo, repository):
     repository.pulls_db_updated = 1
     repository.save() # update repository info
     print (" -- pullrequests updated")
+    update_contributors_scores(repository.id)
 
 def update_issues(github_repo, repository):
     print (" -- updating issues")
@@ -192,6 +195,7 @@ def update_issues(github_repo, repository):
     repository.issues_db_updated = 1
     repository.save() # update repository info
     print (" -- issues updated")
+    update_contributors_scores(repository.id)
 
 def run_in_background( action, github_repo, repository):
     thread = threading.Thread(target=action, args=(github_repo, repository,))
@@ -204,6 +208,13 @@ def get_commits_from_repository(full_name):
     github = Github(username, password)
     repository = github.get_repo(full_name)
     return repository.get_commits()
+
+def update_contributors_scores(repo_id):
+    commiters = Contributor.objects.filter(repository=repo_id)
+
+    Contributor.setLineCodeContrib(commiters)
+    Contributor.setIssuesCreatedFor(commiters, repo_id)
+    Contributor.setIssuesClosedFor(commiters, repo_id)
 
 def get_commits_chart_data(full_name):
     all_commits = Commit.objects.filter(repository__full_name__contains=full_name).order_by("date")

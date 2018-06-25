@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+from ranking_commiters.models import Weight
 
 base_path = 'http://updater:3000'
 
@@ -56,12 +57,35 @@ class RepositoryAPI():
         self.full_name = repo_dict["full_name"]
         pass
 
+    def update_score(self, weight=None):
+        for c in self.contributors:
+            c.update_score(weight)
+
 # private class for repository use
 class _RepositoryContributorAPI():
     def __init__(self, repo_dict):
         self.name = repo_dict["name"]
         self.login = repo_dict["login"]
         self.commits = repo_dict["commits"]
+        self.line_code = repo_dict["line_code"]
+        self.issues_created = repo_dict["issues_created"]
+        self.issues_closed = repo_dict["issues_closed"]
+        self.score = 0
+
+    def update_score(self, weight=None):
+        p1 = 1
+        p2 = 1
+        p3 = 1
+        p4 = 1
+
+        if weight is not None:
+            p1 = weight.commit
+            p2 = weight.line_code
+            p3 = weight.issues_created
+            p4 = weight.issues_closed
+
+        self.score = self.commits*p1 + self.line_code*p2 + self.issues_created*p3 + self.issues_closed*p4
+
 
 
 class CommitsChartAPI():
