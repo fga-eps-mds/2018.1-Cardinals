@@ -35,3 +35,8 @@ db.sqlite3
 
 # WARNING: .env file contains sensitive information, keep it on .gitignore.
 .env
+
+**secrets.py
+
+##
+static/images/charts/*

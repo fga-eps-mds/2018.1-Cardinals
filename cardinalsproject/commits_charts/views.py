@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from api_request.models import CommitsChartAPI
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from bokeh.embed import components
 
@@ -38,6 +38,9 @@ def analyze_commits_charts(request, organization, repository):
 
     plot = get_multi_line_plot(chartData.dates, chartData.commits, chartData.paired)
     script, div = components(plot)
+
+    output_file("static/images/charts/chart_commit.html")
+    show(plot)
 
     context = {'script': script,
                'div': div,

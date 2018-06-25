@@ -9,7 +9,6 @@ from rest_framework.decorators import action
 
 import json
 from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
 
 from api.models import Repository
 from api.serializers import *
@@ -223,15 +222,3 @@ class RepositoryPullRequests(APIView):
             response_data = {"error": "address not defined"}
             
         return Response(response_data)
-
-
-# http://localhost:8000/request/?address=https://github.com/HaskellTeam/TheGame
-def api_request(request):
-    address = request.GET["address"]
-    repo = get_repository(address)
-    status = repo != None
-
-    if status == True:
-        return JsonResponse({'status':status, 'name':repo.name, 'dbId':repo.id})
-    else:
-        return JsonResponse({'status':status})

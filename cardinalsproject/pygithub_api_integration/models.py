@@ -1,4 +1,5 @@
 from django.db import models
+from operator import attrgetter
 from github import Github
 from oauth.credentials import get_credentials
 
@@ -55,9 +56,9 @@ class Contributor(models.Model):
 
     def requestContributors(repo_request):
 
-        contrib_request = certify_request(repo_request.get_stats_contributors())
+        contr_request = certify_request(repo_request.get_stats_contributors())
 
-        return contrib_request
+        return contr_request
 
     def saveContributors(contributors_request, repo):
 
@@ -148,7 +149,11 @@ class Contributor(models.Model):
                                       contrib.issues_closed *
                                       int(weight.issues_closed)), 2)
 
-        return contributors
+        ranking_commiters = sorted(contributors,
+                                   key=attrgetter('score'),
+                                   reverse=True)
+
+        return ranking_commiters
 
 
 class ContributingWeek(models.Model):

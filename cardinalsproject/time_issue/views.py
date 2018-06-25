@@ -2,7 +2,7 @@ from django.shortcuts import render
 from collections import Counter
 from datetime import datetime, timedelta
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 
 from api_request.models import RequestIssuesAPI
@@ -36,6 +36,9 @@ def analyze_issue_graph(request, organization, repository):
 
     plot = get_bar_plot( days, amount )
     script, div = components(plot)
+
+    output_file("static/images/charts/chart_issue.html")
+    show(plot)
 
     context = {'script': script,
                'div': div,

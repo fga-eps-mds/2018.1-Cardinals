@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.shortcuts import render
 
-from bokeh.plotting import figure
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 
 from api_request.models import RequestPullRequest
@@ -42,6 +42,9 @@ def analyze_pull_requests(request, organization, repository):
 
     plot = get_vbar_plot(days,amount)
     script, div = components(plot)
+
+    output_file("static/images/charts/chart_pr.html")
+    show(plot)
 
     context = {'script': script,
                'div': div,

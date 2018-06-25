@@ -9,13 +9,13 @@ from ranking_commiters.models import Weight
 def ranking_commiters(request, organization, repository):
 
     repository = RepositoryAPI(organization, repository)
+    weight = Weight()
 
-    if request.method == 'GET':
-        repository.update_score()
-    elif request.method == 'POST':
+    if request.method == 'POST':
         weight = Weight(request)
-        repository.update_score(weight)
-        
+
+    weight.save_in_session(request)
+    repository.update_score(weight)
     commiters = repository.contributors
 
     ranking_commiters = sorted(commiters,

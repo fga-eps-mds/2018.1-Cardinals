@@ -9,34 +9,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
-        <link rel="stylesheet" id="theme-style" href="{% static 'css/app-red.css' %}">
         {% block head %} <!-- Head content --> {% endblock %}
     </head>
     <body class="loaded">
-        <div id="main-wrapper">
-            <div id="app" class="app">
-                <nav class="navbar bg-color header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="dropdown ml-auto">
-                        <a class="dropdown-toggle bg-red" style="border: none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Registrar | Entrar
-                        </a>
-                        
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Entrar</a>
-                            <a class="dropdown-item" href="#">Registrar</a>
+        <nav class="navbar bg-color">
+            <a class="navbar-brand" href="{% url 'index' %}">Cardinals</a>
+            <div class="header-block-search">
+                <form role="search" action="{% url 'index' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-container">
+                        <div class="input-group mb-3">
+                            <input  name="repository" type="search" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Buscar repositórios">
+                            <div class="input-group-append">
+                                <button type="submit" class="input-group-text fa fa-search">
+                            </div>
                         </div>
                     </div>
-                </nav>
+                </form>
+            </div>
+            <div class="button-login navbar-brand">
+                {% if user.username %}
+                    <a href="{% url 'logout' %}">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            <i class="fa fa-github"></i>
+                            Sair
+                        </button>
+                    </a>
+                {% else %}
+                    <a href="{% url 'social:begin' 'github' %}">
+                        <button type="button" class="btn btn-primary btn-lg">
+                            <i class="fa fa-github"></i>
+                            Entrar
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+        <div id="main-wrapper">
+            <div id="app" class="app">
 
                 <aside class="sidebar bg-color">
                     <div class="sidebar-container">
-                        <div class="sidebar-header">
-                            <a href="{% url 'index' %}" class="brand bg-red"> Cardinals </a>
-                        </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li>
@@ -64,6 +77,11 @@
                                 <li>
                                     <a class="bg-red" href="/{{request.session.repository}}/ranking_commiters/"><i class="fa fa-trophy"></i> Ranking Commiters</a>
                                 </li>
+
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/generateReport/"><i class="fa fa-file-o"></i> Relatório</a>                              
+                                </li>
+
                             </ul>
                         </nav>
                     </div>
