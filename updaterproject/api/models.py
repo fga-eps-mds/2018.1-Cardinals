@@ -224,9 +224,9 @@ class Commit(models.Model):
 
         for c in commit_request:
             commit = Commit()
-            commit.sha = commit_r.sha
-            commit.date = commit_r.commit.author.date
-            commit.message = commit_r.commit.message
+            commit.sha = c.sha
+            commit.date = c.commit.author.date
+            commit.message = c.commit.message
             commit.repository = repo
 
             coauthored = commit.message.count("Co-authored-by:") >= 1
@@ -237,7 +237,7 @@ class Commit(models.Model):
             if not c.author or not c.author.id:
                 continue
             for contrib in contributors:
-                if commit_r.author.id == contrib.id:
+                if c.author.id == contrib.id:
                     commit.author = contrib
             commit.save()
 
@@ -303,12 +303,12 @@ class Issue(models.Model):
 
         for i in issues_request:
             issue = Issue()
-            issue.id = issue_r.id
-            issue.created_by = issue_r.user.id
-            if issue_r.closed_by is not None:
-                issue.closed_by = issue_r.closed_by.id
-            issue.state = issue_r.state
-            issue.created_at = issue_r.created_at
-            issue.closed_at = issue_r.closed_at
+            issue.id = i.id
+            issue.created_by = i.user.id
+            if i.closed_by is not None:
+                issue.closed_by = i.closed_by.id
+            issue.state = i.state
+            issue.created_at = i.created_at
+            issue.closed_at = i.closed_at
             issue.repository = repo
             issue.save()

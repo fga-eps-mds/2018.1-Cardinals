@@ -8,14 +8,15 @@ def _create_github_url(full_name):
     return url
 
 class RepositoryAPI():
-    contributing_file = False
-    license_file = False
-    issue_template = False
-    pull_request_template = False
-    conduct_file = False
-    readme = False
-
+    
     def __init__(self, organization, repository):
+        self.contributing_file = False
+        self.license_file = False
+        self.issue_template = False
+        self.pull_request_template = False
+        self.conduct_file = False
+        self.readme = False
+
         repo_dict = RepositoryAPI._get_repository(organization, repository)
         self._update_docs(repo_dict)
 
@@ -41,11 +42,12 @@ class RepositoryAPI():
 
 
 class CommitsChartAPI():
-    paired = []
-    commits = []
-    dates = []
 
     def __init__(self, organization, repository):
+        self.paired = []
+        self.commits = []
+        self.dates = []
+
         reponse = self._get_commit_chart_reponse(organization, repository)
         self._update_chart_data(reponse)
         pass
@@ -56,8 +58,6 @@ class CommitsChartAPI():
 
         response = requests.get(url)
         response_data = response.json()
-
-        print (response_data)
         
         return response_data
 
@@ -70,4 +70,6 @@ class CommitsChartAPI():
         for dt in response_data["dates"]:
             py_date = datetime.strptime(dt, '%d-%m-%Y')
             self.dates.append(py_date)
+        
+        self.dates.sort()
 
