@@ -50,16 +50,20 @@ def home(request):
         g = github_singleton.get_github(request)
         user = g.get_user()
 
-        repo_names = [repo.full_name
-                      for repo in user.get_repos(type='all')]
-
+        repos = []
+        for repo in user.get_repos(type='all'):
+            org, name = repo.full_name.split('/')
+            data = {'name': name,
+                    'org': org,
+                    'full_name': repo.full_name}
+            repos.append(data)
 
         orgs = user.get_orgs()
         save_organizations_in_session(request, orgs)
 
         orgs_logins = [org.login for org in orgs]
 
-        context = {'repositories': repo_names,
+        context = {'repositories': repos,
                    'organizations': orgs_logins}
 
     return render(request, 'home_login.html', context=context)
