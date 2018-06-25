@@ -21,6 +21,7 @@
 | Iss116 - US17 - Gerar métricas de quanto tempo Pull-requests ficam abertos | Não |
 | Iss117 - US18 - Gerar métricas de commits e pareamento | Não |
 | Iss52 - US14 - Gerar Métricas de quanto tempo Issues ficam em aberto | Não |
+| Iss86 - TS02 - Utlizar cache para economizar quantidade de requisições da API | Não |
 
 ## 1.1 O que foi feito (Completa)?
  * Iss118 - Melhorar apresentação da tela de checklist de documentos presentes no repositório
