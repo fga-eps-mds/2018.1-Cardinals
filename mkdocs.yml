@@ -16,8 +16,11 @@ pages:
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
     - Roadmaps:
         - Geral: documentos/roadmap-geral.md
-        - DevOps: documentos/roadmap-devops.md
         - Arquitetura: documentos/roadmap-arquitetura.md
+    - DevOps:
+        - Roadmap: documentos/DevOps/roadmap-devops.md
+        - Pipeline: documentos/DevOps/devops-pipeline.md
+        - Pipeline explicado: documentos/DevOps/devops-pipeline-explicado.md
     - Sprint 0:
         - Planejamento: documentos/Sprints/00/Planejamento.md
         - Resultados: documentos/Sprints/00/Resultados.md
