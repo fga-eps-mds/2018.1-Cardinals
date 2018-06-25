@@ -1,49 +1,134 @@
-{% extends "base_index.html" %}
+{% extends "base_user.html" %}
 
 {% block body %}
 <div id="page-wrapper-index">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <h1>Arquivos</h1>
-                <h2>Contributing file</h2>
-                {% if contributingFile.name == 'CONTRIBUTING.md' %}
-                    <i class="fa fa-check fa-fw">{{contributingFile.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> CONTRIBUTING.md </i>
-                {% endif %}
-                <h2>Issue template</h2>
-                {% if issueTemplate.name == 'ISSUE_TEMPLATE.md' %}
-                    <i class="fa fa-check fa-fw">{{issueTemplate.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> ISSUE_TEMPLATE.md </i>
-                {% endif %}
-                <h2>Pull request template</h2>
-                {% if pullRequestTemplate.name == 'PULL_REQUEST_TEMPLATE.md' %}
-                    <i class="fa fa-check fa-fw">{{pullRequestTemplate.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> PULL_REQUEST_TEMPLATE.md </i>
-                {% endif %}
-                <h2>Code of conduct</h2>
-                {% if conductFile.name == 'CODE_OF_CONDUCT.md' %}
-                    <i class="fa fa-check fa-fw">{{conductFile.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> CODE_OF_CONDUCT.md </i>
-                {% endif %}
-                <h2>Readme</h2>
-                {% if readme.name == 'README.md' %}
-                    <i class="fa fa-check fa-fw">{{readme.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> README.md </i>
-                {% endif %}
+            <div class="col-xl-12">
+                <div class="title-block">
+                    <h1>Arquivos</h1>
+                </div>
             </div>
-            <div class="col-lg-8">
-                <h1>Licença utilizada</h1>
-                {% if licenseFile.name == "LICENSE" %}
-                    <i class="fa fa-check fa-fw">{{licenseFile.name}}</i>
-                {% else %}
-                    <i class="fa fa-times fa-fw"> Licença não encontrada!</i>
-                {% endif %}
+            <div class="col-xl-4">
+                <div>
+                    <p class="title"> Arquivo de contribuição</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if contributingFile.name == 'CONTRIBUTING.md' %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                {{contributingFile.name}}
+                            </span>
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                CONTRIBUTING.md
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div>
+                    <p class="title"> Template de Issue</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if issueTemplate.name == 'ISSUE_TEMPLATE.md' %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                {{issueTemplate.name}}
+                            </span>
+                                
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                ISSUE_TEMPLATE.md
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div>
+                    <p class="title"> Template de Pull Request</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if pullRequestTemplate.name == 'PULL_REQUEST_TEMPLATE.md' %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                {{pullRequestTemplate.name}}
+                            </span>
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                PULL_REQUEST_TEMPLATE.md
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div>
+                        <p class="title"> Código de Conduta</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if conductFile.name == 'CODE_OF_CONDUCT.md' %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                {{conductFile.name}}
+                             </span>
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                CODE_OF_CONDUCT.md
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div>
+                    <p class="title"> Licença</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if licenseFile.name == 'LICENSE' %}
+                                <span class="fa fa-check fa-fw"></span>
+                                <span>
+                                    {{licenseFile.name}}
+                                </span>
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                LICENSE
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div>
+                    <p class="title"> README</p>
+                </div>
+                <div class="card-header">
+                    <div class="header-block">
+                        {% if readme.name == 'README.md' %}
+                            <span class="fa fa-check fa-fw"></span>
+                            <span>
+                                {{readme.name}}
+                            </span>
+                        {% else %}
+                            <span class="fa fa-times fa-fw"></span>
+                            <span>
+                                README.md
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

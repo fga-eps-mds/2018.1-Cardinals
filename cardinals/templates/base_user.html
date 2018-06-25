@@ -1,0 +1,87 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block title %} Cardinals {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+        <link rel="stylesheet" id="theme-style" href="{% static 'css/app-red.css' %}">
+        {% block head %} <!-- Head content --> {% endblock %}
+    </head>
+    <body class="loaded">
+        <div id="main-wrapper">
+            <div id="app" class="app">
+                <nav class="navbar bg-color header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="dropdown ml-auto">
+                        <a class="dropdown-toggle bg-red" style="border: none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Registrar | Entrar
+                        </a>
+                        
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Entrar</a>
+                            <a class="dropdown-item" href="#">Registrar</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <aside class="sidebar bg-color">
+                    <div class="sidebar-container">
+                        <div class="sidebar-header">
+                            <a href="{% url 'index' %}" class="brand bg-red"> Cardinals </a>
+                        </div>
+                        <nav class="menu">
+                            <ul class="sidebar-menu metismenu" id="sidebar-menu">
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/"><i class="fa fa-home"></i>
+                                    Home </a>
+                                </li>
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/time_issue/"><i class="fa fa-code-fork"></i> Issue</a>
+                                </li>
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/commits_charts/"><i
+                                    class="fa fa-code"></i>
+                                    Commits</a>
+                                </li>
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/community/"><i class="fa fa-file-o"></i> Documentos</a>
+
+                                </li>
+
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/pull_requests/"><i class="fa fa-long-arrow-up"></i>
+                                    Pull Requests</a>
+                                </li>
+
+                                <li>
+                                    <a class="bg-red" href="/{{request.session.repository}}/ranking_commiters/"><i class="fa fa-trophy"></i> Ranking Commiters</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+
+                <article class="content">
+                    <section class="section">
+                        {% block body %}
+                        {% endblock %}
+                    </section> 
+                </article> 
+            </div>
+        </div>
+
+        <div class="device-xs hidden-sm-up"></div><div class="device-sm hidden-xs-down hidden-md-up"></div><div class="device-md hidden-sm-down hidden-lg-up"></div><div class="device-lg hidden-md-down hidden-xl-up"></div><div class="device-xl hidden-lg-down"></div>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
+</html>

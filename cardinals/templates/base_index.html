@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible, content=ie=edge">
+        <title> Cardinals </title>
+        <meta name="viewport" content="width=device-width" initial-scale="1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="container">
+            <nav class="navbar navbar-expand-lg bg-color">
+                <a class="navbar-brand" href="{% url 'index' %}">Cardinals</a>
+                <div class="dropdown ml-auto">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Registrar | Entrar
+                    </a>
+                    
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Entrar</a>
+                        <a class="dropdown-item" href="#">Registrar</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="row">
+                        {% block body %}
+                        {% endblock %}
+                </div>
+            </div> 
+        </div>
+        <footer class="bg-color footer">
+            <p><span class="glyphicon glyphicon-registration-mark"></span> Copy Right | Unb Gama - 2018</p>
+        </footer>
+
+        <div class="device-xs hidden-sm-up"></div><div class="device-sm hidden-xs-down hidden-md-up"></div><div class="device-md hidden-sm-down hidden-lg-up"></div><div class="device-lg hidden-md-down hidden-xl-up"></div><div class="device-xl hidden-lg-down"></div>
+        
+        <script src="https://unpkg.com/ionicons@4.1.1/dist/ionicons.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
+</html>
