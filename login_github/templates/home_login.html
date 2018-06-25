@@ -31,8 +31,8 @@
                                 <table class="table table-inverse">
                                     <tbody>
                                         <td>
-                                            {% for full_name in repositories %}
-                                                 <a href="/{{full_name}}/"> <h4 class=item-title>{{full_name}}</h4></a>   
+                                            {% for repo in repositories %}
+                                                 <a href="{% url 'get_repo_info' repo.org repo.name %}"> <h4 class=item-title>{{repo.full_name}}</h4></a>
                                             {% endfor %}
                                         </td>
                                     </tbody>
@@ -55,7 +55,7 @@
                                         <tbody>
                                             <td>
                                                 {% for login in organizations %}
-                                                    <a href="/organization/{{login}}/"> <h4>{{login}}</h4></a>
+                                                    <a href="{% url 'organization' login %}"> <h4>{{login}}</h4></a>
                                                 {% endfor %}
                                             </td>
                                         </tbody>
