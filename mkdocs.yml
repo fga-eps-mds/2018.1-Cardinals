@@ -11,12 +11,16 @@ pages:
         - Documento de Arquitetura: documentos/Documento-de-Arquitetura.md
     - Gestão:
         - Termo de Abertura do Projeto: documentos/Termo-de-Abertura-do-Projeto.md
+        - Estrutura Analítica do Projeto: documentos/EAP.md
         - Práticas Ágeis: documentos/Práticas-Ágeis-Adotadas.md
         - Monitoramento de issues: documentos/Monitoramento-de-issues-pelo-Zenhub.md
     - Roadmaps:
         - Geral: documentos/roadmap-geral.md
-        - DevOps: documentos/roadmap-devops.md
         - Arquitetura: documentos/roadmap-arquitetura.md
+    - DevOps:
+        - Roadmap: documentos/DevOps/roadmap-devops.md
+        - Pipeline: documentos/DevOps/devops-pipeline.md
+        - Pipeline explicado: documentos/DevOps/devops-pipeline-explicado.md
     - Sprint 0:
         - Planejamento: documentos/Sprints/00/Planejamento.md
         - Resultados: documentos/Sprints/00/Resultados.md
@@ -35,6 +39,35 @@ pages:
     - Sprint 5:
         - Planejamento: documentos/Sprints/05/Planejamento.md
         - Resultados: documentos/Sprints/05/Resultados.md
+    - Sprint 6:
+        - Planejamento: documentos/Sprints/06/Planejamento.md
+        - Resultados: documentos/Sprints/06/Resultados.md
+    - Sprint 7:
+        - Planejamento: documentos/Sprints/07/Planejamento.md
+        - Resultados: documentos/Sprints/07/Resultados.md
+    - Sprint 8:
+        - Planejamento: documentos/Sprints/08/Planejamento.md
+        - Resultados: documentos/Sprints/08/Resultados.md
+    - Sprint 9:
+        - Planejamento: documentos/Sprints/09/Planejamento.md
+        - Resultados: documentos/Sprints/09/Resultados.md
+    - Sprint 10:
+        - Planejamento: documentos/Sprints/10/Planejamento.md
+        - Resultados: documentos/Sprints/10/Resultados.md
+    - Sprint 11:
+        - Planejamento: documentos/Sprints/11/Planejamento.md
+        - Resultados: documentos/Sprints/11/Resultados.md
+    - Sprint 12:
+        - Planejamento: documentos/Sprints/12/Planejamento.md
+        - Resultados: documentos/Sprints/12/Resultados.md
+    - Sprint 13:
+        - Planejamento: documentos/Sprints/13/Planejamento.md
+        - Resultados: documentos/Sprints/13/Resultados.md
+    - Sprint 14:
+        - Planejamento: documentos/Sprints/14/Planejamento.md
+        - Resultados: documentos/Sprints/14/Resultados.md
+    - Sprint 15:
+        - Planejamento: documentos/Sprints/15/Planejamento.md
 
 
 theme:

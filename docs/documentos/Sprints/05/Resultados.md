@@ -58,8 +58,6 @@ A Tarefa de configurar a ferramenta de deploy contínuo não foi concluída por 
 # 3. Burndown Chart
 ![Sprint 05 - Burndown](https://i.imgur.com/D94R99y.png)
 
-<p align = "justify">Como essa Sprint Teve somente uma tarefa completada, ficando as outras como débito, o velocity da equipe ficou em apenas 8 pontos.</p>
-
 
 
 # 4. Velocity
