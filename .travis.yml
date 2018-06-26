@@ -23,11 +23,25 @@ jobs:
         -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
       - sudo mv docker-compose /usr/local/bin
-      - echo -e "USERNAME=$CREDENTIAL_USERNAME\nPASSWORD=$CREDENTIAL_PASSWORD" >> .env
+      - echo -e "USERNAME=$CREDENTIAL_USERNAME\nPASSWORD=$CREDENTIAL_PASSWORD\nSECRET_KEY=$SECRET_KEY\nSOCIAL_AUTH_GITHUB_KEY=$SOCIAL_AUTH_GITHUB_KEY\nSOCIAL_AUTH_GITHUB_SECRET=$SOCIAL_AUTH_GITHUB_SECRET" >> .env
       script:
       - sudo docker-compose -f docker-compose.test.yml run --rm web
       after_script:
       - sudo docker-compose down
+
+    - stage: deploy documentation
+      install:
+        - pip install mkdocs
+        - pip install mkdocs-rtd-dropdown
+      script:
+        - mkdocs build --verbose --clean
+      deploy:
+       provider: pages
+       skip_cleanup: true
+       github_token: $GITHUB_TOKEN
+       local_dir: site
+       on:
+         branch: docs
 
     - stage: deploy to staging
       install: skip
@@ -41,6 +55,11 @@ jobs:
           repo: fga-gpp-mds/2018.1-Cardinals
           branch: develop
 
+    - stage: test staging
+      script:
+        - 'curl https://cardinalsbeta.herokuapp.com/'
+        - 'curl https://cardinalsbeta.herokuapp.com/fga-gpp-mds/2018.1-Cardinals/'
+
     - stage: deploy to production
       install: skip
       script: skip
@@ -52,3 +71,8 @@ jobs:
         on:
           repo: fga-gpp-mds/2018.1-Cardinals
           branch: master
+
+    - stage: test production
+      script:
+        - 'curl https://cardinals.herokuapp.com'
+        - 'curl https://cardinals.herokuapp.com/fga-gpp-mds/2018.1-Cardinals/'

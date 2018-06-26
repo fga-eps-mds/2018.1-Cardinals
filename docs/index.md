@@ -9,10 +9,19 @@
 
 ## Funcionalidades disponíveis
 
+### Release 1
 + Configuração da API do GitHub;
 + Verificação da Existência dos arquivos (README.md, Code of Conduct, License, Issue and Pull Request Template e políticas de contribuição);
 + Relátorio de Issues abertas/fechadas por período;
 + Relatório de Commits de usuários por período.
 
+### Release 2
++ Verificação da Existência dos arquivos (README.md, Code of Conduct, License, Issue and Pull Request Template e políticas de contribuição);
++ Gráfico de issues abertas por período de tempo;
++ Gráfico de pull requests abertos por período de tempo;
++ Gráfico de commits individuais por commtis pareados;
++ Ranqueamento dos commiters;
++ Geração de relatório;
++ Login com conta do GitHub.
 
 Este é um projeto open source [disponível no GitHub](https://github.com/fga-gpp-mds/2018.1-Cardinals).
