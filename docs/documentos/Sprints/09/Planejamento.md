@@ -1,8 +1,8 @@
-# Planejamento da Sprint 8
+# Planejamento da Sprint 9
 
-**Data de Início:** 31/04/2018
+**Data de Início:** 08/05/2018
 
-**Data de Término:** 07/05/2018
+**Data de Término:** 12/05/2018
 
 **Total de Pontos Planejados:** _42_
 
@@ -40,7 +40,7 @@
 * **Pontuação:** 8
 
 ### [Iss50 - US12 - Gerar métricas de commits por período](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/50)
-* **Responsáveis:** Mateus Augusto e Gustavo
+* **Responsáveis:** Mateus Gomes e Gustavo
 * **Pontuação:** 13
 
 ### [Iss51 - US13 - Gerar métricas de commits realizados no repositório](https://github.com/fga-gpp-mds/2018.1-Cardinals/issues/51)
