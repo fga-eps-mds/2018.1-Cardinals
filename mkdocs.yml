@@ -6,6 +6,8 @@ pages:
         - Guia de contribuição: CONTRIBUTING.md
         - Código de conduta: CODE_OF_CONDUCT.md
         - Instalação: documentos/instalacao.md
+    - Apresentação:
+        - Apresentação R2: documentos/Apresentacao-Cardinals-R2.pdf
     - Desenvolvimento:
         - Documento de Visão: documentos/Documento-de-Visão.md
         - Documento de Arquitetura: documentos/Documento-de-Arquitetura.md
