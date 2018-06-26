@@ -23,3 +23,12 @@ class Weight(models.Model):
         weight.save()
 
         return weight
+
+    def __str__(self):
+        d = {
+              'commit_weight': self.commit,
+              'line_code_weight': self.line_code,
+              'issues_created_weight': self.issues_created,
+              'issues_closed_weight': self.issues_closed,
+        }
+        return str(d)

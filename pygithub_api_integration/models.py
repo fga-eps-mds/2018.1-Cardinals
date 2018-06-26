@@ -2,7 +2,7 @@ from django.db import models
 from operator import attrgetter
 from github import Github
 from oauth.credentials import get_credentials
-
+from django.utils import timezone
 
 def certify_request(return_function):
 
@@ -17,8 +17,9 @@ def certify_request(return_function):
 class Repository(models.Model):
 
     id = models.AutoField(primary_key=True)
-    full_name = models.CharField(max_length=255, null=False)
+    full_name = models.CharField(max_length=255, null=False, unique=True)
     name = models.CharField(max_length=255, null=False)
+    created_at = models.DateTimeField(default=timezone.now())
 
     def requestRepo(repo_name):
 
@@ -61,6 +62,8 @@ class Contributor(models.Model):
         return contr_request
 
     def saveContributors(contributors_request, repo):
+        contributors = Contributor.objects.filter(repository=repo.id)
+        contributors.delete()
 
         for contrib in contributors_request:
             contributor = Contributor()
@@ -116,7 +119,7 @@ class Contributor(models.Model):
         for contrib in contributors:
             line_code_repo += contrib.line_code
 
-        return line_code_repo
+        return max(line_code_repo, 1)
 
     def getPercent(line_code, line_code_repo):
 

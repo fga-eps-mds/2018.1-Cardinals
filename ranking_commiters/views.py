@@ -2,13 +2,13 @@ from django.shortcuts import render
 from pygithub_api_integration.models import Contributor
 from pygithub_api_integration.models import Repository
 from pygithub_api_integration.models import Issue
+from pygithub_api_integration.views import populate_db_if_data_is_old
 from ranking_commiters.models import Weight
-
 
 def ranking_commiters(request, organization, repository):
 
     name = organization + '/' + repository
-    repo = Repository.objects.get(full_name=name)
+    repo = populate_db_if_data_is_old(name)
     repo_id = repo.id
 
     repo = Repository.objects.get(id=repo_id)
@@ -28,9 +28,7 @@ def ranking_commiters(request, organization, repository):
         ranking_commiters = Contributor.getScore(commiters)
 
     elif request.method == 'POST':
-
         weight = Weight.requestWeight(request, repo)
-
         ranking_commiters = Contributor.getScore(commiters, weight=weight)
 
     context = {"repo_id": repo_id, "ranking_commiters": ranking_commiters}
