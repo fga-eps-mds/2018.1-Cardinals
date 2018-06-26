@@ -24,4 +24,7 @@
 + Geração de relatório;
 + Login com conta do GitHub.
 
+### Apresentação de Slides Release 2
++ [Apresentação Release 2](https://docs.google.com/presentation/d/1dAFVJL0qEif8J2cElX4I_hH6TNOEJieC45tA5xgzY2k/edit?usp=sharing)
+
 Este é um projeto open source [disponível no GitHub](https://github.com/fga-gpp-mds/2018.1-Cardinals).
