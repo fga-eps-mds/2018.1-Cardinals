@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Pipeline explicado - Cardinals</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Pipeline explicado";
+    var mkdocs_page_input_path = "documentos/DevOps/devops-pipeline-explicado.md";
+    var mkdocs_page_url = "/documentos/DevOps/devops-pipeline-explicado/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Cardinals</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Início</p>
+
+
+<ul class="" href="index">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../.." title="Sobre"
+      class="">
+    Sobre
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../equipe/" title="Equipe"
+      class="">
+    Equipe
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../../CONTRIBUTING/" title="Guia de contribuição"
+      class="">
+    Guia de contribuição
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../../CODE_OF_CONDUCT/" title="Código de conduta"
+      class="">
+    Código de conduta
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../instalacao/" title="Instalação"
+      class="">
+    Instalação
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Desenvolvimento</p>
+
+
+<ul class="" href="documentos/Documento-de-Visão">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Documento-de-Visão/" title="Documento de Visão"
+      class="">
+    Documento de Visão
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Documento-de-Arquitetura/" title="Documento de Arquitetura"
+      class="">
+    Documento de Arquitetura
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Gestão</p>
+
+
+<ul class="" href="documentos/Termo-de-Abertura-do-Projeto">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Termo-de-Abertura-do-Projeto/" title="Termo de Abertura do Projeto"
+      class="">
+    Termo de Abertura do Projeto
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../EAP/" title="Estrutura Analítica do Projeto"
+      class="">
+    Estrutura Analítica do Projeto
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Práticas-Ágeis-Adotadas/" title="Práticas Ágeis"
+      class="">
+    Práticas Ágeis
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Monitoramento-de-issues-pelo-Zenhub/" title="Monitoramento de issues"
+      class="">
+    Monitoramento de issues
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Roadmaps</p>
+
+
+<ul class="" href="documentos/roadmap-geral">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../roadmap-geral/" title="Geral"
+      class="">
+    Geral
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../roadmap-arquitetura/" title="Arquitetura"
+      class="">
+    Arquitetura
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">DevOps</p>
+
+
+<ul class="current" href="documentos/DevOps/roadmap-devops">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../roadmap-devops/" title="Roadmap"
+      class="">
+    Roadmap
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../devops-pipeline/" title="Pipeline"
+      class="">
+    Pipeline
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class="current toctree-l1">
+  <a href="./" title="Pipeline explicado"
+      class="current">
+    Pipeline explicado
+  </a>
+
+  
+  
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <ul class="current subnav">
+    
+      
+
+  
+  
+  
+
+
+  <li class="current toctree-l2">
+    
+      <a href="#introducao" title="Pipeline explicado"
+          class="current">
+        Introdução
+      </a>
+    
+    <ul class="current subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#historico-de-revisao" title="Pipeline explicado">Histórico de Revisão</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#devops" title="Pipeline explicado"
+          class="">
+        DevOps
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#ciclo-de-vida" title="Pipeline explicado">Ciclo de vida</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#planejamento" title="Pipeline explicado"
+          class="">
+        Planejamento
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#github" title="Pipeline explicado">Github</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#google-drive" title="Pipeline explicado">Google Drive</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#codigo" title="Pipeline explicado"
+          class="">
+        Código
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#versionamento-de-controle" title="Pipeline explicado">Versionamento de controle</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#qualidade-de-codigo" title="Pipeline explicado">Qualidade de código</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#build" title="Pipeline explicado"
+          class="">
+        Build
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#docker" title="Pipeline explicado">Docker</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#teste" title="Pipeline explicado"
+          class="">
+        Teste
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#testes-unitarios" title="Pipeline explicado">Testes unitários</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#cobertura-de-testes" title="Pipeline explicado">Cobertura de testes</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#integracao-continua" title="Pipeline explicado"
+          class="">
+        Integração contínua
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#travis" title="Pipeline explicado">Travis</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#deploy-continuo" title="Pipeline explicado"
+          class="">
+        Deploy contínuo
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#travis-e-heroku" title="Pipeline explicado">Travis e Heroku</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+      
+
+  
+  
+
+
+  <li class=" toctree-l2">
+    
+      <a href="#monitoramento-continuo" title="Pipeline explicado"
+          class="">
+        Monitoramento contínuo
+      </a>
+    
+    <ul class=" subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#librato" title="Pipeline explicado">Librato</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+  </ul>
+
+    
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 0</p>
+
+
+<ul class="" href="documentos/Sprints/00/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/00/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/00/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 1</p>
+
+
+<ul class="" href="documentos/Sprints/01/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/01/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/01/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 2</p>
+
+
+<ul class="" href="documentos/Sprints/02/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/02/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/02/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 3</p>
+
+
+<ul class="" href="documentos/Sprints/03/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/03/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/03/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 4</p>
+
+
+<ul class="" href="documentos/Sprints/04/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/04/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/04/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 5</p>
+
+
+<ul class="" href="documentos/Sprints/05/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/05/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/05/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 6</p>
+
+
+<ul class="" href="documentos/Sprints/06/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/06/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/06/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 7</p>
+
+
+<ul class="" href="documentos/Sprints/07/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/07/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/07/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 8</p>
+
+
+<ul class="" href="documentos/Sprints/08/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/08/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/08/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 9</p>
+
+
+<ul class="" href="documentos/Sprints/09/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/09/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/09/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 10</p>
+
+
+<ul class="" href="documentos/Sprints/10/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/10/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/10/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 11</p>
+
+
+<ul class="" href="documentos/Sprints/11/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/11/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/11/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 12</p>
+
+
+<ul class="" href="documentos/Sprints/12/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/12/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/12/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 13</p>
+
+
+<ul class="" href="documentos/Sprints/13/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/13/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/13/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 14</p>
+
+
+<ul class="" href="documentos/Sprints/14/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/14/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/14/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 15</p>
+
+
+<ul class="" href="documentos/Sprints/15/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../../Sprints/15/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Cardinals</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>DevOps &raquo;</li>
+        
+      
+    
+    <li>Pipeline explicado</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/fga-gpp-mds/2018.1-Cardinals/edit/master/docs/documentos/DevOps/devops-pipeline-explicado.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introducao">Introdução</h1>
+<p>Este documento tem como objetivo apresentar o processo de implementação de cultura de DevOps no projeto Cardinals.</p>
+<h2 id="historico-de-revisao">Histórico de Revisão</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Data</th>
+<th align="center">Versão</th>
+<th align="center">Alteração</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">18/06/2018</td>
+<td align="center">1.0</td>
+<td align="center">Criação da versão inicial do  documento</td>
+</tr>
+<tr>
+<td align="center">19/06/2018</td>
+<td align="center">1.0</td>
+<td align="center">Atualização do documento</td>
+</tr>
+</tbody>
+</table>
+<h1 id="devops">DevOps</h1>
+<p>O DevOps é a combinação de desenvolvimento de aplicações e operações, que visa minimizar ou eliminar a desconexão entre desenvolvedores de software que criam aplicações e administradores de sistemas que mantêm a infraestrutura em execução.
+O papel de responsável por DevOps no projeto durante o projeto foi ocupado de acordo com a tabela a seguir:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Alunos (as)</th>
+<th align="center">Período</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Amanda e Marlon</td>
+<td align="center">Início do projeto - Release 1</td>
+</tr>
+<tr>
+<td align="center">Amanda</td>
+<td align="center">Release 1 - Release 2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ciclo-de-vida">Ciclo de vida</h2>
+<ul>
+<li>Planejamento</li>
+<li>Código</li>
+<li>Build</li>
+<li>Teste</li>
+<li>Integração</li>
+<li>Deploy</li>
+<li>Monitoramento</li>
+</ul>
+<h1 id="planejamento">Planejamento</h1>
+<p>O planejamento contínuo tem como objetivo dar uma visão comum do desenvolvimento do projeto aos envolvidos, provendo transparência a respeito dos objetivos do projeto, seu andamento e mudanças realizadas ou necessárias ao longo de seu desenvolvimento.</p>
+<h2 id="github">Github</h2>
+<p>O Github foi utilizado para adicionar, atualizar e controlar as documentações do projeto relacionadas aos requisitos e do projeto e descrição e transparência da utilização da metodologia ágil no projeto.</p>
+<h3 id="github-issues-e-zenhub">Github issues e Zenhub</h3>
+<p>Utilizados para:
++ Detalhar os requisitos do projeto em formato de histórias de usuário, incluindo tarefas e critérios de aceitação;
++ Informar bugs e necessidades emergentes do projeto;
++ Controlar o status das histórias, responsáveis, níveis de dificuldade;
++ Gerar estimativas a respeito da conclusão das funcionalidades.</p>
+<p><a href="https://fga-gpp-mds.github.io/2018.1-Cardinals/documentos/Monitoramento-de-issues-pelo-Zenhub/">Monitoramento de issues no Cardinals</a>
+<a href="https://github.com/fga-gpp-mds/2018.1-Cardinals#boards?repos=124142953">Zenhub board do Cardinals</a></p>
+<h2 id="google-drive">Google Drive</h2>
+<p>Utilizado para adicionar, atualizar e controlar as documentações relacionados ao gerenciamento do projeto e da equipe, como: quadro de disponibilidade, quadro de conhecimento, planilha de horas trabalhadas, atas de reunião, bem como disponibilização de materiais de estudo.</p>
+<h1 id="codigo">Código</h1>
+<p>O desenvolvimento contínuo do código do projeto tem como objetivo implementar funcionalidades e recursos que constituem a interface e as regras de negócios da aplicação, atendendo à demanda do(s) cliente(s) formalizadas através dos requisitos da aplicação.</p>
+<h2 id="versionamento-de-controle">Versionamento de controle</h2>
+<p>Foi utilizado as ferramentas Git e Github para realizar versionamento do código da aplicação bem como documentar as mudanças e evoluções no mesmo. Afim de manter um padrão e consistência nessa documentação, adotou-se alguns padrões e regras, detalhados a seguir:</p>
+<h3 id="padronizacao-de-commits">Padronização de Commits</h3>
+<ul>
+<li>Todos os commits devem estar em inglês e conter uma mensagem clara e objetiva.</li>
+<li>Para commits pareados deve-se utilizar "Co-authored-by" na mensagem do commit incluindo as informações dos co autores.</li>
+</ul>
+<h3 id="padronizacao-de-branchs">Padronização de Branchs</h3>
+<p>Foi adotada uma política de branchs baseada no <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.pt_BR.html">GitFlow</a>.
++   <strong>master</strong>: Branch principal do projeto que contém versões estáveis e devidamente testadas do código.<br />
++   <strong>develop</strong>  - Branch de integração que reúne as últimas funcionalidades prontas e entregues que serve como base para o desenvolvimento de novas funcionalidades, correções de bugs e entrega de versão estável.
++   <strong>feature_</strong>  - Branchs que contém funcionalidades em desenvolvimento e são nomeadas de acordo com estas. Exemplo: <code>feature_login_with_github</code>.
++   <strong>bugfix_</strong>  - Branch que contém correções de bugs presentes na branch <code>develop</code>.
++   <strong>hotfix_</strong>  - Branch que contém correções de bugs presentes na branch <code>master</code>.</p>
+<h2 id="qualidade-de-codigo">Qualidade de código</h2>
+<p>Foram definidos alguns padrões padrões de desenvolvimento para garantir que o código  tivesse uma boa manutenibilidade,  legibilidade e coerência. Os padrões e ferramentas utilizadas para garantir seus cumprimentos estão listados abaixo:</p>
+<ul>
+<li><a href="http://flake8.pycqa.org/en/latest/index.html">Flake8</a>: biblioteca python utilizada através de script com configurações adaptadas ao projeto para capturar localmente erros que ferem as convenções de estilo adotadas pelo <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>, os níveis de complexidade ciclomática estipulados e determinados erros de programação.</li>
+<li><a href="https://codeclimate.com">Codeclimate</a>: plataforma de revisão de código automatizada foi utilizada de forma adaptada ao projeto para detectar problemas que ferem a qualidade e manutenibilidade do código localmente e de forma integrada ao Github.<ul>
+<li>Localmente: através da Interface de <a href="https://github.com/codeclimate/codeclimate">Linha de comando do Codeclimate</a>;</li>
+<li>Integrada ao Github: foit utilizado um webhook no Github para notificar eventos como pull request e commits ao Codeclimate, permitindo que este detectasse problemas relacionados à <a href="https://docs.codeclimate.com/docs/duplication">duplicação de código</a>, <a href="https://docs.codeclimate.com/docs/radon">complexidade ciclomática</a>, <a href="https://docs.codeclimate.com/v1.0/docs/cognitive-complexity">complexidade cognitiva</a> e etc, e gerasse análises e revisões a respeito da manutenabilidade do código submetido. <a href="https://codeclimate.com/github/fga-gpp-mds/2018.1-Cardinals">Cardinals Codeclimate</a>;</li>
+</ul>
+</li>
+</ul>
+<h1 id="build">Build</h1>
+<p>Build contínuo visa garantir que o projeto possa ser facilmente construído, replicável, migrável e testável. Para tais fins foram utilizadass ferramentas de containerização e integração para construir os ambientes necessários ao projeto.</p>
+<h2 id="docker">Docker</h2>
+<p>o <a href="https://www.docker.com">Docker</a> foi utilizado para criação e utilização de containers no desenvolvimento do código e testes, permitindo que o projeto pudesse ser construído, com todas suas dependências, rapidamente e facilitando a migração entre os ambientes de desenvolvimento, teste, homologação e produção.</p>
+<h1 id="teste">Teste</h1>
+<h2 id="testes-unitarios">Testes unitários</h2>
+<p>Foram utilizados testes unitários aplicados à métodos e classes para aferir a corretude do código, em sua menor fração. Os testes foram escritos pelos desenvolvedores seguindo orientações de documentações e comunidade <a href="https://docs.djangoproject.com/en/2.0/topics/testing/">Python/Django</a>.</p>
+<h2 id="cobertura-de-testes">Cobertura de testes</h2>
+<p>Foram utilizadas algumas ferramentas para aferir e certificar o nível de cobertura de testes afim de avaliar se todas, ou a maioria, as partes da aplicação estavam sendo alcançadas.</p>
+<ul>
+<li><a href="https://coverage.readthedocs.io/en/coverage-4.5.1/">Coverage</a>: biblioteca Python utilizada localmente através de script e de forma integrada na ferramenta Travis para gerar relatório de cobertura de testes, detalhando para o desenvolvedor a porcetagem de código testada e fornecendo ao Codecov os dados necessários para gerar análises.</li>
+<li><a href="https://codecov.io/gh/fga-gpp-mds/2018.1-Cardinals">Codecov</a>: utilizado através de sua biblioteca Python e de sua plataforma para gerar análises de cobertura de testes disponibilizadas publicamente.</li>
+</ul>
+<h1 id="integracao-continua">Integração contínua</h1>
+<p>A Integração Contínua tem como objetivo mesclar pequenas alterações de código com frequência - em vez de mesclar em uma grande alteração no final de um ciclo de desenvolvimento. O objetivo é desenvolver softwares mais saudáveis, desenvolvendo e testando em incrementos menores.</p>
+<h2 id="travis">Travis</h2>
+<p>O Travis foi utilizado para dar suporte ao processo de desenvolvimento da aplicação criando builds e testes automatizados das alterações realizadas no código e fornecendo feedback imediato sobre o sucesso das alterações.
+A ferramenta também foi utilizada para automatizar o processo de entrega contínua da aplicação.</p>
+<h1 id="deploy-continuo">Deploy contínuo</h1>
+<h2 id="travis-e-heroku">Travis e Heroku</h2>
+<h1 id="monitoramento-continuo">Monitoramento contínuo</h1>
+<p>O monitoramento contínuo tem como objetivos capturar, analisar e exibir dados e informações a respeito da execução de uma aplicação da web. As ferramentas de monitoramento fornecem transparência para que os desenvolvedores e as equipes de operações possam responder e corrigir problemas detectados durante a execução de uma aplicação a respeito de sua estabilidade, desempenho e erros.</p>
+<h3 id="librato">Librato</h3>
+<p>O Librato foi utilizado para monitorar e analisar as métricas que afetam o projeto. Através de integração com o Heroku é disponibilizado um link público do projeto (<a href="https://metrics.librato.com/s/public/ce3wjrg32">Cardinals</a>) onde é disponibilizado um dashboard para visualização  das principais métricas, ifornecendo nformações detalhadas sobre o desempenho da aplicação, recursos do sistema e banco de dados.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Sprints/00/Planejamento/" class="btn btn-neutral float-right" title="Planejamento">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../devops-pipeline/" class="btn btn-neutral" title="Pipeline"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/fga-gpp-mds/2018.1-Cardinals/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../devops-pipeline/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../Sprints/00/Planejamento/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/require.js"></script>
+      <script src="../../../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Instalação - Cardinals</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Instala\u00e7\u00e3o";
+    var mkdocs_page_input_path = "documentos/instalacao.md";
+    var mkdocs_page_url = "/documentos/instalacao/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Cardinals</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Início</p>
+
+
+<ul class="current" href="index">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../.." title="Sobre"
+      class="">
+    Sobre
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../equipe/" title="Equipe"
+      class="">
+    Equipe
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../CONTRIBUTING/" title="Guia de contribuição"
+      class="">
+    Guia de contribuição
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../../CODE_OF_CONDUCT/" title="Código de conduta"
+      class="">
+    Código de conduta
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class="current toctree-l1">
+  <a href="./" title="Instalação"
+      class="current">
+    Instalação
+  </a>
+
+  
+  
+    
+    
+      
+  
+  
+  <ul class="current subnav">
+    
+      
+
+  
+  
+  
+
+
+  <li class="current toctree-l2">
+    
+    <ul class="current subnav">
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#pre-requisitos" title="Instalação">Pré requisitos</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#executando-a-aplicacao-utilizando-docker-num-servidor-local" title="Instalação">Executando a aplicação utilizando Docker num servidor local</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#variaveis-de-ambiente" title="Instalação">Variáveis de ambiente</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#rodando-testes" title="Instalação">Rodando testes</a>
+  </li>
+
+      
+        
+
+  
+  
+
+
+  <li class="toctree-l2 toc-item">
+    <a href="#avaliando-a-qualidade-do-codigo" title="Instalação">Avaliando a qualidade do código</a>
+  </li>
+
+      
+    </ul>
+  </li>
+
+    
+  </ul>
+
+    
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Desenvolvimento</p>
+
+
+<ul class="" href="documentos/Documento-de-Visão">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Documento-de-Visão/" title="Documento de Visão"
+      class="">
+    Documento de Visão
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Documento-de-Arquitetura/" title="Documento de Arquitetura"
+      class="">
+    Documento de Arquitetura
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Gestão</p>
+
+
+<ul class="" href="documentos/Termo-de-Abertura-do-Projeto">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Termo-de-Abertura-do-Projeto/" title="Termo de Abertura do Projeto"
+      class="">
+    Termo de Abertura do Projeto
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../EAP/" title="Estrutura Analítica do Projeto"
+      class="">
+    Estrutura Analítica do Projeto
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Práticas-Ágeis-Adotadas/" title="Práticas Ágeis"
+      class="">
+    Práticas Ágeis
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Monitoramento-de-issues-pelo-Zenhub/" title="Monitoramento de issues"
+      class="">
+    Monitoramento de issues
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Roadmaps</p>
+
+
+<ul class="" href="documentos/roadmap-geral">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../roadmap-geral/" title="Geral"
+      class="">
+    Geral
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../roadmap-arquitetura/" title="Arquitetura"
+      class="">
+    Arquitetura
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">DevOps</p>
+
+
+<ul class="" href="documentos/DevOps/roadmap-devops">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../DevOps/roadmap-devops/" title="Roadmap"
+      class="">
+    Roadmap
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../DevOps/devops-pipeline/" title="Pipeline"
+      class="">
+    Pipeline
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../DevOps/devops-pipeline-explicado/" title="Pipeline explicado"
+      class="">
+    Pipeline explicado
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 0</p>
+
+
+<ul class="" href="documentos/Sprints/00/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/00/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/00/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 1</p>
+
+
+<ul class="" href="documentos/Sprints/01/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/01/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/01/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 2</p>
+
+
+<ul class="" href="documentos/Sprints/02/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/02/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/02/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 3</p>
+
+
+<ul class="" href="documentos/Sprints/03/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/03/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/03/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 4</p>
+
+
+<ul class="" href="documentos/Sprints/04/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/04/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/04/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 5</p>
+
+
+<ul class="" href="documentos/Sprints/05/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/05/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/05/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 6</p>
+
+
+<ul class="" href="documentos/Sprints/06/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/06/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/06/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 7</p>
+
+
+<ul class="" href="documentos/Sprints/07/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/07/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/07/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 8</p>
+
+
+<ul class="" href="documentos/Sprints/08/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/08/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/08/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 9</p>
+
+
+<ul class="" href="documentos/Sprints/09/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/09/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/09/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 10</p>
+
+
+<ul class="" href="documentos/Sprints/10/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/10/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/10/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 11</p>
+
+
+<ul class="" href="documentos/Sprints/11/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/11/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/11/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 12</p>
+
+
+<ul class="" href="documentos/Sprints/12/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/12/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/12/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 13</p>
+
+
+<ul class="" href="documentos/Sprints/13/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/13/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/13/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 14</p>
+
+
+<ul class="" href="documentos/Sprints/14/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/14/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/14/Resultados/" title="Resultados"
+      class="">
+    Resultados
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+
+  
+    
+    
+    
+    
+    
+    
+
+  <p class="caption">Sprint 15</p>
+
+
+<ul class="" href="documentos/Sprints/15/Planejamento">
+  
+    
+      
+<li class=" toctree-l1">
+  <a href="../Sprints/15/Planejamento/" title="Planejamento"
+      class="">
+    Planejamento
+  </a>
+
+  
+  
+</li>
+    
+</ul>
+
+<!--
+ | This is a hacky way to pass setting from the template generator to the
+ | javascript that drives the dropdown functionality
+-->
+<div style="width: 1px; height: 1px; visibility: none;">
+
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Cardinals</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Início &raquo;</li>
+        
+      
+    
+    <li>Instalação</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/fga-gpp-mds/2018.1-Cardinals/edit/master/docs/documentos/instalacao.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="instalacao-e-testes">Instalação e Testes</h1>
+<h2 id="pre-requisitos">Pré requisitos</h2>
+<p>Estar num ambiente Linux, com os seguintes programas já instalados: Git, Docker e Docker Compose.       <br />
+Consulte: <a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03#file-linux-md">instalar Git</a>, <a href="https://docs.docker.com/install/">instalar Docker</a> e <a href="https://docs.docker.com/compose/install/">instalar Docker Compose</a> para mais informações.</p>
+<h2 id="executando-a-aplicacao-utilizando-docker-num-servidor-local">Executando a aplicação utilizando Docker num servidor local</h2>
+<ol>
+<li>Clone nosso repositório:</li>
+</ol>
+<pre><code class="sh">  $ git clone https://github.com/fga-gpp-mds/2018.1-Cardinals.git
+</code></pre>
+
+<ol>
+<li>Entre no diretório do projeto:</li>
+</ol>
+<pre><code class="sh">  $ cd  2018.1-Cardinals
+</code></pre>
+
+<ol>
+<li>Crie um arquivo para as variáveis de ambiente:</li>
+</ol>
+<pre><code class="sh">  $ echo -e &quot;USERNAME=\nPASSWORD=\nSECRET_KEY=''\nSOCIAL_AUTH_GITHUB_KEY=\nSOCIAL_AUTH_GITHUB_SECRET=&quot; &gt;&gt; .env
+</code></pre>
+
+<p>Para mais informações sobre as variáveis de ambiente veja o tópico <a href="#variaveis-de-ambiente">Variáveis de ambiente</a>.</p>
+<ol>
+<li>Inicialize os serviços necessários para aplicação:</li>
+</ol>
+<pre><code class="sh">  $ cd  sudo make up
+</code></pre>
+
+<ol>
+<li>Acesse a página por meio do seu browser favorito:</li>
+</ol>
+<pre><code class="sh">  htttp:/localhost:8000/
+</code></pre>
+
+<h2 id="variaveis-de-ambiente">Variáveis de ambiente</h2>
+<p>Para aumentar o limite de requisições use credenciais de autenticação da API do Github. Para mais informações <a href="https://developer.github.com/v3/?">acesse</a>.</p>
+<pre><code>USERNAME='Meu_username'
+PASSWORD='Minha_senha'
+</code></pre>
+
+<p>Adicione sua chave secreta da aplicação.    <br />
+Para gerar sua própria chave pode-se utilizar <a href="https://www.miniwebtool.com/django-secret-key-generator/">Django Secret Key Generator</a> ou <a href="../django-secret-keygen.py">django-secret-keygen.py</a>.   <br />
+Para mais informações acesse <a href="https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-SECRET_KEY">Documentação Django</a>.</p>
+<pre><code>SECRET_KEY='Minha_chave_secreta'
+</code></pre>
+<p>Para utilizar o sistema de login através do Github, utilize as chaves Client ID e Client Secret de uma aplicação do Github.       <br />
+Para mais informações acesse <a href="https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/">Creating an OAuth App</a>.</p>
+<pre><code>SOCIAL_AUTH_GITHUB_KEY='Minha_Client_ID'
+SOCIAL_AUTH_GITHUB_SECRET='Minha_Client_Secret'
+</code></pre>
+<h2 id="rodando-testes">Rodando testes</h2>
+<p>Para avaliar a cobertura de testes localmente utilize os seguintes comandos no terminal do docker:</p>
+<ul>
+<li>Para rodar os testes:</li>
+</ul>
+<pre><code class="sh">  $ sudo make test
+</code></pre>
+
+<h2 id="avaliando-a-qualidade-do-codigo">Avaliando a qualidade do código</h2>
+<ul>
+<li>Para identificar problemas de estilo e complexidade utilizando o <a href="http://flake8.pycqa.org/en/latest/">Flake8</a>:</li>
+</ul>
+<pre><code class="sh">  $ sudo make analyze-flake8
+</code></pre>
+
+<ul>
+<li>Para realizar análises do <a href="https://docs.codeclimate.com">Codeclimate</a> localmente:</li>
+</ul>
+<pre><code class="sh">  $ sudo make analyze
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Documento-de-Visão/" class="btn btn-neutral float-right" title="Documento de Visão">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../CODE_OF_CONDUCT/" class="btn btn-neutral" title="Código de conduta"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/fga-gpp-mds/2018.1-Cardinals/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../CODE_OF_CONDUCT/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Documento-de-Visão/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
