@@ -26,10 +26,10 @@ class ReportTests(TestCase):
       create_pdf_space(self.test_list, self.size)
       self.assertNotEqual(self.Story, self.test_list)
 
-   def test_convert_html2image(self):
-      self.img_test = config_convert_img()
-      self.assertEqual(convert_html2image(self.img_test, self.path_html, self.path_jpg), self.path_jpg)
-      self.assertNotEqual(convert_html2image(self.img_test, self.path_html, self.path_jpg), self.img_test)
+   # def test_convert_html2image(self):
+   #    self.img_test = config_convert_img()
+   #    self.assertEqual(convert_html2image(self.img_test, self.path_html, self.path_jpg), self.path_jpg)
+   #    self.assertNotEqual(convert_html2image(self.img_test, self.path_html, self.path_jpg), self.img_test)
 
    def test_create_pdf_paragraph(self):
       create_pdf_paragraph(self.Story, self.text, self.size)
